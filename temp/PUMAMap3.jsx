@@ -1,5 +1,3 @@
-// src/views/PUMAMap.jsx
-
 import { useState, useEffect, useMemo } from "react";
 import DeckGL from "deck.gl";
 import StaticMap, { Popup } from "react-map-gl";
@@ -11,10 +9,12 @@ import { interpolateYlGnBu } from "d3-scale-chromatic";
 import { color as d3color } from "d3-color";
 
 import { getHoverRenderData } from "../utils/getHoverData";
-import { findStatsForPUMA, getInitialViewState } from "../utils/pumaHelpers";
-import CoeffChart from "../components/CoeffChart";
+import {
+  findStatsForPUMA,
+  getInitialViewState,
+  formatPUMAContent,
+} from "../utils/pumaHelpers";
 
-const base = import.meta.env.BASE_URL; // for Vite base path
 const colorScale = scaleSequential(interpolateYlGnBu).domain([0, 1]);
 const MAPBOX_TOKEN =
   "pk.eyJ1Ijoid2h6ZW11Y2giLCJhIjoiY21mNW1veXJuMDNzYzJsb21jOXZkb3Y5cyJ9.hP6BD6HV9rrR4NlzWt3DVA";
@@ -25,11 +25,11 @@ export default function PUMAMap() {
   const [hoverInfo, setHoverInfo] = useState(null);
 
   useEffect(() => {
-    fetch(`${base}data/geo/puma_shapes.json`)
+    fetch("/data/geo/puma_shapes.json")
       .then((res) => res.json())
       .then(setGeoData);
 
-    fetch(`${base}data/education_by_puma_2023.json`)
+    fetch("/data/education_by_puma_2023.json")
       .then((res) => res.json())
       .then((data) =>
         setEduData(data.map((d) => ({ ...d, PUMA: Number(d.PUMA) })))
@@ -94,12 +94,13 @@ export default function PUMAMap() {
             left: hoverRender.x,
             top: hoverRender.y,
             backgroundColor: "white",
-            padding: "8px",
-            borderRadius: "6px",
+            padding: "6px 8px",
+            fontSize: "12px",
+            borderRadius: "4px",
             boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
             pointerEvents: "none",
             zIndex: 1000,
-            width: "320px",
+            minWidth: "160px",
           }}
         >
           {renderTooltipContent(hoverRender.content, eduData)}
@@ -110,33 +111,33 @@ export default function PUMAMap() {
 }
 
 function renderTooltipContent(obj, eduData) {
-  const pumaCode = obj.properties.PUMA;
-  const name = obj.properties.name;
-  const stats = eduData.find((d) => d.PUMA === Number(pumaCode));
-
-  if (!stats) {
-    return (
-      <div style={{ color: "#777" }}>No education data for PUMA {pumaCode}</div>
-    );
-  }
+  const { name, stats, pumaCode } = formatPUMAContent(obj, eduData);
 
   return (
     <div>
       <b>{name}</b>
-      <div style={{ fontSize: "11px", color: "#777", marginBottom: "6px" }}>
-        PUMA {pumaCode}
-      </div>
-
-      {/* Education distribution */}
-      <CoeffChart stats={stats} mode="distribution" width={200} height={120} />
-
-      {/* Wage premiums */}
-      <CoeffChart
-        stats={stats.coefficients}
-        mode="coefficients"
-        width={200}
-        height={120}
-      />
+      {stats ? (
+        <div style={{ marginTop: "4px" }}>
+          {Object.entries(stats).map(([key, value]) => {
+            if (key === "PUMA") return null;
+            const displayValue =
+              typeof value === "number"
+                ? value >= 0 && value <= 1
+                  ? (value * 100).toFixed(1) + "%"
+                  : value.toLocaleString()
+                : value;
+            return (
+              <div key={key}>
+                {key}: {displayValue}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div style={{ color: "#777" }}>
+          No education data for PUMA {pumaCode}
+        </div>
+      )}
     </div>
   );
 }

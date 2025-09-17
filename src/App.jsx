@@ -26,26 +26,20 @@
 
 // export default App;
 
-
-
 // src/App.js
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import PUMAMap from "./components/PUMAMap";
 import TestPage from "./views/TestPage";
 import TestCoeffPage from "./views/TestCoeffPage"; // 👈 import it
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PUMAMap />} />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="/test-coeff" element={<TestCoeffPage />} /> {/* 👈 new */}
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<PUMAMap />} />
+      <Route path="/test" element={<TestPage />} />
+      <Route path="/test-coeff" element={<TestCoeffPage />} /> {/* 👈 new */}
+    </Routes>
   );
 }
 
 export default App;
-
-
