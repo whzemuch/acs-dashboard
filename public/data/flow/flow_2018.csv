@@ -1,1719 +1,1776 @@
 year,origin_geoid,dest_geoid,flow,origin_name,dest_name
-2018,01073,54065,617,Jefferson County,Morgan County
-2018,01073,26045,845,Jefferson County,Eaton County
-2018,38011,01073,197,Bowman County,Jefferson County
-2018,22123,01073,846,West Carroll Parish,Jefferson County
-2018,01033,41033,777,Colbert County,Josephine County
-2018,41071,01033,192,Yamhill County,Colbert County
-2018,01009,26037,668,Blount County,Clinton County
-2018,01009,19081,918,Blount County,Hancock County
-2018,23027,01009,878,Waldo County,Blount County
-2018,21053,01019,629,Clinton County,Cherokee County
-2018,30011,01019,262,Carter County,Cherokee County
-2018,01019,20131,61,Cherokee County,Nemaha County
-2018,01019,18045,99,Cherokee County,Fountain County
-2018,17085,01019,269,Jo Daviess County,Cherokee County
-2018,01091,04015,822,Marengo County,Mohave County
-2018,01091,06069,380,Marengo County,San Benito County
-2018,01091,25023,989,Marengo County,Plymouth County
-2018,25009,01081,475,Essex County,Lee County
-2018,25025,01081,248,Suffolk County,Lee County
-2018,31081,01123,878,Hamilton County,Tallapoosa County
-2018,17061,01123,670,Greene County,Tallapoosa County
-2018,47147,01011,518,Robertson County,Bullock County
-2018,36115,01011,898,Washington County,Bullock County
-2018,01011,48371,196,Bullock County,Pecos County
-2018,06089,01129,1000,Shasta County,Washington County
-2018,01129,20061,115,Washington County,Geary County
-2018,34031,01025,126,Passaic County,Clarke County
-2018,01025,39137,314,Clarke County,Putnam County
-2018,02275,34003,66,Wrangell City and Borough,Bergen County
-2018,02275,09011,302,Wrangell City and Borough,New London County
-2018,02275,19021,205,Wrangell City and Borough,Buena Vista County
-2018,26001,02150,827,Alcona County,Kodiak Island Borough
-2018,02150,24039,447,Kodiak Island Borough,Somerset County
-2018,02198,20131,771,Prince of Wales-Hyder Census Area,Nemaha County
-2018,04025,02198,855,Yavapai County,Prince of Wales-Hyder Census Area
-2018,02198,04003,513,Prince of Wales-Hyder Census Area,Cochise County
-2018,02198,20095,254,Prince of Wales-Hyder Census Area,Kingman County
-2018,37089,02164,861,Henderson County,Lake and Peninsula Borough
-2018,48403,02164,776,Sabine County,Lake and Peninsula Borough
-2018,06011,02164,209,Colusa County,Lake and Peninsula Borough
-2018,02164,53049,917,Lake and Peninsula Borough,Pacific County
-2018,08001,02070,248,Adams County,Dillingham Census Area
-2018,15001,02070,558,Hawaii County,Dillingham Census Area
-2018,02070,08001,84,Dillingham Census Area,Adams County
-2018,02070,17125,316,Dillingham Census Area,Mason County
-2018,02090,42091,363,Fairbanks North Star Borough,Montgomery County
-2018,02090,29091,942,Fairbanks North Star Borough,Howell County
-2018,02090,13287,390,Fairbanks North Star Borough,Turner County
-2018,22123,02282,683,West Carroll Parish,Yakutat City and Borough
-2018,53009,02282,848,Clallam County,Yakutat City and Borough
-2018,38087,02282,273,Slope County,Yakutat City and Borough
-2018,02220,20107,223,Sitka City and Borough,Linn County
-2018,54025,02220,351,Greenbrier County,Sitka City and Borough
-2018,36033,02220,739,Franklin County,Sitka City and Borough
-2018,02220,06105,829,Sitka City and Borough,Trinity County
-2018,02110,16081,276,Juneau City and Borough,Teton County
-2018,05001,02110,106,Arkansas County,Juneau City and Borough
-2018,02110,72025,71,Juneau City and Borough,Caguas Municipio
-2018,50003,02013,649,Bennington County,Aleutians East Borough
-2018,02013,10005,855,Aleutians East Borough,Sussex County
-2018,36101,02013,492,Steuben County,Aleutians East Borough
-2018,02013,05021,911,Aleutians East Borough,Clay County
-2018,04017,25017,951,Navajo County,Middlesex County
-2018,04017,49001,356,Navajo County,Beaver County
-2018,08001,04017,453,Adams County,Navajo County
-2018,04017,48013,109,Navajo County,Atascosa County
-2018,04021,02090,336,Pinal County,Fairbanks North Star Borough
-2018,05129,04021,184,Searcy County,Pinal County
-2018,54087,04001,303,Roane County,Apache County
-2018,38101,04001,593,Ward County,Apache County
-2018,34017,04025,749,Hudson County,Yavapai County
-2018,04025,53055,15,Yavapai County,San Juan County
-2018,04025,47021,725,Yavapai County,Cheatham County
-2018,37089,04025,107,Henderson County,Yavapai County
-2018,23027,04011,621,Waldo County,Greenlee County
-2018,17181,04011,877,Union County,Greenlee County
-2018,41061,04011,210,Union County,Greenlee County
-2018,04015,42025,403,Mohave County,Carbon County
-2018,04015,48013,491,Mohave County,Atascosa County
-2018,04015,44003,337,Mohave County,Kent County
-2018,32023,04015,632,Nye County,Mohave County
-2018,29139,04015,783,Montgomery County,Mohave County
-2018,04005,17135,570,Coconino County,Montgomery County
-2018,04005,34003,659,Coconino County,Bergen County
-2018,42019,04003,691,Butler County,Cochise County
-2018,04003,25017,983,Cochise County,Middlesex County
-2018,39025,04003,767,Clermont County,Cochise County
-2018,26021,04003,597,Berrien County,Cochise County
-2018,04003,19191,243,Cochise County,Winneshiek County
-2018,47145,04027,145,Roane County,Yuma County
-2018,04027,49019,293,Yuma County,Grand County
-2018,04027,32031,712,Yuma County,Washoe County
-2018,04009,18053,820,Graham County,Grant County
-2018,04009,04027,477,Graham County,Yuma County
-2018,04009,30027,670,Graham County,Fergus County
-2018,33001,04009,874,Belknap County,Graham County
-2018,23011,05009,680,Kennebec County,Boone County
-2018,05009,36011,542,Boone County,Cayuga County
-2018,13287,05009,73,Turner County,Boone County
-2018,05009,37167,578,Boone County,Stanly County
-2018,47147,05009,875,Robertson County,Boone County
-2018,26037,05127,478,Clinton County,Scott County
-2018,72067,05127,195,Hormigueros Municipio,Scott County
-2018,26009,05127,401,Antrim County,Scott County
-2018,45017,05021,655,Calhoun County,Clay County
-2018,05021,47145,532,Clay County,Roane County
-2018,50027,05021,209,Windsor County,Clay County
-2018,36025,05021,834,Delaware County,Clay County
-2018,05021,72021,725,Clay County,Bayamón Municipio
-2018,31135,05001,117,Perkins County,Arkansas County
-2018,05001,53053,311,Arkansas County,Pierce County
-2018,05001,34023,670,Arkansas County,Middlesex County
-2018,06075,05071,947,San Francisco County,Johnson County
-2018,05071,25025,895,Johnson County,Suffolk County
-2018,02282,05071,160,Yakutat City and Borough,Johnson County
-2018,38025,05071,320,Dunn County,Johnson County
-2018,50023,05123,671,Washington County,St. Francis County
-2018,05123,44003,830,St. Francis County,Kent County
-2018,05057,33015,283,Hempstead County,Rockingham County
-2018,02282,05057,101,Yakutat City and Borough,Hempstead County
-2018,05025,48159,541,Cleveland County,Franklin County
-2018,05025,56027,933,Cleveland County,Niobrara County
-2018,27037,05139,691,Dakota County,Union County
-2018,05139,37141,351,Union County,Pender County
-2018,34031,05129,30,Passaic County,Searcy County
-2018,56025,05129,780,Natrona County,Searcy County
-2018,05129,33001,753,Searcy County,Belknap County
-2018,30067,05129,490,Park County,Searcy County
-2018,06001,08001,741,Alameda County,Adams County
-2018,06001,15007,697,Alameda County,Kauai County
-2018,38101,06001,169,Ward County,Alameda County
-2018,40101,06001,497,Muskogee County,Alameda County
-2018,06001,36101,249,Alameda County,Steuben County
-2018,20107,06011,530,Linn County,Colusa County
-2018,34035,06011,967,Somerset County,Colusa County
-2018,21053,06011,590,Clinton County,Colusa County
-2018,06069,24003,965,San Benito County,Anne Arundel County
-2018,06069,36119,783,San Benito County,Westchester County
-2018,06069,26037,733,San Benito County,Clinton County
-2018,06027,09013,844,Inyo County,Tolland County
-2018,54087,06027,411,Roane County,Inyo County
-2018,06089,39021,716,Shasta County,Champaign County
-2018,06089,15003,377,Shasta County,Honolulu County
-2018,24025,06089,947,Harford County,Shasta County
-2018,49017,06089,894,Garfield County,Shasta County
-2018,13199,06089,410,Meriwether County,Shasta County
-2018,04027,06105,65,Yuma County,Trinity County
-2018,06105,28061,781,Trinity County,Jasper County
-2018,06105,45053,449,Trinity County,Jasper County
-2018,21129,06105,584,Lee County,Trinity County
-2018,06105,05129,832,Trinity County,Searcy County
-2018,06075,18135,404,San Francisco County,Randolph County
-2018,08121,06075,819,Washington County,San Francisco County
-2018,06075,42073,29,San Francisco County,Lawrence County
-2018,30089,06075,665,Sanders County,San Francisco County
-2018,34033,06051,317,Salem County,Mono County
-2018,08011,06051,742,Bent County,Mono County
-2018,06093,28107,425,Siskiyou County,Panola County
-2018,06093,45051,607,Siskiyou County,Horry County
-2018,06093,31145,956,Siskiyou County,Red Willow County
-2018,36051,06025,379,Livingston County,Imperial County
-2018,12129,06025,140,Wakulla County,Imperial County
-2018,53027,06025,62,Grays Harbor County,Imperial County
-2018,06025,51790,227,Imperial County,Staunton city
-2018,06025,20107,829,Imperial County,Linn County
-2018,44007,08103,90,Providence County,Rio Blanco County
-2018,41027,08103,980,Hood River County,Rio Blanco County
-2018,41063,08115,806,Wallowa County,Sedgwick County
-2018,08115,20095,822,Sedgwick County,Kingman County
-2018,12083,08115,852,Marion County,Sedgwick County
-2018,25001,08115,988,Barnstable County,Sedgwick County
-2018,08115,45051,287,Sedgwick County,Horry County
-2018,08001,06051,202,Adams County,Mono County
-2018,08001,29081,836,Adams County,Harrison County
-2018,08001,45009,16,Adams County,Bamberg County
-2018,48381,08001,837,Randall County,Adams County
-2018,08087,24001,166,Morgan County,Allegany County
-2018,08087,49033,138,Morgan County,Rich County
-2018,27045,08087,765,Fillmore County,Morgan County
-2018,08087,41071,589,Morgan County,Yamhill County
-2018,40091,08011,77,McIntosh County,Bent County
-2018,13191,08011,470,McIntosh County,Bent County
-2018,08011,42011,149,Bent County,Berks County
-2018,27053,08071,670,Hennepin County,Las Animas County
-2018,54027,08071,86,Hampshire County,Las Animas County
-2018,08071,54083,689,Las Animas County,Randolph County
-2018,08031,02013,46,Denver County,Aleutians East Borough
-2018,08031,38095,652,Denver County,Towner County
-2018,08031,05009,306,Denver County,Boone County
-2018,08031,09009,329,Denver County,New Haven County
-2018,08023,06069,204,Costilla County,San Benito County
-2018,05127,08023,925,Scott County,Costilla County
-2018,08023,38007,987,Costilla County,Billings County
-2018,08023,22123,362,Costilla County,West Carroll Parish
-2018,38011,08023,549,Bowman County,Costilla County
-2018,08049,08011,956,Grand County,Bent County
-2018,08049,17061,974,Grand County,Greene County
-2018,48381,08121,596,Randall County,Washington County
-2018,08121,50003,238,Washington County,Bennington County
-2018,08121,01073,900,Washington County,Jefferson County
-2018,02220,09003,333,Sitka City and Borough,Hartford County
-2018,53027,09003,21,Grays Harbor County,Hartford County
-2018,09011,24045,413,New London County,Wicomico County
-2018,09011,36113,406,New London County,Warren County
-2018,39137,09011,834,Putnam County,New London County
-2018,09001,56017,430,Fairfield County,Hot Springs County
-2018,09001,13287,605,Fairfield County,Turner County
-2018,09015,50025,327,Windham County,Windham County
-2018,17081,09015,433,Jefferson County,Windham County
-2018,09015,06027,79,Windham County,Inyo County
-2018,09015,12083,387,Windham County,Marion County
-2018,16051,09015,551,Jefferson County,Windham County
-2018,09005,32029,71,Litchfield County,Storey County
-2018,09005,51790,29,Litchfield County,Staunton city
-2018,09005,20095,341,Litchfield County,Kingman County
-2018,09009,25025,579,New Haven County,Suffolk County
-2018,09009,01123,134,New Haven County,Tallapoosa County
-2018,09007,02070,433,Middlesex County,Dillingham Census Area
-2018,09007,05127,855,Middlesex County,Scott County
-2018,26037,09007,382,Clinton County,Middlesex County
-2018,09007,20209,81,Middlesex County,Wyandotte County
-2018,09013,51065,819,Tolland County,Fluvanna County
-2018,09013,54065,173,Tolland County,Morgan County
-2018,09013,08115,52,Tolland County,Sedgwick County
-2018,13299,09013,614,Ware County,Tolland County
-2018,10001,40021,943,Kent County,Cherokee County
-2018,29023,10001,830,Butler County,Kent County
-2018,10001,06051,381,Kent County,Mono County
-2018,10001,42033,585,Kent County,Clearfield County
-2018,10003,42073,821,New Castle County,Lawrence County
-2018,10003,01129,339,New Castle County,Washington County
-2018,10003,72065,955,New Castle County,Hatillo Municipio
-2018,26037,10005,818,Clinton County,Sussex County
-2018,19081,10005,344,Hancock County,Sussex County
-2018,10005,04003,25,Sussex County,Cochise County
-2018,10005,08023,880,Sussex County,Costilla County
-2018,11001,50003,230,District of Columbia,Bennington County
-2018,11001,05139,558,District of Columbia,Union County
-2018,47145,12075,370,Roane County,Levy County
-2018,11001,12075,582,District of Columbia,Levy County
-2018,12075,48013,720,Levy County,Atascosa County
-2018,50001,12075,937,Addison County,Levy County
-2018,27137,12035,759,St. Louis County,Flagler County
-2018,18089,12035,167,Lake County,Flagler County
-2018,35023,12009,695,Hidalgo County,Brevard County
-2018,25009,12009,991,Essex County,Brevard County
-2018,19085,12009,213,Harrison County,Brevard County
-2018,12019,04017,558,Clay County,Navajo County
-2018,12019,23003,189,Clay County,Aroostook County
-2018,02070,12019,319,Dillingham Census Area,Clay County
-2018,12019,39009,650,Clay County,Athens County
-2018,12091,41063,169,Okaloosa County,Wallowa County
-2018,34003,12091,556,Bergen County,Okaloosa County
-2018,12091,21111,273,Okaloosa County,Jefferson County
-2018,08049,12091,300,Grand County,Okaloosa County
-2018,12091,36025,614,Okaloosa County,Delaware County
-2018,12083,06001,699,Marion County,Alameda County
-2018,56001,12083,990,Albany County,Marion County
-2018,08087,12083,791,Morgan County,Marion County
-2018,56011,12083,58,Crook County,Marion County
-2018,54087,12083,162,Roane County,Marion County
-2018,12123,13191,970,Taylor County,McIntosh County
-2018,12123,08011,943,Taylor County,Bent County
-2018,21111,12123,900,Jefferson County,Taylor County
-2018,12123,09009,737,Taylor County,New Haven County
-2018,72067,12123,709,Hormigueros Municipio,Taylor County
-2018,12011,50017,27,Broward County,Orange County
-2018,12011,10003,899,Broward County,New Castle County
-2018,18001,12011,685,Adams County,Broward County
-2018,12129,18021,517,Wakulla County,Clay County
-2018,12129,34033,510,Wakulla County,Salem County
-2018,12129,48159,369,Wakulla County,Franklin County
-2018,12129,47147,656,Wakulla County,Robertson County
-2018,12027,36051,835,DeSoto County,Livingston County
-2018,50019,12027,586,Orleans County,DeSoto County
-2018,34003,12027,770,Bergen County,DeSoto County
-2018,51083,13159,445,Halifax County,Jasper County
-2018,27053,13159,613,Hennepin County,Jasper County
-2018,53061,13159,430,Snohomish County,Jasper County
-2018,23029,13159,295,Washington County,Jasper County
-2018,13159,01025,277,Jasper County,Clarke County
-2018,37079,13315,507,Greene County,Wilcox County
-2018,54039,13315,248,Kanawha County,Wilcox County
-2018,21021,13315,597,Boyle County,Wilcox County
-2018,51790,13261,118,Staunton city,Sumter County
-2018,17181,13261,387,Union County,Sumter County
-2018,13261,42129,897,Sumter County,Westmoreland County
-2018,13261,29091,191,Sumter County,Howell County
-2018,13261,34035,92,Sumter County,Somerset County
-2018,13113,25003,281,Fayette County,Berkshire County
-2018,13113,20129,37,Fayette County,Morton County
-2018,04001,13113,152,Apache County,Fayette County
-2018,10001,13113,116,Kent County,Fayette County
-2018,13191,19021,292,McIntosh County,Buena Vista County
-2018,08031,13191,220,Denver County,McIntosh County
-2018,50011,13191,940,Franklin County,McIntosh County
-2018,13191,37141,650,McIntosh County,Pender County
-2018,13191,39009,333,McIntosh County,Athens County
-2018,13061,39153,791,Clay County,Summit County
-2018,40095,13061,73,Marshall County,Clay County
-2018,29141,13061,668,Morgan County,Clay County
-2018,47045,13061,272,Dyer County,Clay County
-2018,28009,13061,441,Benton County,Clay County
-2018,13299,42129,149,Ware County,Westmoreland County
-2018,56025,13299,401,Natrona County,Ware County
-2018,17021,13299,680,Christian County,Ware County
-2018,27053,13299,98,Hennepin County,Ware County
-2018,13299,50009,252,Ware County,Essex County
-2018,31045,13105,452,Dawes County,Elbert County
-2018,13105,30001,601,Elbert County,Beaverhead County
-2018,13105,44003,829,Elbert County,Kent County
-2018,13105,09007,557,Elbert County,Middlesex County
-2018,19125,13199,62,Marion County,Meriwether County
-2018,41063,13199,728,Wallowa County,Meriwether County
-2018,16081,13199,911,Teton County,Meriwether County
-2018,13199,09001,78,Meriwether County,Fairfield County
-2018,08011,13199,580,Bent County,Meriwether County
-2018,02150,13287,433,Kodiak Island Borough,Turner County
-2018,13287,21147,502,Turner County,McCreary County
-2018,12019,13287,182,Clay County,Turner County
-2018,27001,15003,769,Aitkin County,Honolulu County
-2018,15003,53073,372,Honolulu County,Whatcom County
-2018,54065,15003,243,Morgan County,Honolulu County
-2018,39153,15009,45,Summit County,Maui County
-2018,44005,15009,85,Newport County,Maui County
-2018,04011,15009,791,Greenlee County,Maui County
-2018,15005,45079,929,Kalawao County,Richland County
-2018,35059,15005,879,Union County,Kalawao County
-2018,15005,33003,430,Kalawao County,Carroll County
-2018,15005,49053,626,Kalawao County,Washington County
-2018,15001,31001,198,Hawaii County,Adams County
-2018,27153,15001,238,Todd County,Hawaii County
-2018,26009,15001,721,Antrim County,Hawaii County
-2018,26107,15001,575,Mecosta County,Hawaii County
-2018,15007,46003,949,Kauai County,Aurora County
-2018,15007,30025,258,Kauai County,Fallon County
-2018,01019,15007,547,Cherokee County,Kauai County
-2018,15007,72059,252,Kauai County,Guayanilla Municipio
-2018,36011,16075,465,Cayuga County,Payette County
-2018,30073,16075,281,Pondera County,Payette County
-2018,16075,32005,73,Payette County,Douglas County
-2018,35039,16049,58,Rio Arriba County,Idaho County
-2018,16049,46003,461,Idaho County,Aurora County
-2018,16049,06001,443,Idaho County,Alameda County
-2018,16049,17125,804,Idaho County,Mason County
-2018,16049,48403,953,Idaho County,Sabine County
-2018,16051,25001,955,Jefferson County,Barnstable County
-2018,26025,16051,445,Calhoun County,Jefferson County
-2018,16051,22001,843,Jefferson County,Acadia Parish
-2018,16051,42129,160,Jefferson County,Westmoreland County
-2018,16051,55099,191,Jefferson County,Price County
-2018,01019,16073,860,Cherokee County,Owyhee County
-2018,38025,16073,662,Dunn County,Owyhee County
-2018,16073,42129,361,Owyhee County,Westmoreland County
-2018,32031,16069,84,Washoe County,Nez Perce County
-2018,45017,16069,713,Calhoun County,Nez Perce County
-2018,32031,16081,95,Washoe County,Teton County
-2018,16081,08023,966,Teton County,Costilla County
-2018,16009,28009,745,Benewah County,Benton County
-2018,20129,16009,536,Morton County,Benewah County
-2018,29163,16025,735,Pike County,Camas County
-2018,16025,55037,84,Camas County,Florence County
-2018,16025,39021,548,Camas County,Champaign County
-2018,32023,16025,555,Nye County,Camas County
-2018,13315,16017,522,Wilcox County,Bonner County
-2018,27045,16017,26,Fillmore County,Bonner County
-2018,16017,15009,999,Bonner County,Maui County
-2018,16025,16017,53,Camas County,Bonner County
-2018,16017,36033,589,Bonner County,Franklin County
-2018,32031,16007,530,Washoe County,Bear Lake County
-2018,16007,04015,473,Bear Lake County,Mohave County
-2018,16007,46035,197,Bear Lake County,Davison County
-2018,16007,55001,611,Bear Lake County,Adams County
-2018,16007,10005,970,Bear Lake County,Sussex County
-2018,17061,15007,314,Greene County,Kauai County
-2018,17061,49033,223,Greene County,Rich County
-2018,37161,17135,239,Rutherford County,Montgomery County
-2018,17135,39001,230,Montgomery County,Adams County
-2018,01081,17125,167,Lee County,Mason County
-2018,42019,17125,902,Butler County,Mason County
-2018,17095,36033,962,Knox County,Franklin County
-2018,17095,08031,69,Knox County,Denver County
-2018,23019,17095,765,Penobscot County,Knox County
-2018,20129,17085,960,Morton County,Jo Daviess County
-2018,17085,34007,988,Jo Daviess County,Camden County
-2018,30001,17085,810,Beaverhead County,Jo Daviess County
-2018,17085,01025,274,Jo Daviess County,Clarke County
-2018,17081,33009,531,Jefferson County,Grafton County
-2018,17081,02275,326,Jefferson County,Wrangell City and Borough
-2018,47081,17181,576,Hickman County,Union County
-2018,17181,19125,870,Union County,Marion County
-2018,17181,35028,225,Union County,Los Alamos County
-2018,17181,34001,965,Union County,Atlantic County
-2018,34031,17091,226,Passaic County,Kankakee County
-2018,17091,04021,377,Kankakee County,Pinal County
-2018,21111,17091,126,Jefferson County,Kankakee County
-2018,17091,12035,428,Kankakee County,Flagler County
-2018,17021,01129,692,Christian County,Washington County
-2018,42123,17021,998,Warren County,Christian County
-2018,17021,44001,903,Christian County,Bristol County
-2018,17021,42011,607,Christian County,Berks County
-2018,17001,54025,578,Adams County,Greenbrier County
-2018,17001,02070,94,Adams County,Dillingham Census Area
-2018,56031,17001,437,Platte County,Adams County
-2018,17001,12123,923,Adams County,Taylor County
-2018,22123,17001,998,West Carroll Parish,Adams County
-2018,55001,18081,322,Adams County,Johnson County
-2018,18081,19129,506,Johnson County,Mills County
-2018,49055,18081,213,Wayne County,Johnson County
-2018,55069,18081,911,Lincoln County,Johnson County
-2018,26037,18045,552,Clinton County,Fountain County
-2018,25003,18045,990,Berkshire County,Fountain County
-2018,50019,18045,341,Orleans County,Fountain County
-2018,48371,18045,344,Pecos County,Fountain County
-2018,47001,18111,939,Anderson County,Newton County
-2018,18111,18021,804,Newton County,Clay County
-2018,54011,18111,34,Cabell County,Newton County
-2018,18111,55021,885,Newton County,Columbia County
-2018,40021,18145,508,Cherokee County,Shelby County
-2018,18145,35059,121,Shelby County,Union County
-2018,01033,18145,629,Colbert County,Shelby County
-2018,41063,18145,820,Wallowa County,Shelby County
-2018,18145,41027,245,Shelby County,Hood River County
-2018,56031,18001,621,Platte County,Adams County
-2018,18001,25001,907,Adams County,Barnstable County
-2018,30101,18001,506,Toole County,Adams County
-2018,38035,18001,701,Grand Forks County,Adams County
-2018,50025,18053,342,Windham County,Grant County
-2018,18053,51115,388,Grant County,Mathews County
-2018,44003,18053,145,Kent County,Grant County
-2018,18053,01025,627,Grant County,Clarke County
-2018,18079,05129,115,Jennings County,Searcy County
-2018,31111,18079,906,Lincoln County,Jennings County
-2018,18079,04011,779,Jennings County,Greenlee County
-2018,18079,36115,417,Jennings County,Washington County
-2018,18135,40095,877,Randolph County,Marshall County
-2018,18135,42081,225,Randolph County,Lycoming County
-2018,18135,01123,483,Randolph County,Tallapoosa County
-2018,18135,28025,469,Randolph County,Clay County
-2018,40071,18021,134,Kay County,Clay County
-2018,13113,18021,323,Fayette County,Clay County
-2018,04025,18089,220,Yavapai County,Lake County
-2018,18089,20131,889,Lake County,Nemaha County
-2018,04003,19125,258,Cochise County,Marion County
-2018,32033,19125,258,White Pine County,Marion County
-2018,34035,19125,805,Somerset County,Marion County
-2018,29133,19081,690,Mississippi County,Hancock County
-2018,23017,19081,547,Oxford County,Hancock County
-2018,19191,27009,606,Winneshiek County,Benton County
-2018,19191,33013,758,Winneshiek County,Merrimack County
-2018,19191,20021,124,Winneshiek County,Cherokee County
-2018,28037,19191,899,Franklin County,Winneshiek County
-2018,19191,23003,240,Winneshiek County,Aroostook County
-2018,02220,19037,520,Sitka City and Borough,Chickasaw County
-2018,19037,72065,736,Chickasaw County,Hatillo Municipio
-2018,19037,12083,548,Chickasaw County,Marion County
-2018,19195,39135,405,Worth County,Preble County
-2018,13159,19195,267,Jasper County,Worth County
-2018,19169,02150,428,Story County,Kodiak Island Borough
-2018,19169,54087,220,Story County,Roane County
-2018,25019,19169,556,Nantucket County,Story County
-2018,17181,19169,632,Union County,Story County
-2018,26025,19129,257,Calhoun County,Mills County
-2018,30039,19129,420,Granite County,Mills County
-2018,13113,19129,557,Fayette County,Mills County
-2018,44007,19129,14,Providence County,Mills County
-2018,06051,19085,49,Mono County,Harrison County
-2018,12011,19085,824,Broward County,Harrison County
-2018,19085,04025,172,Harrison County,Yavapai County
-2018,13159,19085,445,Jasper County,Harrison County
-2018,38065,19021,611,Oliver County,Buena Vista County
-2018,19021,41043,449,Buena Vista County,Linn County
-2018,32005,19001,301,Douglas County,Adair County
-2018,47001,19001,863,Anderson County,Adair County
-2018,40009,19001,373,Beckham County,Adair County
-2018,19001,15001,843,Adair County,Hawaii County
-2018,20061,24045,184,Geary County,Wicomico County
-2018,20061,23017,397,Geary County,Oxford County
-2018,34031,20131,807,Passaic County,Nemaha County
-2018,20131,13191,375,Nemaha County,McIntosh County
-2018,16073,20131,403,Owyhee County,Nemaha County
-2018,20131,04017,237,Nemaha County,Navajo County
-2018,25005,20131,783,Bristol County,Nemaha County
-2018,20129,21215,456,Morton County,Spencer County
-2018,15001,20129,11,Hawaii County,Morton County
-2018,33001,20129,922,Belknap County,Morton County
-2018,35049,20129,88,Santa Fe County,Morton County
-2018,20129,02090,126,Morton County,Fairbanks North Star Borough
-2018,20107,44005,599,Linn County,Newport County
-2018,20107,36097,208,Linn County,Schuyler County
-2018,20107,18045,517,Linn County,Fountain County
-2018,20091,28107,977,Johnson County,Panola County
-2018,20091,39037,192,Johnson County,Darke County
-2018,20021,20091,136,Cherokee County,Johnson County
-2018,20091,33019,669,Johnson County,Sullivan County
-2018,20189,04001,871,Stevens County,Apache County
-2018,15005,20189,111,Kalawao County,Stevens County
-2018,27135,20189,557,Roseau County,Stevens County
-2018,26021,20189,389,Berrien County,Stevens County
-2018,20189,35035,377,Stevens County,Otero County
-2018,28037,20209,542,Franklin County,Wyandotte County
-2018,20209,32033,30,Wyandotte County,White Pine County
-2018,20095,48235,140,Kingman County,Irion County
-2018,20095,44001,398,Kingman County,Bristol County
-2018,55107,20095,924,Rusk County,Kingman County
-2018,31145,20095,356,Red Willow County,Kingman County
-2018,20095,09007,714,Kingman County,Middlesex County
-2018,33017,20021,10,Strafford County,Cherokee County
-2018,20021,51163,442,Cherokee County,Rockbridge County
-2018,20001,72067,875,Allen County,Hormigueros Municipio
-2018,49055,20001,202,Wayne County,Allen County
-2018,20001,34031,173,Allen County,Passaic County
-2018,20001,28057,653,Allen County,Itawamba County
-2018,37021,20001,914,Buncombe County,Allen County
-2018,51105,21089,632,Lee County,Greenup County
-2018,35028,21089,145,Los Alamos County,Greenup County
-2018,02150,21089,501,Kodiak Island Borough,Greenup County
-2018,21095,55021,245,Harlan County,Columbia County
-2018,21095,46129,18,Harlan County,Walworth County
-2018,21095,28061,534,Harlan County,Jasper County
-2018,12009,21095,291,Brevard County,Harlan County
-2018,41033,21095,439,Josephine County,Harlan County
-2018,21009,24003,345,Barren County,Anne Arundel County
-2018,21009,24019,726,Barren County,Dorchester County
-2018,21111,34001,980,Jefferson County,Atlantic County
-2018,21111,32031,158,Jefferson County,Washoe County
-2018,08011,21053,243,Bent County,Clinton County
-2018,21053,33005,41,Clinton County,Cheshire County
-2018,21129,56019,631,Lee County,Johnson County
-2018,21129,15009,781,Lee County,Maui County
-2018,21129,37107,631,Lee County,Lenoir County
-2018,17001,21129,533,Adams County,Lee County
-2018,21147,18045,422,McCreary County,Fountain County
-2018,27009,21147,390,Benton County,McCreary County
-2018,21147,01025,850,McCreary County,Clarke County
-2018,38035,21147,164,Grand Forks County,McCreary County
-2018,21021,19001,900,Boyle County,Adair County
-2018,36113,21021,675,Warren County,Boyle County
-2018,44001,21021,319,Bristol County,Boyle County
-2018,12011,21021,768,Broward County,Boyle County
-2018,36011,21021,509,Cayuga County,Boyle County
-2018,21081,19021,820,Grant County,Buena Vista County
-2018,42025,21081,558,Carbon County,Grant County
-2018,21215,72097,502,Spencer County,Mayagüez Municipio
-2018,21215,04001,942,Spencer County,Apache County
-2018,21215,01073,794,Spencer County,Jefferson County
-2018,06051,22105,365,Mono County,Tangipahoa Parish
-2018,22105,31079,601,Tangipahoa Parish,Hall County
-2018,51145,22105,280,Powhatan County,Tangipahoa Parish
-2018,21215,22117,52,Spencer County,Washington Parish
-2018,72001,22117,257,Adjuntas Municipio,Washington Parish
-2018,21053,22117,348,Clinton County,Washington Parish
-2018,22117,06089,643,Washington Parish,Shasta County
-2018,53031,22117,613,Jefferson County,Washington Parish
-2018,22001,39021,307,Acadia Parish,Champaign County
-2018,22001,56011,861,Acadia Parish,Crook County
-2018,22001,17001,626,Acadia Parish,Adams County
-2018,29021,22089,898,Buchanan County,St. Charles Parish
-2018,22089,48335,216,St. Charles Parish,Mitchell County
-2018,22089,55009,137,St. Charles Parish,Brown County
-2018,22089,16081,448,St. Charles Parish,Teton County
-2018,24039,22011,877,Somerset County,Beauregard Parish
-2018,22011,02013,364,Beauregard Parish,Aleutians East Borough
-2018,22011,49045,301,Beauregard Parish,Tooele County
-2018,19191,22011,467,Winneshiek County,Beauregard Parish
-2018,45071,22073,583,Newberry County,Ouachita Parish
-2018,22073,13287,998,Ouachita Parish,Turner County
-2018,08115,22073,870,Sedgwick County,Ouachita Parish
-2018,22033,46137,970,East Baton Rouge Parish,Ziebach County
-2018,12091,22033,840,Okaloosa County,East Baton Rouge Parish
-2018,22033,39037,400,East Baton Rouge Parish,Darke County
-2018,25025,22033,250,Suffolk County,East Baton Rouge Parish
-2018,22025,36033,796,Catahoula Parish,Franklin County
-2018,38035,22025,730,Grand Forks County,Catahoula Parish
-2018,22033,22051,990,East Baton Rouge Parish,Jefferson Parish
-2018,22051,27045,83,Jefferson Parish,Fillmore County
-2018,22123,04001,222,West Carroll Parish,Apache County
-2018,05127,22123,159,Scott County,West Carroll Parish
-2018,34037,22123,465,Sussex County,West Carroll Parish
-2018,22123,42019,741,West Carroll Parish,Butler County
-2018,13299,22123,921,Ware County,West Carroll Parish
-2018,39153,23001,436,Summit County,Androscoggin County
-2018,23001,31045,126,Androscoggin County,Dawes County
-2018,23001,17091,976,Androscoggin County,Kankakee County
-2018,23001,36113,96,Androscoggin County,Warren County
-2018,23003,72025,663,Aroostook County,Caguas Municipio
-2018,34035,23003,483,Somerset County,Aroostook County
-2018,23011,39009,262,Kennebec County,Athens County
-2018,23011,72153,576,Kennebec County,Yauco Municipio
-2018,72067,23011,16,Hormigueros Municipio,Kennebec County
-2018,23029,12019,121,Washington County,Clay County
-2018,23029,36097,796,Washington County,Schuyler County
-2018,23029,55107,874,Washington County,Rusk County
-2018,53067,23029,341,Thurston County,Washington County
-2018,23029,27025,958,Washington County,Chisago County
-2018,23027,12083,667,Waldo County,Marion County
-2018,23027,15007,377,Waldo County,Kauai County
-2018,23027,01123,557,Waldo County,Tallapoosa County
-2018,18053,23027,580,Grant County,Waldo County
-2018,23023,45051,787,Sagadahoc County,Horry County
-2018,53049,23023,960,Pacific County,Sagadahoc County
-2018,23023,04009,724,Sagadahoc County,Graham County
-2018,23017,53009,667,Oxford County,Clallam County
-2018,23017,35031,214,Oxford County,McKinley County
-2018,31079,23017,492,Hall County,Oxford County
-2018,47091,23017,493,Johnson County,Oxford County
-2018,23017,50025,632,Oxford County,Windham County
-2018,51115,23019,902,Mathews County,Penobscot County
-2018,23019,19037,799,Penobscot County,Chickasaw County
-2018,23005,54063,177,Cumberland County,Monroe County
-2018,42009,23005,491,Bedford County,Cumberland County
-2018,33011,23005,621,Hillsborough County,Cumberland County
-2018,18021,23031,336,Clay County,York County
-2018,05071,23031,633,Johnson County,York County
-2018,10003,23031,921,New Castle County,York County
-2018,47091,23031,623,Johnson County,York County
-2018,23031,56027,761,York County,Niobrara County
-2018,02090,24019,314,Fairbanks North Star Borough,Dorchester County
-2018,20189,24019,165,Stevens County,Dorchester County
-2018,24035,37079,960,Queen Anne's County,Greene County
-2018,24035,48403,253,Queen Anne's County,Sabine County
-2018,35039,24035,51,Rio Arriba County,Queen Anne's County
-2018,40071,24035,19,Kay County,Queen Anne's County
-2018,24001,26045,765,Allegany County,Eaton County
-2018,42073,24001,493,Lawrence County,Allegany County
-2018,13315,24001,566,Wilcox County,Allegany County
-2018,24039,48235,27,Somerset County,Irion County
-2018,24039,39037,521,Somerset County,Darke County
-2018,32019,24039,82,Lyon County,Somerset County
-2018,20091,24039,801,Johnson County,Somerset County
-2018,24039,27001,863,Somerset County,Aitkin County
-2018,54039,24025,674,Kanawha County,Harford County
-2018,09013,24025,346,Tolland County,Harford County
-2018,25011,24025,843,Franklin County,Harford County
-2018,01073,24021,152,Jefferson County,Frederick County
-2018,24021,39037,542,Frederick County,Darke County
-2018,45025,24021,876,Chesterfield County,Frederick County
-2018,24029,21215,266,Kent County,Spencer County
-2018,24029,49053,651,Kent County,Washington County
-2018,38083,24029,229,Sheridan County,Kent County
-2018,55107,24003,502,Rusk County,Anne Arundel County
-2018,44007,24003,777,Providence County,Anne Arundel County
-2018,22123,24003,619,West Carroll Parish,Anne Arundel County
-2018,37107,24003,11,Lenoir County,Anne Arundel County
-2018,38039,24045,688,Griggs County,Wicomico County
-2018,24045,42009,912,Wicomico County,Bedford County
-2018,24045,39021,932,Wicomico County,Champaign County
-2018,24013,22025,575,Carroll County,Catahoula Parish
-2018,24013,27053,569,Carroll County,Hennepin County
-2018,56005,24013,122,Campbell County,Carroll County
-2018,24013,22117,969,Carroll County,Washington Parish
-2018,20131,24013,123,Nemaha County,Carroll County
-2018,35028,25019,745,Los Alamos County,Nantucket County
-2018,25019,35017,93,Nantucket County,Grant County
-2018,29023,25023,40,Butler County,Plymouth County
-2018,18021,25023,554,Clay County,Plymouth County
-2018,51065,25023,925,Fluvanna County,Plymouth County
-2018,25023,22001,373,Plymouth County,Acadia Parish
-2018,25023,53055,276,Plymouth County,San Juan County
-2018,16049,25001,958,Idaho County,Barnstable County
-2018,25001,51790,865,Barnstable County,Staunton city
-2018,25025,31021,376,Suffolk County,Burt County
-2018,19169,25025,180,Story County,Suffolk County
-2018,25011,06089,102,Franklin County,Shasta County
-2018,25011,25019,362,Franklin County,Nantucket County
-2018,21053,25011,235,Clinton County,Franklin County
-2018,25017,36011,775,Middlesex County,Cayuga County
-2018,24001,25017,608,Allegany County,Middlesex County
-2018,45083,25017,783,Spartanburg County,Middlesex County
-2018,47085,25017,685,Humphreys County,Middlesex County
-2018,27021,25017,721,Cass County,Middlesex County
-2018,23029,25005,91,Washington County,Bristol County
-2018,19129,25005,751,Mills County,Bristol County
-2018,30001,25003,417,Beaverhead County,Berkshire County
-2018,24039,25003,41,Somerset County,Berkshire County
-2018,38025,25003,610,Dunn County,Berkshire County
-2018,56003,25027,644,Big Horn County,Worcester County
-2018,25027,17021,160,Worcester County,Christian County
-2018,08121,25027,337,Washington County,Worcester County
-2018,25009,50011,413,Essex County,Franklin County
-2018,16007,25009,34,Bear Lake County,Essex County
-2018,08115,26061,998,Sedgwick County,Houghton County
-2018,26061,19085,831,Houghton County,Harrison County
-2018,26061,12011,950,Houghton County,Broward County
-2018,31145,26061,771,Red Willow County,Houghton County
-2018,26001,38095,173,Alcona County,Towner County
-2018,26001,41033,576,Alcona County,Josephine County
-2018,26001,50025,137,Alcona County,Windham County
-2018,26001,27001,304,Alcona County,Aitkin County
-2018,09015,26001,168,Windham County,Alcona County
-2018,47001,26045,512,Anderson County,Eaton County
-2018,45007,26045,864,Anderson County,Eaton County
-2018,32029,26063,803,Storey County,Huron County
-2018,26063,33009,283,Huron County,Grafton County
-2018,26063,41071,260,Huron County,Yamhill County
-2018,26063,40095,117,Huron County,Marshall County
-2018,26037,23023,561,Clinton County,Sagadahoc County
-2018,26037,56017,19,Clinton County,Hot Springs County
-2018,49045,26037,70,Tooele County,Clinton County
-2018,26037,06027,660,Clinton County,Inyo County
-2018,55107,26057,210,Rusk County,Gratiot County
-2018,38095,26057,427,Towner County,Gratiot County
-2018,12027,26021,197,DeSoto County,Berrien County
-2018,53013,26021,359,Columbia County,Berrien County
-2018,47137,26021,763,Pickett County,Berrien County
-2018,26021,72025,122,Berrien County,Caguas Municipio
-2018,26107,18045,652,Mecosta County,Fountain County
-2018,41035,26107,941,Klamath County,Mecosta County
-2018,45007,26107,679,Anderson County,Mecosta County
-2018,29141,26009,782,Morgan County,Antrim County
-2018,26009,18135,878,Antrim County,Randolph County
-2018,26009,20021,229,Antrim County,Cherokee County
-2018,26025,11001,938,Calhoun County,District of Columbia
-2018,72009,26025,33,Aibonito Municipio,Calhoun County
-2018,32017,26025,966,Lincoln County,Calhoun County
-2018,23027,26025,716,Waldo County,Calhoun County
-2018,26025,22011,955,Calhoun County,Beauregard Parish
-2018,05057,27153,242,Hempstead County,Todd County
-2018,37107,27153,206,Lenoir County,Todd County
-2018,17021,27153,706,Christian County,Todd County
-2018,27153,48335,606,Todd County,Mitchell County
-2018,27153,12123,461,Todd County,Taylor County
-2018,12129,27001,62,Wakulla County,Aitkin County
-2018,17061,27001,445,Greene County,Aitkin County
-2018,47045,27001,710,Dyer County,Aitkin County
-2018,27053,21095,103,Hennepin County,Harlan County
-2018,27053,16007,950,Hennepin County,Bear Lake County
-2018,27053,17095,470,Hennepin County,Knox County
-2018,38101,27053,736,Ward County,Hennepin County
-2018,01081,27045,368,Lee County,Fillmore County
-2018,27045,12091,623,Fillmore County,Okaloosa County
-2018,45007,27045,565,Anderson County,Fillmore County
-2018,27025,56017,238,Chisago County,Hot Springs County
-2018,27025,34023,311,Chisago County,Middlesex County
-2018,27025,46003,332,Chisago County,Aurora County
-2018,51083,27025,710,Halifax County,Chisago County
-2018,27025,19081,973,Chisago County,Hancock County
-2018,13113,27135,730,Fayette County,Roseau County
-2018,27135,53009,670,Roseau County,Clallam County
-2018,27135,04003,958,Roseau County,Cochise County
-2018,27021,22025,670,Cass County,Catahoula Parish
-2018,27021,41025,378,Cass County,Harney County
-2018,26021,27021,418,Berrien County,Cass County
-2018,27021,05009,789,Cass County,Boone County
-2018,27037,20209,313,Dakota County,Wyandotte County
-2018,45007,27037,92,Anderson County,Dakota County
-2018,25003,27037,401,Berkshire County,Dakota County
-2018,27037,48013,912,Dakota County,Atascosa County
-2018,27037,37079,361,Dakota County,Greene County
-2018,27009,31053,267,Benton County,Dodge County
-2018,10003,27009,295,New Castle County,Benton County
-2018,27009,35031,743,Benton County,McKinley County
-2018,04017,27137,80,Navajo County,St. Louis County
-2018,19037,27137,285,Chickasaw County,St. Louis County
-2018,27137,17061,607,St. Louis County,Greene County
-2018,39153,28061,493,Summit County,Jasper County
-2018,28061,06093,502,Jasper County,Siskiyou County
-2018,28001,08001,618,Adams County,Adams County
-2018,28001,28063,991,Adams County,Jefferson County
-2018,02110,28001,110,Juneau City and Borough,Adams County
-2018,72001,28001,707,Adjuntas Municipio,Adams County
-2018,47001,28001,443,Anderson County,Adams County
-2018,36115,28045,823,Washington County,Hancock County
-2018,24019,28045,339,Dorchester County,Hancock County
-2018,28045,30073,662,Hancock County,Pondera County
-2018,53061,28045,995,Snohomish County,Hancock County
-2018,48013,28045,654,Atascosa County,Hancock County
-2018,36025,28063,694,Delaware County,Jefferson County
-2018,28063,23005,752,Jefferson County,Cumberland County
-2018,28057,28063,329,Itawamba County,Jefferson County
-2018,28063,01011,422,Jefferson County,Bullock County
-2018,06025,28063,853,Imperial County,Jefferson County
-2018,19169,28037,400,Story County,Franklin County
-2018,28037,35023,613,Franklin County,Hidalgo County
-2018,28037,28021,391,Franklin County,Claiborne County
-2018,28037,04003,971,Franklin County,Cochise County
-2018,42091,28057,728,Montgomery County,Itawamba County
-2018,28057,06011,535,Itawamba County,Colusa County
-2018,13061,28021,134,Clay County,Claiborne County
-2018,45051,28021,237,Horry County,Claiborne County
-2018,18021,28021,337,Clay County,Claiborne County
-2018,28037,28107,202,Franklin County,Panola County
-2018,28107,47021,859,Panola County,Cheatham County
-2018,42019,28009,64,Butler County,Benton County
-2018,28009,12129,516,Benton County,Wakulla County
-2018,28009,27025,779,Benton County,Chisago County
-2018,12011,28009,645,Broward County,Benton County
-2018,28025,26057,537,Clay County,Gratiot County
-2018,55069,28025,920,Lincoln County,Clay County
-2018,28025,30039,297,Clay County,Granite County
-2018,28025,18135,198,Clay County,Randolph County
-2018,28025,53049,800,Clay County,Pacific County
-2018,46035,29163,181,Davison County,Pike County
-2018,29163,35017,524,Pike County,Grant County
-2018,72065,29163,677,Hatillo Municipio,Pike County
-2018,29163,17135,623,Pike County,Montgomery County
-2018,29009,44009,154,Barry County,Washington County
-2018,29009,20129,144,Barry County,Morton County
-2018,29081,31135,679,Harrison County,Perkins County
-2018,29081,34033,123,Harrison County,Salem County
-2018,48371,29081,1000,Pecos County,Harrison County
-2018,18001,29081,765,Adams County,Harrison County
-2018,29139,53009,122,Montgomery County,Clallam County
-2018,27021,29139,979,Cass County,Montgomery County
-2018,54087,29139,750,Roane County,Montgomery County
-2018,38087,29139,641,Slope County,Montgomery County
-2018,29139,22001,841,Montgomery County,Acadia Parish
-2018,29021,25017,91,Buchanan County,Middlesex County
-2018,49027,29021,507,Millard County,Buchanan County
-2018,36113,29021,36,Warren County,Buchanan County
-2018,09003,29021,433,Hartford County,Buchanan County
-2018,29091,18081,88,Howell County,Johnson County
-2018,21147,29091,348,McCreary County,Howell County
-2018,12009,29091,299,Brevard County,Howell County
-2018,29091,15005,488,Howell County,Kalawao County
-2018,08103,29091,345,Rio Blanco County,Howell County
-2018,29141,28045,710,Morgan County,Hancock County
-2018,04009,29141,411,Graham County,Morgan County
-2018,49001,29141,687,Beaver County,Morgan County
-2018,29141,48381,384,Morgan County,Randall County
-2018,04015,29141,767,Mohave County,Morgan County
-2018,29133,22123,838,Mississippi County,West Carroll Parish
-2018,29133,37001,619,Mississippi County,Alamance County
-2018,29133,53073,555,Mississippi County,Whatcom County
-2018,40009,29133,967,Beckham County,Mississippi County
-2018,01091,29095,398,Marengo County,Jackson County
-2018,12019,29095,379,Clay County,Jackson County
-2018,50003,29023,90,Bennington County,Butler County
-2018,35023,29023,973,Hidalgo County,Butler County
-2018,30001,20021,379,Beaverhead County,Cherokee County
-2018,30001,06105,318,Beaverhead County,Trinity County
-2018,30011,36051,225,Carter County,Livingston County
-2018,30011,53073,549,Carter County,Whatcom County
-2018,21215,30011,207,Spencer County,Carter County
-2018,30011,39053,315,Carter County,Gallia County
-2018,09007,30067,754,Middlesex County,Park County
-2018,30067,06025,217,Park County,Imperial County
-2018,30067,04015,163,Park County,Mohave County
-2018,13199,30067,583,Meriwether County,Park County
-2018,01091,30067,923,Marengo County,Park County
-2018,30027,72021,427,Fergus County,Bayamón Municipio
-2018,30027,39025,574,Fergus County,Clermont County
-2018,40107,30027,899,Okfuskee County,Fergus County
-2018,33013,30027,796,Merrimack County,Fergus County
-2018,13199,30027,715,Meriwether County,Fergus County
-2018,30039,31111,932,Granite County,Lincoln County
-2018,30039,20189,326,Granite County,Stevens County
-2018,30039,20107,349,Granite County,Linn County
-2018,30039,19021,42,Granite County,Buena Vista County
-2018,25011,30039,519,Franklin County,Granite County
-2018,45025,30101,186,Chesterfield County,Toole County
-2018,21053,30101,84,Clinton County,Toole County
-2018,56011,30101,882,Crook County,Toole County
-2018,30101,32017,627,Toole County,Lincoln County
-2018,30101,04015,717,Toole County,Mohave County
-2018,30073,01081,968,Pondera County,Lee County
-2018,30073,54039,951,Pondera County,Kanawha County
-2018,23003,30073,807,Aroostook County,Pondera County
-2018,30073,08087,185,Pondera County,Morgan County
-2018,31053,30053,121,Dodge County,Lincoln County
-2018,30053,17001,658,Lincoln County,Adams County
-2018,30039,30053,474,Granite County,Lincoln County
-2018,30053,26045,869,Lincoln County,Eaton County
-2018,33019,30053,917,Sullivan County,Lincoln County
-2018,30089,21081,176,Sanders County,Grant County
-2018,26045,30089,678,Eaton County,Sanders County
-2018,30089,16073,638,Sanders County,Owyhee County
-2018,05025,30089,307,Cleveland County,Sanders County
-2018,17181,30089,815,Union County,Sanders County
-2018,33001,30025,78,Belknap County,Fallon County
-2018,30025,42011,399,Fallon County,Berks County
-2018,31145,30025,870,Red Willow County,Fallon County
-2018,30025,09005,610,Fallon County,Litchfield County
-2018,27021,30025,565,Cass County,Fallon County
-2018,46035,31081,277,Davison County,Hamilton County
-2018,33001,31081,224,Belknap County,Hamilton County
-2018,20107,31081,277,Linn County,Hamilton County
-2018,31081,25025,680,Hamilton County,Suffolk County
-2018,38011,31045,45,Bowman County,Dawes County
-2018,46127,31045,404,Union County,Dawes County
-2018,31045,28063,564,Dawes County,Jefferson County
-2018,30011,31045,928,Carter County,Dawes County
-2018,31045,46027,30,Dawes County,Clay County
-2018,25003,31111,193,Berkshire County,Lincoln County
-2018,31111,13299,75,Lincoln County,Ware County
-2018,15007,31111,652,Kauai County,Lincoln County
-2018,31145,47091,582,Red Willow County,Johnson County
-2018,06075,31145,73,San Francisco County,Red Willow County
-2018,31145,54027,333,Red Willow County,Hampshire County
-2018,23029,31145,803,Washington County,Red Willow County
-2018,46027,31001,730,Clay County,Adams County
-2018,23019,31001,509,Penobscot County,Adams County
-2018,31021,31001,14,Burt County,Adams County
-2018,21095,31053,103,Harlan County,Dodge County
-2018,31053,04011,643,Dodge County,Greenlee County
-2018,31079,41061,929,Hall County,Union County
-2018,31079,46035,876,Hall County,Davison County
-2018,28025,31079,811,Clay County,Hall County
-2018,40107,31079,413,Okfuskee County,Hall County
-2018,21021,31079,199,Boyle County,Hall County
-2018,31135,46027,972,Perkins County,Clay County
-2018,31135,34003,273,Perkins County,Bergen County
-2018,55107,31135,396,Rusk County,Perkins County
-2018,31021,42091,569,Burt County,Montgomery County
-2018,31021,55123,908,Burt County,Vernon County
-2018,28061,31021,287,Jasper County,Burt County
-2018,31021,48403,146,Burt County,Sabine County
-2018,25009,31021,795,Essex County,Burt County
-2018,47137,31089,375,Pickett County,Holt County
-2018,28057,31089,261,Itawamba County,Holt County
-2018,33001,32001,782,Belknap County,Churchill County
-2018,50019,32001,462,Orleans County,Churchill County
-2018,32001,01011,213,Churchill County,Bullock County
-2018,33007,32003,297,Coos County,Clark County
-2018,32003,12075,359,Clark County,Levy County
-2018,46127,32003,544,Union County,Clark County
-2018,32003,36113,273,Clark County,Warren County
-2018,16075,32011,171,Payette County,Eureka County
-2018,32011,27025,463,Eureka County,Chisago County
-2018,42129,32011,598,Westmoreland County,Eureka County
-2018,32033,41033,640,White Pine County,Josephine County
-2018,25011,32033,921,Franklin County,White Pine County
-2018,32033,47021,730,White Pine County,Cheatham County
-2018,32005,32033,737,Douglas County,White Pine County
-2018,32033,47045,528,White Pine County,Dyer County
-2018,04011,32023,86,Greenlee County,Nye County
-2018,26061,32023,991,Houghton County,Nye County
-2018,32023,48403,881,Nye County,Sabine County
-2018,36001,32023,159,Albany County,Nye County
-2018,32023,27025,779,Nye County,Chisago County
-2018,26037,32031,595,Clinton County,Washoe County
-2018,55057,32031,939,Juneau County,Washoe County
-2018,32031,18079,48,Washoe County,Jennings County
-2018,31145,32017,346,Red Willow County,Lincoln County
-2018,38087,32017,27,Slope County,Lincoln County
-2018,55069,32017,994,Lincoln County,Lincoln County
-2018,30067,32017,146,Park County,Lincoln County
-2018,32017,24039,107,Lincoln County,Somerset County
-2018,32029,51700,34,Storey County,Newport News city
-2018,32029,16009,620,Storey County,Benewah County
-2018,40057,32029,264,Harmon County,Storey County
-2018,32005,01073,216,Douglas County,Jefferson County
-2018,32005,26057,185,Douglas County,Gratiot County
-2018,42033,32005,436,Clearfield County,Douglas County
-2018,32019,13191,730,Lyon County,McIntosh County
-2018,45051,32019,979,Horry County,Lyon County
-2018,35028,33017,837,Los Alamos County,Strafford County
-2018,02220,33017,509,Sitka City and Borough,Strafford County
-2018,33017,38083,48,Strafford County,Sheridan County
-2018,33017,72067,471,Strafford County,Hormigueros Municipio
-2018,33003,45071,551,Carroll County,Newberry County
-2018,25019,33003,63,Nantucket County,Carroll County
-2018,28061,33011,318,Jasper County,Hillsborough County
-2018,29139,33011,794,Montgomery County,Hillsborough County
-2018,30073,33011,945,Pondera County,Hillsborough County
-2018,33001,54025,241,Belknap County,Greenbrier County
-2018,33001,01011,289,Belknap County,Bullock County
-2018,33001,37161,842,Belknap County,Rutherford County
-2018,23001,33015,744,Androscoggin County,Rockingham County
-2018,33015,18145,462,Rockingham County,Shelby County
-2018,47001,33015,301,Anderson County,Rockingham County
-2018,50003,33015,208,Bennington County,Rockingham County
-2018,54011,33015,66,Cabell County,Rockingham County
-2018,33005,32023,948,Cheshire County,Nye County
-2018,40001,33005,965,Adair County,Cheshire County
-2018,33019,33013,917,Sullivan County,Merrimack County
-2018,04025,33019,59,Yavapai County,Sullivan County
-2018,33009,21009,496,Grafton County,Barren County
-2018,33009,41017,656,Grafton County,Deschutes County
-2018,33009,39009,932,Grafton County,Athens County
-2018,33009,51025,524,Grafton County,Brunswick County
-2018,09015,33009,570,Windham County,Grafton County
-2018,38039,33007,314,Griggs County,Coos County
-2018,39001,33007,976,Adams County,Coos County
-2018,51790,33007,237,Staunton city,Coos County
-2018,24019,33007,118,Dorchester County,Coos County
-2018,08121,33013,495,Washington County,Merrimack County
-2018,36115,33013,916,Washington County,Merrimack County
-2018,33013,54087,128,Merrimack County,Roane County
-2018,33013,49055,12,Merrimack County,Wayne County
-2018,34001,29021,775,Atlantic County,Buchanan County
-2018,36025,34001,432,Delaware County,Atlantic County
-2018,26009,34035,751,Antrim County,Somerset County
-2018,34035,36097,827,Somerset County,Schuyler County
-2018,34035,45007,491,Somerset County,Anderson County
-2018,49025,34031,241,Kane County,Passaic County
-2018,34031,28021,110,Passaic County,Claiborne County
-2018,36001,34031,776,Albany County,Passaic County
-2018,34031,49019,510,Passaic County,Grand County
-2018,32011,34003,937,Eureka County,Bergen County
-2018,21053,34003,590,Clinton County,Bergen County
-2018,53031,34003,864,Jefferson County,Bergen County
-2018,34017,18089,932,Hudson County,Lake County
-2018,34017,54087,416,Hudson County,Roane County
-2018,34011,32011,624,Cumberland County,Eureka County
-2018,18135,34011,965,Randolph County,Cumberland County
-2018,09013,34011,767,Tolland County,Cumberland County
-2018,46129,34011,955,Walworth County,Cumberland County
-2018,49027,34011,687,Millard County,Cumberland County
-2018,34023,51163,639,Middlesex County,Rockbridge County
-2018,34023,42129,545,Middlesex County,Westmoreland County
-2018,34023,21021,230,Middlesex County,Boyle County
-2018,34023,29141,494,Middlesex County,Morgan County
-2018,04027,34007,650,Yuma County,Camden County
-2018,34007,12091,279,Camden County,Okaloosa County
-2018,48159,34007,748,Franklin County,Camden County
-2018,08011,34037,388,Bent County,Sussex County
-2018,02150,34037,847,Kodiak Island Borough,Sussex County
-2018,48159,34037,21,Franklin County,Sussex County
-2018,34037,18145,454,Sussex County,Shelby County
-2018,34037,44001,733,Sussex County,Bristol County
-2018,21009,34033,425,Barren County,Salem County
-2018,33009,34033,776,Grafton County,Salem County
-2018,05025,35059,375,Cleveland County,Union County
-2018,01073,35059,307,Jefferson County,Union County
-2018,35028,37091,756,Los Alamos County,Hertford County
-2018,55021,35028,91,Columbia County,Los Alamos County
-2018,16017,35049,489,Bonner County,Santa Fe County
-2018,53055,35049,444,San Juan County,Santa Fe County
-2018,54087,35049,704,Roane County,Santa Fe County
-2018,72025,35031,885,Caguas Municipio,McKinley County
-2018,01073,35031,313,Jefferson County,McKinley County
-2018,24045,35031,290,Wicomico County,McKinley County
-2018,23031,35031,28,York County,McKinley County
-2018,06089,35031,515,Shasta County,McKinley County
-2018,35015,48235,293,Eddy County,Irion County
-2018,47137,35015,541,Pickett County,Eddy County
-2018,28061,35015,226,Jasper County,Eddy County
-2018,40107,35015,410,Okfuskee County,Eddy County
-2018,35015,24039,849,Eddy County,Somerset County
-2018,29081,35017,829,Harrison County,Grant County
-2018,13199,35017,650,Meriwether County,Grant County
-2018,35039,35035,668,Rio Arriba County,Otero County
-2018,35035,13159,125,Otero County,Jasper County
-2018,26061,35035,165,Houghton County,Otero County
-2018,35039,09013,643,Rio Arriba County,Tolland County
-2018,55037,35039,845,Florence County,Rio Arriba County
-2018,18053,35039,929,Grant County,Rio Arriba County
-2018,31079,35039,344,Hall County,Rio Arriba County
-2018,27045,35039,834,Fillmore County,Rio Arriba County
-2018,35023,17181,781,Hidalgo County,Union County
-2018,35023,04027,715,Hidalgo County,Yuma County
-2018,38087,35023,912,Slope County,Hidalgo County
-2018,35023,27053,875,Hidalgo County,Hennepin County
-2018,29095,35001,318,Jackson County,Bernalillo County
-2018,34001,35001,352,Atlantic County,Bernalillo County
-2018,18079,35001,422,Jennings County,Bernalillo County
-2018,50009,36101,83,Essex County,Steuben County
-2018,36101,18021,132,Steuben County,Clay County
-2018,36101,08049,36,Steuben County,Grand County
-2018,36113,34007,239,Warren County,Camden County
-2018,09007,36113,395,Middlesex County,Warren County
-2018,36001,35049,759,Albany County,Santa Fe County
-2018,36001,49027,461,Albany County,Millard County
-2018,42123,36001,628,Warren County,Albany County
-2018,36115,36025,471,Washington County,Delaware County
-2018,06069,36115,776,San Benito County,Washington County
-2018,46003,36011,408,Aurora County,Cayuga County
-2018,48013,36011,777,Atascosa County,Cayuga County
-2018,36011,18053,607,Cayuga County,Grant County
-2018,36097,38101,761,Schuyler County,Ward County
-2018,36097,12019,959,Schuyler County,Clay County
-2018,36097,50025,553,Schuyler County,Windham County
-2018,32003,36097,985,Clark County,Schuyler County
-2018,45053,36097,360,Jasper County,Schuyler County
-2018,36033,40057,726,Franklin County,Harmon County
-2018,36033,54053,305,Franklin County,Mason County
-2018,42123,36025,160,Warren County,Delaware County
-2018,33001,36025,859,Belknap County,Delaware County
-2018,36025,20131,212,Delaware County,Nemaha County
-2018,26107,36025,432,Mecosta County,Delaware County
-2018,18021,36051,560,Clay County,Livingston County
-2018,04003,36051,729,Cochise County,Livingston County
-2018,35031,36051,731,McKinley County,Livingston County
-2018,29139,36119,128,Montgomery County,Westchester County
-2018,49025,36119,785,Kane County,Westchester County
-2018,36119,38101,478,Westchester County,Ward County
-2018,36119,46027,918,Westchester County,Clay County
-2018,37167,53061,437,Stanly County,Snohomish County
-2018,15001,37167,556,Hawaii County,Stanly County
-2018,37167,72001,830,Stanly County,Adjuntas Municipio
-2018,36001,37167,197,Albany County,Stanly County
-2018,37107,09015,161,Lenoir County,Windham County
-2018,54025,37107,240,Greenbrier County,Lenoir County
-2018,37107,50019,442,Lenoir County,Orleans County
-2018,37107,50019,221,Lenoir County,Orleans County
-2018,37107,27053,854,Lenoir County,Hennepin County
-2018,30089,37141,34,Sanders County,Pender County
-2018,37141,18079,634,Pender County,Jennings County
-2018,37141,19129,371,Pender County,Mills County
-2018,42019,37141,280,Butler County,Pender County
-2018,50025,37141,759,Windham County,Pender County
-2018,33001,37091,54,Belknap County,Hertford County
-2018,37091,31111,938,Hertford County,Lincoln County
-2018,37091,22025,502,Hertford County,Catahoula Parish
-2018,40021,37091,464,Cherokee County,Hertford County
-2018,37091,15005,888,Hertford County,Kalawao County
-2018,37089,20209,180,Henderson County,Wyandotte County
-2018,37089,34031,571,Henderson County,Passaic County
-2018,40057,37089,375,Harmon County,Henderson County
-2018,53013,37089,261,Columbia County,Henderson County
-2018,37079,26045,572,Greene County,Eaton County
-2018,42123,37079,730,Warren County,Greene County
-2018,37079,33017,74,Greene County,Strafford County
-2018,37045,30001,428,Cleveland County,Beaverhead County
-2018,02150,37045,451,Kodiak Island Borough,Cleveland County
-2018,48235,37045,557,Irion County,Cleveland County
-2018,37045,33005,699,Cleveland County,Cheshire County
-2018,37045,05021,638,Cleveland County,Clay County
-2018,37161,17085,730,Rutherford County,Jo Daviess County
-2018,53009,37161,979,Clallam County,Rutherford County
-2018,37021,20129,146,Buncombe County,Morton County
-2018,39009,37021,93,Athens County,Buncombe County
-2018,54025,37021,811,Greenbrier County,Buncombe County
-2018,37021,38039,459,Buncombe County,Griggs County
-2018,39025,37001,921,Clermont County,Alamance County
-2018,37001,16081,432,Alamance County,Teton County
-2018,37001,28057,594,Alamance County,Itawamba County
-2018,37001,20189,693,Alamance County,Stevens County
-2018,36011,37001,462,Cayuga County,Alamance County
-2018,38039,55057,497,Griggs County,Juneau County
-2018,46093,38039,510,Meade County,Griggs County
-2018,46013,38039,927,Brown County,Griggs County
-2018,24029,38083,188,Kent County,Sheridan County
-2018,38083,29021,147,Sheridan County,Buchanan County
-2018,35023,38083,281,Hidalgo County,Sheridan County
-2018,38083,50017,958,Sheridan County,Orange County
-2018,23017,38083,115,Oxford County,Sheridan County
-2018,21021,38095,862,Boyle County,Towner County
-2018,38095,56035,214,Towner County,Sublette County
-2018,38095,17081,278,Towner County,Jefferson County
-2018,01129,38095,621,Washington County,Towner County
-2018,32023,38025,210,Nye County,Dunn County
-2018,38025,18145,490,Dunn County,Shelby County
-2018,45007,38025,867,Anderson County,Dunn County
-2018,38025,19001,314,Dunn County,Adair County
-2018,05021,38087,101,Clay County,Slope County
-2018,31089,38087,23,Holt County,Slope County
-2018,23019,38087,660,Penobscot County,Slope County
-2018,24039,38011,901,Somerset County,Bowman County
-2018,46127,38011,981,Union County,Bowman County
-2018,38035,06069,59,Grand Forks County,San Benito County
-2018,38035,23029,443,Grand Forks County,Washington County
-2018,38035,31001,786,Grand Forks County,Adams County
-2018,38035,32003,66,Grand Forks County,Clark County
-2018,38101,04027,820,Ward County,Yuma County
-2018,38101,54025,274,Ward County,Greenbrier County
-2018,31111,38101,193,Lincoln County,Ward County
-2018,38007,24025,622,Billings County,Harford County
-2018,06093,38007,922,Siskiyou County,Billings County
-2018,38007,42011,251,Billings County,Berks County
-2018,38065,17135,506,Oliver County,Montgomery County
-2018,22011,38065,431,Beauregard Parish,Oliver County
-2018,09001,38065,128,Fairfield County,Oliver County
-2018,38065,34037,100,Oliver County,Sussex County
-2018,38065,10005,629,Oliver County,Sussex County
-2018,39153,26037,467,Summit County,Clinton County
-2018,39153,54063,282,Summit County,Monroe County
-2018,39153,24003,172,Summit County,Anne Arundel County
-2018,39001,30089,306,Adams County,Sanders County
-2018,39001,19037,678,Adams County,Chickasaw County
-2018,40107,39001,556,Okfuskee County,Adams County
-2018,09007,39053,606,Middlesex County,Gallia County
-2018,39053,38083,622,Gallia County,Sheridan County
-2018,01033,39053,546,Colbert County,Gallia County
-2018,45017,39045,989,Calhoun County,Fairfield County
-2018,39045,05021,354,Fairfield County,Clay County
-2018,41035,39045,465,Klamath County,Fairfield County
-2018,35059,39045,274,Union County,Fairfield County
-2018,29023,39025,947,Butler County,Clermont County
-2018,51145,39025,481,Powhatan County,Clermont County
-2018,29021,39025,979,Buchanan County,Clermont County
-2018,39135,01033,969,Preble County,Colbert County
-2018,36001,39135,135,Albany County,Preble County
-2018,20095,39021,608,Kingman County,Champaign County
-2018,39021,04015,574,Champaign County,Mohave County
-2018,39021,01011,746,Champaign County,Bullock County
-2018,39021,72025,834,Champaign County,Caguas Municipio
-2018,39021,23027,567,Champaign County,Waldo County
-2018,50025,39037,391,Windham County,Darke County
-2018,39037,72021,60,Darke County,Bayamón Municipio
-2018,39037,20129,271,Darke County,Morton County
-2018,39009,39037,915,Athens County,Darke County
-2018,16081,39037,97,Teton County,Darke County
-2018,53049,39009,685,Pacific County,Athens County
-2018,39009,38035,188,Athens County,Grand Forks County
-2018,39009,15007,269,Athens County,Kauai County
-2018,39009,41035,662,Athens County,Klamath County
-2018,39137,56011,928,Putnam County,Crook County
-2018,39137,47085,128,Putnam County,Humphreys County
-2018,40009,55069,122,Beckham County,Lincoln County
-2018,30025,40009,688,Fallon County,Beckham County
-2018,40071,25017,909,Kay County,Middlesex County
-2018,40071,32029,342,Kay County,Storey County
-2018,09007,40071,673,Middlesex County,Kay County
-2018,40071,35049,693,Kay County,Santa Fe County
-2018,40021,16017,576,Cherokee County,Bonner County
-2018,40021,72065,145,Cherokee County,Hatillo Municipio
-2018,36051,40021,32,Livingston County,Cherokee County
-2018,41071,40001,297,Yamhill County,Adair County
-2018,40001,47053,935,Adair County,Gibson County
-2018,40001,09001,831,Adair County,Fairfield County
-2018,49017,40001,304,Garfield County,Adair County
-2018,40091,37001,553,McIntosh County,Alamance County
-2018,04021,40091,425,Pinal County,McIntosh County
-2018,39009,40095,163,Athens County,Marshall County
-2018,40095,34023,31,Marshall County,Middlesex County
-2018,17181,40095,116,Union County,Marshall County
-2018,40133,51700,617,Seminole County,Newport News city
-2018,40133,54053,518,Seminole County,Mason County
-2018,40133,51087,530,Seminole County,Henrico County
-2018,40133,42091,525,Seminole County,Montgomery County
-2018,40107,08011,411,Okfuskee County,Bent County
-2018,01123,40107,682,Tallapoosa County,Okfuskee County
-2018,40107,18111,904,Okfuskee County,Newton County
-2018,01091,40101,553,Marengo County,Muskogee County
-2018,40101,19195,278,Muskogee County,Worth County
-2018,17095,40101,803,Knox County,Muskogee County
-2018,72025,40057,154,Caguas Municipio,Harmon County
-2018,40057,21147,492,Harmon County,McCreary County
-2018,41071,19021,917,Yamhill County,Buena Vista County
-2018,41071,09011,817,Yamhill County,New London County
-2018,05139,41071,408,Union County,Yamhill County
-2018,19125,41071,811,Marion County,Yamhill County
-2018,32019,41071,338,Lyon County,Yamhill County
-2018,41027,32029,736,Hood River County,Storey County
-2018,40101,41027,395,Muskogee County,Hood River County
-2018,41027,35031,374,Hood River County,McKinley County
-2018,41053,13299,728,Polk County,Ware County
-2018,29095,41053,435,Jackson County,Polk County
-2018,41061,38095,350,Union County,Towner County
-2018,12129,41061,343,Wakulla County,Union County
-2018,41061,51087,741,Union County,Henrico County
-2018,41061,53055,295,Union County,San Juan County
-2018,41033,53061,468,Josephine County,Snohomish County
-2018,01091,41033,458,Marengo County,Josephine County
-2018,08103,41063,590,Rio Blanco County,Wallowa County
-2018,42081,41063,711,Lycoming County,Wallowa County
-2018,41043,30025,543,Linn County,Fallon County
-2018,41043,33013,234,Linn County,Merrimack County
-2018,38011,41025,309,Bowman County,Harney County
-2018,41025,25025,557,Harney County,Suffolk County
-2018,09015,41025,422,Windham County,Harney County
-2018,19195,41017,860,Worth County,Deschutes County
-2018,41017,23031,273,Deschutes County,York County
-2018,56035,41017,712,Sublette County,Deschutes County
-2018,36101,41017,12,Steuben County,Deschutes County
-2018,51163,41017,339,Rockbridge County,Deschutes County
-2018,41035,45053,910,Klamath County,Jasper County
-2018,15001,41035,296,Hawaii County,Klamath County
-2018,41035,54011,174,Klamath County,Cabell County
-2018,19021,41035,865,Buena Vista County,Klamath County
-2018,42073,54099,180,Lawrence County,Wayne County
-2018,23027,42073,409,Waldo County,Lawrence County
-2018,48371,42073,614,Pecos County,Lawrence County
-2018,42033,29081,636,Clearfield County,Harrison County
-2018,42033,19169,544,Clearfield County,Story County
-2018,34033,42033,433,Salem County,Clearfield County
-2018,20095,42033,868,Kingman County,Clearfield County
-2018,42033,39025,609,Clearfield County,Clermont County
-2018,42009,23023,280,Bedford County,Sagadahoc County
-2018,37001,42009,721,Alamance County,Bedford County
-2018,42019,54011,881,Butler County,Cabell County
-2018,08049,42019,333,Grand County,Butler County
-2018,12009,42019,611,Brevard County,Butler County
-2018,42019,49033,215,Butler County,Rich County
-2018,42019,56025,668,Butler County,Natrona County
-2018,08031,42091,19,Denver County,Montgomery County
-2018,42091,22001,202,Montgomery County,Acadia Parish
-2018,22001,42091,956,Acadia Parish,Montgomery County
-2018,33011,42091,347,Hillsborough County,Montgomery County
-2018,42081,31111,629,Lycoming County,Lincoln County
-2018,06105,42081,841,Trinity County,Lycoming County
-2018,41025,42081,98,Harney County,Lycoming County
-2018,01091,42081,519,Marengo County,Lycoming County
-2018,42081,45089,821,Lycoming County,Williamsburg County
-2018,42123,25023,11,Warren County,Plymouth County
-2018,05123,42123,98,St. Francis County,Warren County
-2018,42123,21021,905,Warren County,Boyle County
-2018,30027,42123,632,Fergus County,Warren County
-2018,42123,27135,993,Warren County,Roseau County
-2018,50019,42011,13,Orleans County,Berks County
-2018,42011,05001,755,Berks County,Arkansas County
-2018,42011,47001,185,Berks County,Anderson County
-2018,22033,42011,367,East Baton Rouge Parish,Berks County
-2018,31145,42011,285,Red Willow County,Berks County
-2018,12129,42129,504,Wakulla County,Westmoreland County
-2018,42129,17021,804,Westmoreland County,Christian County
-2018,15009,42025,288,Maui County,Carbon County
-2018,45053,42025,734,Jasper County,Carbon County
-2018,42025,12009,582,Carbon County,Brevard County
-2018,30027,42025,452,Fergus County,Carbon County
-2018,15003,44003,494,Honolulu County,Kent County
-2018,44003,49045,910,Kent County,Tooele County
-2018,29081,44003,566,Harrison County,Kent County
-2018,44003,37089,474,Kent County,Henderson County
-2018,44003,30039,112,Kent County,Granite County
-2018,44009,02110,448,Washington County,Juneau City and Borough
-2018,44009,19169,820,Washington County,Story County
-2018,44005,35017,771,Newport County,Grant County
-2018,44005,21009,317,Newport County,Barren County
-2018,44005,47137,129,Newport County,Pickett County
-2018,21009,44005,789,Barren County,Newport County
-2018,44001,37089,255,Bristol County,Henderson County
-2018,44001,50017,807,Bristol County,Orange County
-2018,44001,13199,798,Bristol County,Meriwether County
-2018,18145,44001,344,Shelby County,Bristol County
-2018,26001,44001,171,Alcona County,Bristol County
-2018,44007,27045,692,Providence County,Fillmore County
-2018,44007,42011,425,Providence County,Berks County
-2018,06027,44007,218,Inyo County,Providence County
-2018,44007,08011,657,Providence County,Bent County
-2018,45079,17081,400,Richland County,Jefferson County
-2018,53067,45079,151,Thurston County,Richland County
-2018,45051,26045,757,Horry County,Eaton County
-2018,24035,45051,319,Queen Anne's County,Horry County
-2018,02090,45051,401,Fairbanks North Star Borough,Horry County
-2018,47081,45053,903,Hickman County,Jasper County
-2018,50017,45053,994,Orange County,Jasper County
-2018,45053,37089,620,Jasper County,Henderson County
-2018,31021,45053,642,Burt County,Jasper County
-2018,45053,46093,831,Jasper County,Meade County
-2018,45089,04015,800,Williamsburg County,Mohave County
-2018,50009,45089,332,Essex County,Williamsburg County
-2018,41071,45089,784,Yamhill County,Williamsburg County
-2018,45071,05071,795,Newberry County,Johnson County
-2018,45071,54011,333,Newberry County,Cabell County
-2018,45071,38083,291,Newberry County,Sheridan County
-2018,45071,26045,726,Newberry County,Eaton County
-2018,13287,45083,430,Turner County,Spartanburg County
-2018,36033,45083,31,Franklin County,Spartanburg County
-2018,21111,45083,364,Jefferson County,Spartanburg County
-2018,55037,45009,510,Florence County,Bamberg County
-2018,01091,45009,739,Marengo County,Bamberg County
-2018,56035,45009,899,Sublette County,Bamberg County
-2018,20091,45009,349,Johnson County,Bamberg County
-2018,45025,05071,982,Chesterfield County,Johnson County
-2018,34033,45025,128,Salem County,Chesterfield County
-2018,18045,45017,409,Fountain County,Calhoun County
-2018,48403,45017,814,Sabine County,Calhoun County
-2018,45007,13299,775,Anderson County,Ware County
-2018,45007,01033,201,Anderson County,Colbert County
-2018,55009,45007,286,Brown County,Anderson County
-2018,39025,45007,24,Clermont County,Anderson County
-2018,45007,18081,127,Anderson County,Johnson County
-2018,46109,38101,108,Roberts County,Ward County
-2018,46109,53067,552,Roberts County,Thurston County
-2018,39001,46109,706,Adams County,Roberts County
-2018,06011,46127,11,Colusa County,Union County
-2018,02282,46127,835,Yakutat City and Borough,Union County
-2018,46127,56031,166,Union County,Platte County
-2018,46127,06011,271,Union County,Colusa County
-2018,40133,46003,437,Seminole County,Aurora County
-2018,46003,24039,310,Aurora County,Somerset County
-2018,33009,46093,511,Grafton County,Meade County
-2018,46093,19001,820,Meade County,Adair County
-2018,20209,46093,32,Wyandotte County,Meade County
-2018,46093,02150,468,Meade County,Kodiak Island Borough
-2018,51163,46093,665,Rockbridge County,Meade County
-2018,46013,04011,749,Brown County,Greenlee County
-2018,46013,06001,384,Brown County,Alameda County
-2018,46013,01019,887,Brown County,Cherokee County
-2018,46129,51083,744,Walworth County,Halifax County
-2018,02220,46129,674,Sitka City and Borough,Walworth County
-2018,46129,02090,662,Walworth County,Fairbanks North Star Borough
-2018,12009,46129,821,Brevard County,Walworth County
-2018,46035,18089,150,Davison County,Lake County
-2018,26037,46035,331,Clinton County,Davison County
-2018,46035,49053,370,Davison County,Washington County
-2018,50003,46035,160,Bennington County,Davison County
-2018,53067,46035,373,Thurston County,Davison County
-2018,06105,46027,438,Trinity County,Clay County
-2018,46027,30089,528,Clay County,Sanders County
-2018,46027,05123,624,Clay County,St. Francis County
-2018,46137,24035,653,Ziebach County,Queen Anne's County
-2018,46137,50023,88,Ziebach County,Washington County
-2018,46137,48371,653,Ziebach County,Pecos County
-2018,46137,56017,450,Ziebach County,Hot Springs County
-2018,46137,01091,105,Ziebach County,Marengo County
-2018,46063,30039,377,Harding County,Granite County
-2018,47021,46063,231,Cheatham County,Harding County
-2018,30001,46063,675,Beaverhead County,Harding County
-2018,47137,28063,636,Pickett County,Jefferson County
-2018,47137,47053,996,Pickett County,Gibson County
-2018,20001,47045,392,Allen County,Dyer County
-2018,47137,47045,596,Pickett County,Dyer County
-2018,35039,47045,924,Rio Arriba County,Dyer County
-2018,45053,47145,996,Jasper County,Roane County
-2018,47145,12011,480,Roane County,Broward County
-2018,47147,16075,427,Robertson County,Payette County
-2018,47147,24019,783,Robertson County,Dorchester County
-2018,19125,47147,16,Marion County,Robertson County
-2018,18145,47147,192,Shelby County,Robertson County
-2018,47001,25017,636,Anderson County,Middlesex County
-2018,47001,05009,783,Anderson County,Boone County
-2018,20095,47001,607,Kingman County,Anderson County
-2018,47001,55021,345,Anderson County,Columbia County
-2018,47001,55021,482,Anderson County,Columbia County
-2018,47053,46137,231,Gibson County,Ziebach County
-2018,47053,44009,313,Gibson County,Washington County
-2018,47053,01129,389,Gibson County,Washington County
-2018,47145,47053,750,Roane County,Gibson County
-2018,47081,16069,17,Hickman County,Nez Perce County
-2018,47081,23023,35,Hickman County,Sagadahoc County
-2018,24035,47081,873,Queen Anne's County,Hickman County
-2018,56031,47081,542,Platte County,Hickman County
-2018,47081,10005,687,Hickman County,Sussex County
-2018,47085,05123,723,Humphreys County,St. Francis County
-2018,47085,09005,631,Humphreys County,Litchfield County
-2018,47085,55037,46,Humphreys County,Florence County
-2018,24003,47085,841,Anne Arundel County,Humphreys County
-2018,17021,47021,756,Christian County,Cheatham County
-2018,40057,47021,578,Harmon County,Cheatham County
-2018,47021,53061,898,Cheatham County,Snohomish County
-2018,72067,47021,720,Hormigueros Municipio,Cheatham County
-2018,46063,47021,271,Harding County,Cheatham County
-2018,45025,47091,543,Chesterfield County,Johnson County
-2018,47091,12027,202,Johnson County,DeSoto County
-2018,48381,19037,848,Randall County,Chickasaw County
-2018,48381,27053,449,Randall County,Hennepin County
-2018,48381,32019,758,Randall County,Lyon County
-2018,48381,40101,125,Randall County,Muskogee County
-2018,48381,22073,720,Randall County,Ouachita Parish
-2018,48013,25005,760,Atascosa County,Bristol County
-2018,45071,48013,141,Newberry County,Atascosa County
-2018,09005,48013,618,Litchfield County,Atascosa County
-2018,48013,51087,27,Atascosa County,Henrico County
-2018,30027,48013,737,Fergus County,Atascosa County
-2018,55009,48159,835,Brown County,Franklin County
-2018,48159,20091,499,Franklin County,Johnson County
-2018,48159,27137,796,Franklin County,St. Louis County
-2018,48159,16025,982,Franklin County,Camas County
-2018,37107,48411,790,Lenoir County,San Saba County
-2018,01009,48411,139,Blount County,San Saba County
-2018,48411,56019,407,San Saba County,Johnson County
-2018,48411,46137,944,San Saba County,Ziebach County
-2018,02164,48411,873,Lake and Peninsula Borough,San Saba County
-2018,48235,26025,527,Irion County,Calhoun County
-2018,04003,48235,552,Cochise County,Irion County
-2018,05127,48235,25,Scott County,Irion County
-2018,46003,48235,245,Aurora County,Irion County
-2018,18145,48371,972,Shelby County,Pecos County
-2018,50019,48371,766,Orleans County,Pecos County
-2018,48371,33001,577,Pecos County,Belknap County
-2018,09003,48371,375,Hartford County,Pecos County
-2018,48403,26021,405,Sabine County,Berrien County
-2018,19001,48403,719,Adair County,Sabine County
-2018,30101,48335,317,Toole County,Mitchell County
-2018,48335,56001,231,Mitchell County,Albany County
-2018,41061,48335,493,Union County,Mitchell County
-2018,48019,38065,284,Bandera County,Oliver County
-2018,39153,48019,795,Summit County,Bandera County
-2018,22011,48061,825,Beauregard Parish,Cameron County
-2018,04005,48061,34,Coconino County,Cameron County
-2018,48061,44009,527,Cameron County,Washington County
-2018,50019,48061,330,Orleans County,Cameron County
-2018,04009,48061,716,Graham County,Cameron County
-2018,05021,49055,810,Clay County,Wayne County
-2018,24029,49055,958,Kent County,Wayne County
-2018,45051,49033,40,Horry County,Rich County
-2018,28021,49033,508,Claiborne County,Rich County
-2018,50011,49033,819,Franklin County,Rich County
-2018,49025,21111,914,Kane County,Jefferson County
-2018,42081,49025,161,Lycoming County,Kane County
-2018,46003,49045,593,Aurora County,Tooele County
-2018,31053,49045,319,Dodge County,Tooele County
-2018,49045,40009,941,Tooele County,Beckham County
-2018,20209,49045,515,Wyandotte County,Tooele County
-2018,27135,49017,275,Roseau County,Garfield County
-2018,27053,49017,338,Hennepin County,Garfield County
-2018,51025,49019,404,Brunswick County,Grand County
-2018,49019,45079,181,Grand County,Richland County
-2018,15001,49019,198,Hawaii County,Grand County
-2018,49019,51145,36,Grand County,Powhatan County
-2018,49043,51145,940,Summit County,Powhatan County
-2018,49043,04011,386,Summit County,Greenlee County
-2018,36001,49043,720,Albany County,Summit County
-2018,29021,49001,684,Buchanan County,Beaver County
-2018,53067,49001,254,Thurston County,Beaver County
-2018,49053,32019,543,Washington County,Lyon County
-2018,49053,26037,343,Washington County,Clinton County
-2018,37167,49027,293,Stanly County,Millard County
-2018,49027,30053,580,Millard County,Lincoln County
-2018,49027,29081,623,Millard County,Harrison County
-2018,49027,31081,999,Millard County,Hamilton County
-2018,50019,49055,543,Orleans County,Wayne County
-2018,04009,50019,249,Graham County,Orleans County
-2018,30025,50019,255,Fallon County,Orleans County
-2018,50023,04001,467,Washington County,Apache County
-2018,17091,50023,455,Kankakee County,Washington County
-2018,27045,50001,359,Fillmore County,Addison County
-2018,09011,50001,360,New London County,Addison County
-2018,50009,50025,145,Essex County,Windham County
-2018,50025,49017,202,Windham County,Garfield County
-2018,50025,27053,746,Windham County,Hennepin County
-2018,36051,50025,448,Livingston County,Windham County
-2018,38011,50011,933,Bowman County,Franklin County
-2018,50011,51087,286,Franklin County,Henrico County
-2018,39021,50011,166,Champaign County,Franklin County
-2018,50017,24029,911,Orange County,Kent County
-2018,50017,19085,578,Orange County,Harrison County
-2018,20091,50017,200,Johnson County,Orange County
-2018,32029,50017,965,Storey County,Orange County
-2018,50017,53053,111,Orange County,Pierce County
-2018,50005,26037,425,Caledonia County,Clinton County
-2018,50005,49043,358,Caledonia County,Summit County
-2018,50005,42123,52,Caledonia County,Warren County
-2018,50005,34037,698,Caledonia County,Sussex County
-2018,72097,50003,144,Mayagüez Municipio,Bennington County
-2018,50019,50003,283,Orleans County,Bennington County
-2018,50003,06025,961,Bennington County,Imperial County
-2018,51700,50027,834,Newport News city,Windsor County
-2018,41025,50027,169,Harney County,Windsor County
-2018,50009,28009,696,Essex County,Benton County
-2018,45079,50009,520,Richland County,Essex County
-2018,04017,50009,191,Navajo County,Essex County
-2018,50009,37141,306,Essex County,Pender County
-2018,51105,09005,804,Lee County,Litchfield County
-2018,05025,51105,692,Cleveland County,Lee County
-2018,51105,01073,812,Lee County,Jefferson County
-2018,51145,12075,860,Powhatan County,Levy County
-2018,51145,50025,402,Powhatan County,Windham County
-2018,41053,51145,223,Polk County,Powhatan County
-2018,42033,51065,655,Clearfield County,Fluvanna County
-2018,51065,30101,990,Fluvanna County,Toole County
-2018,37045,51065,939,Cleveland County,Fluvanna County
-2018,17021,51065,747,Christian County,Fluvanna County
-2018,51087,41053,635,Henrico County,Polk County
-2018,51087,36113,721,Henrico County,Warren County
-2018,35001,51087,257,Bernalillo County,Henrico County
-2018,51700,13199,740,Newport News city,Meriwether County
-2018,51700,72153,368,Newport News city,Yauco Municipio
-2018,51700,04005,835,Newport News city,Coconino County
-2018,17181,51700,41,Union County,Newport News city
-2018,51163,06001,479,Rockbridge County,Alameda County
-2018,19037,51163,524,Chickasaw County,Rockbridge County
-2018,51790,44005,563,Staunton city,Newport County
-2018,24021,51790,729,Frederick County,Staunton city
-2018,51790,26057,405,Staunton city,Gratiot County
-2018,51790,25019,563,Staunton city,Nantucket County
-2018,10003,51115,696,New Castle County,Mathews County
-2018,51115,47147,698,Mathews County,Robertson County
-2018,18045,51083,663,Fountain County,Halifax County
-2018,22033,51083,344,East Baton Rouge Parish,Halifax County
-2018,51083,23031,850,Halifax County,York County
-2018,08023,51025,980,Costilla County,Brunswick County
-2018,08115,51025,693,Sedgwick County,Brunswick County
-2018,37161,53067,765,Rutherford County,Thurston County
-2018,32003,53067,865,Clark County,Thurston County
-2018,53067,23017,476,Thurston County,Oxford County
-2018,53067,28063,870,Thurston County,Jefferson County
-2018,11001,53073,49,District of Columbia,Whatcom County
-2018,53073,49019,450,Whatcom County,Grand County
-2018,53009,35059,525,Clallam County,Union County
-2018,13199,53009,116,Meriwether County,Clallam County
-2018,35015,53009,228,Eddy County,Clallam County
-2018,53027,53009,119,Grays Harbor County,Clallam County
-2018,42123,53027,70,Warren County,Grays Harbor County
-2018,53027,18079,223,Grays Harbor County,Jennings County
-2018,38083,53061,673,Sheridan County,Snohomish County
-2018,37021,53061,803,Buncombe County,Snohomish County
-2018,53061,42081,357,Snohomish County,Lycoming County
-2018,15009,53053,218,Maui County,Pierce County
-2018,25023,53053,144,Plymouth County,Pierce County
-2018,21081,53053,958,Grant County,Pierce County
-2018,18089,53053,68,Lake County,Pierce County
-2018,37089,53053,861,Henderson County,Pierce County
-2018,53013,49017,659,Columbia County,Garfield County
-2018,53013,28009,731,Columbia County,Benton County
-2018,23023,53013,84,Sagadahoc County,Columbia County
-2018,56017,53013,395,Hot Springs County,Columbia County
-2018,01091,53055,63,Marengo County,San Juan County
-2018,49019,53055,340,Grand County,San Juan County
-2018,02220,53055,188,Sitka City and Borough,San Juan County
-2018,53055,08023,834,San Juan County,Costilla County
-2018,56019,53049,718,Johnson County,Pacific County
-2018,17181,53049,522,Union County,Pacific County
-2018,53049,01019,116,Pacific County,Cherokee County
-2018,53049,39037,735,Pacific County,Darke County
-2018,25003,53049,47,Berkshire County,Pacific County
-2018,27053,53031,234,Hennepin County,Jefferson County
-2018,53031,35023,572,Jefferson County,Hidalgo County
-2018,53031,06011,384,Jefferson County,Colusa County
-2018,53031,21009,869,Jefferson County,Barren County
-2018,45079,53031,419,Richland County,Jefferson County
-2018,54063,46137,32,Monroe County,Ziebach County
-2018,18053,54063,949,Grant County,Monroe County
-2018,46127,54063,267,Union County,Monroe County
-2018,54011,12083,165,Cabell County,Marion County
-2018,51087,54011,963,Henrico County,Cabell County
-2018,54011,23027,93,Cabell County,Waldo County
-2018,54011,33001,490,Cabell County,Belknap County
-2018,72001,54011,76,Adjuntas Municipio,Cabell County
-2018,54065,39045,523,Morgan County,Fairfield County
-2018,72131,54065,432,San Sebastián Municipio,Morgan County
-2018,49033,54065,988,Rich County,Morgan County
-2018,10001,54065,741,Kent County,Morgan County
-2018,54027,22025,894,Hampshire County,Catahoula Parish
-2018,31021,54027,822,Burt County,Hampshire County
-2018,54027,34007,218,Hampshire County,Camden County
-2018,54039,36011,971,Kanawha County,Cayuga County
-2018,05009,54039,171,Boone County,Kanawha County
-2018,54039,30011,847,Kanawha County,Carter County
-2018,24035,54099,840,Queen Anne's County,Wayne County
-2018,13191,54099,136,McIntosh County,Wayne County
-2018,49043,54099,530,Summit County,Wayne County
-2018,46013,54099,706,Brown County,Wayne County
-2018,36119,54083,456,Westchester County,Randolph County
-2018,42123,54083,907,Warren County,Randolph County
-2018,54053,26061,154,Mason County,Houghton County
-2018,33005,54053,843,Cheshire County,Mason County
-2018,54053,30039,253,Mason County,Granite County
-2018,23029,54053,516,Washington County,Mason County
-2018,54087,12075,432,Roane County,Levy County
-2018,54087,12091,445,Roane County,Okaloosa County
-2018,31111,54087,442,Lincoln County,Roane County
-2018,54025,40095,219,Greenbrier County,Marshall County
-2018,54025,19129,304,Greenbrier County,Mills County
-2018,54025,24021,669,Greenbrier County,Frederick County
-2018,38065,54025,804,Oliver County,Greenbrier County
-2018,54025,15003,964,Greenbrier County,Honolulu County
-2018,55009,09013,872,Brown County,Tolland County
-2018,55009,31135,457,Brown County,Perkins County
-2018,23029,55009,834,Washington County,Brown County
-2018,55123,04011,112,Vernon County,Greenlee County
-2018,05129,55123,892,Searcy County,Vernon County
-2018,33011,55037,416,Hillsborough County,Florence County
-2018,55037,34003,56,Florence County,Bergen County
-2018,48013,55037,746,Atascosa County,Florence County
-2018,05139,55001,987,Union County,Adams County
-2018,55001,41017,810,Adams County,Deschutes County
-2018,55123,55001,246,Vernon County,Adams County
-2018,04017,55001,133,Navajo County,Adams County
-2018,30001,55057,918,Beaverhead County,Juneau County
-2018,55057,02282,656,Juneau County,Yakutat City and Borough
-2018,41035,55057,966,Klamath County,Juneau County
-2018,12011,55057,256,Broward County,Juneau County
-2018,55099,41035,663,Price County,Klamath County
-2018,13061,55099,601,Clay County,Price County
-2018,55099,44003,445,Price County,Kent County
-2018,25001,55099,780,Barnstable County,Price County
-2018,55021,53027,365,Columbia County,Grays Harbor County
-2018,55021,01011,645,Columbia County,Bullock County
-2018,13105,55069,150,Elbert County,Lincoln County
-2018,55069,72097,677,Lincoln County,Mayagüez Municipio
-2018,55069,06027,114,Lincoln County,Inyo County
-2018,55025,36025,736,Dane County,Delaware County
-2018,55025,09013,120,Dane County,Tolland County
-2018,32003,55025,41,Clark County,Dane County
-2018,55025,47045,153,Dane County,Dyer County
-2018,47137,55107,602,Pickett County,Rusk County
-2018,56011,55107,803,Crook County,Rusk County
-2018,55107,20001,351,Rusk County,Allen County
-2018,55107,06025,129,Rusk County,Imperial County
-2018,55107,24029,680,Rusk County,Kent County
-2018,20107,56031,623,Linn County,Platte County
-2018,26057,56031,754,Gratiot County,Platte County
-2018,56031,49043,133,Platte County,Summit County
-2018,56019,28021,905,Johnson County,Claiborne County
-2018,17181,56019,846,Union County,Johnson County
-2018,39037,56019,318,Darke County,Johnson County
-2018,72065,56019,472,Hatillo Municipio,Johnson County
-2018,26037,56001,10,Clinton County,Albany County
-2018,56001,35017,106,Albany County,Grant County
-2018,56001,56027,763,Albany County,Niobrara County
-2018,04027,56001,102,Yuma County,Albany County
-2018,56017,45053,439,Hot Springs County,Jasper County
-2018,56017,23031,652,Hot Springs County,York County
-2018,45051,56017,795,Horry County,Hot Springs County
-2018,56017,38101,800,Hot Springs County,Ward County
-2018,56017,48235,207,Hot Springs County,Irion County
-2018,42073,56035,22,Lawrence County,Sublette County
-2018,23023,56035,365,Sagadahoc County,Sublette County
-2018,23005,56035,24,Cumberland County,Sublette County
-2018,56035,30001,207,Sublette County,Beaverhead County
-2018,56035,51115,912,Sublette County,Mathews County
-2018,56025,32019,462,Natrona County,Lyon County
-2018,56025,04009,54,Natrona County,Graham County
-2018,56025,44005,410,Natrona County,Newport County
-2018,56025,23023,694,Natrona County,Sagadahoc County
-2018,48019,56003,92,Bandera County,Big Horn County
-2018,17085,56003,422,Jo Daviess County,Big Horn County
-2018,56003,25001,991,Big Horn County,Barnstable County
-2018,56027,26021,967,Niobrara County,Berrien County
-2018,37021,56027,997,Buncombe County,Niobrara County
-2018,35049,56011,742,Santa Fe County,Crook County
-2018,17091,56011,855,Kankakee County,Crook County
-2018,56005,72009,794,Campbell County,Aibonito Municipio
-2018,56027,56005,903,Niobrara County,Campbell County
-2018,72065,46013,746,Hatillo Municipio,Brown County
-2018,29021,72065,40,Buchanan County,Hatillo Municipio
-2018,13287,72065,966,Turner County,Hatillo Municipio
-2018,72065,27153,304,Hatillo Municipio,Todd County
-2018,72001,41053,146,Adjuntas Municipio,Polk County
-2018,72001,39025,113,Adjuntas Municipio,Clermont County
-2018,50011,72067,600,Franklin County,Hormigueros Municipio
-2018,72067,38011,826,Hormigueros Municipio,Bowman County
-2018,72025,25019,101,Caguas Municipio,Nantucket County
-2018,06011,72025,708,Colusa County,Caguas Municipio
-2018,72025,39053,507,Caguas Municipio,Gallia County
-2018,72025,30039,16,Caguas Municipio,Granite County
-2018,72021,22051,620,Bayamón Municipio,Jefferson Parish
-2018,72021,18001,349,Bayamón Municipio,Adams County
-2018,72021,29133,959,Bayamón Municipio,Mississippi County
-2018,72153,33007,256,Yauco Municipio,Coos County
-2018,72153,01019,196,Yauco Municipio,Cherokee County
-2018,72021,72153,19,Bayamón Municipio,Yauco Municipio
-2018,72059,36113,156,Guayanilla Municipio,Warren County
-2018,72059,54065,982,Guayanilla Municipio,Morgan County
-2018,72059,20091,473,Guayanilla Municipio,Johnson County
-2018,37141,72009,82,Pender County,Aibonito Municipio
-2018,23029,72009,907,Washington County,Aibonito Municipio
-2018,72009,02090,183,Aibonito Municipio,Fairbanks North Star Borough
-2018,49019,72097,870,Grand County,Mayagüez Municipio
-2018,30001,72097,996,Beaverhead County,Mayagüez Municipio
-2018,72097,06075,982,Mayagüez Municipio,San Francisco County
-2018,72131,17095,900,San Sebastián Municipio,Knox County
-2018,72131,53073,461,San Sebastián Municipio,Whatcom County
+2018,01065,23015,334,Hale,Lincoln
+2018,01065,27017,559,Hale,Carlton
+2018,72009,01065,617,Aibonito,Hale
+2018,22085,01065,614,Sabine,Hale
+2018,55078,01133,939,Menominee,Winston
+2018,60030,01133,180,Rose Island,Winston
+2018,32027,01133,965,Pershing,Winston
+2018,18171,01133,83,Warren,Winston
+2018,35005,01111,179,Chaves,Randolph
+2018,01111,02130,924,Randolph,Ketchikan Gateway
+2018,01009,32009,256,Blount,Esmeralda
+2018,01009,54059,685,Blount,Mingo
+2018,01009,41061,735,Blount,Union
+2018,01009,51087,266,Blount,Henrico
+2018,01077,31169,51,Lauderdale,Thayer
+2018,01077,35027,497,Lauderdale,Lincoln
+2018,51680,01077,473,Lynchburg,Lauderdale
+2018,01077,35031,458,Lauderdale,McKinley
+2018,01077,02068,844,Lauderdale,Denali
+2018,31009,01071,224,Blaine,Jackson
+2018,01071,78030,275,Jackson,St. Thomas
+2018,42073,01071,413,Lawrence,Jackson
+2018,01045,17015,984,Dale,Carroll
+2018,01045,29181,559,Dale,Ripley
+2018,01123,55081,361,Tallapoosa,Monroe
+2018,02188,01123,169,Northwest Arctic,Tallapoosa
+2018,32021,01005,599,Mineral,Barbour
+2018,69085,01005,193,Northern Islands,Barbour
+2018,50021,01005,64,Rutland,Barbour
+2018,19171,01027,134,Tama,Clay
+2018,39055,01027,273,Geauga,Clay
+2018,54025,01027,568,Greenbrier,Clay
+2018,01027,33007,847,Clay,Coos
+2018,01027,35005,975,Clay,Chaves
+2018,72073,02068,108,Jayuya,Denali
+2018,02068,24001,450,Denali,Allegany
+2018,02068,32029,254,Denali,Storey
+2018,02198,02130,717,Prince of Wales-Hyder,Ketchikan Gateway
+2018,02198,35023,1000,Prince of Wales-Hyder,Hidalgo
+2018,02198,36023,805,Prince of Wales-Hyder,Cortland
+2018,08057,02158,782,Jackson,Kusilvak
+2018,34023,02158,965,Middlesex,Kusilvak
+2018,02158,39071,783,Kusilvak,Highland
+2018,02158,41037,648,Kusilvak,Lake
+2018,60030,02158,443,Rose Island,Kusilvak
+2018,69100,02013,763,Rota,Aleutians East
+2018,02013,55029,613,Aleutians East,Door
+2018,02013,51540,751,Aleutians East,Charlottesville
+2018,12041,02013,171,Gilchrist,Aleutians East
+2018,05027,02013,902,Columbia,Aleutians East
+2018,49011,02130,99,Davis,Ketchikan Gateway
+2018,02130,56041,456,Ketchikan Gateway,Uinta
+2018,02130,15005,89,Ketchikan Gateway,Kalawao
+2018,02130,60030,1000,Ketchikan Gateway,Rose Island
+2018,04009,02130,108,Graham,Ketchikan Gateway
+2018,02230,06051,889,Skagway,Mono
+2018,02230,01045,878,Skagway,Dale
+2018,02230,55099,537,Skagway,Price
+2018,02110,42033,610,Juneau,Clearfield
+2018,04013,02110,132,Maricopa,Juneau
+2018,02100,27115,694,Haines,Pine
+2018,02100,30079,374,Haines,Prairie
+2018,17013,02170,638,Calhoun,Matanuska-Susitna
+2018,78030,02170,389,St. Thomas,Matanuska-Susitna
+2018,02170,42073,450,Matanuska-Susitna,Lawrence
+2018,27057,02170,176,Hubbard,Matanuska-Susitna
+2018,02188,42117,648,Northwest Arctic,Tioga
+2018,02188,20133,227,Northwest Arctic,Neosho
+2018,02188,29163,941,Northwest Arctic,Pike
+2018,04021,37177,604,Pinal,Tyrrell
+2018,12041,04021,225,Gilchrist,Pinal
+2018,31009,04021,498,Blaine,Pinal
+2018,04021,26087,203,Pinal,Lapeer
+2018,04021,01133,186,Pinal,Winston
+2018,04023,09001,545,Santa Cruz,Fairfield
+2018,04023,25011,848,Santa Cruz,Franklin
+2018,36023,04015,605,Cortland,Mohave
+2018,04015,28081,235,Mohave,Lee
+2018,02158,04013,169,Kusilvak,Maricopa
+2018,47125,04013,909,Montgomery,Maricopa
+2018,04013,34021,52,Maricopa,Mercer
+2018,04013,28081,508,Maricopa,Lee
+2018,04013,31125,758,Maricopa,Nance
+2018,04011,15001,812,Greenlee,Hawaii
+2018,04011,06031,595,Greenlee,Kings
+2018,04027,56031,704,Yuma,Platte
+2018,04027,35017,502,Yuma,Grant
+2018,04027,22037,773,Yuma,East Feliciana
+2018,04027,02100,154,Yuma,Haines
+2018,51163,04005,891,Rockbridge,Coconino
+2018,04005,49011,628,Coconino,Davis
+2018,04005,42085,966,Coconino,Mercer
+2018,33015,04005,878,Rockingham,Coconino
+2018,02130,04005,856,Ketchikan Gateway,Coconino
+2018,04012,31017,388,La Paz,Brown
+2018,04012,41013,571,La Paz,Crook
+2018,46005,04009,155,Beadle,Graham
+2018,04009,41019,980,Graham,Douglas
+2018,25015,04009,129,Hampshire,Graham
+2018,30055,04009,83,McCone,Graham
+2018,04019,46031,400,Pima,Corson
+2018,04019,12095,815,Pima,Orange
+2018,56031,05097,576,Platte,Montgomery
+2018,05097,26087,104,Montgomery,Lapeer
+2018,05109,08113,180,Pike,San Miguel
+2018,29025,05109,593,Caldwell,Pike
+2018,05109,04011,16,Pike,Greenlee
+2018,05109,29175,185,Pike,Randolph
+2018,16039,05007,702,Elmore,Benton
+2018,09015,05007,459,Windham,Benton
+2018,05007,32011,739,Benton,Eureka
+2018,05007,69110,601,Benton,Saipan
+2018,05051,41019,864,Garland,Douglas
+2018,12117,05051,809,Seminole,Garland
+2018,35047,05051,103,San Miguel,Garland
+2018,05051,04013,540,Garland,Maricopa
+2018,19017,05051,724,Bremer,Garland
+2018,48053,05131,934,Burnet,Sebastian
+2018,05131,32017,79,Sebastian,Lincoln
+2018,06089,05131,750,Shasta,Sebastian
+2018,05131,55078,856,Sebastian,Menominee
+2018,05131,27133,96,Sebastian,Rock
+2018,05019,08113,966,Clark,San Miguel
+2018,05019,11001,231,Clark,District of Columbia
+2018,05027,38071,522,Columbia,Ramsey
+2018,05027,24037,560,Columbia,St. Mary's
+2018,05027,22023,942,Columbia,Cameron
+2018,18049,05149,246,Fulton,Yell
+2018,05149,12069,474,Yell,Lake
+2018,05101,37195,820,Newton,Wilson
+2018,05101,23005,837,Newton,Cumberland
+2018,19149,05101,182,Plymouth,Newton
+2018,40025,05101,709,Cimarron,Newton
+2018,01027,05101,280,Clay,Newton
+2018,13095,05035,763,Dougherty,Crittenden
+2018,13247,05035,76,Rockdale,Crittenden
+2018,19083,05035,636,Hardin,Crittenden
+2018,30061,05035,959,Mineral,Crittenden
+2018,05035,28103,661,Crittenden,Noxubee
+2018,06003,06089,618,Alpine,Shasta
+2018,01027,06003,310,Clay,Alpine
+2018,27077,06003,215,Lake of the Woods,Alpine
+2018,02188,06003,27,Northwest Arctic,Alpine
+2018,06091,38043,221,Sierra,Kidder
+2018,10003,06091,969,New Castle,Sierra
+2018,06091,42041,702,Sierra,Cumberland
+2018,06091,36073,660,Sierra,Orleans
+2018,06063,72017,597,Plumas,Barceloneta
+2018,06063,33013,919,Plumas,Merrimack
+2018,06063,22095,518,Plumas,St. John the Baptist
+2018,53009,06063,828,Clallam,Plumas
+2018,02130,06087,450,Ketchikan Gateway,Santa Cruz
+2018,06087,39011,700,Santa Cruz,Auglaize
+2018,06031,16039,328,Kings,Elmore
+2018,06031,34025,488,Kings,Monmouth
+2018,51181,06031,92,Surry,Kings
+2018,06065,72057,561,Riverside,Guayama
+2018,06065,69120,159,Riverside,Tinian
+2018,06065,40037,476,Riverside,Creek
+2018,01009,06101,423,Blount,Sutter
+2018,18049,06101,24,Fulton,Sutter
+2018,06101,54051,31,Sutter,Marshall
+2018,53035,06011,658,Kitsap,Colusa
+2018,06011,50015,372,Colusa,Lamoille
+2018,06051,18027,745,Mono,Daviess
+2018,47177,06051,343,Warren,Mono
+2018,06051,41031,335,Mono,Jefferson
+2018,06063,06051,549,Plumas,Mono
+2018,06051,20125,642,Mono,Montgomery
+2018,51183,06089,334,Sussex,Shasta
+2018,18027,06089,627,Daviess,Shasta
+2018,06089,33001,447,Shasta,Belknap
+2018,06089,04013,360,Shasta,Maricopa
+2018,28103,06089,253,Noxubee,Shasta
+2018,21165,08123,847,Menifee,Weld
+2018,08123,37151,18,Weld,Randolph
+2018,08123,26127,160,Weld,Oceana
+2018,72101,08123,155,Morovis,Weld
+2018,08025,47147,955,Crowley,Robertson
+2018,22023,08025,463,Cameron,Crowley
+2018,32005,08025,295,Douglas,Crowley
+2018,08025,27057,597,Crowley,Hubbard
+2018,08025,54025,273,Crowley,Greenbrier
+2018,38021,08057,595,Dickey,Jackson
+2018,31173,08057,132,Thurston,Jackson
+2018,08047,55061,261,Gilpin,Kewaunee
+2018,28099,08047,68,Neshoba,Gilpin
+2018,08047,42019,449,Gilpin,Butler
+2018,08047,50017,36,Gilpin,Orange
+2018,08047,17125,155,Gilpin,Mason
+2018,08099,05101,209,Prowers,Newton
+2018,08099,25015,618,Prowers,Hampshire
+2018,08099,12035,30,Prowers,Flagler
+2018,30057,08085,396,Madison,Montrose
+2018,48423,08085,667,Smith,Montrose
+2018,08085,56031,541,Montrose,Platte
+2018,08085,25003,794,Montrose,Berkshire
+2018,08113,48423,601,San Miguel,Smith
+2018,08113,21113,154,San Miguel,Jessamine
+2018,19017,08063,57,Bremer,Kit Carson
+2018,18165,08063,104,Vermillion,Kit Carson
+2018,08063,26127,247,Kit Carson,Oceana
+2018,08063,02068,129,Kit Carson,Denali
+2018,08063,49011,706,Kit Carson,Davis
+2018,08029,25021,276,Delta,Norfolk
+2018,13119,08029,315,Franklin,Delta
+2018,08069,39143,698,Larimer,Sandusky
+2018,56043,08069,185,Washakie,Larimer
+2018,18141,08069,741,St. Joseph,Larimer
+2018,08069,20087,921,Larimer,Jefferson
+2018,46035,08069,626,Davison,Larimer
+2018,09007,46121,365,Middlesex,Todd
+2018,42083,09007,544,McKean,Middlesex
+2018,09015,22037,430,Windham,East Feliciana
+2018,09015,21189,913,Windham,Owsley
+2018,44007,09015,735,Providence,Windham
+2018,49011,09015,880,Davis,Windham
+2018,09013,50003,977,Tolland,Bennington
+2018,09013,45007,755,Tolland,Anderson
+2018,09013,48423,418,Tolland,Smith
+2018,54007,09011,455,Braxton,New London
+2018,30001,09011,300,Beaverhead,New London
+2018,09011,55099,907,New London,Price
+2018,25015,09011,411,Hampshire,New London
+2018,09005,48433,63,Litchfield,Stonewall
+2018,35031,09005,17,McKinley,Litchfield
+2018,09005,54051,93,Litchfield,Marshall
+2018,09009,25027,435,New Haven,Worcester
+2018,53059,09009,491,Skamania,New Haven
+2018,17005,09009,562,Bond,New Haven
+2018,09001,47113,639,Fairfield,Madison
+2018,09001,51183,639,Fairfield,Sussex
+2018,09003,53037,241,Hartford,Kittitas
+2018,42019,09003,73,Butler,Hartford
+2018,09003,18165,291,Hartford,Vermillion
+2018,09003,28081,240,Hartford,Lee
+2018,32029,09003,899,Storey,Hartford
+2018,50001,10003,193,Addison,New Castle
+2018,19155,10003,441,Pottawattamie,New Castle
+2018,10003,13219,706,New Castle,Oconee
+2018,42083,10001,920,McKean,Kent
+2018,51540,10001,77,Charlottesville,Kent
+2018,10001,13227,46,Kent,Pickens
+2018,25001,10005,765,Barnstable,Sussex
+2018,04027,10005,22,Yuma,Sussex
+2018,02170,10005,36,Matanuska-Susitna,Sussex
+2018,34021,10005,431,Mercer,Sussex
+2018,11001,30089,638,District of Columbia,Sanders
+2018,38051,11001,856,McIntosh,District of Columbia
+2018,12087,72057,218,Monroe,Guayama
+2018,12087,22127,17,Monroe,Winn
+2018,19149,12087,846,Plymouth,Monroe
+2018,12087,04013,557,Monroe,Maricopa
+2018,12077,13085,57,Liberty,Dawson
+2018,13319,12077,956,Wilkinson,Liberty
+2018,27077,12077,378,Lake of the Woods,Liberty
+2018,12117,38071,912,Seminole,Ramsey
+2018,53009,12117,641,Clallam,Seminole
+2018,39107,12117,527,Mercer,Seminole
+2018,13115,12117,462,Floyd,Seminole
+2018,12117,18165,916,Seminole,Vermillion
+2018,12069,22127,929,Lake,Winn
+2018,48053,12069,231,Burnet,Lake
+2018,01027,12085,638,Clay,Martin
+2018,12085,20133,431,Martin,Neosho
+2018,12085,26035,558,Martin,Clare
+2018,53059,12085,453,Skamania,Martin
+2018,12085,16031,453,Martin,Cassia
+2018,24027,12035,662,Howard,Flagler
+2018,12035,22127,953,Flagler,Winn
+2018,12035,09001,456,Flagler,Fairfield
+2018,24037,12035,245,St. Mary's,Flagler
+2018,06063,12035,925,Plumas,Flagler
+2018,12041,06003,960,Gilchrist,Alpine
+2018,45069,12041,657,Marlboro,Gilchrist
+2018,12015,78010,232,Charlotte,St. Croix
+2018,12015,06101,922,Charlotte,Sutter
+2018,24023,12015,245,Garrett,Charlotte
+2018,12015,78020,610,Charlotte,St. John
+2018,12015,26051,181,Charlotte,Gladwin
+2018,12095,04011,443,Orange,Greenlee
+2018,36047,12095,770,Kings,Orange
+2018,08123,12095,331,Weld,Orange
+2018,12129,38045,558,Wakulla,LaMoure
+2018,12129,20133,765,Wakulla,Neosho
+2018,12129,37151,156,Wakulla,Randolph
+2018,13227,36023,339,Pickens,Cortland
+2018,48053,13227,469,Burnet,Pickens
+2018,51117,13187,411,Mecklenburg,Lumpkin
+2018,48125,13187,956,Dickens,Lumpkin
+2018,13187,60030,815,Lumpkin,Rose Island
+2018,13187,30061,922,Lumpkin,Mineral
+2018,13187,20125,15,Lumpkin,Montgomery
+2018,13119,31097,307,Franklin,Johnson
+2018,55081,13119,42,Monroe,Franklin
+2018,37193,13119,276,Wilkes,Franklin
+2018,13119,25019,242,Franklin,Nantucket
+2018,21089,13319,948,Greenup,Wilkinson
+2018,16039,13319,660,Elmore,Wilkinson
+2018,13319,50003,262,Wilkinson,Bennington
+2018,69085,13319,12,Northern Islands,Wilkinson
+2018,32510,13219,597,Carson City,Oconee
+2018,30001,13219,751,Beaverhead,Oconee
+2018,12077,13247,39,Liberty,Rockdale
+2018,15009,13247,18,Maui,Rockdale
+2018,13247,02110,439,Rockdale,Juneau
+2018,54057,13247,60,Mineral,Rockdale
+2018,37071,13247,991,Gaston,Rockdale
+2018,51163,13095,660,Rockbridge,Dougherty
+2018,13095,46121,72,Dougherty,Todd
+2018,08113,13095,196,San Miguel,Dougherty
+2018,13215,39119,252,Muscogee,Muskingum
+2018,27115,13215,831,Pine,Muscogee
+2018,40025,13215,803,Cimarron,Muscogee
+2018,13215,34011,755,Muscogee,Cumberland
+2018,56043,13115,953,Washakie,Floyd
+2018,13115,53067,432,Floyd,Thurston
+2018,08113,13115,985,San Miguel,Floyd
+2018,13085,06003,244,Dawson,Alpine
+2018,13085,25015,541,Dawson,Hampshire
+2018,49055,15003,851,Wayne,Honolulu
+2018,15003,55061,575,Honolulu,Kewaunee
+2018,05019,15003,435,Clark,Honolulu
+2018,42085,15005,428,Mercer,Kalawao
+2018,04019,15005,710,Pima,Kalawao
+2018,15005,24031,974,Kalawao,Montgomery
+2018,45083,15007,728,Spartanburg,Kauai
+2018,15007,20025,526,Kauai,Clark
+2018,15007,32510,497,Kauai,Carson City
+2018,15007,40059,716,Kauai,Harper
+2018,29225,15007,23,Webster,Kauai
+2018,18165,15009,830,Vermillion,Maui
+2018,15009,13095,932,Maui,Dougherty
+2018,51680,15009,528,Lynchburg,Maui
+2018,33003,15009,997,Carroll,Maui
+2018,15009,01071,72,Maui,Jackson
+2018,35031,15001,930,McKinley,Hawaii
+2018,15001,38077,383,Hawaii,Richland
+2018,13085,15001,343,Dawson,Hawaii
+2018,21113,15001,556,Jessamine,Hawaii
+2018,27031,16039,354,Cook,Elmore
+2018,16039,42041,36,Elmore,Cumberland
+2018,16039,02198,762,Elmore,Prince of Wales-Hyder
+2018,69120,16039,550,Tinian,Elmore
+2018,34031,16039,811,Passaic,Elmore
+2018,16075,24031,882,Payette,Montgomery
+2018,16075,36105,24,Payette,Sullivan
+2018,16075,29163,601,Payette,Pike
+2018,49001,16075,364,Beaver,Payette
+2018,16005,55047,676,Bannock,Green Lake
+2018,16005,55078,415,Bannock,Menominee
+2018,16005,26065,604,Bannock,Ingham
+2018,39107,16015,719,Mercer,Boise
+2018,21207,16015,713,Russell,Boise
+2018,16037,16015,81,Custer,Boise
+2018,05097,16031,567,Montgomery,Cassia
+2018,16031,22003,957,Cassia,Allen
+2018,16031,37071,209,Cassia,Gaston
+2018,19149,16031,985,Plymouth,Cassia
+2018,16029,02110,120,Caribou,Juneau
+2018,55105,16029,114,Rock,Caribou
+2018,16029,56015,770,Caribou,Goshen
+2018,55029,16029,891,Door,Caribou
+2018,54007,16085,849,Braxton,Valley
+2018,32021,16085,807,Mineral,Valley
+2018,30099,16085,399,Teton,Valley
+2018,16085,33019,217,Valley,Sullivan
+2018,17005,16085,245,Bond,Valley
+2018,16027,49057,286,Canyon,Weber
+2018,16027,27115,944,Canyon,Pine
+2018,39011,16017,532,Auglaize,Bonner
+2018,16017,01077,603,Bonner,Lauderdale
+2018,30035,16017,205,Glacier,Bonner
+2018,78020,16037,776,St. John,Custer
+2018,16037,34027,257,Custer,Morris
+2018,53037,16037,61,Kittitas,Custer
+2018,16037,23005,527,Custer,Cumberland
+2018,16037,47125,447,Custer,Montgomery
+2018,33013,17175,37,Merrimack,Stark
+2018,72057,17175,70,Guayama,Stark
+2018,08025,17175,642,Crowley,Stark
+2018,17175,31017,706,Stark,Brown
+2018,55081,17125,604,Monroe,Mason
+2018,17125,49055,982,Mason,Wayne
+2018,17163,15001,523,St. Clair,Hawaii
+2018,17163,06091,298,St. Clair,Sierra
+2018,13215,17013,227,Muscogee,Calhoun
+2018,17013,42041,264,Calhoun,Cumberland
+2018,17013,20087,758,Calhoun,Jefferson
+2018,28067,17059,752,Jones,Gallatin
+2018,17111,17059,318,McHenry,Gallatin
+2018,17059,69100,823,Gallatin,Rota
+2018,17059,32510,787,Gallatin,Carson City
+2018,17111,32510,535,McHenry,Carson City
+2018,17111,21039,391,McHenry,Carlisle
+2018,17111,05007,623,McHenry,Benton
+2018,17111,31089,962,McHenry,Holt
+2018,17015,22095,440,Carroll,St. John the Baptist
+2018,53037,17015,944,Kittitas,Carroll
+2018,17005,39107,161,Bond,Mercer
+2018,17005,49057,247,Bond,Weber
+2018,30087,17081,623,Rosebud,Jefferson
+2018,34031,17081,652,Passaic,Jefferson
+2018,18081,17081,873,Johnson,Jefferson
+2018,17081,51127,945,Jefferson,New Kent
+2018,04027,17081,474,Yuma,Jefferson
+2018,31097,17101,1000,Johnson,Lawrence
+2018,33009,17101,580,Grafton,Lawrence
+2018,69110,17101,802,Saipan,Lawrence
+2018,53037,17101,249,Kittitas,Lawrence
+2018,18165,18049,360,Vermillion,Fulton
+2018,02130,18165,641,Ketchikan Gateway,Vermillion
+2018,20061,18093,296,Geary,Lawrence
+2018,41011,18093,314,Coos,Lawrence
+2018,24037,18171,30,St. Mary's,Warren
+2018,45033,18171,269,Dillon,Warren
+2018,18171,04019,550,Warren,Pima
+2018,18171,28091,869,Warren,Marion
+2018,18171,36123,576,Warren,Yates
+2018,18081,26045,762,Johnson,Eaton
+2018,18081,09015,399,Johnson,Windham
+2018,18081,13227,200,Johnson,Pickens
+2018,21089,18081,363,Greenup,Johnson
+2018,18081,12085,322,Johnson,Martin
+2018,18137,39143,500,Ripley,Sandusky
+2018,56025,18137,232,Natrona,Ripley
+2018,05007,18137,173,Benton,Ripley
+2018,20089,18137,112,Jewell,Ripley
+2018,31061,18049,897,Franklin,Fulton
+2018,18049,17163,498,Fulton,St. Clair
+2018,26121,18167,922,Muskegon,Vigo
+2018,37199,18167,654,Yancey,Vigo
+2018,18167,40081,877,Vigo,Lincoln
+2018,18167,56001,790,Vigo,Albany
+2018,24001,18027,599,Allegany,Daviess
+2018,69100,18027,548,Rota,Daviess
+2018,21159,18027,131,Martin,Daviess
+2018,21165,18027,438,Menifee,Daviess
+2018,45051,18141,163,Horry,St. Joseph
+2018,18141,12015,846,St. Joseph,Charlotte
+2018,18141,37175,871,St. Joseph,Transylvania
+2018,46023,18061,518,Charles Mix,Harrison
+2018,18061,19153,226,Harrison,Polk
+2018,18061,29025,516,Harrison,Caldwell
+2018,46011,19153,29,Brookings,Polk
+2018,19153,36061,459,Polk,New York
+2018,19017,35017,609,Bremer,Grant
+2018,19017,24033,867,Bremer,Prince George's
+2018,19153,19017,226,Polk,Bremer
+2018,23017,19017,19,Oxford,Bremer
+2018,19149,04021,282,Plymouth,Pinal
+2018,32031,19149,118,Washoe,Plymouth
+2018,19149,01005,553,Plymouth,Barbour
+2018,47157,19149,880,Shelby,Plymouth
+2018,23029,19103,79,Washington,Johnson
+2018,19103,34025,400,Johnson,Monmouth
+2018,34011,19173,214,Cumberland,Taylor
+2018,19173,19189,737,Taylor,Winnebago
+2018,19173,39143,11,Taylor,Sandusky
+2018,19173,28123,792,Taylor,Scott
+2018,19055,41031,48,Delaware,Jefferson
+2018,19055,56031,53,Delaware,Platte
+2018,08047,19055,538,Gilpin,Delaware
+2018,24001,19055,912,Allegany,Delaware
+2018,50015,19155,42,Lamoille,Pottawattamie
+2018,19155,72123,617,Pottawattamie,Salinas
+2018,21189,19155,785,Owsley,Pottawattamie
+2018,08113,19171,225,San Miguel,Tama
+2018,19171,24031,466,Tama,Montgomery
+2018,33005,19171,612,Cheshire,Tama
+2018,41013,19171,484,Crook,Tama
+2018,29033,19189,701,Carroll,Winnebago
+2018,19189,09005,997,Winnebago,Litchfield
+2018,19083,29207,276,Hardin,Stoddard
+2018,31173,19083,699,Thurston,Hardin
+2018,41031,19083,317,Jefferson,Hardin
+2018,01045,20025,270,Dale,Clark
+2018,20025,26121,28,Clark,Muskegon
+2018,20025,45033,831,Clark,Dillon
+2018,46005,20025,110,Beadle,Clark
+2018,60010,20209,964,Eastern,Wyandotte
+2018,20209,09007,311,Wyandotte,Middlesex
+2018,20209,25007,291,Wyandotte,Dukes
+2018,20209,48471,686,Wyandotte,Walker
+2018,12015,20125,625,Charlotte,Montgomery
+2018,20125,31043,796,Montgomery,Dakota
+2018,20125,18027,902,Montgomery,Daviess
+2018,18027,20125,931,Daviess,Montgomery
+2018,23031,20125,939,York,Montgomery
+2018,20087,04009,407,Jefferson,Graham
+2018,20087,41011,562,Jefferson,Coos
+2018,20087,66010,220,Jefferson,Guam
+2018,20143,21165,270,Ottawa,Menifee
+2018,20143,19103,798,Ottawa,Johnson
+2018,20143,34039,999,Ottawa,Union
+2018,39053,20143,948,Gallia,Ottawa
+2018,20143,02068,168,Ottawa,Denali
+2018,20089,06089,949,Jewell,Shasta
+2018,17163,20089,267,St. Clair,Jewell
+2018,20089,25021,332,Jewell,Norfolk
+2018,10005,20061,389,Sussex,Geary
+2018,08069,20061,653,Larimer,Geary
+2018,02100,20061,701,Haines,Geary
+2018,51181,20061,244,Surry,Geary
+2018,56025,20061,567,Natrona,Geary
+2018,20001,53009,561,Allen,Clallam
+2018,20001,09005,907,Allen,Litchfield
+2018,23015,20047,69,Lincoln,Edwards
+2018,02100,20047,303,Haines,Edwards
+2018,20047,47137,440,Edwards,Pickett
+2018,20133,24045,864,Neosho,Wicomico
+2018,47147,20133,857,Robertson,Neosho
+2018,20133,37023,83,Neosho,Burke
+2018,02188,21177,181,Northwest Arctic,Muhlenberg
+2018,17125,21177,848,Mason,Muhlenberg
+2018,21189,49055,141,Owsley,Wayne
+2018,53035,21189,10,Kitsap,Owsley
+2018,21189,08085,329,Owsley,Montrose
+2018,21189,66010,675,Owsley,Guam
+2018,21189,08099,582,Owsley,Prowers
+2018,42129,21165,17,Westmoreland,Menifee
+2018,21165,13247,17,Menifee,Rockdale
+2018,21165,27057,954,Menifee,Hubbard
+2018,21165,25015,196,Menifee,Hampshire
+2018,21113,51145,299,Jessamine,Powhatan
+2018,21113,47151,910,Jessamine,Scott
+2018,21113,05109,347,Jessamine,Pike
+2018,20089,21113,362,Jewell,Jessamine
+2018,28091,21159,78,Marion,Martin
+2018,21159,04023,553,Martin,Santa Cruz
+2018,32029,21089,421,Storey,Greenup
+2018,21089,08029,194,Greenup,Delta
+2018,32510,21039,46,Carson City,Carlisle
+2018,31061,21039,235,Franklin,Carlisle
+2018,21039,55029,865,Carlisle,Door
+2018,46102,21231,65,Oglala Lakota,Wayne
+2018,21231,34023,82,Wayne,Middlesex
+2018,21231,09011,37,Wayne,New London
+2018,21231,72079,419,Wayne,Lajas
+2018,45069,21207,377,Marlboro,Russell
+2018,21207,72123,224,Russell,Salinas
+2018,11001,21207,648,District of Columbia,Russell
+2018,16085,21207,990,Valley,Russell
+2018,05109,21201,602,Pike,Robertson
+2018,21201,53009,582,Robertson,Clallam
+2018,21201,04021,832,Robertson,Pinal
+2018,21201,32011,699,Robertson,Eureka
+2018,21201,15003,78,Robertson,Honolulu
+2018,13115,22095,482,Floyd,St. John the Baptist
+2018,20125,22095,503,Montgomery,St. John the Baptist
+2018,18081,22125,714,Johnson,West Feliciana
+2018,35061,22125,112,Valencia,West Feliciana
+2018,22125,50015,480,West Feliciana,Lamoille
+2018,18171,22125,434,Warren,West Feliciana
+2018,22037,34011,822,East Feliciana,Cumberland
+2018,22037,27057,48,East Feliciana,Hubbard
+2018,22037,29207,875,East Feliciana,Stoddard
+2018,48053,22037,361,Burnet,East Feliciana
+2018,22023,15007,102,Cameron,Kauai
+2018,22023,55047,422,Cameron,Green Lake
+2018,22023,33011,524,Cameron,Hillsborough
+2018,26035,22023,17,Clare,Cameron
+2018,22127,49055,714,Winn,Wayne
+2018,41037,22127,921,Lake,Winn
+2018,22127,72073,597,Winn,Jayuya
+2018,22083,16005,240,Richland,Bannock
+2018,22083,29073,400,Richland,Gasconade
+2018,22003,42085,349,Allen,Mercer
+2018,22003,08047,690,Allen,Gilpin
+2018,22003,02100,978,Allen,Haines
+2018,26045,22001,776,Eaton,Acadia
+2018,30061,22001,835,Mineral,Acadia
+2018,21207,22001,324,Russell,Acadia
+2018,22001,08099,518,Acadia,Prowers
+2018,29073,22053,134,Gasconade,Jefferson Davis
+2018,72123,22053,432,Salinas,Jefferson Davis
+2018,22053,32017,74,Jefferson Davis,Lincoln
+2018,53059,22053,32,Skamania,Jefferson Davis
+2018,22085,13247,24,Sabine,Rockdale
+2018,25001,22085,143,Barnstable,Sabine
+2018,22085,41013,671,Sabine,Crook
+2018,22085,34025,472,Sabine,Monmouth
+2018,31035,23031,567,Clay,York
+2018,56015,23031,46,Goshen,York
+2018,35049,23031,579,Santa Fe,York
+2018,23031,19103,255,York,Johnson
+2018,23031,36047,372,York,Kings
+2018,21089,23029,877,Greenup,Washington
+2018,23029,20125,813,Washington,Montgomery
+2018,23029,37195,388,Washington,Wilson
+2018,23027,60010,795,Waldo,Eastern
+2018,23027,32031,847,Waldo,Washoe
+2018,54025,23027,657,Greenbrier,Waldo
+2018,23005,25021,860,Cumberland,Norfolk
+2018,23005,44007,819,Cumberland,Providence
+2018,23019,16039,355,Penobscot,Elmore
+2018,23019,24027,729,Penobscot,Howard
+2018,23019,55099,433,Penobscot,Price
+2018,31035,23019,184,Clay,Penobscot
+2018,23017,24001,139,Oxford,Allegany
+2018,23017,17005,431,Oxford,Bond
+2018,23017,31097,468,Oxford,Johnson
+2018,56031,23017,419,Platte,Oxford
+2018,35061,23015,63,Valencia,Lincoln
+2018,13227,23015,160,Pickens,Lincoln
+2018,18171,23007,148,Warren,Franklin
+2018,32027,23007,754,Pershing,Franklin
+2018,23007,39107,308,Franklin,Mercer
+2018,23003,46063,155,Aroostook,Harding
+2018,01111,23003,673,Randolph,Aroostook
+2018,23021,42041,905,Piscataquis,Cumberland
+2018,47137,23021,857,Pickett,Piscataquis
+2018,50011,23021,606,Franklin,Piscataquis
+2018,46063,23021,777,Harding,Piscataquis
+2018,23021,36023,286,Piscataquis,Cortland
+2018,22037,24039,471,East Feliciana,Somerset
+2018,24039,29113,606,Somerset,Lincoln
+2018,24033,30057,790,Prince George's,Madison
+2018,24033,26089,635,Prince George's,Leelanau
+2018,24033,26117,634,Prince George's,Montcalm
+2018,53069,24001,210,Wahkiakum,Allegany
+2018,24001,06091,887,Allegany,Sierra
+2018,49011,24001,39,Davis,Allegany
+2018,04019,24001,910,Pima,Allegany
+2018,24047,13247,581,Worcester,Rockdale
+2018,08113,24047,471,San Miguel,Worcester
+2018,24047,30057,676,Worcester,Madison
+2018,36123,24047,240,Yates,Worcester
+2018,20047,24047,338,Edwards,Worcester
+2018,56031,24027,66,Platte,Howard
+2018,24027,53035,653,Howard,Kitsap
+2018,24027,05019,655,Howard,Clark
+2018,26045,24027,613,Eaton,Howard
+2018,24027,01045,173,Howard,Dale
+2018,18049,24023,378,Fulton,Garrett
+2018,25027,24023,325,Worcester,Garrett
+2018,49055,24023,393,Wayne,Garrett
+2018,45023,24023,35,Chester,Garrett
+2018,24045,78030,931,Wicomico,St. Thomas
+2018,24045,78010,448,Wicomico,St. Croix
+2018,24045,18171,940,Wicomico,Warren
+2018,47177,24037,987,Warren,St. Mary's
+2018,24037,44001,104,St. Mary's,Bristol
+2018,04005,24037,700,Coconino,St. Mary's
+2018,46063,24031,892,Harding,Montgomery
+2018,24031,04005,12,Montgomery,Coconino
+2018,24031,25027,594,Montgomery,Worcester
+2018,05131,24013,113,Sebastian,Carroll
+2018,37175,24013,272,Transylvania,Carroll
+2018,24013,27077,220,Carroll,Lake of the Woods
+2018,02170,24013,400,Matanuska-Susitna,Carroll
+2018,29113,24013,871,Lincoln,Carroll
+2018,25021,29073,44,Norfolk,Gasconade
+2018,25021,12095,878,Norfolk,Orange
+2018,25021,12117,524,Norfolk,Seminole
+2018,41059,25021,537,Umatilla,Norfolk
+2018,25019,26089,409,Nantucket,Leelanau
+2018,01133,25019,807,Winston,Nantucket
+2018,25019,72045,201,Nantucket,Comerío
+2018,25019,49049,753,Nantucket,Utah
+2018,25019,47023,605,Nantucket,Chester
+2018,51087,25003,794,Henrico,Berkshire
+2018,69085,25003,601,Northern Islands,Berkshire
+2018,33007,25003,891,Coos,Berkshire
+2018,25003,28099,648,Berkshire,Neshoba
+2018,25003,25015,441,Berkshire,Hampshire
+2018,25001,54007,236,Barnstable,Braxton
+2018,02013,25001,791,Aleutians East,Barnstable
+2018,25027,40067,41,Worcester,Jefferson
+2018,25027,44005,650,Worcester,Newport
+2018,25027,34023,116,Worcester,Middlesex
+2018,25015,54083,859,Hampshire,Randolph
+2018,12069,25015,361,Lake,Hampshire
+2018,25015,32011,29,Hampshire,Eureka
+2018,13319,25007,635,Wilkinson,Dukes
+2018,39071,25007,910,Highland,Dukes
+2018,39107,25007,285,Mercer,Dukes
+2018,51127,25007,750,New Kent,Dukes
+2018,25011,13119,195,Franklin,Franklin
+2018,08123,25011,757,Weld,Franklin
+2018,28103,25005,974,Noxubee,Bristol
+2018,44009,25005,754,Washington,Bristol
+2018,25005,55037,61,Bristol,Florence
+2018,27001,25005,137,Aitkin,Bristol
+2018,25009,40025,227,Essex,Cimarron
+2018,25009,02170,648,Essex,Matanuska-Susitna
+2018,25009,42085,180,Essex,Mercer
+2018,26035,26051,174,Clare,Gladwin
+2018,06091,26051,723,Sierra,Gladwin
+2018,26051,55047,942,Gladwin,Green Lake
+2018,26121,53037,685,Muskegon,Kittitas
+2018,05101,26121,843,Newton,Muskegon
+2018,33005,26121,48,Cheshire,Muskegon
+2018,26087,26121,314,Lapeer,Muskegon
+2018,26035,40135,872,Clare,Sequoyah
+2018,26035,38077,820,Clare,Richland
+2018,26087,50017,940,Lapeer,Orange
+2018,34009,26087,541,Cape May,Lapeer
+2018,26087,38021,441,Lapeer,Dickey
+2018,24023,26127,657,Garrett,Oceana
+2018,26127,23019,656,Oceana,Penobscot
+2018,13215,26127,322,Muscogee,Oceana
+2018,48167,26127,364,Galveston,Oceana
+2018,40135,26127,442,Sequoyah,Oceana
+2018,23017,26059,419,Oxford,Hillsdale
+2018,12077,26059,220,Liberty,Hillsdale
+2018,26059,46029,482,Hillsdale,Codington
+2018,26059,40047,102,Hillsdale,Garfield
+2018,46011,26059,224,Brookings,Hillsdale
+2018,37199,26117,266,Yancey,Montcalm
+2018,26117,15001,767,Montcalm,Hawaii
+2018,45033,26117,174,Dillon,Montcalm
+2018,25011,26089,192,Franklin,Leelanau
+2018,53063,26089,738,Spokane,Leelanau
+2018,26065,37193,228,Ingham,Wilkes
+2018,02068,26065,331,Denali,Ingham
+2018,26045,78020,822,Eaton,St. John
+2018,26045,05027,107,Eaton,Columbia
+2018,18171,27167,149,Warren,Wilkin
+2018,27167,02170,821,Wilkin,Matanuska-Susitna
+2018,24047,27167,495,Worcester,Wilkin
+2018,50013,27167,557,Grand Isle,Wilkin
+2018,47147,27167,831,Robertson,Wilkin
+2018,31017,27133,91,Brown,Rock
+2018,27133,22001,513,Rock,Acadia
+2018,60050,27133,192,Western,Rock
+2018,27001,08047,707,Aitkin,Gilpin
+2018,40037,27001,591,Creek,Aitkin
+2018,51540,27001,180,Charlottesville,Aitkin
+2018,27001,04023,34,Aitkin,Santa Cruz
+2018,27119,41059,408,Polk,Umatilla
+2018,12015,27119,322,Charlotte,Polk
+2018,78020,27119,932,St. John,Polk
+2018,27119,49015,391,Polk,Emery
+2018,36023,27057,764,Cortland,Hubbard
+2018,51680,27057,582,Lynchburg,Hubbard
+2018,27077,46005,361,Lake of the Woods,Beadle
+2018,27077,04021,45,Lake of the Woods,Pinal
+2018,27077,25003,661,Lake of the Woods,Berkshire
+2018,27077,45053,487,Lake of the Woods,Jasper
+2018,27077,45069,216,Lake of the Woods,Marlboro
+2018,27017,47113,715,Carlton,Madison
+2018,27017,42029,501,Carlton,Chester
+2018,27017,23021,834,Carlton,Piscataquis
+2018,27017,22095,403,Carlton,St. John the Baptist
+2018,53059,27017,93,Skamania,Carlton
+2018,26045,27031,341,Eaton,Cook
+2018,27031,22125,548,Cook,West Feliciana
+2018,27083,35049,990,Lyon,Santa Fe
+2018,27083,29033,223,Lyon,Carroll
+2018,27083,04019,517,Lyon,Pima
+2018,11001,27083,753,District of Columbia,Lyon
+2018,27115,32510,43,Pine,Carson City
+2018,27115,50003,565,Pine,Bennington
+2018,21177,27115,707,Muhlenberg,Pine
+2018,28081,38071,130,Lee,Ramsey
+2018,12015,28081,302,Charlotte,Lee
+2018,38043,28081,267,Kidder,Lee
+2018,04019,28081,956,Pima,Lee
+2018,54069,28153,158,Ohio,Wayne
+2018,38051,28153,215,McIntosh,Wayne
+2018,28153,55061,450,Wayne,Kewaunee
+2018,41031,28153,337,Jefferson,Wayne
+2018,36043,28123,152,Herkimer,Scott
+2018,28123,53009,183,Scott,Clallam
+2018,28123,08123,75,Scott,Weld
+2018,28123,19189,242,Scott,Winnebago
+2018,28123,22001,964,Scott,Acadia
+2018,46029,28059,586,Codington,Jackson
+2018,51680,28059,652,Lynchburg,Jackson
+2018,28059,23003,100,Jackson,Aroostook
+2018,12035,28059,866,Flagler,Jackson
+2018,28103,06087,335,Noxubee,Santa Cruz
+2018,28103,22003,449,Noxubee,Allen
+2018,46102,28103,566,Oglala Lakota,Noxubee
+2018,28103,22037,614,Noxubee,East Feliciana
+2018,28067,55061,799,Jones,Kewaunee
+2018,28067,33003,80,Jones,Carroll
+2018,28067,12077,266,Jones,Liberty
+2018,28067,53049,715,Jones,Pacific
+2018,28067,15003,880,Jones,Honolulu
+2018,28079,37151,160,Leake,Randolph
+2018,35031,28079,114,McKinley,Leake
+2018,28079,39047,161,Leake,Fayette
+2018,50013,28039,41,Grand Isle,George
+2018,28039,32007,468,George,Elko
+2018,28091,02170,476,Marion,Matanuska-Susitna
+2018,50011,28091,432,Franklin,Marion
+2018,28099,50003,99,Neshoba,Bennington
+2018,28099,54069,569,Neshoba,Ohio
+2018,27133,28099,812,Rock,Neshoba
+2018,18167,28099,130,Vigo,Neshoba
+2018,47113,28099,883,Madison,Neshoba
+2018,09005,29163,21,Litchfield,Pike
+2018,60040,29163,500,Swains Island,Pike
+2018,29163,16039,325,Pike,Elmore
+2018,29181,41037,934,Ripley,Lake
+2018,41011,29181,98,Coos,Ripley
+2018,29181,18167,195,Ripley,Vigo
+2018,39143,29181,200,Sandusky,Ripley
+2018,46102,29181,900,Oglala Lakota,Ripley
+2018,29025,60020,777,Caldwell,Manu'a
+2018,29025,50025,117,Caldwell,Windham
+2018,01133,29201,128,Winston,Scott
+2018,29201,40037,157,Scott,Creek
+2018,29201,39125,593,Scott,Paulding
+2018,29225,56043,968,Webster,Washakie
+2018,29225,06063,624,Webster,Plumas
+2018,29225,22085,413,Webster,Sabine
+2018,29225,21089,114,Webster,Greenup
+2018,29113,53061,976,Lincoln,Snohomish
+2018,29113,41039,11,Lincoln,Lane
+2018,29113,49015,816,Lincoln,Emery
+2018,29113,24037,252,Lincoln,St. Mary's
+2018,40047,29033,282,Garfield,Carroll
+2018,29033,56015,664,Carroll,Goshen
+2018,29207,28079,236,Stoddard,Leake
+2018,29207,08113,623,Stoddard,San Miguel
+2018,01027,29073,98,Clay,Gasconade
+2018,34023,29073,666,Middlesex,Gasconade
+2018,35031,29073,935,McKinley,Gasconade
+2018,29073,30061,706,Gasconade,Mineral
+2018,08099,29175,374,Prowers,Randolph
+2018,29175,04005,390,Randolph,Coconino
+2018,30089,24047,420,Sanders,Worcester
+2018,39053,30089,209,Gallia,Sanders
+2018,30089,49057,769,Sanders,Weber
+2018,30089,51117,431,Sanders,Mecklenburg
+2018,45023,30089,28,Chester,Sanders
+2018,12085,30001,314,Martin,Beaverhead
+2018,30001,12069,374,Beaverhead,Lake
+2018,16039,30001,759,Elmore,Beaverhead
+2018,69100,30047,979,Rota,Lake
+2018,21039,30047,748,Carlisle,Lake
+2018,27057,30047,464,Hubbard,Lake
+2018,30047,18049,184,Lake,Fulton
+2018,51127,30079,201,New Kent,Prairie
+2018,33015,30079,851,Rockingham,Prairie
+2018,47151,30079,572,Scott,Prairie
+2018,30079,41031,861,Prairie,Jefferson
+2018,30079,16031,878,Prairie,Cassia
+2018,30087,02130,89,Rosebud,Ketchikan Gateway
+2018,13085,30087,896,Dawson,Rosebud
+2018,46121,30087,905,Todd,Rosebud
+2018,30087,26035,560,Rosebud,Clare
+2018,60010,30061,54,Eastern,Mineral
+2018,72017,30061,658,Barceloneta,Mineral
+2018,55029,30061,228,Door,Mineral
+2018,50003,30061,197,Bennington,Mineral
+2018,30099,53023,146,Teton,Garfield
+2018,21165,30099,990,Menifee,Teton
+2018,02100,30057,475,Haines,Madison
+2018,30057,60050,42,Madison,Western
+2018,51087,30057,879,Henrico,Madison
+2018,30055,42085,862,McCone,Mercer
+2018,30055,25009,233,McCone,Essex
+2018,24013,30055,342,Carroll,McCone
+2018,30035,60050,681,Glacier,Western
+2018,47137,30035,902,Pickett,Glacier
+2018,17101,30035,18,Lawrence,Glacier
+2018,34031,31017,228,Passaic,Brown
+2018,22023,31017,265,Cameron,Brown
+2018,20087,31169,87,Jefferson,Thayer
+2018,31169,20087,22,Thayer,Jefferson
+2018,08123,31169,415,Weld,Thayer
+2018,31169,12117,323,Thayer,Seminole
+2018,16039,31169,434,Elmore,Thayer
+2018,31125,25021,872,Nance,Norfolk
+2018,18137,31125,782,Ripley,Nance
+2018,31125,41011,937,Nance,Coos
+2018,31125,22053,371,Nance,Jefferson Davis
+2018,45023,31125,920,Chester,Nance
+2018,31173,51127,472,Thurston,New Kent
+2018,31173,49055,907,Thurston,Wayne
+2018,31173,21231,948,Thurston,Wayne
+2018,35037,31173,239,Quay,Thurston
+2018,37023,31009,953,Burke,Blaine
+2018,31009,27001,110,Blaine,Aitkin
+2018,04011,31061,677,Greenlee,Franklin
+2018,49057,31061,686,Weber,Franklin
+2018,41059,31097,456,Umatilla,Johnson
+2018,31097,05035,824,Johnson,Crittenden
+2018,31043,16039,678,Dakota,Elmore
+2018,31043,24033,209,Dakota,Prince George's
+2018,50017,31043,663,Orange,Dakota
+2018,31035,38051,727,Clay,McIntosh
+2018,20025,31035,639,Clark,Clay
+2018,53067,31089,822,Thurston,Holt
+2018,51145,31089,809,Powhatan,Holt
+2018,31089,37175,80,Holt,Transylvania
+2018,02110,32029,351,Juneau,Storey
+2018,32029,22003,917,Storey,Allen
+2018,41011,32029,350,Coos,Storey
+2018,32005,60030,992,Douglas,Rose Island
+2018,13319,32005,419,Wilkinson,Douglas
+2018,32005,35049,70,Douglas,Santa Fe
+2018,18137,32005,150,Ripley,Douglas
+2018,32005,32027,32,Douglas,Pershing
+2018,32031,28081,509,Washoe,Lee
+2018,32031,40081,978,Washoe,Lincoln
+2018,32031,32510,777,Washoe,Carson City
+2018,32031,01005,193,Washoe,Barbour
+2018,32031,26051,597,Washoe,Gladwin
+2018,32009,37193,545,Esmeralda,Wilkes
+2018,32009,46102,589,Esmeralda,Oglala Lakota
+2018,37023,32009,121,Burke,Esmeralda
+2018,32009,39125,847,Esmeralda,Paulding
+2018,50015,32009,44,Lamoille,Esmeralda
+2018,41039,32027,606,Lane,Pershing
+2018,05027,32027,550,Columbia,Pershing
+2018,32027,46093,865,Pershing,Meade
+2018,32510,46029,405,Carson City,Codington
+2018,69110,32510,564,Saipan,Carson City
+2018,32510,13215,890,Carson City,Muscogee
+2018,17125,32510,400,Mason,Carson City
+2018,32017,49057,38,Lincoln,Weber
+2018,17081,32017,119,Jefferson,Lincoln
+2018,01045,32017,523,Dale,Lincoln
+2018,20025,32007,155,Clark,Elko
+2018,15001,32007,831,Hawaii,Elko
+2018,19017,32007,568,Bremer,Elko
+2018,32007,28091,714,Elko,Marion
+2018,32007,25011,230,Elko,Franklin
+2018,20125,32011,448,Montgomery,Eureka
+2018,25011,32011,544,Franklin,Eureka
+2018,32021,27057,955,Mineral,Hubbard
+2018,33007,32021,561,Coos,Mineral
+2018,42099,32021,633,Perry,Mineral
+2018,32021,04027,918,Mineral,Yuma
+2018,56023,32021,625,Lincoln,Mineral
+2018,33019,21165,967,Sullivan,Menifee
+2018,09011,33019,358,New London,Sullivan
+2018,51145,33019,619,Powhatan,Sullivan
+2018,54087,33019,729,Roane,Sullivan
+2018,41019,33009,100,Douglas,Grafton
+2018,33009,18049,980,Grafton,Fulton
+2018,46121,33005,222,Todd,Cheshire
+2018,48423,33005,492,Smith,Cheshire
+2018,33005,29207,236,Cheshire,Stoddard
+2018,06063,33005,902,Plumas,Cheshire
+2018,33007,54087,494,Coos,Roane
+2018,33007,39047,631,Coos,Fayette
+2018,33011,22003,485,Hillsborough,Allen
+2018,33011,21231,948,Hillsborough,Wayne
+2018,33011,37177,995,Hillsborough,Tyrrell
+2018,33011,36023,243,Hillsborough,Cortland
+2018,42041,33015,660,Cumberland,Rockingham
+2018,49049,33015,508,Utah,Rockingham
+2018,33017,26127,328,Strafford,Oceana
+2018,55047,33017,35,Green Lake,Strafford
+2018,12085,33017,535,Martin,Strafford
+2018,27133,33017,432,Rock,Strafford
+2018,34033,33017,125,Salem,Strafford
+2018,33001,18167,459,Belknap,Vigo
+2018,39047,33001,423,Fayette,Belknap
+2018,18049,33001,517,Fulton,Belknap
+2018,49049,33013,586,Utah,Merrimack
+2018,53061,33013,924,Snohomish,Merrimack
+2018,45083,33003,786,Spartanburg,Carroll
+2018,15009,33003,129,Maui,Carroll
+2018,78010,33003,372,St. Croix,Carroll
+2018,37057,33003,555,Davidson,Carroll
+2018,42033,33003,932,Clearfield,Carroll
+2018,28081,34021,360,Lee,Mercer
+2018,34021,25027,955,Mercer,Worcester
+2018,32009,34021,30,Esmeralda,Mercer
+2018,34021,51127,957,Mercer,New Kent
+2018,40067,34021,639,Jefferson,Mercer
+2018,16017,34025,96,Bonner,Monmouth
+2018,34025,56001,474,Monmouth,Albany
+2018,34025,22083,124,Monmouth,Richland
+2018,20125,34025,270,Montgomery,Monmouth
+2018,06063,34025,105,Plumas,Monmouth
+2018,34009,45065,672,Cape May,McCormick
+2018,26117,34009,600,Montcalm,Cape May
+2018,55061,34009,326,Kewaunee,Cape May
+2018,34041,02188,959,Warren,Northwest Arctic
+2018,24033,34041,434,Prince George's,Warren
+2018,34041,48061,505,Warren,Cameron
+2018,34041,22003,12,Warren,Allen
+2018,45071,34041,334,Newberry,Warren
+2018,34011,29225,251,Cumberland,Webster
+2018,34011,72073,979,Cumberland,Jayuya
+2018,34033,17111,392,Salem,McHenry
+2018,48471,34033,205,Walker,Salem
+2018,34033,02110,42,Salem,Juneau
+2018,34033,33015,108,Salem,Rockingham
+2018,34031,02198,132,Passaic,Prince of Wales-Hyder
+2018,30089,34031,142,Sanders,Passaic
+2018,72045,34031,908,Comerío,Passaic
+2018,49011,34031,733,Davis,Passaic
+2018,26035,34031,798,Clare,Passaic
+2018,34027,02013,512,Morris,Aleutians East
+2018,34027,12035,89,Morris,Flagler
+2018,45023,34027,834,Chester,Morris
+2018,33007,34027,480,Coos,Morris
+2018,16015,34023,211,Boise,Middlesex
+2018,34023,16005,313,Middlesex,Bannock
+2018,33001,34039,516,Belknap,Union
+2018,34033,34039,348,Salem,Union
+2018,34039,72045,951,Union,Comerío
+2018,34039,54003,837,Union,Berkeley
+2018,05027,34039,404,Columbia,Union
+2018,21189,35027,906,Owsley,Lincoln
+2018,35027,20001,537,Lincoln,Allen
+2018,35027,38005,568,Lincoln,Benson
+2018,35027,02013,452,Lincoln,Aleutians East
+2018,35027,08099,423,Lincoln,Prowers
+2018,04013,35061,678,Maricopa,Valencia
+2018,01045,35061,181,Dale,Valencia
+2018,54083,35049,238,Randolph,Santa Fe
+2018,35049,26035,735,Santa Fe,Clare
+2018,02230,35049,204,Skagway,Santa Fe
+2018,48329,35005,50,Midland,Chaves
+2018,35005,13319,884,Chaves,Wilkinson
+2018,35005,69110,464,Chaves,Saipan
+2018,35005,01005,613,Chaves,Barbour
+2018,35023,37151,940,Hidalgo,Randolph
+2018,46005,35023,742,Beadle,Hidalgo
+2018,35019,34009,382,Guadalupe,Cape May
+2018,39125,35019,593,Paulding,Guadalupe
+2018,35019,27057,839,Guadalupe,Hubbard
+2018,35019,30079,84,Guadalupe,Prairie
+2018,35019,55045,244,Guadalupe,Green
+2018,35047,78030,572,San Miguel,St. Thomas
+2018,19083,35047,203,Hardin,San Miguel
+2018,35047,06089,34,San Miguel,Shasta
+2018,04011,35047,485,Greenlee,San Miguel
+2018,41011,35047,901,Coos,San Miguel
+2018,40047,35017,535,Garfield,Grant
+2018,35017,38051,378,Grant,McIntosh
+2018,36043,35017,195,Herkimer,Grant
+2018,54069,35037,815,Ohio,Quay
+2018,51117,35037,118,Mecklenburg,Quay
+2018,28123,35037,687,Scott,Quay
+2018,53061,35037,480,Snohomish,Quay
+2018,35037,47023,720,Quay,Chester
+2018,35031,16027,415,McKinley,Canyon
+2018,35031,34041,348,McKinley,Warren
+2018,35031,06087,791,McKinley,Santa Cruz
+2018,25005,35031,942,Bristol,McKinley
+2018,35031,31169,621,McKinley,Thayer
+2018,02110,36047,703,Juneau,Kings
+2018,36047,16039,549,Kings,Elmore
+2018,36047,06101,491,Kings,Sutter
+2018,22125,36047,18,West Feliciana,Kings
+2018,08029,36105,467,Delta,Sullivan
+2018,50009,36105,377,Essex,Sullivan
+2018,36105,21039,886,Sullivan,Carlisle
+2018,36105,18165,84,Sullivan,Vermillion
+2018,38045,36001,392,LaMoure,Albany
+2018,36001,48423,79,Albany,Smith
+2018,36061,16027,798,New York,Canyon
+2018,09001,36061,614,Fairfield,New York
+2018,06031,36061,565,Kings,New York
+2018,60010,36061,248,Eastern,New York
+2018,36073,19149,421,Orleans,Plymouth
+2018,26127,36073,72,Oceana,Orleans
+2018,36073,44003,72,Orleans,Kent
+2018,56005,36095,601,Campbell,Schoharie
+2018,36095,06011,636,Schoharie,Colusa
+2018,22003,36095,186,Allen,Schoharie
+2018,36123,10005,215,Yates,Sussex
+2018,36123,49033,146,Yates,Rich
+2018,54025,36123,250,Greenbrier,Yates
+2018,36123,40135,882,Yates,Sequoyah
+2018,36123,54057,996,Yates,Mineral
+2018,34021,36023,227,Mercer,Cortland
+2018,36023,20133,369,Cortland,Neosho
+2018,50009,36043,906,Essex,Herkimer
+2018,25009,36043,681,Essex,Herkimer
+2018,36073,36043,19,Orleans,Herkimer
+2018,36043,47177,724,Herkimer,Warren
+2018,35031,36025,325,McKinley,Delaware
+2018,36025,39055,745,Delaware,Geauga
+2018,50015,36025,56,Lamoille,Delaware
+2018,39071,36025,289,Highland,Delaware
+2018,46023,36025,62,Charles Mix,Delaware
+2018,37175,29181,839,Transylvania,Ripley
+2018,24001,37175,893,Allegany,Transylvania
+2018,37175,50013,941,Transylvania,Grand Isle
+2018,22095,37175,144,St. John the Baptist,Transylvania
+2018,37175,02068,43,Transylvania,Denali
+2018,35019,37023,221,Guadalupe,Burke
+2018,37023,28081,264,Burke,Lee
+2018,37023,27017,950,Burke,Carlton
+2018,23031,37023,721,York,Burke
+2018,72057,37023,34,Guayama,Burke
+2018,37199,05007,704,Yancey,Benton
+2018,48329,37199,118,Midland,Yancey
+2018,37199,42019,435,Yancey,Butler
+2018,48061,37199,994,Cameron,Yancey
+2018,27119,37061,166,Polk,Duplin
+2018,37061,72009,107,Duplin,Aibonito
+2018,05035,37061,598,Crittenden,Duplin
+2018,37061,24013,900,Duplin,Carroll
+2018,22023,37177,209,Cameron,Tyrrell
+2018,28039,37177,757,George,Tyrrell
+2018,37177,72101,680,Tyrrell,Morovis
+2018,37177,33013,756,Tyrrell,Merrimack
+2018,24027,37177,163,Howard,Tyrrell
+2018,22001,37195,895,Acadia,Wilson
+2018,37195,49049,962,Wilson,Utah
+2018,37195,32027,558,Wilson,Pershing
+2018,37071,45051,497,Gaston,Horry
+2018,37071,55099,121,Gaston,Price
+2018,37071,49057,380,Gaston,Weber
+2018,09005,37071,1000,Litchfield,Gaston
+2018,37057,10001,887,Davidson,Kent
+2018,37057,31089,473,Davidson,Holt
+2018,54083,37057,471,Randolph,Davidson
+2018,60010,37057,510,Eastern,Davidson
+2018,37193,22001,537,Wilkes,Acadia
+2018,27167,37193,696,Wilkin,Wilkes
+2018,37193,48329,77,Wilkes,Midland
+2018,45065,37193,59,McCormick,Wilkes
+2018,41037,37151,488,Lake,Randolph
+2018,37151,51117,211,Randolph,Mecklenburg
+2018,69100,37151,766,Rota,Randolph
+2018,41013,37151,765,Crook,Randolph
+2018,38013,02198,93,Burke,Prince of Wales-Hyder
+2018,38013,04011,322,Burke,Greenlee
+2018,29163,38021,161,Pike,Dickey
+2018,11001,38021,406,District of Columbia,Dickey
+2018,33017,38071,867,Strafford,Ramsey
+2018,38071,56031,568,Ramsey,Platte
+2018,09007,38071,865,Middlesex,Ramsey
+2018,05027,38077,996,Columbia,Richland
+2018,31017,38077,368,Brown,Richland
+2018,38023,37177,373,Divide,Tyrrell
+2018,38023,53067,968,Divide,Thurston
+2018,38023,25007,15,Divide,Dukes
+2018,21231,38023,989,Wayne,Divide
+2018,45069,38023,509,Marlboro,Divide
+2018,38043,37023,958,Kidder,Burke
+2018,16029,38043,340,Caribou,Kidder
+2018,06051,38043,922,Mono,Kidder
+2018,38043,45071,251,Kidder,Newberry
+2018,56001,38009,447,Albany,Bottineau
+2018,38009,10005,822,Bottineau,Sussex
+2018,33015,38009,215,Rockingham,Bottineau
+2018,32007,38009,802,Elko,Bottineau
+2018,28079,38005,934,Leake,Benson
+2018,13095,38005,519,Dougherty,Benson
+2018,19155,38005,1000,Pottawattamie,Benson
+2018,47023,38005,526,Chester,Benson
+2018,05097,38045,781,Montgomery,LaMoure
+2018,32011,38045,688,Eureka,LaMoure
+2018,02068,38045,717,Denali,LaMoure
+2018,38045,20125,769,LaMoure,Montgomery
+2018,38051,26087,68,McIntosh,Lapeer
+2018,38005,38051,722,Benson,McIntosh
+2018,38051,46023,849,McIntosh,Charles Mix
+2018,21165,38051,530,Menifee,McIntosh
+2018,39119,32029,64,Muskingum,Storey
+2018,19103,39119,572,Johnson,Muskingum
+2018,48053,39119,667,Burnet,Muskingum
+2018,53009,39071,609,Clallam,Highland
+2018,48433,39071,809,Stonewall,Highland
+2018,21159,39071,928,Martin,Highland
+2018,39071,16075,373,Highland,Payette
+2018,39071,33017,779,Highland,Strafford
+2018,41039,39055,104,Lane,Geauga
+2018,39055,18049,244,Geauga,Fulton
+2018,21159,39055,937,Martin,Geauga
+2018,38023,39055,763,Divide,Geauga
+2018,39047,40075,639,Fayette,Kiowa
+2018,60050,39047,496,Western,Fayette
+2018,06051,39057,860,Mono,Greene
+2018,39057,48061,515,Greene,Cameron
+2018,37061,39057,815,Duplin,Greene
+2018,18137,39057,646,Ripley,Greene
+2018,39011,31173,16,Auglaize,Thurston
+2018,39011,02158,147,Auglaize,Kusilvak
+2018,39011,54105,910,Auglaize,Wirt
+2018,26059,39125,802,Hillsdale,Paulding
+2018,39125,28153,465,Paulding,Wayne
+2018,16037,39107,996,Custer,Mercer
+2018,04023,39107,979,Santa Cruz,Mercer
+2018,50011,39143,349,Franklin,Sandusky
+2018,39143,47177,877,Sandusky,Warren
+2018,39143,42083,543,Sandusky,McKean
+2018,39143,35027,801,Sandusky,Lincoln
+2018,39143,37177,779,Sandusky,Tyrrell
+2018,05027,39053,402,Columbia,Gallia
+2018,34023,39053,293,Middlesex,Gallia
+2018,39053,24001,921,Gallia,Allegany
+2018,50003,39053,980,Bennington,Gallia
+2018,40047,48329,901,Garfield,Midland
+2018,40047,26065,802,Garfield,Ingham
+2018,40067,12041,326,Jefferson,Gilchrist
+2018,28091,40067,183,Marion,Jefferson
+2018,04013,40111,215,Maricopa,Okmulgee
+2018,40111,32510,629,Okmulgee,Carson City
+2018,16017,40111,761,Bonner,Okmulgee
+2018,39053,40111,321,Gallia,Okmulgee
+2018,40059,34009,689,Harper,Cape May
+2018,33013,40059,703,Merrimack,Harper
+2018,78030,40059,379,St. Thomas,Harper
+2018,40081,46029,693,Lincoln,Codington
+2018,41019,40081,774,Douglas,Lincoln
+2018,40081,47113,232,Lincoln,Madison
+2018,35017,40081,289,Grant,Lincoln
+2018,40081,05101,162,Lincoln,Newton
+2018,05109,40135,328,Pike,Sequoyah
+2018,05101,40135,423,Newton,Sequoyah
+2018,02110,40135,932,Juneau,Sequoyah
+2018,56031,40135,882,Platte,Sequoyah
+2018,51540,40135,987,Charlottesville,Sequoyah
+2018,40025,19173,254,Cimarron,Taylor
+2018,40025,37151,99,Cimarron,Randolph
+2018,40025,53067,702,Cimarron,Thurston
+2018,40025,22127,132,Cimarron,Winn
+2018,40025,47125,13,Cimarron,Montgomery
+2018,54069,40153,113,Ohio,Woodward
+2018,40153,35047,43,Woodward,San Miguel
+2018,45007,40153,285,Anderson,Woodward
+2018,54007,40153,204,Braxton,Woodward
+2018,40153,56001,958,Woodward,Albany
+2018,40037,35017,337,Creek,Grant
+2018,40037,29113,133,Creek,Lincoln
+2018,40037,42083,959,Creek,McKean
+2018,06011,40075,429,Colusa,Kiowa
+2018,40075,53009,799,Kiowa,Clallam
+2018,50021,40075,654,Rutland,Kiowa
+2018,40075,42019,731,Kiowa,Butler
+2018,41027,31043,296,Hood River,Dakota
+2018,17059,41027,293,Gallatin,Hood River
+2018,37195,41027,302,Wilson,Hood River
+2018,41027,18093,140,Hood River,Lawrence
+2018,41027,28079,938,Hood River,Leake
+2018,41011,29113,199,Coos,Lincoln
+2018,41011,26089,106,Coos,Leelanau
+2018,41039,41011,75,Lane,Coos
+2018,02198,41011,515,Prince of Wales-Hyder,Coos
+2018,36025,41011,568,Delaware,Coos
+2018,32510,41061,851,Carson City,Union
+2018,23029,41061,658,Washington,Union
+2018,41061,39053,861,Union,Gallia
+2018,41061,06031,644,Union,Kings
+2018,46005,41061,708,Beadle,Union
+2018,41019,72045,67,Douglas,Comerío
+2018,41019,18081,352,Douglas,Johnson
+2018,41031,30099,517,Jefferson,Teton
+2018,29033,41031,524,Carroll,Jefferson
+2018,41031,23003,571,Jefferson,Aroostook
+2018,41031,36001,299,Jefferson,Albany
+2018,38005,41007,892,Benson,Clatsop
+2018,09013,41007,334,Tolland,Clatsop
+2018,04021,41007,572,Pinal,Clatsop
+2018,30047,41007,851,Lake,Clatsop
+2018,41007,21231,388,Clatsop,Wayne
+2018,41039,34021,317,Lane,Mercer
+2018,41039,49033,35,Lane,Rich
+2018,41039,06051,451,Lane,Mono
+2018,41059,56031,1000,Umatilla,Platte
+2018,30057,41059,687,Madison,Umatilla
+2018,41059,16031,352,Umatilla,Cassia
+2018,41013,10005,196,Crook,Sussex
+2018,41013,51181,419,Crook,Surry
+2018,41013,12095,420,Crook,Orange
+2018,41037,24031,35,Lake,Montgomery
+2018,41037,09009,897,Lake,New Haven
+2018,51181,42029,689,Surry,Chester
+2018,42029,01071,750,Chester,Jackson
+2018,42029,29181,306,Chester,Ripley
+2018,18137,42033,680,Ripley,Clearfield
+2018,31173,42033,404,Thurston,Clearfield
+2018,04012,42019,648,La Paz,Butler
+2018,41013,42019,488,Crook,Butler
+2018,42083,49033,602,McKean,Rich
+2018,42083,29225,975,McKean,Webster
+2018,41019,42083,699,Douglas,McKean
+2018,42083,24001,835,McKean,Allegany
+2018,42083,50001,183,McKean,Addison
+2018,53009,42073,539,Clallam,Lawrence
+2018,06065,42073,34,Riverside,Lawrence
+2018,31097,42073,213,Johnson,Lawrence
+2018,42073,18165,326,Lawrence,Vermillion
+2018,42099,56039,697,Perry,Teton
+2018,72057,42099,327,Guayama,Perry
+2018,42099,02013,227,Perry,Aleutians East
+2018,42099,56033,915,Perry,Sheridan
+2018,42041,19155,71,Cumberland,Pottawattamie
+2018,42041,37057,65,Cumberland,Davidson
+2018,18171,42041,327,Warren,Cumberland
+2018,29181,42041,490,Ripley,Cumberland
+2018,42041,21189,442,Cumberland,Owsley
+2018,20001,42117,16,Allen,Tioga
+2018,42117,53023,973,Tioga,Garfield
+2018,42117,41061,531,Tioga,Union
+2018,39107,42117,777,Mercer,Tioga
+2018,42085,45051,640,Mercer,Horry
+2018,08029,42085,437,Delta,Mercer
+2018,42085,05109,514,Mercer,Pike
+2018,32005,42085,759,Douglas,Mercer
+2018,47089,42129,293,Jefferson,Westmoreland
+2018,42129,21165,772,Westmoreland,Menifee
+2018,20025,42129,94,Clark,Westmoreland
+2018,42129,05051,289,Westmoreland,Garland
+2018,44003,56015,515,Kent,Goshen
+2018,44003,05051,100,Kent,Garland
+2018,49049,44003,230,Utah,Kent
+2018,44003,19017,939,Kent,Bremer
+2018,44003,04005,705,Kent,Coconino
+2018,47023,44005,68,Chester,Newport
+2018,13247,44005,33,Rockdale,Newport
+2018,44005,42073,288,Newport,Lawrence
+2018,19153,44005,1000,Polk,Newport
+2018,44001,26059,950,Bristol,Hillsdale
+2018,29181,44001,746,Ripley,Bristol
+2018,44001,48053,754,Bristol,Burnet
+2018,44009,16039,126,Washington,Elmore
+2018,44009,08029,49,Washington,Delta
+2018,44009,32029,513,Washington,Storey
+2018,44007,48125,213,Providence,Dickens
+2018,22127,44007,453,Winn,Providence
+2018,50011,44007,825,Franklin,Providence
+2018,44007,54025,782,Providence,Greenbrier
+2018,31169,45083,719,Thayer,Spartanburg
+2018,45083,17175,349,Spartanburg,Stark
+2018,45053,28091,932,Jasper,Marion
+2018,45053,12069,841,Jasper,Lake
+2018,72153,45065,876,Yauco,McCormick
+2018,45073,45065,892,Oconee,McCormick
+2018,37177,45065,883,Tyrrell,McCormick
+2018,45065,46035,204,McCormick,Davison
+2018,21165,45051,149,Menifee,Horry
+2018,45051,53023,80,Horry,Garfield
+2018,45051,41037,799,Horry,Lake
+2018,47147,45051,126,Robertson,Horry
+2018,56041,45071,772,Uinta,Newberry
+2018,15007,45071,878,Kauai,Newberry
+2018,45071,50019,80,Newberry,Orleans
+2018,45071,29225,785,Newberry,Webster
+2018,45023,48433,672,Chester,Stonewall
+2018,45023,35049,206,Chester,Santa Fe
+2018,33017,45023,762,Strafford,Chester
+2018,04023,45023,928,Santa Cruz,Chester
+2018,05007,45023,666,Benton,Chester
+2018,36123,45033,323,Yates,Dillon
+2018,45033,40025,549,Dillon,Cimarron
+2018,45033,18165,439,Dillon,Vermillion
+2018,45033,29225,550,Dillon,Webster
+2018,05019,45033,585,Clark,Dillon
+2018,45069,19153,927,Marlboro,Polk
+2018,25001,45069,59,Barnstable,Marlboro
+2018,01027,45069,863,Clay,Marlboro
+2018,45069,36095,172,Marlboro,Schoharie
+2018,45007,16031,539,Anderson,Cassia
+2018,48167,45007,304,Galveston,Anderson
+2018,13085,45007,777,Dawson,Anderson
+2018,20087,45007,137,Jefferson,Anderson
+2018,56043,45073,984,Washakie,Oconee
+2018,23029,45073,973,Washington,Oconee
+2018,08057,45073,295,Jackson,Oconee
+2018,54057,45073,396,Mineral,Oconee
+2018,41013,45073,167,Crook,Oconee
+2018,46102,72045,81,Oglala Lakota,Comerío
+2018,46102,15003,867,Oglala Lakota,Honolulu
+2018,54007,46093,662,Braxton,Meade
+2018,46093,45033,116,Meade,Dillon
+2018,34031,46035,986,Passaic,Davison
+2018,46035,29207,862,Davison,Stoddard
+2018,46035,22037,166,Davison,East Feliciana
+2018,46023,09007,407,Charles Mix,Middlesex
+2018,53037,46023,232,Kittitas,Charles Mix
+2018,72009,46023,362,Aibonito,Charles Mix
+2018,40081,46005,617,Lincoln,Beadle
+2018,46005,35023,424,Beadle,Hidalgo
+2018,30061,46063,80,Mineral,Harding
+2018,46063,51540,318,Harding,Charlottesville
+2018,23027,46063,65,Waldo,Harding
+2018,06063,46063,313,Plumas,Harding
+2018,46029,20209,722,Codington,Wyandotte
+2018,46029,55099,103,Codington,Price
+2018,46029,22125,775,Codington,West Feliciana
+2018,46029,34023,542,Codington,Middlesex
+2018,46011,40025,25,Brookings,Cimarron
+2018,46011,13115,733,Brookings,Floyd
+2018,56033,46011,878,Sheridan,Brookings
+2018,46011,30079,765,Brookings,Prairie
+2018,46011,72153,961,Brookings,Yauco
+2018,28123,46031,576,Scott,Corson
+2018,72009,46031,521,Aibonito,Corson
+2018,29073,46031,683,Gasconade,Corson
+2018,09007,46031,713,Middlesex,Corson
+2018,19149,46121,386,Plymouth,Todd
+2018,46121,27031,860,Todd,Cook
+2018,08057,46121,775,Jackson,Todd
+2018,30087,47147,24,Rosebud,Robertson
+2018,47147,37175,453,Robertson,Transylvania
+2018,47147,51680,320,Robertson,Lynchburg
+2018,50017,47147,353,Orange,Robertson
+2018,47157,01133,468,Shelby,Winston
+2018,47157,22125,329,Shelby,West Feliciana
+2018,47157,05019,535,Shelby,Clark
+2018,55081,47157,593,Monroe,Shelby
+2018,51127,47157,88,New Kent,Shelby
+2018,47151,42083,671,Scott,McKean
+2018,47151,42073,907,Scott,Lawrence
+2018,21201,47151,743,Robertson,Scott
+2018,53009,47151,782,Clallam,Scott
+2018,47151,34027,415,Scott,Morris
+2018,47145,35047,883,Roane,San Miguel
+2018,23003,47145,361,Aroostook,Roane
+2018,47145,51183,225,Roane,Sussex
+2018,31097,47125,412,Johnson,Montgomery
+2018,05109,47125,72,Pike,Montgomery
+2018,16085,47125,202,Valley,Montgomery
+2018,47023,44005,597,Chester,Newport
+2018,47023,18049,997,Chester,Fulton
+2018,31169,47177,403,Thayer,Warren
+2018,47177,39055,425,Warren,Geauga
+2018,47137,08085,559,Pickett,Montrose
+2018,28059,47137,493,Jackson,Pickett
+2018,45073,47137,354,Oconee,Pickett
+2018,50021,47137,572,Rutland,Pickett
+2018,04012,47113,552,La Paz,Madison
+2018,47113,49057,745,Madison,Weber
+2018,47089,54025,164,Jefferson,Greenbrier
+2018,47089,34009,706,Jefferson,Cape May
+2018,27031,48053,246,Cook,Burnet
+2018,26051,48053,303,Gladwin,Burnet
+2018,40067,48329,976,Jefferson,Midland
+2018,48329,51540,87,Midland,Charlottesville
+2018,16037,48433,998,Custer,Stonewall
+2018,31017,48433,574,Brown,Stonewall
+2018,48423,48433,167,Smith,Stonewall
+2018,55099,48433,943,Price,Stonewall
+2018,04019,48385,716,Pima,Real
+2018,42099,48385,762,Perry,Real
+2018,38005,48385,898,Benson,Real
+2018,48385,26121,227,Real,Muskegon
+2018,48423,60010,900,Smith,Eastern
+2018,26059,48423,739,Hillsdale,Smith
+2018,13219,48471,348,Oconee,Walker
+2018,24037,48471,850,St. Mary's,Walker
+2018,48061,12041,222,Cameron,Gilchrist
+2018,48061,45071,541,Cameron,Newberry
+2018,48167,19153,912,Galveston,Polk
+2018,48221,48167,798,Hood,Galveston
+2018,48167,39047,369,Galveston,Fayette
+2018,20001,48167,259,Allen,Galveston
+2018,48125,18165,448,Dickens,Vermillion
+2018,22083,48125,607,Richland,Dickens
+2018,50025,48125,189,Windham,Dickens
+2018,08029,48221,54,Delta,Hood
+2018,29201,48221,325,Scott,Hood
+2018,37175,48221,606,Transylvania,Hood
+2018,48221,40067,418,Hood,Jefferson
+2018,41031,48221,82,Jefferson,Hood
+2018,49057,23031,75,Weber,York
+2018,49057,38051,94,Weber,McIntosh
+2018,49057,46035,150,Weber,Davison
+2018,49057,34011,529,Weber,Cumberland
+2018,55037,49011,393,Florence,Davis
+2018,19017,49011,532,Bremer,Davis
+2018,42073,49011,727,Lawrence,Davis
+2018,49049,12077,250,Utah,Liberty
+2018,49049,46011,128,Utah,Brookings
+2018,04009,49055,253,Graham,Wayne
+2018,78030,49055,698,St. Thomas,Wayne
+2018,29181,49055,363,Ripley,Wayne
+2018,36043,49055,959,Herkimer,Wayne
+2018,34011,49033,195,Cumberland,Rich
+2018,49033,38023,80,Rich,Divide
+2018,32510,49001,902,Carson City,Beaver
+2018,09011,49001,634,New London,Beaver
+2018,04009,49001,106,Graham,Beaver
+2018,49045,15001,902,Tooele,Hawaii
+2018,54003,49045,741,Berkeley,Tooele
+2018,49045,15003,232,Tooele,Honolulu
+2018,05019,49045,802,Clark,Tooele
+2018,49045,31125,610,Tooele,Nance
+2018,49031,16027,757,Piute,Canyon
+2018,49031,35023,324,Piute,Hidalgo
+2018,33005,49031,626,Cheshire,Piute
+2018,15003,49015,954,Honolulu,Emery
+2018,31017,49015,385,Brown,Emery
+2018,49015,50001,900,Emery,Addison
+2018,49015,27017,712,Emery,Carlton
+2018,49015,33007,77,Emery,Coos
+2018,49007,22095,131,Carbon,St. John the Baptist
+2018,49007,17081,984,Carbon,Jefferson
+2018,02158,50017,55,Kusilvak,Orange
+2018,50017,09015,771,Orange,Windham
+2018,50017,27167,890,Orange,Wilkin
+2018,42033,50001,224,Clearfield,Addison
+2018,50001,21113,692,Addison,Jessamine
+2018,48433,50001,387,Stonewall,Addison
+2018,33001,50009,730,Belknap,Essex
+2018,50009,06003,402,Essex,Alpine
+2018,60020,50015,489,Manu'a,Lamoille
+2018,50015,18093,732,Lamoille,Lawrence
+2018,41059,50015,41,Umatilla,Lamoille
+2018,50015,26065,393,Lamoille,Ingham
+2018,40025,50011,836,Cimarron,Franklin
+2018,50011,25003,311,Franklin,Berkshire
+2018,47147,50025,567,Robertson,Windham
+2018,06101,50025,360,Sutter,Windham
+2018,50025,32005,108,Windham,Douglas
+2018,50025,34027,133,Windham,Morris
+2018,50021,26035,134,Rutland,Clare
+2018,50021,16015,314,Rutland,Boise
+2018,50019,27167,938,Orleans,Wilkin
+2018,40111,50019,611,Okmulgee,Orleans
+2018,35005,50019,815,Chaves,Orleans
+2018,13319,50019,305,Wilkinson,Orleans
+2018,50003,21159,600,Bennington,Martin
+2018,17081,50003,302,Jefferson,Bennington
+2018,24001,50013,808,Allegany,Grand Isle
+2018,05035,50013,944,Crittenden,Grand Isle
+2018,27077,50013,27,Lake of the Woods,Grand Isle
+2018,49057,50013,491,Weber,Grand Isle
+2018,38045,51163,370,LaMoure,Rockbridge
+2018,51163,36105,64,Rockbridge,Sullivan
+2018,51163,17013,799,Rockbridge,Calhoun
+2018,50001,51163,614,Addison,Rockbridge
+2018,24033,51127,748,Prince George's,New Kent
+2018,53067,51127,89,Thurston,New Kent
+2018,51127,36061,332,New Kent,New York
+2018,10003,51181,840,New Castle,Surry
+2018,34039,51181,139,Union,Surry
+2018,51181,42019,259,Surry,Butler
+2018,51181,04013,488,Surry,Maricopa
+2018,51087,47145,991,Henrico,Roane
+2018,51087,28099,224,Henrico,Neshoba
+2018,51165,41059,971,Rockingham,Umatilla
+2018,51165,01111,920,Rockingham,Randolph
+2018,32027,51165,61,Pershing,Rockingham
+2018,48329,51165,727,Midland,Rockingham
+2018,51165,55037,96,Rockingham,Florence
+2018,45023,51183,294,Chester,Sussex
+2018,51183,55105,238,Sussex,Rock
+2018,13215,51183,686,Muscogee,Sussex
+2018,51183,47151,260,Sussex,Scott
+2018,27031,51183,888,Cook,Sussex
+2018,37175,51145,477,Transylvania,Powhatan
+2018,51145,54083,81,Powhatan,Randolph
+2018,51145,21177,225,Powhatan,Muhlenberg
+2018,51145,36025,92,Powhatan,Delaware
+2018,34041,51145,794,Warren,Powhatan
+2018,48061,51117,505,Cameron,Mecklenburg
+2018,30089,51117,48,Sanders,Mecklenburg
+2018,51117,51165,662,Mecklenburg,Rockingham
+2018,13247,51680,533,Rockdale,Lynchburg
+2018,51680,04009,796,Lynchburg,Graham
+2018,51680,34009,286,Lynchburg,Cape May
+2018,51680,40075,863,Lynchburg,Kiowa
+2018,51680,22083,618,Lynchburg,Richland
+2018,27017,51540,525,Carlton,Charlottesville
+2018,32031,51540,229,Washoe,Charlottesville
+2018,51540,72153,60,Charlottesville,Yauco
+2018,51540,20089,672,Charlottesville,Jewell
+2018,53059,29033,982,Skamania,Carroll
+2018,53059,46023,173,Skamania,Charles Mix
+2018,06101,53059,840,Sutter,Skamania
+2018,53023,23017,486,Garfield,Oxford
+2018,53023,37057,168,Garfield,Davidson
+2018,53023,29113,942,Garfield,Lincoln
+2018,53023,23017,341,Garfield,Oxford
+2018,53023,34009,817,Garfield,Cape May
+2018,53037,45053,857,Kittitas,Jasper
+2018,53037,25019,992,Kittitas,Nantucket
+2018,53037,55061,690,Kittitas,Kewaunee
+2018,53037,36043,475,Kittitas,Herkimer
+2018,51183,53063,844,Sussex,Spokane
+2018,53063,28081,960,Spokane,Lee
+2018,53063,50025,206,Spokane,Windham
+2018,53063,34031,463,Spokane,Passaic
+2018,39071,53063,835,Highland,Spokane
+2018,36095,53067,890,Schoharie,Thurston
+2018,53067,50019,193,Thurston,Orleans
+2018,33011,53067,769,Hillsborough,Thurston
+2018,53067,18081,936,Thurston,Johnson
+2018,53067,25019,568,Thurston,Nantucket
+2018,53069,72073,286,Wahkiakum,Jayuya
+2018,53023,53069,365,Garfield,Wahkiakum
+2018,53069,56039,929,Wahkiakum,Teton
+2018,53069,13187,520,Wahkiakum,Lumpkin
+2018,53035,23031,472,Kitsap,York
+2018,53035,60020,153,Kitsap,Manu'a
+2018,25021,53035,548,Norfolk,Kitsap
+2018,49055,53035,264,Wayne,Kitsap
+2018,53035,38045,162,Kitsap,LaMoure
+2018,53049,06091,726,Pacific,Sierra
+2018,29225,53049,434,Webster,Pacific
+2018,06089,53061,438,Shasta,Snohomish
+2018,53061,06065,259,Snohomish,Riverside
+2018,18165,53061,380,Vermillion,Snohomish
+2018,11001,53061,865,District of Columbia,Snohomish
+2018,53009,02130,527,Clallam,Ketchikan Gateway
+2018,33019,53009,735,Sullivan,Clallam
+2018,40059,53009,139,Harper,Clallam
+2018,54057,09009,470,Mineral,New Haven
+2018,37023,54057,128,Burke,Mineral
+2018,37023,54057,148,Burke,Mineral
+2018,29025,54051,660,Caldwell,Marshall
+2018,47145,54051,838,Roane,Marshall
+2018,33005,54051,682,Cheshire,Marshall
+2018,20209,54051,752,Wyandotte,Marshall
+2018,45071,54069,996,Newberry,Ohio
+2018,54069,45069,775,Ohio,Marlboro
+2018,32005,54069,485,Douglas,Ohio
+2018,56033,54003,947,Sheridan,Berkeley
+2018,54003,25021,558,Berkeley,Norfolk
+2018,54003,09013,684,Berkeley,Tolland
+2018,54003,28059,783,Berkeley,Jackson
+2018,54007,09009,975,Braxton,New Haven
+2018,26127,54007,603,Oceana,Braxton
+2018,32510,54007,851,Carson City,Braxton
+2018,54007,06063,396,Braxton,Plumas
+2018,54083,42073,449,Randolph,Lawrence
+2018,34021,54083,751,Mercer,Randolph
+2018,18165,54025,492,Vermillion,Greenbrier
+2018,72141,54025,270,Utuado,Greenbrier
+2018,54025,50019,494,Greenbrier,Orleans
+2018,54025,32011,721,Greenbrier,Eureka
+2018,54025,42085,640,Greenbrier,Mercer
+2018,54059,56001,334,Mingo,Albany
+2018,21231,54059,258,Wayne,Mingo
+2018,08069,54087,516,Larimer,Roane
+2018,08063,54087,998,Kit Carson,Roane
+2018,54087,24037,629,Roane,St. Mary's
+2018,06065,54087,530,Riverside,Roane
+2018,31061,54105,983,Franklin,Wirt
+2018,54105,24013,371,Wirt,Carroll
+2018,12015,54105,773,Charlotte,Wirt
+2018,27001,54105,364,Aitkin,Wirt
+2018,53063,54105,307,Spokane,Wirt
+2018,55078,49057,417,Menominee,Weber
+2018,17005,55078,603,Bond,Menominee
+2018,20089,55078,559,Jewell,Menominee
+2018,55078,50025,585,Menominee,Windham
+2018,41011,55029,921,Coos,Door
+2018,55029,55061,566,Door,Kewaunee
+2018,55029,08113,247,Door,San Miguel
+2018,55105,02068,276,Rock,Denali
+2018,55105,46063,335,Rock,Harding
+2018,55105,04009,345,Rock,Graham
+2018,55061,31035,202,Kewaunee,Clay
+2018,55061,24031,402,Kewaunee,Montgomery
+2018,55045,10001,268,Green,Kent
+2018,55045,23027,514,Green,Waldo
+2018,55045,31173,141,Green,Thurston
+2018,28059,55045,424,Jackson,Green
+2018,55045,34039,723,Green,Union
+2018,35027,55037,188,Lincoln,Florence
+2018,17013,55037,371,Calhoun,Florence
+2018,40153,55081,395,Woodward,Monroe
+2018,55081,49031,963,Monroe,Piute
+2018,55047,72017,387,Green Lake,Barceloneta
+2018,55047,01123,758,Green Lake,Tallapoosa
+2018,04013,55047,825,Maricopa,Green Lake
+2018,45007,55099,89,Anderson,Price
+2018,55099,41011,657,Price,Coos
+2018,55099,18027,141,Price,Daviess
+2018,09005,55099,702,Litchfield,Price
+2018,55023,04021,682,Crawford,Pinal
+2018,55023,50025,916,Crawford,Windham
+2018,26089,55023,654,Leelanau,Crawford
+2018,26059,55023,755,Hillsdale,Crawford
+2018,55023,17015,112,Crawford,Carroll
+2018,56015,56039,307,Goshen,Teton
+2018,56015,27167,757,Goshen,Wilkin
+2018,56015,39119,176,Goshen,Muskingum
+2018,16017,56001,387,Bonner,Albany
+2018,56001,30001,338,Albany,Beaverhead
+2018,47089,56025,363,Jefferson,Natrona
+2018,42129,56025,21,Westmoreland,Natrona
+2018,23031,56025,812,York,Natrona
+2018,01071,56043,454,Jackson,Washakie
+2018,56043,60030,994,Washakie,Rose Island
+2018,56043,16039,297,Washakie,Elmore
+2018,56023,53009,367,Lincoln,Clallam
+2018,54025,56023,478,Greenbrier,Lincoln
+2018,56023,46011,734,Lincoln,Brookings
+2018,56023,05051,605,Lincoln,Garland
+2018,40135,56039,487,Sequoyah,Teton
+2018,72123,56039,443,Salinas,Teton
+2018,56041,13215,939,Uinta,Muscogee
+2018,56041,55061,677,Uinta,Kewaunee
+2018,56033,47147,738,Sheridan,Robertson
+2018,09003,56033,591,Hartford,Sheridan
+2018,56033,47151,895,Sheridan,Scott
+2018,48329,56033,563,Midland,Sheridan
+2018,56005,32017,987,Campbell,Lincoln
+2018,41019,56005,109,Douglas,Campbell
+2018,56001,56005,912,Albany,Campbell
+2018,08069,56031,522,Larimer,Platte
+2018,56031,38077,955,Platte,Richland
+2018,17005,56031,317,Bond,Platte
+2018,56031,47089,922,Platte,Jefferson
+2018,60050,49007,317,Western,Carbon
+2018,33003,60050,834,Carroll,Western
+2018,60010,48053,325,Eastern,Burnet
+2018,28091,60010,862,Marion,Eastern
+2018,60010,51163,951,Eastern,Rockbridge
+2018,29175,60010,277,Randolph,Eastern
+2018,19055,60010,346,Delaware,Eastern
+2018,51183,60030,760,Sussex,Rose Island
+2018,60030,31043,802,Rose Island,Dakota
+2018,60030,47113,20,Rose Island,Madison
+2018,60030,16005,797,Rose Island,Bannock
+2018,60050,60040,768,Western,Swains Island
+2018,60040,47151,960,Swains Island,Scott
+2018,55081,60040,48,Monroe,Swains Island
+2018,60040,50003,89,Swains Island,Bennington
+2018,72045,60040,528,Comerío,Swains Island
+2018,22003,60020,816,Allen,Manu'a
+2018,46063,60020,73,Harding,Manu'a
+2018,60020,16037,136,Manu'a,Custer
+2018,56025,60020,150,Natrona,Manu'a
+2018,60020,40153,938,Manu'a,Woodward
+2018,66010,72045,972,Guam,Comerío
+2018,66010,12087,333,Guam,Monroe
+2018,66010,41039,58,Guam,Lane
+2018,23017,66010,202,Oxford,Guam
+2018,66010,16027,95,Guam,Canyon
+2018,69110,29207,299,Saipan,Stoddard
+2018,27017,69110,835,Carlton,Saipan
+2018,69110,50009,937,Saipan,Essex
+2018,34009,69085,758,Cape May,Northern Islands
+2018,69085,53059,76,Northern Islands,Skamania
+2018,22127,69100,365,Winn,Rota
+2018,69120,69100,482,Tinian,Rota
+2018,17081,69100,127,Jefferson,Rota
+2018,32011,69100,166,Eureka,Rota
+2018,42073,69120,664,Lawrence,Tinian
+2018,05097,69120,42,Montgomery,Tinian
+2018,69120,46029,573,Tinian,Codington
+2018,41007,72079,115,Clatsop,Lajas
+2018,45073,72079,878,Oconee,Lajas
+2018,48385,72101,145,Real,Morovis
+2018,19055,72101,271,Delaware,Morovis
+2018,72073,47145,243,Jayuya,Roane
+2018,40135,72073,329,Sequoyah,Jayuya
+2018,72073,46035,281,Jayuya,Davison
+2018,04019,72057,995,Pima,Guayama
+2018,30001,72057,757,Beaverhead,Guayama
+2018,04021,72057,682,Pinal,Guayama
+2018,33017,72153,15,Strafford,Yauco
+2018,10005,72153,205,Sussex,Yauco
+2018,66010,72153,778,Guam,Yauco
+2018,72153,41019,843,Yauco,Douglas
+2018,21165,72153,318,Menifee,Yauco
+2018,72017,26065,179,Barceloneta,Ingham
+2018,72017,31017,529,Barceloneta,Brown
+2018,09013,72017,938,Tolland,Barceloneta
+2018,55078,72017,696,Menominee,Barceloneta
+2018,72017,02198,350,Barceloneta,Prince of Wales-Hyder
+2018,72141,35017,189,Utuado,Grant
+2018,19149,72141,468,Plymouth,Utuado
+2018,72141,50003,841,Utuado,Bennington
+2018,17059,72045,82,Gallatin,Comerío
+2018,72045,45033,745,Comerío,Dillon
+2018,34031,72045,150,Passaic,Comerío
+2018,72045,32005,907,Comerío,Douglas
+2018,04015,72123,775,Mohave,Salinas
+2018,37177,72123,447,Tyrrell,Salinas
+2018,40111,72009,912,Okmulgee,Aibonito
+2018,51680,72009,316,Lynchburg,Aibonito
+2018,05109,72009,773,Pike,Aibonito
+2018,48221,78030,751,Hood,St. Thomas
+2018,78030,36061,792,St. Thomas,New York
+2018,78030,18049,270,St. Thomas,Fulton
+2018,55029,78030,902,Door,St. Thomas
+2018,78010,15009,119,St. Croix,Maui
+2018,22023,78010,602,Cameron,St. Croix
+2018,78010,39055,489,St. Croix,Geauga
+2018,33015,78020,994,Rockingham,St. John
+2018,78020,32011,292,St. John,Eureka
+2018,78020,53049,702,St. John,Pacific
+2018,50017,78020,240,Orange,St. John
