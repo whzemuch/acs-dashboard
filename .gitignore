@@ -13,7 +13,7 @@ dist-ssr
 *.local
 
 # Editor directories and files
-src/temp/*
+temp/*
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -23,3 +23,5 @@ src/temp/*
 *.njsproj
 *.sln
 *.sw?
+# Shapefiles
+public/data/nhgis0001_shapefile_tl2020_us_county_2020/*

@@ -1,0 +1,1720 @@
+year,origin_geoid,dest_geoid,flow,origin_name,dest_name
+2020,40021,01073,619,Cherokee County,Jefferson County
+2020,01073,33009,335,Jefferson County,Grafton County
+2020,01033,21053,546,Colbert County,Clinton County
+2020,18053,01033,489,Grant County,Colbert County
+2020,01033,19129,320,Colbert County,Mills County
+2020,01033,36025,763,Colbert County,Delaware County
+2020,41071,01009,91,Yamhill County,Blount County
+2020,01009,10003,943,Blount County,New Castle County
+2020,01009,51083,955,Blount County,Halifax County
+2020,17085,01009,145,Jo Daviess County,Blount County
+2020,19125,01019,124,Marion County,Cherokee County
+2020,10001,01019,646,Kent County,Cherokee County
+2020,13299,01019,656,Ware County,Cherokee County
+2020,01019,47021,908,Cherokee County,Cheatham County
+2020,51790,01091,935,Staunton city,Marengo County
+2020,50017,01091,452,Orange County,Marengo County
+2020,25017,01091,146,Middlesex County,Marengo County
+2020,51115,01091,517,Mathews County,Marengo County
+2020,01081,34023,283,Lee County,Middlesex County
+2020,01081,12027,920,Lee County,DeSoto County
+2020,01081,33009,378,Lee County,Grafton County
+2020,01123,08031,933,Tallapoosa County,Denver County
+2020,01123,44009,809,Tallapoosa County,Washington County
+2020,47147,01123,647,Robertson County,Tallapoosa County
+2020,40133,01011,326,Seminole County,Bullock County
+2020,01011,56003,450,Bullock County,Big Horn County
+2020,40107,01011,127,Okfuskee County,Bullock County
+2020,01011,22123,220,Bullock County,West Carroll Parish
+2020,01129,28107,516,Washington County,Panola County
+2020,55037,01129,267,Florence County,Washington County
+2020,01129,20021,184,Washington County,Cherokee County
+2020,01129,34007,278,Washington County,Camden County
+2020,01025,32005,658,Clarke County,Douglas County
+2020,02110,01025,83,Juneau City and Borough,Clarke County
+2020,02275,13261,603,Wrangell City and Borough,Sumter County
+2020,18135,02275,347,Randolph County,Wrangell City and Borough
+2020,35023,02150,353,Hidalgo County,Kodiak Island Borough
+2020,02150,34033,49,Kodiak Island Borough,Salem County
+2020,02198,31089,11,Prince of Wales-Hyder Census Area,Holt County
+2020,02198,40091,487,Prince of Wales-Hyder Census Area,McIntosh County
+2020,02198,54027,620,Prince of Wales-Hyder Census Area,Hampshire County
+2020,42011,02164,559,Berks County,Lake and Peninsula Borough
+2020,27045,02164,917,Fillmore County,Lake and Peninsula Borough
+2020,02110,02164,561,Juneau City and Borough,Lake and Peninsula Borough
+2020,02070,50011,545,Dillingham Census Area,Franklin County
+2020,33011,02070,961,Hillsborough County,Dillingham Census Area
+2020,47147,02070,190,Robertson County,Dillingham Census Area
+2020,02070,34023,108,Dillingham Census Area,Middlesex County
+2020,02090,22123,644,Fairbanks North Star Borough,West Carroll Parish
+2020,02090,36001,681,Fairbanks North Star Borough,Albany County
+2020,02090,12011,570,Fairbanks North Star Borough,Broward County
+2020,02282,32029,779,Yakutat City and Borough,Storey County
+2020,02282,08023,451,Yakutat City and Borough,Costilla County
+2020,24035,02282,802,Queen Anne's County,Yakutat City and Borough
+2020,02282,02090,870,Yakutat City and Borough,Fairbanks North Star Borough
+2020,02282,42091,187,Yakutat City and Borough,Montgomery County
+2020,02220,28021,751,Sitka City and Borough,Claiborne County
+2020,02220,47021,644,Sitka City and Borough,Cheatham County
+2020,46137,02220,735,Ziebach County,Sitka City and Borough
+2020,35028,02220,986,Los Alamos County,Sitka City and Borough
+2020,02110,36097,628,Juneau City and Borough,Schuyler County
+2020,12011,02110,154,Broward County,Juneau City and Borough
+2020,39153,02110,246,Summit County,Juneau City and Borough
+2020,02013,50011,224,Aleutians East Borough,Franklin County
+2020,06027,02013,36,Inyo County,Aleutians East Borough
+2020,04017,51105,272,Navajo County,Lee County
+2020,50025,04017,637,Windham County,Navajo County
+2020,04021,17095,517,Pinal County,Knox County
+2020,05129,04021,83,Searcy County,Pinal County
+2020,04021,27053,60,Pinal County,Hennepin County
+2020,04021,41063,647,Pinal County,Wallowa County
+2020,28021,04001,820,Claiborne County,Apache County
+2020,72067,04001,46,Hormigueros Municipio,Apache County
+2020,21089,04001,102,Greenup County,Apache County
+2020,32017,04001,136,Lincoln County,Apache County
+2020,04025,72059,878,Yavapai County,Guayanilla Municipio
+2020,08115,04025,375,Sedgwick County,Yavapai County
+2020,50027,04011,199,Windsor County,Greenlee County
+2020,04011,22117,548,Greenlee County,Washington Parish
+2020,04011,54039,829,Greenlee County,Kanawha County
+2020,04011,40133,922,Greenlee County,Seminole County
+2020,04011,35023,178,Greenlee County,Hidalgo County
+2020,04015,39045,891,Mohave County,Fairfield County
+2020,04015,37091,728,Mohave County,Hertford County
+2020,28037,04015,471,Franklin County,Mohave County
+2020,44009,04015,577,Washington County,Mohave County
+2020,04015,23027,264,Mohave County,Waldo County
+2020,04005,08103,961,Coconino County,Rio Blanco County
+2020,13105,04005,890,Elbert County,Coconino County
+2020,12129,04005,733,Wakulla County,Coconino County
+2020,04003,37091,699,Cochise County,Hertford County
+2020,04003,56027,970,Cochise County,Niobrara County
+2020,35049,04003,18,Santa Fe County,Cochise County
+2020,04003,45007,176,Cochise County,Anderson County
+2020,41043,04027,758,Linn County,Yuma County
+2020,30027,04027,697,Fergus County,Yuma County
+2020,04027,09003,303,Yuma County,Hartford County
+2020,04027,36101,552,Yuma County,Steuben County
+2020,04009,39037,778,Graham County,Darke County
+2020,42081,04009,31,Lycoming County,Graham County
+2020,55037,04009,141,Florence County,Graham County
+2020,05009,32029,877,Boone County,Storey County
+2020,05009,24019,692,Boone County,Dorchester County
+2020,05009,05127,636,Boone County,Scott County
+2020,09001,05127,802,Fairfield County,Scott County
+2020,05127,31001,131,Scott County,Adams County
+2020,05021,41071,79,Clay County,Yamhill County
+2020,05021,40021,371,Clay County,Cherokee County
+2020,24001,05021,337,Allegany County,Clay County
+2020,05021,04009,628,Clay County,Graham County
+2020,05001,39037,466,Arkansas County,Darke County
+2020,05001,53027,990,Arkansas County,Grays Harbor County
+2020,05071,38095,496,Johnson County,Towner County
+2020,05071,28107,39,Johnson County,Panola County
+2020,05123,34011,156,St. Francis County,Cumberland County
+2020,01019,05123,412,Cherokee County,St. Francis County
+2020,05123,40101,75,St. Francis County,Muskogee County
+2020,36097,05123,968,Schuyler County,St. Francis County
+2020,05057,04005,461,Hempstead County,Coconino County
+2020,05057,39153,688,Hempstead County,Summit County
+2020,13105,05057,442,Elbert County,Hempstead County
+2020,05057,38065,553,Hempstead County,Oliver County
+2020,05025,19169,533,Cleveland County,Story County
+2020,35031,05025,469,McKinley County,Cleveland County
+2020,19129,05025,877,Mills County,Cleveland County
+2020,05025,44001,668,Cleveland County,Bristol County
+2020,30053,05139,893,Lincoln County,Union County
+2020,05139,55009,192,Union County,Brown County
+2020,09001,05129,937,Fairfield County,Searcy County
+2020,05129,08023,143,Searcy County,Costilla County
+2020,20021,06001,138,Cherokee County,Alameda County
+2020,08031,06001,155,Denver County,Alameda County
+2020,29141,06001,911,Morgan County,Alameda County
+2020,06001,04025,908,Alameda County,Yavapai County
+2020,06011,45007,595,Colusa County,Anderson County
+2020,46093,06011,19,Meade County,Colusa County
+2020,39053,06069,511,Gallia County,San Benito County
+2020,06069,19125,466,San Benito County,Marion County
+2020,21111,06069,723,Jefferson County,San Benito County
+2020,48403,06069,203,Sabine County,San Benito County
+2020,06069,01081,920,San Benito County,Lee County
+2020,36113,06027,233,Warren County,Inyo County
+2020,04025,06027,400,Yavapai County,Inyo County
+2020,06027,39045,314,Inyo County,Fairfield County
+2020,38095,06027,318,Towner County,Inyo County
+2020,06027,31111,636,Inyo County,Lincoln County
+2020,06089,55099,526,Shasta County,Price County
+2020,06089,20107,991,Shasta County,Linn County
+2020,06089,48381,470,Shasta County,Randall County
+2020,50023,06105,370,Washington County,Trinity County
+2020,17061,06105,556,Greene County,Trinity County
+2020,06105,22105,304,Trinity County,Tangipahoa Parish
+2020,06105,49027,107,Trinity County,Millard County
+2020,33013,06075,929,Merrimack County,San Francisco County
+2020,06075,35001,626,San Francisco County,Bernalillo County
+2020,06075,26025,295,San Francisco County,Calhoun County
+2020,06075,27001,892,San Francisco County,Aitkin County
+2020,35001,06051,998,Bernalillo County,Mono County
+2020,06051,38025,940,Mono County,Dunn County
+2020,06051,31053,423,Mono County,Dodge County
+2020,06001,06093,292,Alameda County,Siskiyou County
+2020,06093,25027,355,Siskiyou County,Worcester County
+2020,12019,06093,43,Clay County,Siskiyou County
+2020,72067,06093,298,Hormigueros Municipio,Siskiyou County
+2020,04017,06093,404,Navajo County,Siskiyou County
+2020,06025,24019,1000,Imperial County,Dorchester County
+2020,32011,06025,234,Eureka County,Imperial County
+2020,06025,42019,328,Imperial County,Butler County
+2020,45089,06025,147,Williamsburg County,Imperial County
+2020,44005,06025,152,Newport County,Imperial County
+2020,08103,17021,371,Rio Blanco County,Christian County
+2020,08103,15007,315,Rio Blanco County,Kauai County
+2020,48411,08103,242,San Saba County,Rio Blanco County
+2020,08103,41063,305,Rio Blanco County,Wallowa County
+2020,08103,40095,250,Rio Blanco County,Marshall County
+2020,08115,56003,965,Sedgwick County,Big Horn County
+2020,39021,08115,809,Champaign County,Sedgwick County
+2020,08001,02090,939,Adams County,Fairbanks North Star Borough
+2020,06025,08001,676,Imperial County,Adams County
+2020,09013,08087,653,Tolland County,Morgan County
+2020,29095,08087,581,Jackson County,Morgan County
+2020,08087,22051,11,Morgan County,Jefferson Parish
+2020,21089,08087,952,Greenup County,Morgan County
+2020,08087,30089,110,Morgan County,Sanders County
+2020,21215,08011,352,Spencer County,Bent County
+2020,29081,08011,189,Harrison County,Bent County
+2020,08071,51145,761,Las Animas County,Powhatan County
+2020,08071,17095,218,Las Animas County,Knox County
+2020,16051,08031,515,Jefferson County,Denver County
+2020,08031,05009,289,Denver County,Boone County
+2020,23027,08031,719,Waldo County,Denver County
+2020,08031,36025,282,Denver County,Delaware County
+2020,30101,08031,437,Toole County,Denver County
+2020,27045,08023,200,Fillmore County,Costilla County
+2020,08023,12083,499,Costilla County,Marion County
+2020,08023,49027,411,Costilla County,Millard County
+2020,53027,08023,896,Grays Harbor County,Costilla County
+2020,08049,51105,348,Grand County,Lee County
+2020,24013,08049,562,Carroll County,Grand County
+2020,23003,08121,633,Aroostook County,Washington County
+2020,08121,08011,989,Washington County,Bent County
+2020,08121,51087,551,Washington County,Henrico County
+2020,01019,09003,472,Cherokee County,Hartford County
+2020,09003,19021,562,Hartford County,Buena Vista County
+2020,09011,56001,313,New London County,Albany County
+2020,37167,09011,440,Stanly County,New London County
+2020,13315,09011,347,Wilcox County,New London County
+2020,27135,09011,380,Roseau County,New London County
+2020,09001,12027,153,Fairfield County,DeSoto County
+2020,09001,54053,365,Fairfield County,Mason County
+2020,09015,04015,975,Windham County,Mohave County
+2020,32001,09015,135,Churchill County,Windham County
+2020,09015,18021,887,Windham County,Clay County
+2020,09005,24003,37,Litchfield County,Anne Arundel County
+2020,12075,09005,747,Levy County,Litchfield County
+2020,22105,09005,247,Tangipahoa Parish,Litchfield County
+2020,28025,09005,539,Clay County,Litchfield County
+2020,09011,09005,685,New London County,Litchfield County
+2020,09009,25001,440,New Haven County,Barnstable County
+2020,18145,09009,733,Shelby County,New Haven County
+2020,16075,09007,277,Payette County,Middlesex County
+2020,09007,72001,35,Middlesex County,Adjuntas Municipio
+2020,09007,19001,633,Middlesex County,Adair County
+2020,04005,09013,267,Coconino County,Tolland County
+2020,09013,18081,697,Tolland County,Johnson County
+2020,09013,51790,665,Tolland County,Staunton city
+2020,40071,09013,904,Kay County,Tolland County
+2020,34033,09013,897,Salem County,Tolland County
+2020,32031,10001,590,Washoe County,Kent County
+2020,45009,10001,55,Bamberg County,Kent County
+2020,10001,25005,510,Kent County,Bristol County
+2020,32005,10003,721,Douglas County,New Castle County
+2020,10003,51105,535,New Castle County,Lee County
+2020,10005,12123,514,Sussex County,Taylor County
+2020,10005,38065,819,Sussex County,Oliver County
+2020,10005,50027,434,Sussex County,Windsor County
+2020,11001,10005,456,District of Columbia,Sussex County
+2020,49045,11001,654,Tooele County,District of Columbia
+2020,12075,33003,630,Levy County,Carroll County
+2020,12075,30001,638,Levy County,Beaverhead County
+2020,12075,46035,922,Levy County,Davison County
+2020,12035,19021,340,Flagler County,Buena Vista County
+2020,51145,12035,536,Powhatan County,Flagler County
+2020,12035,53073,997,Flagler County,Whatcom County
+2020,05001,12035,51,Arkansas County,Flagler County
+2020,12009,53027,678,Brevard County,Grays Harbor County
+2020,50001,12009,864,Addison County,Brevard County
+2020,12009,49033,184,Brevard County,Rich County
+2020,12009,34033,476,Brevard County,Salem County
+2020,12019,30067,563,Clay County,Park County
+2020,47001,12019,607,Anderson County,Clay County
+2020,12019,25003,491,Clay County,Berkshire County
+2020,39037,12019,895,Darke County,Clay County
+2020,12091,25009,783,Okaloosa County,Essex County
+2020,13113,12091,27,Fayette County,Okaloosa County
+2020,36001,12091,461,Albany County,Okaloosa County
+2020,12091,08115,572,Okaloosa County,Sedgwick County
+2020,04015,12083,763,Mohave County,Marion County
+2020,12083,53031,124,Marion County,Jefferson County
+2020,12083,17081,977,Marion County,Jefferson County
+2020,39135,12123,49,Preble County,Taylor County
+2020,12123,49055,559,Taylor County,Wayne County
+2020,12123,05123,304,Taylor County,St. Francis County
+2020,36097,12123,77,Schuyler County,Taylor County
+2020,24039,12011,784,Somerset County,Broward County
+2020,12011,40071,734,Broward County,Kay County
+2020,55107,12011,356,Rusk County,Broward County
+2020,44003,12011,682,Kent County,Broward County
+2020,39001,12129,805,Adams County,Wakulla County
+2020,12129,53073,658,Wakulla County,Whatcom County
+2020,19001,12129,197,Adair County,Wakulla County
+2020,12129,02110,177,Wakulla County,Juneau City and Borough
+2020,12027,42081,638,DeSoto County,Lycoming County
+2020,54011,12027,789,Cabell County,DeSoto County
+2020,24039,12027,243,Somerset County,DeSoto County
+2020,12027,53067,439,DeSoto County,Thurston County
+2020,13159,54025,532,Jasper County,Greenbrier County
+2020,34037,13159,639,Sussex County,Jasper County
+2020,13315,23023,686,Wilcox County,Sagadahoc County
+2020,32029,13315,784,Storey County,Wilcox County
+2020,53053,13315,455,Pierce County,Wilcox County
+2020,11001,13315,244,District of Columbia,Wilcox County
+2020,29023,13261,403,Butler County,Sumter County
+2020,08087,13261,929,Morgan County,Sumter County
+2020,13113,10001,99,Fayette County,Kent County
+2020,13113,45089,839,Fayette County,Williamsburg County
+2020,06089,13113,486,Shasta County,Fayette County
+2020,37079,13113,376,Greene County,Fayette County
+2020,13113,24013,242,Fayette County,Carroll County
+2020,13191,32031,221,McIntosh County,Washoe County
+2020,06075,13191,817,San Francisco County,McIntosh County
+2020,13061,41017,983,Clay County,Deschutes County
+2020,56005,13061,778,Campbell County,Clay County
+2020,15005,13061,489,Kalawao County,Clay County
+2020,05139,13299,636,Union County,Ware County
+2020,20129,13299,741,Morton County,Ware County
+2020,50027,13105,446,Windsor County,Elbert County
+2020,13105,39009,762,Elbert County,Athens County
+2020,13105,30011,185,Elbert County,Carter County
+2020,13199,50019,421,Meriwether County,Orleans County
+2020,41061,13199,317,Union County,Meriwether County
+2020,13199,20095,51,Meriwether County,Kingman County
+2020,13287,26061,242,Turner County,Houghton County
+2020,05001,13287,21,Arkansas County,Turner County
+2020,55057,13287,810,Juneau County,Turner County
+2020,17125,13287,462,Mason County,Turner County
+2020,15003,04011,138,Honolulu County,Greenlee County
+2020,15003,37001,322,Honolulu County,Alamance County
+2020,08071,15003,239,Las Animas County,Honolulu County
+2020,15009,27037,381,Maui County,Dakota County
+2020,09011,15009,782,New London County,Maui County
+2020,15009,38039,736,Maui County,Griggs County
+2020,13191,15005,100,McIntosh County,Kalawao County
+2020,29091,15005,335,Howell County,Kalawao County
+2020,34017,15005,394,Hudson County,Kalawao County
+2020,15005,39025,739,Kalawao County,Clermont County
+2020,15005,08001,497,Kalawao County,Adams County
+2020,15001,11001,70,Hawaii County,District of Columbia
+2020,31135,15001,817,Perkins County,Hawaii County
+2020,42011,15001,85,Berks County,Hawaii County
+2020,44007,15001,478,Providence County,Hawaii County
+2020,45071,15007,529,Newberry County,Kauai County
+2020,15007,02013,554,Kauai County,Aleutians East Borough
+2020,15007,38083,759,Kauai County,Sheridan County
+2020,30067,15007,505,Park County,Kauai County
+2020,15007,45009,972,Kauai County,Bamberg County
+2020,16075,22073,217,Payette County,Ouachita Parish
+2020,42033,16075,368,Clearfield County,Payette County
+2020,22001,16075,427,Acadia Parish,Payette County
+2020,16075,17125,442,Payette County,Mason County
+2020,08115,16075,516,Sedgwick County,Payette County
+2020,36115,16049,615,Washington County,Idaho County
+2020,16049,12009,650,Idaho County,Brevard County
+2020,16049,56003,460,Idaho County,Big Horn County
+2020,16049,34003,793,Idaho County,Bergen County
+2020,16051,49043,35,Jefferson County,Summit County
+2020,29021,16051,897,Buchanan County,Jefferson County
+2020,16051,27025,997,Jefferson County,Chisago County
+2020,46063,16051,67,Harding County,Jefferson County
+2020,24003,16073,57,Anne Arundel County,Owyhee County
+2020,16073,26063,796,Owyhee County,Huron County
+2020,23023,16069,886,Sagadahoc County,Nez Perce County
+2020,02220,16069,430,Sitka City and Borough,Nez Perce County
+2020,16069,12009,80,Nez Perce County,Brevard County
+2020,47145,16081,991,Roane County,Teton County
+2020,16081,31145,889,Teton County,Red Willow County
+2020,41025,16009,184,Harney County,Benewah County
+2020,45079,16009,994,Richland County,Benewah County
+2020,16009,09015,171,Benewah County,Windham County
+2020,12035,16009,214,Flagler County,Benewah County
+2020,39045,16009,485,Fairfield County,Benewah County
+2020,16025,41025,76,Camas County,Harney County
+2020,16025,08001,924,Camas County,Adams County
+2020,35028,16025,706,Los Alamos County,Camas County
+2020,16017,29095,890,Bonner County,Jackson County
+2020,16017,54083,525,Bonner County,Randolph County
+2020,45071,16007,118,Newberry County,Bear Lake County
+2020,16007,29163,539,Bear Lake County,Pike County
+2020,17061,26045,616,Greene County,Eaton County
+2020,17061,24001,295,Greene County,Allegany County
+2020,17135,38095,796,Montgomery County,Towner County
+2020,13159,17135,243,Jasper County,Montgomery County
+2020,16051,17135,200,Jefferson County,Montgomery County
+2020,17135,35039,734,Montgomery County,Rio Arriba County
+2020,40057,17125,75,Harmon County,Mason County
+2020,41061,17125,359,Union County,Mason County
+2020,25005,17125,453,Bristol County,Mason County
+2020,17125,12019,183,Mason County,Clay County
+2020,17125,30067,602,Mason County,Park County
+2020,17095,72153,890,Knox County,Yauco Municipio
+2020,17095,26001,326,Knox County,Alcona County
+2020,17095,37107,424,Knox County,Lenoir County
+2020,72009,17095,74,Aibonito Municipio,Knox County
+2020,17085,18045,727,Jo Daviess County,Fountain County
+2020,51163,17085,464,Rockbridge County,Jo Daviess County
+2020,49017,17085,269,Garfield County,Jo Daviess County
+2020,17085,47045,765,Jo Daviess County,Dyer County
+2020,17081,35017,774,Jefferson County,Grant County
+2020,17081,28057,712,Jefferson County,Itawamba County
+2020,17181,41017,269,Union County,Deschutes County
+2020,49033,17181,913,Rich County,Union County
+2020,17181,22033,637,Union County,East Baton Rouge Parish
+2020,41063,17181,998,Wallowa County,Union County
+2020,17091,29133,38,Kankakee County,Mississippi County
+2020,13199,17091,429,Meriwether County,Kankakee County
+2020,08087,17021,68,Morgan County,Christian County
+2020,17021,42129,266,Christian County,Westmoreland County
+2020,17021,16025,978,Christian County,Camas County
+2020,19001,17021,769,Adair County,Christian County
+2020,26063,17001,443,Huron County,Adams County
+2020,17001,31021,875,Adams County,Burt County
+2020,32029,18081,97,Storey County,Johnson County
+2020,18081,01011,539,Johnson County,Bullock County
+2020,42025,18081,157,Carbon County,Johnson County
+2020,18045,09015,173,Fountain County,Windham County
+2020,18089,18045,481,Lake County,Fountain County
+2020,45083,18045,222,Spartanburg County,Fountain County
+2020,72067,18111,545,Hormigueros Municipio,Newton County
+2020,29141,18111,990,Morgan County,Newton County
+2020,16069,18145,889,Nez Perce County,Shelby County
+2020,28045,18145,736,Hancock County,Shelby County
+2020,26063,18145,726,Huron County,Shelby County
+2020,50005,18145,687,Caledonia County,Shelby County
+2020,41053,18001,273,Polk County,Adams County
+2020,49053,18001,428,Washington County,Adams County
+2020,56019,18001,246,Johnson County,Adams County
+2020,33011,18001,307,Hillsborough County,Adams County
+2020,18001,45053,80,Adams County,Jasper County
+2020,18053,19081,658,Grant County,Hancock County
+2020,18053,54083,200,Grant County,Randolph County
+2020,34033,18053,76,Salem County,Grant County
+2020,33007,18079,488,Coos County,Jennings County
+2020,18079,30027,138,Jennings County,Fergus County
+2020,40057,18135,422,Harmon County,Randolph County
+2020,18135,26025,55,Randolph County,Calhoun County
+2020,33007,18135,435,Coos County,Randolph County
+2020,38087,18021,401,Slope County,Clay County
+2020,18021,30073,95,Clay County,Pondera County
+2020,18021,55009,679,Clay County,Brown County
+2020,26001,18021,663,Alcona County,Clay County
+2020,18089,10001,109,Lake County,Kent County
+2020,18089,08031,269,Lake County,Denver County
+2020,53009,18089,508,Clallam County,Lake County
+2020,25023,19125,486,Plymouth County,Marion County
+2020,19125,46013,715,Marion County,Brown County
+2020,19081,41043,221,Hancock County,Linn County
+2020,56003,19081,930,Big Horn County,Hancock County
+2020,19081,29021,854,Hancock County,Buchanan County
+2020,19191,16075,819,Winneshiek County,Payette County
+2020,53061,19191,184,Snohomish County,Winneshiek County
+2020,47145,19037,719,Roane County,Chickasaw County
+2020,19037,51083,664,Chickasaw County,Halifax County
+2020,19195,23003,788,Worth County,Aroostook County
+2020,36097,19195,449,Schuyler County,Worth County
+2020,19169,06001,297,Story County,Alameda County
+2020,19169,25025,577,Story County,Suffolk County
+2020,19169,26025,385,Story County,Calhoun County
+2020,19169,25017,890,Story County,Middlesex County
+2020,37091,19129,526,Hertford County,Mills County
+2020,19129,41071,415,Mills County,Yamhill County
+2020,19129,04027,232,Mills County,Yuma County
+2020,45071,19085,183,Newberry County,Harrison County
+2020,19085,33015,80,Harrison County,Rockingham County
+2020,19085,22117,985,Harrison County,Washington Parish
+2020,19085,20209,624,Harrison County,Wyandotte County
+2020,06025,19021,405,Imperial County,Buena Vista County
+2020,19021,53067,761,Buena Vista County,Thurston County
+2020,19021,54025,956,Buena Vista County,Greenbrier County
+2020,01009,19001,230,Blount County,Adair County
+2020,16017,19001,761,Bonner County,Adair County
+2020,19001,02150,357,Adair County,Kodiak Island Borough
+2020,19001,56017,401,Adair County,Hot Springs County
+2020,19001,26025,930,Adair County,Calhoun County
+2020,04009,20061,83,Graham County,Geary County
+2020,20061,31089,466,Geary County,Holt County
+2020,33017,20061,861,Strafford County,Geary County
+2020,08023,20131,495,Costilla County,Nemaha County
+2020,30027,20131,275,Fergus County,Nemaha County
+2020,20131,21095,324,Nemaha County,Harlan County
+2020,29163,20131,449,Pike County,Nemaha County
+2020,20131,26057,500,Nemaha County,Gratiot County
+2020,47091,20129,656,Johnson County,Morton County
+2020,20129,04005,561,Morton County,Coconino County
+2020,20107,12019,639,Linn County,Clay County
+2020,20107,54083,99,Linn County,Randolph County
+2020,15003,20107,854,Honolulu County,Linn County
+2020,39153,20091,615,Summit County,Johnson County
+2020,01025,20091,643,Clarke County,Johnson County
+2020,20091,29081,301,Johnson County,Harrison County
+2020,20091,28037,55,Johnson County,Franklin County
+2020,20189,41043,916,Stevens County,Linn County
+2020,20189,10005,853,Stevens County,Sussex County
+2020,20189,40001,266,Stevens County,Adair County
+2020,20189,36025,907,Stevens County,Delaware County
+2020,51065,20209,702,Fluvanna County,Wyandotte County
+2020,20209,06105,584,Wyandotte County,Trinity County
+2020,35015,20209,701,Eddy County,Wyandotte County
+2020,12011,20209,269,Broward County,Wyandotte County
+2020,23001,20209,245,Androscoggin County,Wyandotte County
+2020,56035,20095,673,Sublette County,Kingman County
+2020,20095,55021,231,Kingman County,Columbia County
+2020,06089,20021,348,Shasta County,Cherokee County
+2020,20021,55037,751,Cherokee County,Florence County
+2020,23019,20021,696,Penobscot County,Cherokee County
+2020,37001,20001,585,Alamance County,Allen County
+2020,20001,21095,573,Allen County,Harlan County
+2020,20001,29163,320,Allen County,Pike County
+2020,28037,20001,332,Franklin County,Allen County
+2020,20001,53053,16,Allen County,Pierce County
+2020,19129,21089,636,Mills County,Greenup County
+2020,21089,17181,448,Greenup County,Union County
+2020,21089,30039,933,Greenup County,Granite County
+2020,24019,21089,945,Dorchester County,Greenup County
+2020,01123,21095,51,Tallapoosa County,Harlan County
+2020,28009,21095,71,Benton County,Harlan County
+2020,44007,21095,821,Providence County,Harlan County
+2020,26025,21095,273,Calhoun County,Harlan County
+2020,42011,21095,895,Berks County,Harlan County
+2020,21009,53009,576,Barren County,Clallam County
+2020,21009,72065,875,Barren County,Hatillo Municipio
+2020,21009,28001,607,Barren County,Adams County
+2020,17091,21009,765,Kankakee County,Barren County
+2020,21009,50017,522,Barren County,Orange County
+2020,21111,46127,910,Jefferson County,Union County
+2020,21111,09011,948,Jefferson County,New London County
+2020,41033,21111,945,Josephine County,Jefferson County
+2020,48381,21053,216,Randall County,Clinton County
+2020,16049,21053,32,Idaho County,Clinton County
+2020,21053,50017,701,Clinton County,Orange County
+2020,21053,37161,42,Clinton County,Rutherford County
+2020,20209,21129,577,Wyandotte County,Lee County
+2020,40001,21129,173,Adair County,Lee County
+2020,47137,21129,660,Pickett County,Lee County
+2020,21147,49045,551,McCreary County,Tooele County
+2020,21147,23019,42,McCreary County,Penobscot County
+2020,21147,11001,309,McCreary County,District of Columbia
+2020,21147,15009,937,McCreary County,Maui County
+2020,21147,26025,990,McCreary County,Calhoun County
+2020,56003,21021,783,Big Horn County,Boyle County
+2020,18145,21021,119,Shelby County,Boyle County
+2020,21021,29139,807,Boyle County,Montgomery County
+2020,48019,21021,704,Bandera County,Boyle County
+2020,21081,22117,607,Grant County,Washington Parish
+2020,51083,21081,502,Halifax County,Grant County
+2020,20001,21215,206,Allen County,Spencer County
+2020,21215,48019,783,Spencer County,Bandera County
+2020,50009,21215,29,Essex County,Spencer County
+2020,22105,24029,828,Tangipahoa Parish,Kent County
+2020,22105,50005,720,Tangipahoa Parish,Caledonia County
+2020,22105,72025,210,Tangipahoa Parish,Caguas Municipio
+2020,22025,22105,437,Catahoula Parish,Tangipahoa Parish
+2020,22105,05139,399,Tangipahoa Parish,Union County
+2020,22117,51145,828,Washington Parish,Powhatan County
+2020,02070,22117,471,Dillingham Census Area,Washington Parish
+2020,22001,51025,601,Acadia Parish,Brunswick County
+2020,22001,26025,724,Acadia Parish,Calhoun County
+2020,22001,27025,415,Acadia Parish,Chisago County
+2020,45079,22001,691,Richland County,Acadia Parish
+2020,22089,56017,936,St. Charles Parish,Hot Springs County
+2020,22089,27025,378,St. Charles Parish,Chisago County
+2020,22089,20107,857,St. Charles Parish,Linn County
+2020,22089,04021,349,St. Charles Parish,Pinal County
+2020,44005,22089,62,Newport County,St. Charles Parish
+2020,39021,22011,444,Champaign County,Beauregard Parish
+2020,22011,06011,131,Beauregard Parish,Colusa County
+2020,22011,39135,927,Beauregard Parish,Preble County
+2020,28107,22073,613,Panola County,Ouachita Parish
+2020,22073,06089,30,Ouachita Parish,Shasta County
+2020,21147,22073,850,McCreary County,Ouachita Parish
+2020,22033,23017,399,East Baton Rouge Parish,Oxford County
+2020,20209,22033,197,Wyandotte County,East Baton Rouge Parish
+2020,27009,22033,435,Benton County,East Baton Rouge Parish
+2020,22033,54083,772,East Baton Rouge Parish,Randolph County
+2020,22025,34031,620,Catahoula Parish,Passaic County
+2020,36097,22025,908,Schuyler County,Catahoula Parish
+2020,12129,22025,300,Wakulla County,Catahoula Parish
+2020,72001,22025,77,Adjuntas Municipio,Catahoula Parish
+2020,22025,28045,903,Catahoula Parish,Hancock County
+2020,31045,22051,591,Dawes County,Jefferson Parish
+2020,54039,22051,851,Kanawha County,Jefferson Parish
+2020,06105,22051,499,Trinity County,Jefferson Parish
+2020,36001,22051,302,Albany County,Jefferson Parish
+2020,56027,22051,950,Niobrara County,Jefferson Parish
+2020,22123,34031,711,West Carroll Parish,Passaic County
+2020,22123,19125,44,West Carroll Parish,Marion County
+2020,49043,22123,524,Summit County,West Carroll Parish
+2020,22123,02110,284,West Carroll Parish,Juneau City and Borough
+2020,04009,22123,82,Graham County,West Carroll Parish
+2020,23001,46129,65,Androscoggin County,Walworth County
+2020,23001,37079,261,Androscoggin County,Greene County
+2020,32005,23003,78,Douglas County,Aroostook County
+2020,23003,37107,391,Aroostook County,Lenoir County
+2020,23003,09001,187,Aroostook County,Fairfield County
+2020,49045,23003,353,Tooele County,Aroostook County
+2020,23003,31081,450,Aroostook County,Hamilton County
+2020,23011,49045,353,Kennebec County,Tooele County
+2020,23011,55069,655,Kennebec County,Lincoln County
+2020,05071,23011,260,Johnson County,Kennebec County
+2020,72001,23011,210,Adjuntas Municipio,Kennebec County
+2020,23011,19081,931,Kennebec County,Hancock County
+2020,23029,13191,207,Washington County,McIntosh County
+2020,23029,18135,80,Washington County,Randolph County
+2020,32017,23029,888,Lincoln County,Washington County
+2020,23027,13287,940,Waldo County,Turner County
+2020,31001,23027,269,Adams County,Waldo County
+2020,23027,20021,896,Waldo County,Cherokee County
+2020,26057,23023,720,Gratiot County,Sagadahoc County
+2020,01025,23023,358,Clarke County,Sagadahoc County
+2020,28025,23023,549,Clay County,Sagadahoc County
+2020,23023,06093,823,Sagadahoc County,Siskiyou County
+2020,23023,06051,11,Sagadahoc County,Mono County
+2020,30053,23017,213,Lincoln County,Oxford County
+2020,23017,23003,397,Oxford County,Aroostook County
+2020,50017,23019,500,Orange County,Penobscot County
+2020,40071,23019,494,Kay County,Penobscot County
+2020,23019,30025,185,Penobscot County,Fallon County
+2020,16075,23019,290,Payette County,Penobscot County
+2020,55037,23005,815,Florence County,Cumberland County
+2020,23005,29141,530,Cumberland County,Morgan County
+2020,17001,23005,206,Adams County,Cumberland County
+2020,05057,23031,840,Hempstead County,York County
+2020,28061,23031,509,Jasper County,York County
+2020,23031,19081,769,York County,Hancock County
+2020,32003,23031,741,Clark County,York County
+2020,24019,54063,832,Dorchester County,Monroe County
+2020,24019,13199,497,Dorchester County,Meriwether County
+2020,37091,24035,847,Hertford County,Queen Anne's County
+2020,47091,24035,455,Johnson County,Queen Anne's County
+2020,42129,24035,645,Westmoreland County,Queen Anne's County
+2020,24035,39009,864,Queen Anne's County,Athens County
+2020,24035,54083,462,Queen Anne's County,Randolph County
+2020,32033,24001,372,White Pine County,Allegany County
+2020,21215,24001,604,Spencer County,Allegany County
+2020,24039,56019,663,Somerset County,Johnson County
+2020,56017,24039,201,Hot Springs County,Somerset County
+2020,24039,48381,497,Somerset County,Randall County
+2020,02090,24039,68,Fairbanks North Star Borough,Somerset County
+2020,24039,56017,577,Somerset County,Hot Springs County
+2020,06105,24025,458,Trinity County,Harford County
+2020,44009,24025,933,Washington County,Harford County
+2020,24025,38095,223,Harford County,Towner County
+2020,48019,24025,508,Bandera County,Harford County
+2020,24025,53067,70,Harford County,Thurston County
+2020,24021,49055,807,Frederick County,Wayne County
+2020,05123,24021,978,St. Francis County,Frederick County
+2020,24021,47085,319,Frederick County,Humphreys County
+2020,24021,42019,823,Frederick County,Butler County
+2020,30027,24029,740,Fergus County,Kent County
+2020,24029,45079,641,Kent County,Richland County
+2020,24029,04011,57,Kent County,Greenlee County
+2020,24029,46127,94,Kent County,Union County
+2020,30039,24003,619,Granite County,Anne Arundel County
+2020,24001,24003,719,Allegany County,Anne Arundel County
+2020,16081,24045,884,Teton County,Wicomico County
+2020,24045,29009,860,Wicomico County,Barry County
+2020,24013,44009,731,Carroll County,Washington County
+2020,06075,24013,815,San Francisco County,Carroll County
+2020,24013,31045,430,Carroll County,Dawes County
+2020,24013,29141,284,Carroll County,Morgan County
+2020,56001,25019,500,Albany County,Nantucket County
+2020,25019,32031,447,Nantucket County,Washoe County
+2020,25023,21081,909,Plymouth County,Grant County
+2020,31135,25023,514,Perkins County,Plymouth County
+2020,40001,25023,206,Adair County,Plymouth County
+2020,47085,25023,244,Humphreys County,Plymouth County
+2020,42009,25023,634,Bedford County,Plymouth County
+2020,30101,25001,202,Toole County,Barnstable County
+2020,25001,01129,225,Barnstable County,Washington County
+2020,16069,25001,669,Nez Perce County,Barnstable County
+2020,36025,25025,789,Delaware County,Suffolk County
+2020,25025,01081,390,Suffolk County,Lee County
+2020,38083,25025,735,Sheridan County,Suffolk County
+2020,25025,53061,95,Suffolk County,Snohomish County
+2020,25025,42091,526,Suffolk County,Montgomery County
+2020,22051,25011,710,Jefferson Parish,Franklin County
+2020,17125,25011,534,Mason County,Franklin County
+2020,25011,47085,288,Franklin County,Humphreys County
+2020,05025,25011,412,Cleveland County,Franklin County
+2020,25011,06001,332,Franklin County,Alameda County
+2020,08001,25017,217,Adams County,Middlesex County
+2020,25017,35028,129,Middlesex County,Los Alamos County
+2020,25017,06093,297,Middlesex County,Siskiyou County
+2020,25017,40133,117,Middlesex County,Seminole County
+2020,25017,49043,747,Middlesex County,Summit County
+2020,25005,08031,771,Bristol County,Denver County
+2020,25005,02150,513,Bristol County,Kodiak Island Borough
+2020,26063,25005,408,Huron County,Bristol County
+2020,25005,42081,293,Bristol County,Lycoming County
+2020,25027,25005,907,Worcester County,Bristol County
+2020,26001,25003,894,Alcona County,Berkshire County
+2020,19037,25003,521,Chickasaw County,Berkshire County
+2020,26021,25027,990,Berrien County,Worcester County
+2020,04017,25027,39,Navajo County,Worcester County
+2020,25009,13287,155,Essex County,Turner County
+2020,25009,18021,676,Essex County,Clay County
+2020,26057,25009,603,Gratiot County,Essex County
+2020,25009,33003,897,Essex County,Carroll County
+2020,08031,26061,23,Denver County,Houghton County
+2020,26061,01033,975,Houghton County,Colbert County
+2020,40009,26061,119,Beckham County,Houghton County
+2020,26061,38035,100,Houghton County,Grand Forks County
+2020,49019,26061,178,Grand County,Houghton County
+2020,26001,05123,706,Alcona County,St. Francis County
+2020,26001,56011,220,Alcona County,Crook County
+2020,34031,26001,36,Passaic County,Alcona County
+2020,26045,48411,265,Eaton County,San Saba County
+2020,01129,26045,437,Washington County,Eaton County
+2020,26045,40021,356,Eaton County,Cherokee County
+2020,01019,26063,319,Cherokee County,Huron County
+2020,18053,26063,619,Grant County,Huron County
+2020,26063,41035,908,Huron County,Klamath County
+2020,26063,31079,747,Huron County,Hall County
+2020,20209,26037,809,Wyandotte County,Clinton County
+2020,13299,26037,399,Ware County,Clinton County
+2020,25025,26037,18,Suffolk County,Clinton County
+2020,45079,26057,624,Richland County,Gratiot County
+2020,26057,28057,904,Gratiot County,Itawamba County
+2020,13105,26057,322,Elbert County,Gratiot County
+2020,26057,19195,230,Gratiot County,Worth County
+2020,26057,28037,202,Gratiot County,Franklin County
+2020,26021,46109,878,Berrien County,Roberts County
+2020,26021,29139,507,Berrien County,Montgomery County
+2020,26021,19001,232,Berrien County,Adair County
+2020,26021,47021,54,Berrien County,Cheatham County
+2020,08071,26107,440,Las Animas County,Mecosta County
+2020,26107,51700,389,Mecosta County,Newport News city
+2020,26107,06051,391,Mecosta County,Mono County
+2020,26107,09001,984,Mecosta County,Fairfield County
+2020,26107,46093,443,Mecosta County,Meade County
+2020,41071,26009,715,Yamhill County,Antrim County
+2020,24013,26009,142,Carroll County,Antrim County
+2020,19129,26025,871,Mills County,Calhoun County
+2020,36051,26025,433,Livingston County,Calhoun County
+2020,41025,26025,215,Harney County,Calhoun County
+2020,35028,26025,169,Los Alamos County,Calhoun County
+2020,45071,27153,757,Newberry County,Todd County
+2020,10003,27153,253,New Castle County,Todd County
+2020,30089,27001,178,Sanders County,Aitkin County
+2020,27001,24025,882,Aitkin County,Harford County
+2020,32005,27001,340,Douglas County,Aitkin County
+2020,08023,27001,858,Costilla County,Aitkin County
+2020,24039,27001,495,Somerset County,Aitkin County
+2020,27053,21089,809,Hennepin County,Greenup County
+2020,05057,27053,931,Hempstead County,Hennepin County
+2020,22051,27053,474,Jefferson Parish,Hennepin County
+2020,29091,27045,296,Howell County,Fillmore County
+2020,17125,27045,693,Mason County,Fillmore County
+2020,27045,12011,802,Fillmore County,Broward County
+2020,27025,12083,362,Chisago County,Marion County
+2020,31081,27025,470,Hamilton County,Chisago County
+2020,12011,27025,475,Broward County,Chisago County
+2020,56035,27135,953,Sublette County,Roseau County
+2020,27135,18145,514,Roseau County,Shelby County
+2020,27021,32029,685,Cass County,Storey County
+2020,27021,31001,986,Cass County,Adams County
+2020,27037,04025,561,Dakota County,Yavapai County
+2020,27037,50011,942,Dakota County,Franklin County
+2020,23031,27037,209,York County,Dakota County
+2020,27037,56025,676,Dakota County,Natrona County
+2020,27037,21215,945,Dakota County,Spencer County
+2020,17181,27009,447,Union County,Benton County
+2020,06093,27009,184,Siskiyou County,Benton County
+2020,27009,34001,954,Benton County,Atlantic County
+2020,27009,55009,357,Benton County,Brown County
+2020,51145,27137,823,Powhatan County,St. Louis County
+2020,27137,34031,750,St. Louis County,Passaic County
+2020,29163,27137,502,Pike County,St. Louis County
+2020,30067,27137,228,Park County,St. Louis County
+2020,21053,28061,444,Clinton County,Jasper County
+2020,25009,28061,890,Essex County,Jasper County
+2020,13061,28061,837,Clay County,Jasper County
+2020,45089,28001,359,Williamsburg County,Adams County
+2020,56005,28001,733,Campbell County,Adams County
+2020,28045,13199,808,Hancock County,Meriwether County
+2020,28045,08103,778,Hancock County,Rio Blanco County
+2020,28045,26061,156,Hancock County,Houghton County
+2020,16051,28045,950,Jefferson County,Hancock County
+2020,28045,16075,439,Hancock County,Payette County
+2020,29091,28063,914,Howell County,Jefferson County
+2020,35023,28063,459,Hidalgo County,Jefferson County
+2020,42011,28063,115,Berks County,Jefferson County
+2020,51115,28063,817,Mathews County,Jefferson County
+2020,05009,28063,664,Boone County,Jefferson County
+2020,28037,48403,186,Franklin County,Sabine County
+2020,28037,55025,610,Franklin County,Dane County
+2020,28037,47147,136,Franklin County,Robertson County
+2020,28037,47045,206,Franklin County,Dyer County
+2020,41043,28057,94,Linn County,Itawamba County
+2020,50001,28057,108,Addison County,Itawamba County
+2020,28057,01129,69,Itawamba County,Washington County
+2020,53009,28057,850,Clallam County,Itawamba County
+2020,28057,32019,177,Itawamba County,Lyon County
+2020,28021,30039,265,Claiborne County,Granite County
+2020,28021,47085,397,Claiborne County,Humphreys County
+2020,28021,22051,306,Claiborne County,Jefferson Parish
+2020,28021,24021,375,Claiborne County,Frederick County
+2020,28107,17085,521,Panola County,Jo Daviess County
+2020,37045,28107,354,Cleveland County,Panola County
+2020,28107,42011,167,Panola County,Berks County
+2020,05021,28107,585,Clay County,Panola County
+2020,28009,16051,472,Benton County,Jefferson County
+2020,38039,28009,237,Griggs County,Benton County
+2020,12091,28009,190,Okaloosa County,Benton County
+2020,18045,28009,558,Fountain County,Benton County
+2020,72001,28009,432,Adjuntas Municipio,Benton County
+2020,40001,28025,371,Adair County,Clay County
+2020,28025,39009,572,Clay County,Athens County
+2020,09005,28025,355,Litchfield County,Clay County
+2020,29023,28025,611,Butler County,Clay County
+2020,41017,28025,38,Deschutes County,Clay County
+2020,01073,29163,436,Jefferson County,Pike County
+2020,02150,29163,283,Kodiak Island Borough,Pike County
+2020,29163,23019,728,Pike County,Penobscot County
+2020,42009,29009,911,Bedford County,Barry County
+2020,29009,42011,481,Barry County,Berks County
+2020,46127,29081,315,Union County,Harrison County
+2020,29081,56035,282,Harrison County,Sublette County
+2020,39045,29081,82,Fairfield County,Harrison County
+2020,11001,29139,274,District of Columbia,Montgomery County
+2020,16051,29139,409,Jefferson County,Montgomery County
+2020,29139,28009,144,Montgomery County,Benton County
+2020,15007,29021,780,Kauai County,Buchanan County
+2020,29021,50017,835,Buchanan County,Orange County
+2020,29021,15009,965,Buchanan County,Maui County
+2020,02110,29021,397,Juneau City and Borough,Buchanan County
+2020,41035,29091,177,Klamath County,Howell County
+2020,30067,29091,445,Park County,Howell County
+2020,56017,29091,273,Hot Springs County,Howell County
+2020,47147,29141,874,Robertson County,Morgan County
+2020,29141,04017,676,Morgan County,Navajo County
+2020,29141,54063,606,Morgan County,Monroe County
+2020,25023,29133,472,Plymouth County,Mississippi County
+2020,29133,20061,307,Mississippi County,Geary County
+2020,29133,55001,729,Mississippi County,Adams County
+2020,48371,29133,374,Pecos County,Mississippi County
+2020,29021,29095,78,Buchanan County,Jackson County
+2020,29095,41053,534,Jackson County,Polk County
+2020,29095,06011,881,Jackson County,Colusa County
+2020,41063,29095,844,Wallowa County,Jackson County
+2020,31135,29095,718,Perkins County,Jackson County
+2020,29023,72001,894,Butler County,Adjuntas Municipio
+2020,29023,51145,225,Butler County,Powhatan County
+2020,20189,29023,457,Stevens County,Butler County
+2020,29023,44001,843,Butler County,Bristol County
+2020,49033,29023,179,Rich County,Butler County
+2020,30001,10005,59,Beaverhead County,Sussex County
+2020,56001,30001,458,Albany County,Beaverhead County
+2020,51145,30001,845,Powhatan County,Beaverhead County
+2020,30001,32011,815,Beaverhead County,Eureka County
+2020,30011,09005,876,Carter County,Litchfield County
+2020,30011,19195,254,Carter County,Worth County
+2020,30011,30025,863,Carter County,Fallon County
+2020,02150,30011,92,Kodiak Island Borough,Carter County
+2020,34037,30011,777,Sussex County,Carter County
+2020,30067,46035,448,Park County,Davison County
+2020,02090,30067,732,Fairbanks North Star Borough,Park County
+2020,10003,30067,690,New Castle County,Park County
+2020,16009,30027,731,Benewah County,Fergus County
+2020,19085,30027,706,Harrison County,Fergus County
+2020,30027,45025,548,Fergus County,Chesterfield County
+2020,20129,30039,671,Morton County,Granite County
+2020,30039,20095,145,Granite County,Kingman County
+2020,30101,25019,519,Toole County,Nantucket County
+2020,30101,17095,303,Toole County,Knox County
+2020,05129,30101,906,Searcy County,Toole County
+2020,23003,30101,235,Aroostook County,Toole County
+2020,30073,34031,935,Pondera County,Passaic County
+2020,05025,30073,174,Cleveland County,Pondera County
+2020,33005,30073,499,Cheshire County,Pondera County
+2020,30053,20021,889,Lincoln County,Cherokee County
+2020,30053,38095,685,Lincoln County,Towner County
+2020,30089,04025,410,Sanders County,Yavapai County
+2020,30089,27153,534,Sanders County,Todd County
+2020,25027,30089,704,Worcester County,Sanders County
+2020,30089,01129,960,Sanders County,Washington County
+2020,33017,30089,211,Strafford County,Sanders County
+2020,30025,48371,192,Fallon County,Pecos County
+2020,30025,47145,165,Fallon County,Roane County
+2020,30025,18079,66,Fallon County,Jennings County
+2020,30025,08087,482,Fallon County,Morgan County
+2020,31081,39045,716,Hamilton County,Fairfield County
+2020,31081,20021,36,Hamilton County,Cherokee County
+2020,12027,31045,608,DeSoto County,Dawes County
+2020,31045,28063,87,Dawes County,Jefferson County
+2020,13261,31045,306,Sumter County,Dawes County
+2020,50001,31045,947,Addison County,Dawes County
+2020,31111,21053,669,Lincoln County,Clinton County
+2020,31111,39009,43,Lincoln County,Athens County
+2020,19129,31111,613,Mills County,Lincoln County
+2020,06105,31145,380,Trinity County,Red Willow County
+2020,31145,13113,411,Red Willow County,Fayette County
+2020,31001,28057,344,Adams County,Itawamba County
+2020,23019,31001,464,Penobscot County,Adams County
+2020,31001,12019,182,Adams County,Clay County
+2020,55057,31001,891,Juneau County,Adams County
+2020,19125,31053,903,Marion County,Dodge County
+2020,21081,31053,381,Grant County,Dodge County
+2020,27037,31053,616,Dakota County,Dodge County
+2020,31079,46129,944,Hall County,Walworth County
+2020,53067,31079,414,Thurston County,Hall County
+2020,31135,32033,447,Perkins County,White Pine County
+2020,31135,49017,499,Perkins County,Garfield County
+2020,31135,32005,464,Perkins County,Douglas County
+2020,31135,39135,141,Perkins County,Preble County
+2020,31021,29009,558,Burt County,Barry County
+2020,21147,31021,887,McCreary County,Burt County
+2020,54083,31089,726,Randolph County,Holt County
+2020,31089,31081,950,Holt County,Hamilton County
+2020,31089,08115,890,Holt County,Sedgwick County
+2020,31089,49019,341,Holt County,Grand County
+2020,12091,31089,512,Okaloosa County,Holt County
+2020,32001,28009,932,Churchill County,Benton County
+2020,27153,32001,858,Todd County,Churchill County
+2020,32003,54039,447,Clark County,Kanawha County
+2020,32003,50011,155,Clark County,Franklin County
+2020,13287,32003,448,Turner County,Clark County
+2020,72059,32011,266,Guayanilla Municipio,Eureka County
+2020,32011,17095,434,Eureka County,Knox County
+2020,32033,45051,618,White Pine County,Horry County
+2020,32033,32003,740,White Pine County,Clark County
+2020,22105,32023,472,Tangipahoa Parish,Nye County
+2020,46093,32023,483,Meade County,Nye County
+2020,02070,32023,226,Dillingham Census Area,Nye County
+2020,32023,16017,53,Nye County,Bonner County
+2020,32023,01091,424,Nye County,Marengo County
+2020,04011,32031,779,Greenlee County,Washoe County
+2020,29133,32031,836,Mississippi County,Washoe County
+2020,53013,32031,758,Columbia County,Washoe County
+2020,15009,32031,455,Maui County,Washoe County
+2020,53049,32017,566,Pacific County,Lincoln County
+2020,05139,32017,520,Union County,Lincoln County
+2020,28037,32017,651,Franklin County,Lincoln County
+2020,12123,32017,318,Taylor County,Lincoln County
+2020,32017,50023,378,Lincoln County,Washington County
+2020,32029,02198,883,Storey County,Prince of Wales-Hyder Census Area
+2020,36051,32029,802,Livingston County,Storey County
+2020,32029,56025,555,Storey County,Natrona County
+2020,32005,38035,446,Douglas County,Grand Forks County
+2020,32005,06105,410,Douglas County,Trinity County
+2020,32005,42073,128,Douglas County,Lawrence County
+2020,32005,25009,156,Douglas County,Essex County
+2020,32005,50025,987,Douglas County,Windham County
+2020,32019,16009,184,Lyon County,Benewah County
+2020,32019,02110,229,Lyon County,Juneau City and Borough
+2020,33013,33017,338,Merrimack County,Strafford County
+2020,33017,23029,188,Strafford County,Washington County
+2020,48381,33017,695,Randall County,Strafford County
+2020,15003,33017,198,Honolulu County,Strafford County
+2020,10001,33017,374,Kent County,Strafford County
+2020,33003,54053,803,Carroll County,Mason County
+2020,33003,17135,353,Carroll County,Montgomery County
+2020,33011,46035,204,Hillsborough County,Davison County
+2020,53031,33011,735,Jefferson County,Hillsborough County
+2020,04015,33001,914,Mohave County,Belknap County
+2020,33001,20107,43,Belknap County,Linn County
+2020,38007,33015,32,Billings County,Rockingham County
+2020,33015,51163,100,Rockingham County,Rockbridge County
+2020,46127,33015,897,Union County,Rockingham County
+2020,33005,53067,888,Cheshire County,Thurston County
+2020,30011,33005,627,Carter County,Cheshire County
+2020,33005,33009,139,Cheshire County,Grafton County
+2020,46027,33005,851,Clay County,Cheshire County
+2020,25017,33019,259,Middlesex County,Sullivan County
+2020,02275,33019,887,Wrangell City and Borough,Sullivan County
+2020,33019,48411,550,Sullivan County,San Saba County
+2020,33009,23023,45,Grafton County,Sagadahoc County
+2020,33009,16025,798,Grafton County,Camas County
+2020,37089,33009,292,Henderson County,Grafton County
+2020,33009,41025,686,Grafton County,Harney County
+2020,33009,54087,46,Grafton County,Roane County
+2020,22123,33007,348,West Carroll Parish,Coos County
+2020,02070,33007,745,Dillingham Census Area,Coos County
+2020,28009,33013,47,Benton County,Merrimack County
+2020,21021,33013,994,Boyle County,Merrimack County
+2020,38039,33013,757,Griggs County,Merrimack County
+2020,33019,34001,571,Sullivan County,Atlantic County
+2020,34001,13159,728,Atlantic County,Jasper County
+2020,04003,34001,182,Cochise County,Atlantic County
+2020,27009,34001,156,Benton County,Atlantic County
+2020,51025,34035,186,Brunswick County,Somerset County
+2020,29163,34035,950,Pike County,Somerset County
+2020,34031,38025,896,Passaic County,Dunn County
+2020,38095,34031,333,Towner County,Passaic County
+2020,50001,34031,364,Addison County,Passaic County
+2020,34003,41027,144,Bergen County,Hood River County
+2020,34003,23019,57,Bergen County,Penobscot County
+2020,34003,53013,876,Bergen County,Columbia County
+2020,17081,34003,343,Jefferson County,Bergen County
+2020,48403,34017,205,Sabine County,Hudson County
+2020,34017,51087,361,Hudson County,Henrico County
+2020,34017,30025,756,Hudson County,Fallon County
+2020,28057,34017,822,Itawamba County,Hudson County
+2020,34011,38039,325,Cumberland County,Griggs County
+2020,34011,20001,545,Cumberland County,Allen County
+2020,54027,34023,348,Hampshire County,Middlesex County
+2020,34023,06011,453,Middlesex County,Colusa County
+2020,34023,47145,745,Middlesex County,Roane County
+2020,72059,34007,233,Guayanilla Municipio,Camden County
+2020,16073,34007,216,Owyhee County,Camden County
+2020,09003,34007,400,Hartford County,Camden County
+2020,33005,34007,77,Cheshire County,Camden County
+2020,34007,28107,449,Camden County,Panola County
+2020,34037,46093,224,Sussex County,Meade County
+2020,34037,36025,279,Sussex County,Delaware County
+2020,34037,13199,788,Sussex County,Meriwether County
+2020,51087,34037,267,Henrico County,Sussex County
+2020,34037,49017,328,Sussex County,Garfield County
+2020,34033,54025,417,Salem County,Greenbrier County
+2020,42091,34033,994,Montgomery County,Salem County
+2020,34033,49017,261,Salem County,Garfield County
+2020,25001,34033,330,Barnstable County,Salem County
+2020,35059,46137,486,Union County,Ziebach County
+2020,56001,35059,580,Albany County,Union County
+2020,35059,45025,176,Union County,Chesterfield County
+2020,35028,34017,106,Los Alamos County,Hudson County
+2020,35028,41035,877,Los Alamos County,Klamath County
+2020,20061,35028,397,Geary County,Los Alamos County
+2020,18145,35049,798,Shelby County,Santa Fe County
+2020,53013,35049,673,Columbia County,Santa Fe County
+2020,35049,01025,242,Santa Fe County,Clarke County
+2020,42025,35049,708,Carbon County,Santa Fe County
+2020,45025,35031,777,Chesterfield County,McKinley County
+2020,53049,35031,857,Pacific County,McKinley County
+2020,35031,56019,50,McKinley County,Johnson County
+2020,35015,56031,685,Eddy County,Platte County
+2020,08049,35015,48,Grand County,Eddy County
+2020,26001,35015,844,Alcona County,Eddy County
+2020,35017,01009,194,Grant County,Blount County
+2020,35017,38007,59,Grant County,Billings County
+2020,37141,35017,828,Pender County,Grant County
+2020,39009,35017,787,Athens County,Grant County
+2020,35035,54039,580,Otero County,Kanawha County
+2020,41035,35035,844,Klamath County,Otero County
+2020,35039,10005,550,Rio Arriba County,Sussex County
+2020,35039,17135,26,Rio Arriba County,Montgomery County
+2020,35039,44009,501,Rio Arriba County,Washington County
+2020,41071,35039,748,Yamhill County,Rio Arriba County
+2020,09011,35023,47,New London County,Hidalgo County
+2020,35023,51065,27,Hidalgo County,Fluvanna County
+2020,19169,35023,192,Story County,Hidalgo County
+2020,35023,38083,507,Hidalgo County,Sheridan County
+2020,48403,35001,88,Sabine County,Bernalillo County
+2020,35001,45053,484,Bernalillo County,Jasper County
+2020,05021,36101,259,Clay County,Steuben County
+2020,05021,36101,756,Clay County,Steuben County
+2020,36113,26001,94,Warren County,Alcona County
+2020,36113,55009,732,Warren County,Brown County
+2020,36113,20001,457,Warren County,Allen County
+2020,36113,36001,203,Warren County,Albany County
+2020,36113,34037,349,Warren County,Sussex County
+2020,36001,56035,46,Albany County,Sublette County
+2020,36001,40071,110,Albany County,Kay County
+2020,36115,06093,464,Washington County,Siskiyou County
+2020,36115,31045,129,Washington County,Dawes County
+2020,46027,36115,984,Clay County,Washington County
+2020,26009,36115,728,Antrim County,Washington County
+2020,13261,36115,870,Sumter County,Washington County
+2020,36011,56019,29,Cayuga County,Johnson County
+2020,24019,36011,495,Dorchester County,Cayuga County
+2020,41071,36097,914,Yamhill County,Schuyler County
+2020,31145,36097,268,Red Willow County,Schuyler County
+2020,23031,36097,662,York County,Schuyler County
+2020,39135,36097,795,Preble County,Schuyler County
+2020,36033,09001,16,Franklin County,Fairfield County
+2020,05129,36033,74,Searcy County,Franklin County
+2020,36025,30073,23,Delaware County,Pondera County
+2020,36025,17081,69,Delaware County,Jefferson County
+2020,36025,13105,86,Delaware County,Elbert County
+2020,13061,36025,757,Clay County,Delaware County
+2020,09011,36051,611,New London County,Livingston County
+2020,53055,36051,273,San Juan County,Livingston County
+2020,30025,36119,707,Fallon County,Westchester County
+2020,36119,34033,459,Westchester County,Salem County
+2020,37167,28009,384,Stanly County,Benton County
+2020,25011,37167,78,Franklin County,Stanly County
+2020,18089,37167,236,Lake County,Stanly County
+2020,72153,37167,352,Yauco Municipio,Stanly County
+2020,31053,37167,307,Dodge County,Stanly County
+2020,37107,35031,957,Lenoir County,McKinley County
+2020,02275,37107,262,Wrangell City and Borough,Lenoir County
+2020,06051,37107,844,Mono County,Lenoir County
+2020,37107,50017,359,Lenoir County,Orange County
+2020,37141,27045,671,Pender County,Fillmore County
+2020,34033,37141,778,Salem County,Pender County
+2020,56003,37091,371,Big Horn County,Hertford County
+2020,37091,31079,960,Hertford County,Hall County
+2020,40107,37089,925,Okfuskee County,Henderson County
+2020,37089,51790,720,Henderson County,Staunton city
+2020,37079,36025,938,Greene County,Delaware County
+2020,20001,37079,24,Allen County,Greene County
+2020,37079,22011,375,Greene County,Beauregard Parish
+2020,16025,37079,312,Camas County,Greene County
+2020,33015,37045,590,Rockingham County,Cleveland County
+2020,27153,37045,790,Todd County,Cleveland County
+2020,37045,54087,377,Cleveland County,Roane County
+2020,38039,37161,828,Griggs County,Rutherford County
+2020,37161,47053,38,Rutherford County,Gibson County
+2020,37161,38087,846,Rutherford County,Slope County
+2020,33011,37161,140,Hillsborough County,Rutherford County
+2020,24029,37161,601,Kent County,Rutherford County
+2020,37021,37107,783,Buncombe County,Lenoir County
+2020,37021,54087,432,Buncombe County,Roane County
+2020,37021,46127,639,Buncombe County,Union County
+2020,22105,37021,495,Tangipahoa Parish,Buncombe County
+2020,37001,33003,192,Alamance County,Carroll County
+2020,19169,37001,610,Story County,Alamance County
+2020,04009,37001,967,Graham County,Alamance County
+2020,37001,25017,567,Alamance County,Middlesex County
+2020,37001,38083,945,Alamance County,Sheridan County
+2020,45071,38039,37,Newberry County,Griggs County
+2020,42081,38039,427,Lycoming County,Griggs County
+2020,38039,05123,713,Griggs County,St. Francis County
+2020,47085,38039,418,Humphreys County,Griggs County
+2020,38083,18111,530,Sheridan County,Newton County
+2020,38083,37167,398,Sheridan County,Stanly County
+2020,34001,38083,370,Atlantic County,Sheridan County
+2020,23001,38083,977,Androscoggin County,Sheridan County
+2020,38083,16009,565,Sheridan County,Benewah County
+2020,38095,26037,77,Towner County,Clinton County
+2020,50025,38095,507,Windham County,Towner County
+2020,48019,38095,839,Bandera County,Towner County
+2020,16025,38025,226,Camas County,Dunn County
+2020,02198,38025,869,Prince of Wales-Hyder Census Area,Dunn County
+2020,22051,38087,701,Jefferson Parish,Slope County
+2020,38087,08001,647,Slope County,Adams County
+2020,38087,20001,24,Slope County,Allen County
+2020,38011,13315,261,Bowman County,Wilcox County
+2020,50011,38011,40,Franklin County,Bowman County
+2020,38011,06027,504,Bowman County,Inyo County
+2020,29009,38011,251,Barry County,Bowman County
+2020,38035,08115,711,Grand Forks County,Sedgwick County
+2020,08011,38035,24,Bent County,Grand Forks County
+2020,38035,26009,526,Grand Forks County,Antrim County
+2020,22123,38035,688,West Carroll Parish,Grand Forks County
+2020,55037,38035,254,Florence County,Grand Forks County
+2020,27135,38101,755,Roseau County,Ward County
+2020,20189,38101,545,Stevens County,Ward County
+2020,38101,21215,901,Ward County,Spencer County
+2020,45051,38101,961,Horry County,Ward County
+2020,44003,38007,371,Kent County,Billings County
+2020,08087,38007,92,Morgan County,Billings County
+2020,38065,23011,710,Oliver County,Kennebec County
+2020,38065,34035,495,Oliver County,Somerset County
+2020,38065,55001,988,Oliver County,Adams County
+2020,38065,02282,50,Oliver County,Yakutat City and Borough
+2020,72067,39153,54,Hormigueros Municipio,Summit County
+2020,39153,46003,405,Summit County,Aurora County
+2020,39153,13105,775,Summit County,Elbert County
+2020,53049,39153,425,Pacific County,Summit County
+2020,39153,34031,228,Summit County,Passaic County
+2020,72001,39001,716,Adjuntas Municipio,Adams County
+2020,23011,39001,384,Kennebec County,Adams County
+2020,39053,54083,682,Gallia County,Randolph County
+2020,39053,19085,716,Gallia County,Harrison County
+2020,39053,51105,214,Gallia County,Lee County
+2020,47147,39053,981,Robertson County,Gallia County
+2020,39045,45007,60,Fairfield County,Anderson County
+2020,01091,39045,714,Marengo County,Fairfield County
+2020,72097,39045,941,Mayagüez Municipio,Fairfield County
+2020,39045,23011,268,Fairfield County,Kennebec County
+2020,39045,16017,734,Fairfield County,Bonner County
+2020,39025,44009,366,Clermont County,Washington County
+2020,51087,39025,830,Henrico County,Clermont County
+2020,39025,31001,768,Clermont County,Adams County
+2020,39025,06027,297,Clermont County,Inyo County
+2020,56001,39025,383,Albany County,Clermont County
+2020,39135,01129,370,Preble County,Washington County
+2020,17085,39135,919,Jo Daviess County,Preble County
+2020,39135,21089,547,Preble County,Greenup County
+2020,39135,09001,389,Preble County,Fairfield County
+2020,33015,39135,384,Rockingham County,Preble County
+2020,22025,39021,347,Catahoula Parish,Champaign County
+2020,39021,20091,301,Champaign County,Johnson County
+2020,28107,39021,963,Panola County,Champaign County
+2020,27045,39021,764,Fillmore County,Champaign County
+2020,39037,22105,878,Darke County,Tangipahoa Parish
+2020,39037,05139,700,Darke County,Union County
+2020,47001,39037,560,Anderson County,Darke County
+2020,39037,37021,229,Darke County,Buncombe County
+2020,39037,31053,299,Darke County,Dodge County
+2020,39009,28107,904,Athens County,Panola County
+2020,72065,39009,818,Hatillo Municipio,Athens County
+2020,39137,04021,996,Putnam County,Pinal County
+2020,39137,12027,59,Putnam County,DeSoto County
+2020,17021,39137,503,Christian County,Putnam County
+2020,39137,25023,343,Putnam County,Plymouth County
+2020,04025,40009,10,Yavapai County,Beckham County
+2020,09009,40009,652,New Haven County,Beckham County
+2020,40009,17135,603,Beckham County,Montgomery County
+2020,30101,40009,180,Toole County,Beckham County
+2020,41035,40071,715,Klamath County,Kay County
+2020,40071,55107,123,Kay County,Rusk County
+2020,35028,40071,750,Los Alamos County,Kay County
+2020,40071,56031,324,Kay County,Platte County
+2020,39137,40071,727,Putnam County,Kay County
+2020,54039,40021,211,Kanawha County,Cherokee County
+2020,46013,40021,549,Brown County,Cherokee County
+2020,40021,15001,396,Cherokee County,Hawaii County
+2020,40021,24045,122,Cherokee County,Wicomico County
+2020,40001,12019,721,Adair County,Clay County
+2020,40001,15001,882,Adair County,Hawaii County
+2020,40001,27001,114,Adair County,Aitkin County
+2020,40001,05127,618,Adair County,Scott County
+2020,40001,09003,536,Adair County,Hartford County
+2020,34035,40091,986,Somerset County,McIntosh County
+2020,40091,56031,518,McIntosh County,Platte County
+2020,53009,40091,873,Clallam County,McIntosh County
+2020,40091,09015,254,McIntosh County,Windham County
+2020,34035,40091,993,Somerset County,McIntosh County
+2020,18089,40095,859,Lake County,Marshall County
+2020,40095,46093,470,Marshall County,Meade County
+2020,56035,40095,798,Sublette County,Marshall County
+2020,40095,34023,641,Marshall County,Middlesex County
+2020,40133,41043,608,Seminole County,Linn County
+2020,40133,09015,485,Seminole County,Windham County
+2020,40133,37161,560,Seminole County,Rutherford County
+2020,40133,02275,994,Seminole County,Wrangell City and Borough
+2020,40107,34035,316,Okfuskee County,Somerset County
+2020,40107,35023,927,Okfuskee County,Hidalgo County
+2020,23001,40107,585,Androscoggin County,Okfuskee County
+2020,17001,40101,113,Adams County,Muskogee County
+2020,27045,40101,587,Fillmore County,Muskogee County
+2020,40057,17001,344,Harmon County,Adams County
+2020,40057,27037,947,Harmon County,Dakota County
+2020,40057,20107,326,Harmon County,Linn County
+2020,41071,05021,745,Yamhill County,Clay County
+2020,42081,41071,685,Lycoming County,Yamhill County
+2020,41071,17001,583,Yamhill County,Adams County
+2020,41027,13299,273,Hood River County,Ware County
+2020,08087,41027,823,Morgan County,Hood River County
+2020,19169,41053,284,Story County,Polk County
+2020,34007,41053,454,Camden County,Polk County
+2020,41053,13199,777,Polk County,Meriwether County
+2020,34007,41061,163,Camden County,Union County
+2020,41061,49019,1000,Union County,Grand County
+2020,33009,41033,658,Grafton County,Josephine County
+2020,41033,41017,917,Josephine County,Deschutes County
+2020,38065,41063,963,Oliver County,Wallowa County
+2020,32029,41063,428,Storey County,Wallowa County
+2020,41043,28021,356,Linn County,Claiborne County
+2020,30001,41043,948,Beaverhead County,Linn County
+2020,28061,41043,341,Jasper County,Linn County
+2020,06069,41043,93,San Benito County,Linn County
+2020,38083,41043,75,Sheridan County,Linn County
+2020,36001,41025,79,Albany County,Harney County
+2020,40057,41025,700,Harmon County,Harney County
+2020,18053,41025,369,Grant County,Harney County
+2020,08087,41025,569,Morgan County,Harney County
+2020,41025,06075,546,Harney County,San Francisco County
+2020,41017,12123,160,Deschutes County,Taylor County
+2020,32005,41017,60,Douglas County,Deschutes County
+2020,41017,56025,482,Deschutes County,Natrona County
+2020,41017,50019,783,Deschutes County,Orleans County
+2020,16025,41017,952,Camas County,Deschutes County
+2020,32001,41035,43,Churchill County,Klamath County
+2020,38065,41035,346,Oliver County,Klamath County
+2020,28001,41035,364,Adams County,Klamath County
+2020,39135,42073,583,Preble County,Lawrence County
+2020,42073,45017,660,Lawrence County,Calhoun County
+2020,42033,27153,311,Clearfield County,Todd County
+2020,12019,42033,884,Clay County,Clearfield County
+2020,42033,46109,805,Clearfield County,Roberts County
+2020,42009,08031,393,Bedford County,Denver County
+2020,42009,04025,121,Bedford County,Yavapai County
+2020,53055,42009,794,San Juan County,Bedford County
+2020,42009,41061,354,Bedford County,Union County
+2020,42009,36113,753,Bedford County,Warren County
+2020,12027,42019,905,DeSoto County,Butler County
+2020,17085,42019,623,Jo Daviess County,Butler County
+2020,42019,44009,201,Butler County,Washington County
+2020,42019,41053,524,Butler County,Polk County
+2020,42091,34035,898,Montgomery County,Somerset County
+2020,42091,04027,555,Montgomery County,Yuma County
+2020,28037,42091,351,Franklin County,Montgomery County
+2020,42091,30053,412,Montgomery County,Lincoln County
+2020,08115,42091,195,Sedgwick County,Montgomery County
+2020,47045,42081,814,Dyer County,Lycoming County
+2020,24025,42081,789,Harford County,Lycoming County
+2020,55107,42081,902,Rusk County,Lycoming County
+2020,42123,23011,695,Warren County,Kennebec County
+2020,29091,42123,124,Howell County,Warren County
+2020,31045,42123,340,Dawes County,Warren County
+2020,42011,27153,401,Berks County,Todd County
+2020,42011,33019,544,Berks County,Sullivan County
+2020,42011,17001,76,Berks County,Adams County
+2020,02198,42129,716,Prince of Wales-Hyder Census Area,Westmoreland County
+2020,40133,42129,969,Seminole County,Westmoreland County
+2020,42129,31021,254,Westmoreland County,Burt County
+2020,28001,42129,801,Adams County,Westmoreland County
+2020,42129,72131,886,Westmoreland County,San Sebastián Municipio
+2020,21147,42025,401,McCreary County,Carbon County
+2020,37141,42025,119,Pender County,Carbon County
+2020,35031,42025,359,McKinley County,Carbon County
+2020,42025,72059,175,Carbon County,Guayanilla Municipio
+2020,35059,42025,600,Union County,Carbon County
+2020,47053,44003,359,Gibson County,Kent County
+2020,44003,56019,507,Kent County,Johnson County
+2020,41035,44009,424,Klamath County,Washington County
+2020,44009,40001,123,Washington County,Adair County
+2020,05057,44009,113,Hempstead County,Washington County
+2020,44009,37021,970,Washington County,Buncombe County
+2020,72001,44005,413,Adjuntas Municipio,Newport County
+2020,51145,44005,868,Powhatan County,Newport County
+2020,24001,44005,307,Allegany County,Newport County
+2020,44001,06027,131,Bristol County,Inyo County
+2020,44001,08023,117,Bristol County,Costilla County
+2020,44001,41063,44,Bristol County,Wallowa County
+2020,40009,44001,804,Beckham County,Bristol County
+2020,44007,29095,824,Providence County,Jackson County
+2020,44007,53027,602,Providence County,Grays Harbor County
+2020,44007,41043,581,Providence County,Linn County
+2020,44007,36119,452,Providence County,Westchester County
+2020,44007,27037,986,Providence County,Dakota County
+2020,45079,25005,245,Richland County,Bristol County
+2020,45079,35015,805,Richland County,Eddy County
+2020,16025,45079,978,Camas County,Richland County
+2020,32029,45051,394,Storey County,Horry County
+2020,09001,45051,83,Fairfield County,Horry County
+2020,10005,45051,409,Sussex County,Horry County
+2020,45051,33015,288,Horry County,Rockingham County
+2020,45051,51163,984,Horry County,Rockbridge County
+2020,36115,45053,989,Washington County,Jasper County
+2020,39137,45053,515,Putnam County,Jasper County
+2020,45053,46013,943,Jasper County,Brown County
+2020,45089,04001,820,Williamsburg County,Apache County
+2020,36113,45089,841,Warren County,Williamsburg County
+2020,45089,27021,156,Williamsburg County,Cass County
+2020,45071,55025,454,Newberry County,Dane County
+2020,45071,56019,959,Newberry County,Johnson County
+2020,17085,45071,484,Jo Daviess County,Newberry County
+2020,45071,26021,569,Newberry County,Berrien County
+2020,45071,05001,531,Newberry County,Arkansas County
+2020,45083,53009,616,Spartanburg County,Clallam County
+2020,44003,45083,503,Kent County,Spartanburg County
+2020,45083,29021,262,Spartanburg County,Buchanan County
+2020,01123,45083,134,Tallapoosa County,Spartanburg County
+2020,04015,45083,675,Mohave County,Spartanburg County
+2020,45009,18145,848,Bamberg County,Shelby County
+2020,45009,46127,676,Bamberg County,Union County
+2020,37107,45025,75,Lenoir County,Chesterfield County
+2020,30001,45025,632,Beaverhead County,Chesterfield County
+2020,45025,27135,141,Chesterfield County,Roseau County
+2020,04005,45017,410,Coconino County,Calhoun County
+2020,45017,26021,17,Calhoun County,Berrien County
+2020,26061,45017,938,Houghton County,Calhoun County
+2020,45017,39153,364,Calhoun County,Summit County
+2020,48403,45017,18,Sabine County,Calhoun County
+2020,46013,45007,388,Brown County,Anderson County
+2020,56011,45007,381,Crook County,Anderson County
+2020,47021,45007,886,Cheatham County,Anderson County
+2020,46109,25025,879,Roberts County,Suffolk County
+2020,46109,47085,363,Roberts County,Humphreys County
+2020,42129,46109,795,Westmoreland County,Roberts County
+2020,12019,46109,774,Clay County,Roberts County
+2020,46109,29081,323,Roberts County,Harrison County
+2020,46127,02013,879,Union County,Aleutians East Borough
+2020,46127,34023,720,Union County,Middlesex County
+2020,19191,46127,143,Winneshiek County,Union County
+2020,21053,46127,929,Clinton County,Union County
+2020,46127,08103,859,Union County,Rio Blanco County
+2020,46003,17125,106,Aurora County,Mason County
+2020,46003,39001,973,Aurora County,Adams County
+2020,18079,46093,488,Jennings County,Meade County
+2020,72153,46093,796,Yauco Municipio,Meade County
+2020,46093,39025,68,Meade County,Clermont County
+2020,30101,46093,704,Toole County,Meade County
+2020,46013,40021,32,Brown County,Cherokee County
+2020,42091,46013,983,Montgomery County,Brown County
+2020,46013,56005,264,Brown County,Campbell County
+2020,06093,46129,416,Siskiyou County,Walworth County
+2020,39009,46129,222,Athens County,Walworth County
+2020,56001,46129,327,Albany County,Walworth County
+2020,46035,16017,34,Davison County,Bonner County
+2020,17061,46035,92,Greene County,Davison County
+2020,46027,26021,139,Clay County,Berrien County
+2020,06011,46027,877,Colusa County,Clay County
+2020,46027,36115,80,Clay County,Washington County
+2020,46137,46109,259,Ziebach County,Roberts County
+2020,27045,46137,577,Fillmore County,Ziebach County
+2020,12123,46137,140,Taylor County,Ziebach County
+2020,46063,42073,85,Harding County,Lawrence County
+2020,46063,22011,182,Harding County,Beauregard Parish
+2020,47137,16069,549,Pickett County,Nez Perce County
+2020,05139,47137,473,Union County,Pickett County
+2020,04015,47137,110,Mohave County,Pickett County
+2020,47137,17085,858,Pickett County,Jo Daviess County
+2020,47137,56017,678,Pickett County,Hot Springs County
+2020,40107,47045,33,Okfuskee County,Dyer County
+2020,47045,24013,526,Dyer County,Carroll County
+2020,54025,47045,763,Greenbrier County,Dyer County
+2020,47145,31089,247,Roane County,Holt County
+2020,36025,47145,843,Delaware County,Roane County
+2020,47145,17135,568,Roane County,Montgomery County
+2020,47145,05009,789,Roane County,Boone County
+2020,28021,47145,623,Claiborne County,Roane County
+2020,47147,47145,674,Robertson County,Roane County
+2020,47147,21129,105,Robertson County,Lee County
+2020,47001,72001,52,Anderson County,Adjuntas Municipio
+2020,47001,29023,924,Anderson County,Butler County
+2020,47001,05009,975,Anderson County,Boone County
+2020,40001,47001,605,Adair County,Anderson County
+2020,41027,47053,327,Hood River County,Gibson County
+2020,47053,45025,43,Gibson County,Chesterfield County
+2020,47053,40001,214,Gibson County,Adair County
+2020,44007,47053,678,Providence County,Gibson County
+2020,47053,55107,56,Gibson County,Rusk County
+2020,41063,47081,440,Wallowa County,Hickman County
+2020,24035,47081,384,Queen Anne's County,Hickman County
+2020,47081,23031,215,Hickman County,York County
+2020,47081,13315,817,Hickman County,Wilcox County
+2020,12075,47081,122,Levy County,Hickman County
+2020,34003,47085,69,Bergen County,Humphreys County
+2020,45009,47085,850,Bamberg County,Humphreys County
+2020,47021,35031,578,Cheatham County,McKinley County
+2020,47021,38083,115,Cheatham County,Sheridan County
+2020,20021,47021,783,Cherokee County,Cheatham County
+2020,47021,55009,128,Cheatham County,Brown County
+2020,33009,47021,893,Grafton County,Cheatham County
+2020,47091,26045,568,Johnson County,Eaton County
+2020,47091,42091,310,Johnson County,Montgomery County
+2020,47091,33011,206,Johnson County,Hillsborough County
+2020,47091,53013,894,Johnson County,Columbia County
+2020,19169,47091,438,Story County,Johnson County
+2020,13159,48381,376,Jasper County,Randall County
+2020,48381,20095,835,Randall County,Kingman County
+2020,08121,48381,245,Washington County,Randall County
+2020,37021,48381,44,Buncombe County,Randall County
+2020,48013,05123,556,Atascosa County,St. Francis County
+2020,27009,48013,580,Benton County,Atascosa County
+2020,48013,16007,306,Atascosa County,Bear Lake County
+2020,48013,33013,704,Atascosa County,Merrimack County
+2020,48159,16073,947,Franklin County,Owyhee County
+2020,55025,48159,525,Dane County,Franklin County
+2020,48411,26061,935,San Saba County,Houghton County
+2020,48411,22117,443,San Saba County,Washington Parish
+2020,48411,22025,437,San Saba County,Catahoula Parish
+2020,48411,20131,392,San Saba County,Nemaha County
+2020,48235,19129,369,Irion County,Mills County
+2020,08103,48235,618,Rio Blanco County,Irion County
+2020,27009,48235,321,Benton County,Irion County
+2020,37161,48235,149,Rutherford County,Irion County
+2020,48235,32019,289,Irion County,Lyon County
+2020,39021,48371,695,Champaign County,Pecos County
+2020,48371,29163,755,Pecos County,Pike County
+2020,45007,48371,377,Anderson County,Pecos County
+2020,34017,48371,982,Hudson County,Pecos County
+2020,13199,48371,577,Meriwether County,Pecos County
+2020,08031,48403,845,Denver County,Sabine County
+2020,05139,48403,696,Union County,Sabine County
+2020,48403,06093,270,Sabine County,Siskiyou County
+2020,28037,48403,505,Franklin County,Sabine County
+2020,31089,48335,400,Holt County,Mitchell County
+2020,53061,48335,849,Snohomish County,Mitchell County
+2020,48335,18135,967,Mitchell County,Randolph County
+2020,02282,48335,987,Yakutat City and Borough,Mitchell County
+2020,48335,19085,220,Mitchell County,Harrison County
+2020,48019,47085,663,Bandera County,Humphreys County
+2020,01073,48019,806,Jefferson County,Bandera County
+2020,25001,48061,529,Barnstable County,Cameron County
+2020,49025,48061,996,Kane County,Cameron County
+2020,48061,28061,294,Cameron County,Jasper County
+2020,27045,48061,591,Fillmore County,Cameron County
+2020,47021,49055,298,Cheatham County,Wayne County
+2020,30011,49055,596,Carter County,Wayne County
+2020,49055,45007,905,Wayne County,Anderson County
+2020,49033,50025,507,Rich County,Windham County
+2020,34007,49033,200,Camden County,Rich County
+2020,49033,04025,448,Rich County,Yavapai County
+2020,04027,49033,417,Yuma County,Rich County
+2020,49025,18081,915,Kane County,Johnson County
+2020,20129,49025,968,Morton County,Kane County
+2020,32023,49025,55,Nye County,Kane County
+2020,49025,50003,260,Kane County,Bennington County
+2020,28001,49045,681,Adams County,Tooele County
+2020,49019,49045,249,Grand County,Tooele County
+2020,16007,49017,364,Bear Lake County,Garfield County
+2020,49017,46137,54,Garfield County,Ziebach County
+2020,31081,49017,892,Hamilton County,Garfield County
+2020,06105,49017,891,Trinity County,Garfield County
+2020,49017,41061,677,Garfield County,Union County
+2020,15005,49019,559,Kalawao County,Grand County
+2020,37107,49019,178,Lenoir County,Grand County
+2020,33013,49019,379,Merrimack County,Grand County
+2020,18001,49019,694,Adams County,Grand County
+2020,49019,30027,72,Grand County,Fergus County
+2020,49043,37089,830,Summit County,Henderson County
+2020,35028,49043,112,Los Alamos County,Summit County
+2020,49043,04025,626,Summit County,Yavapai County
+2020,49043,49025,175,Summit County,Kane County
+2020,12083,49043,707,Marion County,Summit County
+2020,49001,08121,342,Beaver County,Washington County
+2020,49001,23027,392,Beaver County,Waldo County
+2020,49053,35031,200,Washington County,McKinley County
+2020,49053,20061,805,Washington County,Geary County
+2020,49053,29095,32,Washington County,Jackson County
+2020,49053,37107,656,Washington County,Lenoir County
+2020,49053,19085,122,Washington County,Harrison County
+2020,49027,04011,881,Millard County,Greenlee County
+2020,49027,16075,655,Millard County,Payette County
+2020,54011,49027,413,Cabell County,Millard County
+2020,49027,16017,960,Millard County,Bonner County
+2020,32019,50019,703,Lyon County,Orleans County
+2020,41017,50019,364,Deschutes County,Orleans County
+2020,56019,50019,960,Johnson County,Orleans County
+2020,25003,50019,36,Berkshire County,Orleans County
+2020,50023,29133,735,Washington County,Mississippi County
+2020,56017,50023,751,Hot Springs County,Washington County
+2020,50001,28063,368,Addison County,Jefferson County
+2020,25011,50001,142,Franklin County,Addison County
+2020,16025,50025,607,Camas County,Windham County
+2020,50025,49001,517,Windham County,Beaver County
+2020,50025,12027,530,Windham County,DeSoto County
+2020,22051,50025,676,Jefferson Parish,Windham County
+2020,05057,50011,765,Hempstead County,Franklin County
+2020,34035,50011,983,Somerset County,Franklin County
+2020,08031,50017,228,Denver County,Orange County
+2020,50017,47045,935,Orange County,Dyer County
+2020,19037,50005,909,Chickasaw County,Caledonia County
+2020,41033,50005,729,Josephine County,Caledonia County
+2020,01129,50005,473,Washington County,Caledonia County
+2020,23023,50003,120,Sagadahoc County,Bennington County
+2020,50003,33013,445,Bennington County,Merrimack County
+2020,04001,50003,713,Apache County,Bennington County
+2020,50027,21053,390,Windsor County,Clinton County
+2020,50027,29023,396,Windsor County,Butler County
+2020,21129,50027,142,Lee County,Windsor County
+2020,05057,50027,620,Hempstead County,Windsor County
+2020,40009,50009,998,Beckham County,Essex County
+2020,50009,17085,857,Essex County,Jo Daviess County
+2020,51105,23019,822,Lee County,Penobscot County
+2020,26021,51105,918,Berrien County,Lee County
+2020,21009,51145,152,Barren County,Powhatan County
+2020,51145,09005,517,Powhatan County,Litchfield County
+2020,39001,51065,293,Adams County,Fluvanna County
+2020,16017,51065,648,Bonner County,Fluvanna County
+2020,51065,34023,638,Fluvanna County,Middlesex County
+2020,26009,51065,781,Antrim County,Fluvanna County
+2020,04009,51087,317,Graham County,Henrico County
+2020,20095,51087,27,Kingman County,Henrico County
+2020,51087,23027,94,Henrico County,Waldo County
+2020,20021,51087,771,Cherokee County,Henrico County
+2020,33017,51087,148,Strafford County,Henrico County
+2020,51700,39153,770,Newport News city,Summit County
+2020,56003,51700,226,Big Horn County,Newport News city
+2020,51163,40091,739,Rockbridge County,McIntosh County
+2020,51163,32019,774,Rockbridge County,Lyon County
+2020,51163,32029,253,Rockbridge County,Storey County
+2020,02164,51790,148,Lake and Peninsula Borough,Staunton city
+2020,51790,54063,632,Staunton city,Monroe County
+2020,51790,37141,789,Staunton city,Pender County
+2020,51790,40091,834,Staunton city,McIntosh County
+2020,22001,51115,45,Acadia Parish,Mathews County
+2020,51115,50003,644,Mathews County,Bennington County
+2020,51115,34033,304,Mathews County,Salem County
+2020,51115,02013,640,Mathews County,Aleutians East Borough
+2020,34007,51115,349,Camden County,Mathews County
+2020,30039,51083,749,Granite County,Halifax County
+2020,22089,51083,246,St. Charles Parish,Halifax County
+2020,54099,51083,544,Wayne County,Halifax County
+2020,51083,08011,648,Halifax County,Bent County
+2020,45051,51025,747,Horry County,Brunswick County
+2020,51025,19081,220,Brunswick County,Hancock County
+2020,51025,20107,915,Brunswick County,Linn County
+2020,12035,53067,37,Flagler County,Thurston County
+2020,53067,21089,79,Thurston County,Greenup County
+2020,45009,53073,214,Bamberg County,Whatcom County
+2020,53073,41043,607,Whatcom County,Linn County
+2020,48013,53073,940,Atascosa County,Whatcom County
+2020,53009,10001,866,Clallam County,Kent County
+2020,53009,48411,670,Clallam County,San Saba County
+2020,72021,53009,40,Bayamón Municipio,Clallam County
+2020,15005,53009,281,Kalawao County,Clallam County
+2020,53027,16009,302,Grays Harbor County,Benewah County
+2020,53027,37091,137,Grays Harbor County,Hertford County
+2020,51025,53027,855,Brunswick County,Grays Harbor County
+2020,53061,16009,657,Snohomish County,Benewah County
+2020,35059,53061,270,Union County,Snohomish County
+2020,30025,53053,273,Fallon County,Pierce County
+2020,53053,39153,244,Pierce County,Summit County
+2020,53053,02150,143,Pierce County,Kodiak Island Borough
+2020,36025,53013,63,Delaware County,Columbia County
+2020,34003,53013,163,Bergen County,Columbia County
+2020,01033,53013,793,Colbert County,Columbia County
+2020,50009,53013,599,Essex County,Columbia County
+2020,53055,20107,778,San Juan County,Linn County
+2020,42091,53055,736,Montgomery County,San Juan County
+2020,46129,53055,395,Walworth County,San Juan County
+2020,31089,53055,119,Holt County,San Juan County
+2020,31021,53055,402,Burt County,San Juan County
+2020,53049,72001,587,Pacific County,Adjuntas Municipio
+2020,53049,41063,503,Pacific County,Wallowa County
+2020,23029,53049,394,Washington County,Pacific County
+2020,53049,24021,860,Pacific County,Frederick County
+2020,53049,21021,154,Pacific County,Boyle County
+2020,22001,53031,86,Acadia Parish,Jefferson County
+2020,53031,22089,858,Jefferson County,St. Charles Parish
+2020,53031,32029,900,Jefferson County,Storey County
+2020,53031,50017,519,Jefferson County,Orange County
+2020,54063,49053,952,Monroe County,Washington County
+2020,54063,72059,298,Monroe County,Guayanilla Municipio
+2020,54011,56025,168,Cabell County,Natrona County
+2020,05127,54011,747,Scott County,Cabell County
+2020,54011,06011,222,Cabell County,Colusa County
+2020,17061,54065,62,Greene County,Morgan County
+2020,54065,51105,97,Morgan County,Lee County
+2020,32031,54065,753,Washoe County,Morgan County
+2020,34033,54065,800,Salem County,Morgan County
+2020,54065,38025,711,Morgan County,Dunn County
+2020,54027,45017,624,Hampshire County,Calhoun County
+2020,54027,38035,217,Hampshire County,Grand Forks County
+2020,54039,37107,953,Kanawha County,Lenoir County
+2020,35001,54039,136,Bernalillo County,Kanawha County
+2020,54099,40071,769,Wayne County,Kay County
+2020,53027,54099,866,Grays Harbor County,Wayne County
+2020,02090,54099,206,Fairbanks North Star Borough,Wayne County
+2020,54099,27009,841,Wayne County,Benton County
+2020,38087,54083,678,Slope County,Randolph County
+2020,48403,54083,307,Sabine County,Randolph County
+2020,31081,54053,879,Hamilton County,Mason County
+2020,72153,54053,402,Yauco Municipio,Mason County
+2020,30025,54053,556,Fallon County,Mason County
+2020,54053,02275,472,Mason County,Wrangell City and Borough
+2020,30067,54087,954,Park County,Roane County
+2020,06093,54087,74,Siskiyou County,Roane County
+2020,13105,54087,865,Elbert County,Roane County
+2020,48411,54087,549,San Saba County,Roane County
+2020,54025,44001,248,Greenbrier County,Bristol County
+2020,25009,54025,338,Essex County,Greenbrier County
+2020,13199,54025,880,Meriwether County,Greenbrier County
+2020,54025,27045,868,Greenbrier County,Fillmore County
+2020,54025,06011,699,Greenbrier County,Colusa County
+2020,55009,22105,814,Brown County,Tangipahoa Parish
+2020,31145,55009,570,Red Willow County,Brown County
+2020,55009,41061,129,Brown County,Union County
+2020,55009,30089,376,Brown County,Sanders County
+2020,55123,44001,839,Vernon County,Bristol County
+2020,08011,55123,987,Bent County,Vernon County
+2020,55123,39053,517,Vernon County,Gallia County
+2020,55123,04009,618,Vernon County,Graham County
+2020,26037,55037,267,Clinton County,Florence County
+2020,15007,55037,511,Kauai County,Florence County
+2020,55037,54025,47,Florence County,Greenbrier County
+2020,41071,55037,123,Yamhill County,Florence County
+2020,55001,72021,508,Adams County,Bayamón Municipio
+2020,55001,29009,780,Adams County,Barry County
+2020,20209,55001,309,Wyandotte County,Adams County
+2020,55001,31135,324,Adams County,Perkins County
+2020,39021,55001,830,Champaign County,Adams County
+2020,55057,02070,666,Juneau County,Dillingham Census Area
+2020,55057,47091,572,Juneau County,Johnson County
+2020,24035,55057,821,Queen Anne's County,Juneau County
+2020,55099,35028,611,Price County,Los Alamos County
+2020,05129,55099,890,Searcy County,Price County
+2020,55099,12075,583,Price County,Levy County
+2020,55099,33007,451,Price County,Coos County
+2020,55021,35023,560,Columbia County,Hidalgo County
+2020,55025,55021,310,Dane County,Columbia County
+2020,55025,55069,366,Dane County,Lincoln County
+2020,30001,55069,77,Beaverhead County,Lincoln County
+2020,49019,55025,417,Grand County,Dane County
+2020,22073,55025,888,Ouachita Parish,Dane County
+2020,55025,09013,192,Dane County,Tolland County
+2020,47053,55025,281,Gibson County,Dane County
+2020,21081,55025,561,Grant County,Dane County
+2020,55107,51700,494,Rusk County,Newport News city
+2020,55107,33001,523,Rusk County,Belknap County
+2020,55107,48013,72,Rusk County,Atascosa County
+2020,55107,37161,40,Rusk County,Rutherford County
+2020,56031,46063,17,Platte County,Harding County
+2020,54025,56031,1000,Greenbrier County,Platte County
+2020,72059,56031,899,Guayanilla Municipio,Platte County
+2020,56031,44009,854,Platte County,Washington County
+2020,56017,56019,238,Hot Springs County,Johnson County
+2020,56019,36011,800,Johnson County,Cayuga County
+2020,40009,56019,462,Beckham County,Johnson County
+2020,56019,48381,92,Johnson County,Randall County
+2020,56001,17135,200,Albany County,Montgomery County
+2020,56001,24019,140,Albany County,Dorchester County
+2020,56001,55107,221,Albany County,Rusk County
+2020,12091,56017,150,Okaloosa County,Hot Springs County
+2020,28061,56017,307,Jasper County,Hot Springs County
+2020,49053,56035,907,Washington County,Sublette County
+2020,56035,05129,535,Sublette County,Searcy County
+2020,56035,08121,911,Sublette County,Washington County
+2020,17081,56025,513,Jefferson County,Natrona County
+2020,27025,56025,247,Chisago County,Natrona County
+2020,56003,12083,919,Big Horn County,Marion County
+2020,56003,49001,963,Big Horn County,Beaver County
+2020,19085,56003,713,Harrison County,Big Horn County
+2020,31081,56003,934,Hamilton County,Big Horn County
+2020,51083,56003,637,Halifax County,Big Horn County
+2020,56035,56027,787,Sublette County,Niobrara County
+2020,20129,56027,652,Morton County,Niobrara County
+2020,56027,50027,986,Niobrara County,Windsor County
+2020,45051,56027,929,Horry County,Niobrara County
+2020,56027,39025,925,Niobrara County,Clermont County
+2020,19129,56011,795,Mills County,Crook County
+2020,56011,55009,912,Crook County,Brown County
+2020,08115,56011,890,Sedgwick County,Crook County
+2020,56011,10003,739,Crook County,New Castle County
+2020,37161,56011,265,Rutherford County,Crook County
+2020,56005,15009,647,Campbell County,Maui County
+2020,51790,56005,531,Staunton city,Campbell County
+2020,56005,55099,248,Campbell County,Price County
+2020,33015,72065,698,Rockingham County,Hatillo Municipio
+2020,72065,23029,502,Hatillo Municipio,Washington County
+2020,72065,48235,769,Hatillo Municipio,Irion County
+2020,72065,45009,456,Hatillo Municipio,Bamberg County
+2020,72001,25019,655,Adjuntas Municipio,Nantucket County
+2020,21089,72001,46,Greenup County,Adjuntas Municipio
+2020,33017,72067,987,Strafford County,Hormigueros Municipio
+2020,48411,72067,824,San Saba County,Hormigueros Municipio
+2020,72067,20061,163,Hormigueros Municipio,Geary County
+2020,04003,72025,272,Cochise County,Caguas Municipio
+2020,46003,72025,41,Aurora County,Caguas Municipio
+2020,72025,13191,402,Caguas Municipio,McIntosh County
+2020,72025,34033,144,Caguas Municipio,Salem County
+2020,72025,01009,563,Caguas Municipio,Blount County
+2020,49033,72021,924,Rich County,Bayamón Municipio
+2020,72021,48403,295,Bayamón Municipio,Sabine County
+2020,72021,28025,528,Bayamón Municipio,Clay County
+2020,72153,37001,819,Yauco Municipio,Alamance County
+2020,72153,42073,550,Yauco Municipio,Lawrence County
+2020,72153,42009,238,Yauco Municipio,Bedford County
+2020,29133,72153,518,Mississippi County,Yauco Municipio
+2020,50017,72059,148,Orange County,Guayanilla Municipio
+2020,72059,39053,947,Guayanilla Municipio,Gallia County
+2020,30089,72059,956,Sanders County,Guayanilla Municipio
+2020,05071,72059,651,Johnson County,Guayanilla Municipio
+2020,72059,30011,943,Guayanilla Municipio,Carter County
+2020,20095,72009,116,Kingman County,Aibonito Municipio
+2020,72009,12083,100,Aibonito Municipio,Marion County
+2020,72097,17081,928,Mayagüez Municipio,Jefferson County
+2020,72097,47081,598,Mayagüez Municipio,Hickman County
+2020,26057,72097,263,Gratiot County,Mayagüez Municipio
+2020,22051,72097,777,Jefferson Parish,Mayagüez Municipio
+2020,72131,08023,44,San Sebastián Municipio,Costilla County
+2020,72131,49043,498,San Sebastián Municipio,Summit County
+2020,72131,55009,26,San Sebastián Municipio,Brown County
