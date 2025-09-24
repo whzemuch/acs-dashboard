@@ -1,0 +1,2 @@
+public/data/cache/flows/*.json filter=lfs diff=lfs merge=lfs -text
+public/data/geo/tl2020_geopandas_boundary.geojson filter=lfs diff=lfs merge=lfs -text
