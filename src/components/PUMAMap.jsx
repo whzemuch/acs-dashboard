@@ -32,7 +32,7 @@ export default function PUMAMap() {
     fetch(`${base}data/education_by_puma_2023.json`)
       .then((res) => res.json())
       .then((data) =>
-        setEduData(data.map((d) => ({ ...d, PUMA: Number(d.PUMA) })))
+        setEduData(data.map((d) => ({ ...d, PUMA: Number(d.PUMA) }))),
       );
   }, []);
 
@@ -56,7 +56,7 @@ export default function PUMAMap() {
         pickable: true,
         onHover: (info) => setHoverInfo(info && info.object ? info : null),
       }),
-    [geoData, eduData]
+    [geoData, eduData],
   );
 
   if (!geoData || !eduData) return <div>Loading map data...</div>;

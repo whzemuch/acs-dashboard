@@ -28,12 +28,22 @@ export default function TestCoeffPage() {
       >
         <div>
           <h4>Education Distribution</h4>
-          <CoeffChart stats={mockStats} mode="distribution" width={260} height={140} />
+          <CoeffChart
+            stats={mockStats}
+            mode="distribution"
+            width={260}
+            height={140}
+          />
         </div>
 
         <div>
           <h4>Wage Premiums</h4>
-          <CoeffChart stats={mockStats.coefficients} mode="coefficients" width={260} height={140} />
+          <CoeffChart
+            stats={mockStats.coefficients}
+            mode="coefficients"
+            width={260}
+            height={140}
+          />
         </div>
       </div>
     </div>

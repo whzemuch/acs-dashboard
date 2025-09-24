@@ -28,18 +28,26 @@
 
 // src/App.js
 
+import { useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import PUMAMap from "./components/PUMAMap";
 import TestPage from "./views/TestPage";
 import TestCoeffPage from "./views/TestCoeffPage";
 import TestMap from "./views/TestMap";
 import ChoroplethPage from "./views/ChoroplethPage";
+import { useDashboardStore } from "./store/dashboardStore";
 
 function App() {
+  const initStore = useDashboardStore((s) => s.init);
+
+  useEffect(() => {
+    initStore();
+  }, [initStore]);
+
   return (
     <div>
       {/* Navigation Menu */}
-      <nav style={{ padding: "10px", background: "#f5f5f5" }}>
+      {/* <nav style={{ padding: "10px", background: "#f5f5f5" }}>
         <Link to="/" style={{ marginRight: 12 }}>
           PUMA Map
         </Link>
@@ -51,15 +59,15 @@ function App() {
         </Link>
         <Link to="/test-map">Mapbox Test</Link>
         <Link to="/choropleth">Choropleth Map</Link>
-      </nav>
+      </nav> */}
 
       {/*  Routes */}
       <Routes>
-        <Route path="/" element={<PUMAMap />} />
+        <Route path="/puma" element={<PUMAMap />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/test-coeff" element={<TestCoeffPage />} />
-        <Route path="/test-map" element={<TestMap />} />
-        <Route path="/choropleth" element={<ChoroplethPage />} />
+        <Route path="/" element={<TestMap />} />
+        <Route path="/test-map" element={<ChoroplethPage />} />
       </Routes>
     </div>
   );

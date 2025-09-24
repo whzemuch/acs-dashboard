@@ -12,9 +12,6 @@ export default function App() {
   );
 }
 
-
-
-
 // import { BarChart } from "../components/BarChart";
 
 // export default function TestPage() {
@@ -26,5 +23,3 @@ export default function App() {
 //     </div>
 //   );
 // }
-
-

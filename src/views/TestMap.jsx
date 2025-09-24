@@ -1,26 +1,80 @@
-import DeckGL from "@deck.gl/react";
-import { Map } from "react-map-gl";
 import React from "react";
 
-const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
+import FilterPanel from "../components/FilterPanel.jsx";
+import LegendPanel from "../components/LegendPanel.jsx";
+import ChoroplethMap from "../components/ChoroplethMap.jsx";
+import MigrationFlowMap from "../components/MigrationFlowMap.jsx";
+import TrendPanel from "../components/TrendPanel.jsx";
+import { useDashboardStore } from "../store/dashboardStore";
 
 export default function TestMap() {
-  const initialViewState = {
-    longitude: -98,
-    latitude: 39,
-    zoom: 3,
-    pitch: 0,
-    bearing: 0,
-  };
+  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "flow");
+  const isFlowView = viewMode === "flow";
+  const mapTitle = isFlowView ? "Flow View" : "Choropleth View";
+  const mapComponent = isFlowView ? <MigrationFlowMap /> : <ChoroplethMap />;
+  const legendLayout = isFlowView ? "flow" : "choropleth";
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
-      <DeckGL initialViewState={initialViewState} controller>
-        <Map
-          mapboxAccessToken={MAPBOX_TOKEN}
-          mapStyle="mapbox://styles/mapbox/streets-v11"
-        />
-      </DeckGL>
+    <div
+      style={{
+        display: "flex",
+        gap: "24px",
+        alignItems: "flex-start",
+        padding: "16px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "16px",
+          width: 260,
+          flexShrink: 0,
+        }}
+      >
+        <FilterPanel />
+      </div>
+      <div
+        style={{
+          flex: 1,
+          minWidth: 600,
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          maxWidth: "70vw",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: "24px",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ flexShrink: 0, width: "70vw", height: "60vh" }}>
+            <h2
+              style={{
+                margin: "0 0 12px",
+                fontSize: 18,
+                textAlign: "center",
+              }}
+            >
+              {mapTitle}
+            </h2>
+            <div style={{ width: "100%", height: "55vh" }}>{mapComponent}</div>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: "12px",
+              alignItems: "center",
+            }}
+          >
+            <LegendPanel layout={legendLayout} />
+          </div>
+        </div>
+        <TrendPanel />
+      </div>
     </div>
   );
 }

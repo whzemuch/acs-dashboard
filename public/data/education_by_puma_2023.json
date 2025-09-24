@@ -1,8 +1,7 @@
-
 [
   {
     "PUMA": 200,
-    "ba_or_higher": 0.40,
+    "ba_or_higher": 0.4,
     "hs_or_higher": 0.75,
     "less_than_hs": 0.25,
     "coefficients": {
@@ -17,7 +16,7 @@
     "hs_or_higher": 0.65,
     "less_than_hs": 0.35,
     "coefficients": {
-      "ba_or_higher": 0.10,
+      "ba_or_higher": 0.1,
       "hs_or_higher": 0.05,
       "less_than_hs": -0.09
     }
@@ -34,6 +33,3 @@
     }
   }
 ]
-
-
-

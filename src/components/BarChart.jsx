@@ -14,17 +14,6 @@ export default function BarChart({ data, width = 300, height = 150 }) {
   return <svg ref={ref} width={width} height={height}></svg>;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 // import { useRef, useEffect } from "react";
 // import * as d3 from "d3";
 
@@ -68,22 +57,6 @@ export default function BarChart({ data, width = 300, height = 150 }) {
 
 //   return <svg ref={ref} width={width} height={height}></svg>;
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import * as d3 from "d3";
 // import { useRef, useEffect } from "react";

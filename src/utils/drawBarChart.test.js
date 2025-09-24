@@ -17,5 +17,3 @@ describe("drawBarChart", () => {
     expect(rects.length).toBe(3);
   });
 });
-
-

@@ -26,49 +26,50 @@ export function drawBarChart(svgElement, data, width, height, options = {}) {
   const innerHeight = height - marginTop - marginBottom;
 
   // Ensure numeric values (fallback = 0)
-//   const safeData = data.map((d) => ({
-//     label: d.label,
-//     value: Number.isFinite(+d.value) ? +d.value : 0,
-//   }));
+  //   const safeData = data.map((d) => ({
+  //     label: d.label,
+  //     value: Number.isFinite(+d.value) ? +d.value : 0,
+  //   }));
 
   // Sort data before drawing
-    const safeData = data
+  const safeData = data
     .map((d, i) =>
-        typeof d === "number"
+      typeof d === "number"
         ? { label: String(i), value: d }
-        : { label: d.label, value: +d.value || 0 }
-  )
-  .sort((a, b) => d3.descending(a.value, b.value));
+        : { label: d.label, value: +d.value || 0 },
+    )
+    .sort((a, b) => d3.descending(a.value, b.value));
 
   const maxValue = d3.max(safeData, (d) => d.value) || 0;
 
-
   // Update scales
-    const x = d3
+  const x = d3
     .scaleLinear()
     .domain([0, d3.max(safeData, (d) => d.value) || 0])
     .nice()
     .range([0, innerWidth]);
 
-    const y = d3
+  const y = d3
     .scaleBand()
     .domain(safeData.map((d) => d.label)) // <- sorted labels
     .range([0, innerHeight])
     .padding(0.1);
 
-
   const g = svg
     .append("g")
     .attr("transform", `translate(${marginLeft},${marginTop})`);
 
-
   // X axis (bottom)
-    g.append("g")
+  g.append("g")
     .attr("transform", `translate(0,${innerHeight})`)
-    .call(d3.axisBottom(x).ticks(4).tickFormat((d) => d + "%"))
+    .call(
+      d3
+        .axisBottom(x)
+        .ticks(4)
+        .tickFormat((d) => d + "%"),
+    )
     .selectAll("text")
     .style("font-size", "10px");
-
 
   // Y axis
   g.append("g")
@@ -77,17 +78,14 @@ export function drawBarChart(svgElement, data, width, height, options = {}) {
     .style("font-size", "10px");
 
   // Bars
-    g.selectAll("rect")
+  g.selectAll("rect")
     .data(data)
     .join("rect")
     .attr("y", (d) => y(d.label))
     .attr("x", (d) => (d.value < 0 ? x(d.value) : x(0)))
     .attr("width", (d) => Math.abs(x(d.value) - x(0)))
     .attr("height", y.bandwidth())
-    .attr("fill", (d) =>
-        typeof color === "function" ? color(d) : color
-    );
-
+    .attr("fill", (d) => (typeof color === "function" ? color(d) : color));
 
   // Value labels
   g.selectAll("text.value")

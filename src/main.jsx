@@ -9,10 +9,12 @@ import App from "./App.jsx";
 //     <App />
 //   </StrictMode>,
 // )
+const basename = (import.meta.env.BASE_URL || "/").replace(/\/$/, "") || "/";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/acs-dashboard">
+    <BrowserRouter basename={basename === "/" ? undefined : basename}>
       <App />
     </BrowserRouter>
-  </StrictMode>
+  </StrictMode>,
 );

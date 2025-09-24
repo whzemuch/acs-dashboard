@@ -8,7 +8,7 @@ export function renderHoverInfoWithCharts(hoverInfo, eduData, options = {}) {
   if (!data) return null;
 
   const stats = eduData.find(
-    (d) => d.PUMA === Number(data.content.properties?.PUMA)
+    (d) => d.PUMA === Number(data.content.properties?.PUMA),
   );
   if (!stats) return null;
 
