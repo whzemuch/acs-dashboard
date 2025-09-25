@@ -1,78 +1,463 @@
 # ACS Dashboard
 
-Interactive migration dashboard built with React, Deck.gl, and Vite. The app renders US county migration flows and a choropleth view from precomputed cache files, with demographic filters and state/county filtering.
+Data files (recommended)
+
+Boundaries (static): counties.geojson (GEOID, NAME, geometry) — simplified for web (e.g., with mapshaper).
+
+Centroids (static): county_centroids.csv (GEOID, lon, lat) — precomputed so arcs don’t compute centroids on the fly.
+
+Flows (per year): flows_2018.csv, …, flows_2022.csv
+Columns: year,origin_geoid,dest_geoid,flow
+(Optional extra: group for demographic slice.)
+
+(Later) SHAP/Feature importance: shap\_{year}.csv keyed by GEOID or GEOID_origin,GEOID_dest.
+
+DataProvider (single source of truth)
+
+Why: keep parsing/joins/memoization in one place so Map & Trends stay fast and in sync.
+
+Load files (fetch + PapaParse for CSV).
+
+Build indices:
+
+byYear[year] = flows array
+
+centroidById[GEOID] = {lon,lat}
+
+nameById[GEOID] = NAME
+
+Selectors (memoized):
+
+getFlows(year, stateFilter?, threshold?, metric) → array for ArcLayer
+
+getNetSeries(geoid) → [{year, net}] for Trends panel
+
+getInOutSeries(geoid) → [{year, in, out}] when user toggles
+
+Optional: do heavy aggregations in a Web Worker (nice win if flows get big).
+
+Minimal state to keep in a small Zustand/Redux store: year, viewMode ('county'|'state'), metric ('net'|'in'|'out'), stateFilter, selectedGEOID, threshold.
+
+MapView (deck.gl)
+
+Layers:
+
+GeoJsonLayer (counties)
+
+data: counties.geojson
+
+getFillColor: neutral gray (or themed)
+
+onHover: show county name + net for current year
+
+Pickable: yes
+
+ArcLayer (flows)
+
+data: selector.getFlows(...)
+
+getSourcePosition: from centroidById[origin_geoid]
+
+getTargetPosition: from centroidById[dest_geoid]
+
+getWidth: scale by flow (e.g., sqrt)
+
+getSourceColor/getTargetColor:
+
+Net view: color by sign from selected target county
+
+In/Out view: consistent palette (e.g., in=blue, out=orange)
+
+Performance knobs: draw top N flows or flow >= threshold
+
+Default view
+
+National extent
+
+Year = most recent observed (or 2021)
+
+Metric = Net migration
+
+Threshold = reasonable (e.g., top 10 flows per selected county or flow ≥ 300)
+
+TrendsPanel (D3)
+
+Input: getNetSeries(selectedGEOID) (default: national aggregate if nothing selected).
+
+Line chart
+
+X = year, Y = net (or in/out if toggled)
+
+2 series if you later add predictions: Observed vs Predicted
+
+Tooltip: year, in, out, net
+
+Responds to: year hover (optional crosshair) & filter changes
+
+FilterPanel
+
+Year slider: 2018–2022 (or 2013–2025 when real)
+
+Metric toggle: Net (default) / In / Out
+
+State dropdown: (optional) filters flows & map to that state’s counties
+
+Search / Select county: sets selectedGEOID
+
+Flow threshold slider: hides tiny arcs for clarity
+
+Data flow (what happens when user interacts)
+
+User moves Year slider → store updates {year}
+
+DataProvider recomputes memoized flows for that year & filter
+
+MapView gets new flows for ArcLayer and re-renders
+
+If a county is clicked, store sets {selectedGEOID}
+
+DataProvider computes net series for that county
+
+TrendsPanel re-renders with that time series
+
+Performance tips (with ~3k counties, 5 years)
+
+Pre-simplify geometry (mapshaper: -simplify 10% keep-shapes); keep WGS84 (EPSG:4326).
+
+Precompute centroids server-side and ship county_centroids.csv.
+
+Chunk flows by year (separate CSVs) so you only load what you need.
+
+Threshold small flows by default; expose a slider to reveal more.
+
+Use memoized selectors (Reselect or Zustand selectors) to avoid redoing aggregations.
+
+For very large flows, consider deck.gl binary data (typed arrays) or push heavy groupbys into a Web Worker.
+
+Performance tips (with ~3k counties, 5 years)
+
+Pre-simplify geometry (mapshaper: -simplify 10% keep-shapes); keep WGS84 (EPSG:4326).
+
+Precompute centroids server-side and ship county_centroids.csv.
+
+Chunk flows by year (separate CSVs) so you only load what you need.
+
+Threshold small flows by default; expose a slider to reveal more.
+
+Use memoized selectors (Reselect or Zustand selectors) to avoid redoing aggregations.
+
+For very large flows, consider deck.gl binary data (typed arrays) or push heavy groupbys into a Web Worker.
+
+“Start small” build plan (incremental)
+
+Milestone 1 — Skeleton & data loading
+
+Render layout, load counties.geojson, draw GeoJsonLayer only.
+
+Hardcode one year; no arcs yet.
+
+Milestone 2 — Centroids & flows
+
+Load county_centroids.csv + one flows_YYYY.csv
+
+Draw ArcLayer for that year (top N flows nationally)
+
+Add tooltip for arcs
+
+Milestone 3 — Filters
+
+Add Year slider → swap flow file (or filter in memory)
+
+Add threshold slider → update ArcLayer data
+
+Add county click → selectedGEOID in store
+
+Milestone 4 — TrendsPanel (D3)
+
+Compute in/out/net per year for selected county
+
+Line chart with hover
+
+Milestone 5 — State filter + polish
+
+Dropdown to filter counties to a state (improves clarity & perf)
+
+Legends, color ramps, null states, no-data UX
+
+Milestone 6 — Predictions & explainability (stretch)
+
+Add predicted series to TrendsPanel
+
+Inject SHAP top features for selected county/year (bar chart)
+
+20250925: local build working, need to fix the deploy issue
+
++-----------------------------------------------------------------------+
+| Header: U.S. Migration Flows Dashboard (2013–2025) |
++-----------------------------------------------------------------------+
+| LEFT PANEL (Filters) | MAIN VIEW (Map + Charts) |
+|---------------------------------------+--------------------------------|
+| 📍 Geography | 🗺️ Deck.gl Map |
+| - State dropdown | - County polygons (GeoJSON) |
+| - County search / select | - County-to-County ArcLayer |
+| | • Arc width = flow volume |
+| 🕒 Time | • Arc color = metric |
+| - Year slider 2013–2025 | |
+| | 📈 D3 Trends Panel |
+| ⚖️ Metric | - Line chart for selected |
+| - (•) Net (default) | county: net over time |
+| - ( ) In-migration | - Toggle: show In/Out lines |
+| - ( ) Out-migration | - If no county selected: |
+| | show national (or state) |
+| 🔎 Flow Threshold | aggregate trend |
+| - Min flow slider | |
+| | 🧠 Feature Importance Panel |
+| 👤 Demographics (optional) | - Top drivers (bar chart) |
+| - Age / Income / Education toggles | for selected county/year |
+| | - Source: model SHAP/weights |
+|---------------------------------------+--------------------------------|
+| Legend / Tooltip | Footer: Data sources & notes |
+| - Color scale for metric | - ACS (county), simulated flows|
+| - Units & thresholds | - Disclaimer if simulated |
++-----------------------------------------------------------------------+
+
+## Data Pipeline Requests
+
+To support demographic filters and fast client-side rendering, the front-end expects a precomputed cache alongside the base flow files.
+
+### Required inputs
+
+- **County geometries (cartographic boundaries)**
+  - `public/data/cb_2018_us_county_5m/…` (county polygons)
+  - `public/data/cb_2018_us_state_5m/…` (state outline)
+- **Base migration flows**
+  - `public/data/flow/flow_{year}.csv` with columns:
+    `year, origin_geoid, origin_name, dest_geoid, dest_name, flow`
+
+### Deliverables from the data/model team
+
+1. **Per-county demographic weights**  
+   CSV or JSON keyed by county `GEOID`, with shares summing to 1 for each dimension:
+
+   - `age` buckets (example): `age_18_24`, `age_25_34`, `age_35_44`, `age_45_54`, `age_55_64`, `age_65_plus`
+   - `income` buckets (example): `inc_lt_25k`, `inc_25_50k`, `inc_50_100k`, `inc_100_plus`
+   - `education` buckets (example): `edu_hs`, `edu_some_college`, `edu_ba`, `edu_grad`
+
+   Sample row:
+
+   ```json
+   {
+     "geoid": "01001",
+     "age": { "age_18_24": 0.18, "age_25_34": 0.22, … },
+     "income": { "inc_lt_25k": 0.15, … },
+     "education": { "edu_ba": 0.27, … }
+   }
+   ```
+
+### 1. Migration flows expanded by demographics
+
+For each year, provide flow\_{year}\_extended.csv (or a single file) with one row per origin/destination slice:
+
+```css
+year, origin_geoid, dest_geoid, flow, age, income, education
+
+```
+
+- flow is the count for that demographic combination; sums across slices must match the original flow total for the same origin/dest/year.
+- Keep GEOIDs zero-padded (5 characters) and reuse the bucket IDs above.
+
+### 2. Dimension metadata
+
+```json
+{
+  "age": [
+    { "id": "age_18_24", "label": "18–24" },
+    …
+  ],
+  "income": [
+    { "id": "inc_lt_25k", "label": "<$25k" },
+    …
+  ],
+  "education": [
+    { "id": "edu_ba", "label": "Bachelor’s" },
+    …
+  ]
+}
+```
+
+### 3. (Optional but helpful) Aggregated totals
+
+Precompute inbound/outbound totals per demographic and year:
+
+```json
+{
+  "year": 2018,
+  "inboundTotals": {
+    "06037": {
+      "total": 5200,
+      "byAge": { "age_25_34": 810, … },
+      "byIncome": { "inc_50_100k": 640, … },
+      "byEducation": { … }
+    }
+  },
+  "outboundTotals": { … }
+}
+
+```
+
+### 4. Feature importance (future)
+
+If available, provide SHAP or model weights keyed by year and GEOID_origin/dest to power the explainability panel.
+
+File placement
+Generated artifacts should live under public/data/cache/, e.g.:
+
+```pgsql
+public/data/cache/
+  years.json
+  dimensions.json
+  county-metadata.json
+  flows/
+    2018.json
+    2019.json
+    …
+  inbound_outbound/
+    2018.json
+    …
+
+```
+
+An interactive web-based dashboard for visualizing American Community Survey (ACS) data at the PUMA (Public Use Microdata Area) level.  
+Built with **React, Deck.gl, Mapbox, D3.js, and Vite**, this project allows users to explore geographic education data and related metrics.
+
+---
+
+## Features
+
+Live Demo: **[View the deployed site](https://whzemuch.github.io/acs-dashboard/)**
+
+- Interactive **map of PUMA regions** using Deck.gl + Mapbox
+- **Hover tooltips & popups** with education stats visualized by D3.js
+- **Responsive layout** using React components
+
+---
 
 ## Getting Started
 
+### 1. Clone this repo
+
+```bash
+git clone https://github.com/whzemuch/acs-dashboard.git
+cd acs-dashboard
+```
+
+### 2. Install dependencies
+
 ```bash
 npm install
-npm run build-cache   # generate public/data/cache/* JSON from the raw CSV/GeoJSON assets
-npm run dev           # start the Vite dev server
 ```
 
-The cache builder reads the files in `public/data/` (counties, states, flows, demographics) and emits:
-
-- `public/data/cache/years.json`
-- `public/data/cache/county-metadata.json`
-- `public/data/cache/dimensions.json`
-- `public/data/cache/flows/<year>.json`
-
-Each per-year JSON contains flow slices plus inbound/outbound/net aggregates so the client never parses CSV at runtime.
-
-## Testing
+### 3. Run locally (development mode)
 
 ```bash
-npm test
+npm run dev
 ```
 
-Vitest covers the data provider, worker fallback, store logic, and utility functions. In environments where Node cannot write `.vite-temp`, run tests locally.
+Open http://localhost:5173 in your browser.
 
-## Filters & Interactions
+### 4. Preview the Production Build
 
-- **Map View** – Toggle between `Flow` (arcs) and `Choropleth` shading.
-- **Year** – Dropdown populated from cache (latest year is the default).
-- **Metric** – Net, Inbound, or Outbound.
-- **State / County** – Filtering selects states; counties list updates accordingly.
-- **Min Flow** – Slider hides small flows.
-- **Demographics** – Age, Income, and Education slices match the cache buckets.
-- **Reset** – Restores default filters (latest year, flow view, minFlow=0, all demographics).
+```bash
+npm run build
+npx vite preview --base=/acs-dashboard/
+```
 
-## Map Features
+Then open the printed local URL like
+http://localhost:4173/acs-dashboard/.
 
-- **Flow View** (`MigrationFlowMap.jsx`)
-  - Deck.gl `ArcLayer` + county polygons with state outlines.
-  - Hover arcs to see slice flow, origin/destination inbound/outbound/net, plus demographic context.
-  - Hover counties to see totals.
-  - Flows are computed via a Web Worker when available (`flowService` + `flowWorkerClient`), falling back to the main thread otherwise.
+### Example Pseudo Data
 
-- **Choropleth View** (`ChoroplethMap.jsx`)
-  - County shading based on the current metric, with state outlines.
-  - Hover tooltips include county/state, metric value, inbound/outbound/net totals, and demographic filters.
+For the demo purpose, I just used this minimal example:
 
-- **Trends Panel** (`TrendPanel.jsx`)
-  - D3 line chart showing the net series across all cached years.
-  - Optional inbound/outbound traces (auto-enabled when the Metric toggle is set to In/Out).
-  - Highlights the selected year with a vertical guide and surfaces the current totals underneath.
+public/data/education_by_puma_2023.json
 
-## Data Source Expectations
+```json
+[
+  {
+    "PUMA": 101,
+    "city": "Los Angeles",
+    "ba_or_higher": 0.42,
+    "coefficients": { "hs": 1.0, "ba": 1.5, "grad": 2.1 }
+  },
+  {
+    "PUMA": 202,
+    "city": "San Antonio",
+    "ba_or_higher": 0.35,
+    "coefficients": { "hs": 1.0, "ba": 1.4, "grad": 1.9 }
+  },
+  {
+    "PUMA": 303,
+    "city": "New York",
+    "ba_or_higher": 0.58,
+    "coefficients": { "hs": 1.0, "ba": 1.7, "grad": 2.3 }
+  }
+]
+```
 
-The `scripts/build-flow-cache.js` script assumes the following inputs under `public/data/`:
+public/data/geo/puma_shapes.json (simplified shapes)
 
-- `geo/cb_2018_us_county_5m_boundaries.geojson`
-- `geo/cb_2018_us_state_5m_boundaries.geojson`
-- `geo/county_centroids.csv` (optional; map derives centroids if missing)
-- `flow/flow_extended.csv` – extended flow slices (year, origin/dest GEOID, flow, age, income, education)
-
-Adjust the script if your real data uses different filenames or additional dimensions (e.g., SHAP feature importance).
-
-## Worker Notes
-
-`flowService` automatically prefers the Web Worker (for heavy flow aggregation) when available. The Vitest suite mocks both success and failure paths to verify the fallback behavior.
-
-## Recent Updates
-
-- Added a D3 Trend Panel that charts net/inbound/outbound series for the active geography and shares the filter state with both maps.
-- Updated the flow map’s default camera pitch/bearing so arcs are visible without manual tilting.
-- Reworked the Test Map layout to align map, legend, and Trend Panel in a single 70 vw column (no vertical scroll).
-- Choropleth map now recomputes its color scale immediately after a state filter change.
-- Trend plotting now deduplicates year ticks and draws markers at every observation using the cache’s aggregated totals when possible.
+```json
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "PUMA": 101, "name": "Los Angeles" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-118.5, 34.0],
+            [-118.1, 34.0],
+            [-118.1, 34.2],
+            [-118.5, 34.2],
+            [-118.5, 34.0]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "PUMA": 202, "name": "San Antonio" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-98.6, 29.3],
+            [-98.3, 29.3],
+            [-98.3, 29.6],
+            [-98.6, 29.6],
+            [-98.6, 29.3]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "PUMA": 303, "name": "New York" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-74.1, 40.6],
+            [-73.9, 40.6],
+            [-73.9, 40.8],
+            [-74.1, 40.8],
+            [-74.1, 40.6]
+          ]
+        ]
+      }
+    }
+  ]
+}
+```
