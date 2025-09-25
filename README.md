@@ -190,7 +190,7 @@ Add predicted series to TrendsPanel
 
 Inject SHAP top features for selected county/year (bar chart)
 
-20250925: local build working, need to fix the deploy issue
+20250925: local build working, need to fix the deploy issue, remove deploy-feature.yml, deploy-main.yml
 
 +-----------------------------------------------------------------------+
 | Header: U.S. Migration Flows Dashboard (2013–2025) |
