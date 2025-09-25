@@ -10,18 +10,22 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig(({ mode }) => {
+  // Map vite mode to base path
+  const base =
+    mode === "staging" ? "/acs-dashboard/preview/" : "/acs-dashboard/";
+
   return {
     plugins: [react()],
-    base: mode === "staging" ? "/acs-dashboard/preview/" : "/acs-dashboard/",
+    base,
 
     server: {
       port: 5173,
       open: true,
-      historyApiFallback: true,
+      historyApiFallback: true, // allows SPA routing
     },
 
     test: {
-      environment: "jsdom",
+      environment: "jsdom", // gives document/window in tests
       globals: true,
     },
   };
