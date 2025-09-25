@@ -1,4 +1,4 @@
-name: Deploy feature branch to GitHub Pages
+name: Deploy to GitHub Pages (Main + Feature)
 
 permissions:
   contents: read
@@ -8,24 +8,45 @@ permissions:
 on:
   push:
     branches:
+      - main
       - feat/data-provider-refactor-back
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      vite_mode: ${{ steps.set-mode.outputs.vite_mode }}
+      env_name: ${{ steps.set-mode.outputs.env_name }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          lfs: true # so your large flow JSONs come down
-      - uses: actions/setup-node@v4
+          lfs: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+
+      - name: Set Vite mode + environment
+        id: set-mode
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            echo "vite_mode=production" >> $GITHUB_OUTPUT
+            echo "env_name=github-pages" >> $GITHUB_OUTPUT
+          else
+            echo "vite_mode=staging" >> $GITHUB_OUTPUT
+            echo "env_name=staging-feature" >> $GITHUB_OUTPUT
+          fi
+
       - run: npm ci
-      - run: npm run build
+
+      - name: Build project
+        run: npm run build -- --mode ${{ steps.set-mode.outputs.vite_mode }}
         env:
           VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -33,11 +54,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
-      name: github-pages
+      name: ${{ needs.build.outputs.env_name }}
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/deploy-pages@v2
+        id: deploy

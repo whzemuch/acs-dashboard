@@ -9,21 +9,20 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  base: process.env.NODE_ENV === "production" ? "/acs-dashboard/" : "/",
+export default defineConfig(({ mode }) => {
+  return {
+    plugins: [react()],
+    base: mode === "staging" ? "/acs-dashboard/preview/" : "/acs-dashboard/",
 
-  server: {
-    port: 5173,
-    open: true,
-    // 👇 SPA fallback so /test, /charts, etc. work
-    historyApiFallback: true,
-  },
+    server: {
+      port: 5173,
+      open: true,
+      historyApiFallback: true,
+    },
 
-  test: {
-    environment: "jsdom", // 👈 gives you document/window in tests
-    globals: true, // 👈 optional: lets you use describe/it/expect without imports
-    // setupFiles: "./src/setupTests.js", // 👈 optional: if you need global setup
-  },
+    test: {
+      environment: "jsdom",
+      globals: true,
+    },
+  };
 });
