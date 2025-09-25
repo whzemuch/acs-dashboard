@@ -1,9 +1,7 @@
-name: Deploy Production and Staging to GitHub Pages
+name: Deploy to GitHub Pages
 
 permissions:
-  contents: write # required for peaceiris/actions-gh-pages
-  pages: write # required for actions/deploy-pages
-  id-token: write
+  contents: write
 
 on:
   push:
@@ -12,11 +10,8 @@ on:
       - feat/data-provider-refactor-back
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    outputs:
-      vite_mode: ${{ steps.set-mode.outputs.vite_mode }}
-      target: ${{ steps.set-mode.outputs.target }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -28,59 +23,27 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Set Vite mode + target
+      - name: Set mode + target branch
         id: set-mode
         run: |
           if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
             echo "vite_mode=production" >> $GITHUB_OUTPUT
-            echo "target=production" >> $GITHUB_OUTPUT
+            echo "branch=gh-pages" >> $GITHUB_OUTPUT
           else
             echo "vite_mode=staging" >> $GITHUB_OUTPUT
-            echo "target=staging" >> $GITHUB_OUTPUT
+            echo "branch=gh-pages-feature" >> $GITHUB_OUTPUT
           fi
 
       - run: npm ci
 
-      - name: Build project
+      - name: Build
         run: npm run build -- --mode ${{ steps.set-mode.outputs.vite_mode }}
         env:
           VITE_MAPBOX_TOKEN: ${{ secrets.VITE_MAPBOX_TOKEN }}
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-  deploy-production:
-    if: needs.build.outputs.target == 'production'
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-      - uses: actions/deploy-pages@v2
-        id: deploy
-
-  deploy-staging:
-    if: needs.build.outputs.target == 'staging'
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-      - name: Deploy to gh-pages-feature branch
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          publish_branch: gh-pages-feature
+          publish_branch: ${{ steps.set-mode.outputs.branch }}
