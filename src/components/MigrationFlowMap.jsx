@@ -27,6 +27,11 @@ const INITIAL_VIEW_STATE = {
 const IN_COLOR = [130, 202, 250, 200];
 const OUT_COLOR = [255, 140, 0, 200];
 const NET_COLOR = [30, 90, 160, 200];
+const COUNTY_HIGHLIGHT_FILL = [0, 150, 136, 160];
+const COUNTY_HIGHLIGHT_LINE = [0, 120, 110, 220];
+const STATE_HIGHLIGHT_FILL = [168, 208, 255, 90];
+const STATE_COUNTY_FILL = [205, 225, 255, 110];
+const STATE_HIGHLIGHT_LINE = [30, 90, 160, 220];
 
 export default function MigrationFlowMap({ forceEnabled = false }) {
   const initStore = useDashboardStore((s) => s.init);
@@ -125,6 +130,9 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     return map;
   }, [statesGeo]);
 
+  const normalizedCounty = filters.county ? normalizeGeoid(filters.county) : null;
+  const normalizedState = filters.state ? normalizeState(filters.state) : null;
+
   const arcLayer = useMemo(() => {
     if (!arcs.length) return null;
     const { metric } = filters;
@@ -201,6 +209,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
 
   const countyLayer = useMemo(() => {
     if (!countiesGeo) return null;
+    const selectedCounty = normalizedCounty;
     return new GeoJsonLayer({
       id: "county-boundaries",
       data: countiesGeo,
@@ -208,14 +217,40 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       stroked: true,
       getFillColor: (feature) => {
         const geoid = feature.properties.GEOID;
-        if (filters.state && feature.properties.STATEFP !== filters.state) {
+        if (selectedCounty && geoid === selectedCounty) {
+          return COUNTY_HIGHLIGHT_FILL;
+        }
+        if (normalizedState && feature.properties.STATEFP !== normalizedState) {
           return [230, 230, 230, 40];
+        }
+        if (normalizedState && feature.properties.STATEFP === normalizedState) {
+          return STATE_COUNTY_FILL;
         }
         return [230, 230, 230, 80];
       },
-      getLineColor: [120, 120, 120, 160],
-      lineWidthMinPixels: 0.75,
+      getLineColor: (feature) => {
+        const geoid = feature.properties.GEOID;
+        if (selectedCounty && geoid === selectedCounty) {
+          return COUNTY_HIGHLIGHT_LINE;
+        }
+        if (normalizedState && feature.properties.STATEFP === normalizedState) {
+          return [120, 120, 120, 200];
+        }
+        return [120, 120, 120, 160];
+      },
+      lineWidthUnits: "pixels",
+      getLineWidth: (feature) => {
+        const geoid = feature.properties.GEOID;
+        if (selectedCounty && geoid === selectedCounty) return 2.4;
+        if (normalizedState && feature.properties.STATEFP === normalizedState) return 1.4;
+        return 0.75;
+      },
       pickable: true,
+      updateTriggers: {
+        getFillColor: [selectedCounty, normalizedState],
+        getLineColor: [selectedCounty, normalizedState],
+        getLineWidth: [selectedCounty, normalizedState],
+      },
       onHover: (info) => {
         if (!info.object) {
           setHoverInfo(null);
@@ -232,7 +267,8 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     });
   }, [
     countiesGeo,
-    filters,
+    normalizedCounty,
+    normalizedState,
     countyLookup,
     summaryData,
   ]);
@@ -242,12 +278,26 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     return new GeoJsonLayer({
       id: "state-boundaries",
       data: statesGeo,
-      filled: false,
+      filled: true,
       stroked: true,
-      getLineColor: [60, 60, 60, 200],
-      lineWidthMinPixels: 1.2,
+      getFillColor: (feature) =>
+        normalizedState && feature.properties.STATEFP === normalizedState
+          ? STATE_HIGHLIGHT_FILL
+          : [0, 0, 0, 0],
+      getLineColor: (feature) =>
+        normalizedState && feature.properties.STATEFP === normalizedState
+          ? STATE_HIGHLIGHT_LINE
+          : [60, 60, 60, 200],
+      lineWidthUnits: "pixels",
+      getLineWidth: (feature) =>
+        normalizedState && feature.properties.STATEFP === normalizedState ? 2.5 : 1.2,
+      updateTriggers: {
+        getFillColor: [normalizedState],
+        getLineColor: [normalizedState],
+        getLineWidth: [normalizedState],
+      },
     });
-  }, [statesGeo]);
+  }, [statesGeo, normalizedState]);
 
   const layers = useMemo(
     () => [stateLayer, countyLayer, arcLayer].filter(Boolean),
@@ -258,10 +308,11 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     if (!ready) return;
 
     let targetFeature = null;
-    if (filters.county && countyFeatureMap.has(filters.county)) {
-      targetFeature = countyFeatureMap.get(filters.county);
-    } else if (filters.state && stateFeatureMap.has(filters.state)) {
-      targetFeature = stateFeatureMap.get(filters.state);
+    const normalizedCounty = filters.county ? normalizeGeoid(filters.county) : null;
+    if (normalizedCounty && countyFeatureMap.has(normalizedCounty)) {
+      targetFeature = countyFeatureMap.get(normalizedCounty);
+    } else if (normalizedState && stateFeatureMap.has(normalizedState)) {
+      targetFeature = stateFeatureMap.get(normalizedState);
     }
 
     if (!targetFeature) {
@@ -281,16 +332,16 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
         zoom: prev.zoom,
       });
 
-      const padding = filters.county ? 60 : 140;
+      const padding = normalizedCounty ? 60 : 140;
       let { longitude, latitude, zoom } = viewport.fitBounds(bounds, { padding });
-      zoom = Math.min(zoom, filters.county ? 8 : 6);
+      zoom = Math.min(zoom, normalizedCounty ? 8 : 6);
 
       return applyViewTransition(prev, { longitude, latitude, zoom });
     });
   }, [
     ready,
     filters.county,
-    filters.state,
+    normalizedState,
     countyFeatureMap,
     stateFeatureMap,
   ]);
@@ -399,6 +450,18 @@ function applyViewTransition(prev, next) {
     transitionDuration: 800,
     transitionInterpolator: new FlyToInterpolator(),
   };
+}
+
+function normalizeGeoid(id) {
+  if (!id) return "";
+  const value = typeof id === "number" ? id.toString() : String(id);
+  return value.padStart(5, "0");
+}
+
+function normalizeState(id) {
+  if (!id) return "";
+  const value = typeof id === "number" ? id.toString() : String(id);
+  return value.padStart(2, "0");
 }
 
 function buildCountyHoverText(geoid, countyLookup, summary, filters) {

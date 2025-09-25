@@ -287,7 +287,10 @@ function selectFlows(payload, filters) {
 async function fetchJSON(url) {
   const isAbsoluteHttp = /^https?:/i.test(url);
 
-  if (typeof window === "undefined" && !isAbsoluteHttp) {
+  const hasProcessCwd =
+    typeof process !== "undefined" && typeof process.cwd === "function";
+
+  if (typeof window === "undefined" && !isAbsoluteHttp && hasProcessCwd) {
     const { readFile } = await import("node:fs/promises");
     const pathModule = await import("node:path");
 
@@ -306,7 +309,7 @@ async function fetchJSON(url) {
       return await res.json();
     } catch (error) {
       // Node environments may throw ERR_INVALID_URL for relative paths.
-      if (!isAbsoluteHttp) {
+      if (!isAbsoluteHttp && hasProcessCwd) {
         const { readFile } = await import("node:fs/promises");
         const pathModule = await import("node:path");
         const normalized = url.startsWith("/") ? url.slice(1) : url;
@@ -316,6 +319,15 @@ async function fetchJSON(url) {
       }
       throw error;
     }
+  }
+
+  if (hasProcessCwd) {
+    const { readFile } = await import("node:fs/promises");
+    const pathModule = await import("node:path");
+    const normalized = url.startsWith("/") ? url.slice(1) : url;
+    const filePath = pathModule.join(process.cwd(), "public", normalized);
+    const content = await readFile(filePath, "utf8");
+    return JSON.parse(content);
   }
 
   throw new Error(`No fetch implementation available for ${url}`);

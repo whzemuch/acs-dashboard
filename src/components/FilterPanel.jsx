@@ -269,7 +269,9 @@ const baseToggle = {
   borderRadius: "6px",
   fontSize: "13px",
   cursor: "pointer",
-  border: "1px solid #cbd2d9",
+  borderWidth: "1px",
+  borderStyle: "solid",
+  borderColor: "#cbd2d9",
   background: "white",
 };
 
