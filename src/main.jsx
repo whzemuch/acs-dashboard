@@ -9,11 +9,22 @@ import App from "./App.jsx";
 //     <App />
 //   </StrictMode>,
 // )
-const basename = (import.meta.env.BASE_URL || "/").replace(/\/$/, "") || "/";
+const rawBase = import.meta.env.BASE_URL || "/";
+
+let normalizedBase = rawBase.replace(/\/$/, "");
+if (!normalizedBase || normalizedBase === ".") {
+  normalizedBase = "/";
+}
+// Vite can emit "./" when using a relative base; treat that the same as root
+if (normalizedBase.startsWith(".")) {
+  normalizedBase = "/";
+}
+
+const basename = normalizedBase === "/" ? undefined : normalizedBase;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename={basename === "/" ? undefined : basename}>
+    <BrowserRouter basename={basename}>
       <App />
     </BrowserRouter>
   </StrictMode>,
