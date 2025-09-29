@@ -29,7 +29,7 @@
 // src/App.js
 
 import { useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, Navigate } from "react-router-dom";
 import PUMAMap from "./components/PUMAMap";
 import TestPage from "./views/TestPage";
 import TestCoeffPage from "./views/TestCoeffPage";
@@ -63,11 +63,12 @@ function App() {
 
       {/*  Routes */}
       <Routes>
+        <Route path="/" element={<Navigate to="/test-map" replace />} />
+        <Route path="/test-map" element={<TestMap />} />
         <Route path="/puma" element={<PUMAMap />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/test-coeff" element={<TestCoeffPage />} />
-        <Route path="/" element={<TestMap />} />
-        <Route path="/test-map" element={<ChoroplethPage />} />
+        <Route path="/choropleth" element={<ChoroplethPage />} />
       </Routes>
     </div>
   );

@@ -12,13 +12,16 @@ Live Demo: **[https://whzemuch.github.io/acs-dashboard/](https://whzemuch.github
 ## Data Flow Overview
 
 ### Input Datasets
+
 - `public/data/geo/cb_2018_us_county_5m_boundaries.geojson` – simplified county polygons (WGS84)
 - `public/data/geo/county_centroids.csv` – precomputed lon/lat per county
 - `public/data/flow/flow_extended.csv` – long-form flows (`year`, `origin`, `dest`, `flow`, optional `age`, `income`, `education`)
 - Optional: SHAP/explainability CSVs or additional dimensions
 
 ### Preprocessing Pipeline
+
 Run `node scripts/build-flow-cache.js` to emit cache files in `public/data/cache/`:
+
 - `years.json` – available years
 - `county-metadata.json` – geoid → {name, state, centroid}
 - `dimensions.json` – age / income / education buckets
@@ -27,6 +30,7 @@ Run `node scripts/build-flow-cache.js` to emit cache files in `public/data/cache
 This keeps the browser fast by avoiding runtime CSV parsing.
 
 ### Client Architecture
+
 1. **Initialization** – `src/store/dashboardStore.js` calls `dataProvider.init()` to load metadata, dimensions, and defaults into Zustand.
 2. **Flow retrieval** – `dataProvider.getFlows(filters)` ensures the year cache is loaded, filters slice rows by demographics/state/county, trims to top-N, and returns deck.gl-ready objects. A web worker (`src/workers/flowWorker.js`) handles heavy calls off the main thread.
 3. **Map rendering** – `MigrationFlowMap` listens to filter changes, fetches flows + yearly summaries, and renders:
@@ -41,6 +45,7 @@ Built-in performance practices: simplified geometries, precomputed centroids, pe
 ## Usage
 
 ### 1. Clone & Install
+
 ```bash
 git clone https://github.com/whzemuch/acs-dashboard.git
 cd acs-dashboard
@@ -48,35 +53,76 @@ npm install
 ```
 
 ### 2. Configure
+
 - Create `.env.local` with `VITE_MAPBOX_TOKEN=...`
 - (Optional) regenerate caches: `npm run build-cache` (requires source CSV/GeoJSON files under `public/data/`)
 
 ### 3. Develop
+
 ```bash
 npm run dev
 ```
+
 Open http://localhost:5173 to work with hot reload.
 
 ### 4. Build & Preview Production
+
 ```bash
 npm run build
 npx vite preview --base=/acs-dashboard/
 ```
+
 Visit the printed URL (e.g., http://localhost:4173/acs-dashboard/). For GitHub Pages, run `npm run deploy` or rely on the deploy workflow.
 
 ### 5. Deploy
+
 - Manual: `npm run deploy` pushes `dist/` to the `gh-pages` branch
 - GitHub Actions (if configured): merging into `main` triggers the Pages workflow; ensure `VITE_MAPBOX_TOKEN` is set as a repo secret
 
 ## Data Specs & Demo Payloads
 
 ### Flow CSV Columns
+
 ```text
 year, origin_geoid, dest_geoid, flow, [age], [income], [education], [origin_lon], [origin_lat], [dest_lon], [dest_lat]
 ```
+
 Missing coordinates fall back to the centroid lookup.
 
+#### Example Cache Row (`public/data/cache/flows/2020.json`)
+
+```json
+{
+  "year": 2020,
+  "maxFlow": 158.7412,
+  "rows": [
+    {
+      "year": 2020,
+      "origin": "16027",
+      "dest": "36123",
+      "flow": 158.7412,
+      "originLon": -116.84537011524488,
+      "originLat": 43.689253071998614,
+      "destLon": -77.10332314814815,
+      "destLat": 42.609325000000005,
+      "age": "age_35_54",
+      "income": "inc_lt_25k",
+      "education": "edu_ba"
+    }
+  ],
+  "inboundTotals": {
+    "36123": 1946.0,
+    "16027": 1271.0
+  },
+  "outboundTotals": {
+    "16027": 3506.0,
+    "36123": 1671.0
+  }
+}
+```
+
 ### County Metadata (`county-metadata.json`)
+
 ```json
 {
   "geoid": "06037",
@@ -88,38 +134,15 @@ Missing coordinates fall back to the centroid lookup.
 }
 ```
 
-### Demo Education Dataset (`public/data/education_by_puma_2023.json`)
-```json
-[
-  {
-    "PUMA": 101,
-    "city": "Los Angeles",
-    "ba_or_higher": 0.42,
-    "coefficients": { "hs": 1.0, "ba": 1.5, "grad": 2.1 }
-  },
-  {
-    "PUMA": 202,
-    "city": "San Antonio",
-    "ba_or_higher": 0.35,
-    "coefficients": { "hs": 1.0, "ba": 1.4, "grad": 1.9 }
-  },
-  {
-    "PUMA": 303,
-    "city": "New York",
-    "ba_or_higher": 0.58,
-    "coefficients": { "hs": 1.0, "ba": 1.7, "grad": 2.3 }
-  }
-]
-```
+### Demo Geo Shapes (`public/data/geo/county_shapes.json`)
 
-### Demo Geo Shapes (`public/data/geo/puma_shapes.json`)
 ```json
 {
   "type": "FeatureCollection",
   "features": [
     {
       "type": "Feature",
-      "properties": { "PUMA": 101, "name": "Los Angeles" },
+      "properties": { "GEOID": "06037", "name": "Los Angeles County" },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
