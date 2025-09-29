@@ -1,3 +1,5 @@
+import { useDashboardStore } from "../store/dashboardStore";
+
 const legendCard = {
   background: "white",
   border: "1px solid #e2e8f0",
@@ -67,11 +69,22 @@ export function ChoroplethLegendCard() {
 }
 
 function FlowLegendContent() {
+  const metric = useDashboardStore((s) => s.filters.metric ?? "net");
+  const isNetMode = metric === "net";
+
   return (
     <>
-      <LegendRow color="#82cafa" label="Inbound flow" />
-      <LegendRow color="#ff8c00" label="Outbound flow" />
-      <LegendRow color="#1e5aa0" label="Net flow" />
+      {isNetMode ? (
+        <>
+          <LegendRow color="rgba(115, 96, 210, 1)" label="Net gain" />
+          <LegendRow color="rgba(166, 54, 98, 1)" label="Net loss" />
+        </>
+      ) : (
+        <>
+          <LegendRow color="rgba(130, 202, 250, 1)" label="Inbound flow" />
+          <LegendRow color="rgba(255, 140, 0, 1)" label="Outbound flow" />
+        </>
+      )}
       <div style={{ fontSize: 12, color: "#4a5568" }}>
         Arc thickness scales with √(flow); Min Flow slider hides small values.
       </div>

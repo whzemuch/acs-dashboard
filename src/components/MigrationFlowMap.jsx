@@ -27,6 +27,10 @@ const INITIAL_VIEW_STATE = {
 const IN_COLOR = [130, 202, 250, 200];
 const OUT_COLOR = [255, 140, 0, 200];
 const NET_COLOR = [30, 90, 160, 200];
+// Colorblind-friendly diverging palette (blue = gain, orange = loss)
+const NET_GAIN_COLOR = [115, 96, 210, 200];
+const NET_LOSS_COLOR = [166, 54, 98, 200];
+const NET_NEUTRAL_COLOR = [128, 128, 128, 200];
 const COUNTY_HIGHLIGHT_FILL = [0, 150, 136, 160];
 const COUNTY_HIGHLIGHT_LINE = [0, 120, 110, 220];
 const STATE_HIGHLIGHT_FILL = [168, 208, 255, 90];
@@ -137,6 +141,27 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     if (!arcs.length) return null;
     const { metric } = filters;
 
+    const inboundTotals = summaryData?.inboundTotals ?? {};
+    const outboundTotals = summaryData?.outboundTotals ?? {};
+
+    const getNetColorForGeoid = (geoid) => {
+      const inbound = inboundTotals[geoid] ?? 0;
+      const outbound = outboundTotals[geoid] ?? 0;
+      const net = inbound - outbound;
+
+      if (net > 0.01) return NET_GAIN_COLOR;
+      if (net < -0.01) return NET_LOSS_COLOR;
+      return NET_NEUTRAL_COLOR;
+    };
+
+    const getEndpointColor = (endpoint) => {
+      if (metric !== "net") return () => getArcColor(metric);
+      return (d) => {
+        const geoid = endpoint === "origin" ? d.origin : d.dest;
+        return getNetColorForGeoid(geoid);
+      };
+    };
+
     return new ArcLayer({
       id: "migration-arcs",
       data: arcs,
@@ -144,8 +169,8 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       getSourcePosition: (d) => d.originPosition,
       getTargetPosition: (d) => d.destPosition,
       getWidth: (d) => Math.max(0.4, Math.sqrt(d.flow) * 0.15),
-      getSourceColor: () => getArcColor(metric),
-      getTargetColor: () => getArcColor(metric),
+      getSourceColor: getEndpointColor("origin"),
+      getTargetColor: getEndpointColor("dest"),
       onHover: ({ x, y, object }) => {
         if (!object) {
           setHoverInfo(null);

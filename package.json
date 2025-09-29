@@ -12,8 +12,8 @@
     "preview": "vite preview",
     "deploy": "vite build && gh-pages -d dist",
     "test": "vitest",
-    "preview:staging": "vite preview --base=/acs-dashboard/preview/",
-    "preview:prod": "vite preview --base=/acs-dashboard/"
+    "deploy:prod": "vite build && gh-pages -d dist -b gh-pages",
+    "deploy:staging": "vite build --mode staging && gh-pages -d dist -b gh-pages -d preview"
   },
   "dependencies": {
     "d3": "^7.9.0",
