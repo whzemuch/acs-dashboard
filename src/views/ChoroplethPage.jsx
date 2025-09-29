@@ -7,7 +7,7 @@ import TrendPanel from "../components/TrendPanel";
 import { useDashboardStore } from "../store/dashboardStore";
 
 export default function ChoroplethPage() {
-  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "flow");
+  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "choropleth");
 
   return (
     <div

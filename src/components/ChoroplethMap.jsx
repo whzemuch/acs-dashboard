@@ -21,7 +21,6 @@ export default function ChoroplethMap() {
   const [countiesGeo, setCountiesGeo] = useState(null);
   const [statesGeo, setStatesGeo] = useState(null);
   const [hoverInfo, setHoverInfo] = useState(null);
-  const [colorData, setColorData] = useState({ map: {}, max: 0 });
   const [summaryData, setSummaryData] = useState(null);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
 
@@ -50,16 +49,13 @@ export default function ChoroplethMap() {
     (async () => {
       try {
         const summary = await getYearSummary(filters.year);
-        const map = buildChoropleth(summary, filters.metric, filters.state);
         if (!cancelled) {
           setSummaryData(summary);
-          setColorData(map);
         }
       } catch (error) {
         console.error("Failed to build choropleth data", error);
         if (!cancelled) {
           setSummaryData(null);
-          setColorData({ map: {}, max: 0 });
         }
       }
     })();
@@ -67,7 +63,17 @@ export default function ChoroplethMap() {
     return () => {
       cancelled = true;
     };
-  }, [ready, filters.year, filters.metric, filters.state]);
+  }, [ready, filters.year, filters.viewMode]);
+
+  const colorData = useMemo(
+    () =>
+      buildChoropleth(
+        summaryData,
+        filters.metric ?? "net",
+        filters.state ?? null,
+      ),
+    [summaryData, filters.metric, filters.state],
+  );
 
   const countyLookup = useMemo(() => {
     const map = new Map();

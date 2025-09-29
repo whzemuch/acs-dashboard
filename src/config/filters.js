@@ -16,7 +16,7 @@ const DEFAULT_FILTERS = {
   age: "all",
   income: "all",
   education: "all",
-  viewMode: "flow",
+  viewMode: "choropleth",
 };
 
 export async function buildFilterConfig() {

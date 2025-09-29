@@ -41,7 +41,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
   const initStore = useDashboardStore((s) => s.init);
   const ready = useDashboardStore((s) => s.ready);
   const filters = useDashboardStore((s) => s.filters);
-  const viewMode = filters.viewMode ?? "flow";
+  const viewMode = filters.viewMode ?? "choropleth";
   const isFlowMode = forceEnabled || viewMode === "flow";
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [countiesGeo, setCountiesGeo] = useState(null);

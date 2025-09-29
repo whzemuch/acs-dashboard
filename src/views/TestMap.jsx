@@ -8,7 +8,7 @@ import TrendPanel from "../components/TrendPanel.jsx";
 import { useDashboardStore } from "../store/dashboardStore";
 
 export default function TestMap() {
-  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "flow");
+  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "choropleth");
   const isFlowView = viewMode === "flow";
   const mapTitle = isFlowView ? "Flow View" : "Choropleth View";
   const mapComponent = isFlowView ? <MigrationFlowMap /> : <ChoroplethMap />;

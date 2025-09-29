@@ -75,7 +75,7 @@ export default function FilterPanel() {
       <ToggleRow
         label="Map View"
         options={viewOptions}
-        value={filters.viewMode ?? "flow"}
+        value={filters.viewMode ?? "choropleth"}
         onSelect={(value) => setFilter("viewMode", value)}
       />
 
