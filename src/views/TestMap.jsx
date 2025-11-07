@@ -4,7 +4,8 @@ import FilterPanel from "../components/FilterPanel.jsx";
 import LegendPanel from "../components/LegendPanel.jsx";
 import ChoroplethMap from "../components/ChoroplethMap.jsx";
 import MigrationFlowMap from "../components/MigrationFlowMap.jsx";
-import TrendPanel from "../components/TrendPanel.jsx";
+import SummaryPanel from "../components/SummaryPanel.jsx";
+import ShapPanel from "../components/ShapPanel.jsx";
 import { useDashboardStore } from "../store/dashboardStore";
 
 export default function TestMap() {
@@ -73,7 +74,8 @@ export default function TestMap() {
             <LegendPanel layout={legendLayout} />
           </div>
         </div>
-        <TrendPanel />
+        <SummaryPanel />
+        <ShapPanel />
       </div>
     </div>
   );

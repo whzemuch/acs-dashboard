@@ -28,11 +28,61 @@ const state = {
   memoizedSelectors: new Map(), // stringified filters -> arcs
 };
 
+/**
+ * @typedef {Object} FlowFilter
+ * @property {number} [year] Census year to query.
+ * @property {"net"|"in"|"out"} [metric] Migration direction to aggregate.
+ * @property {number} [minFlow=0] Minimum flow count to include.
+ * @property {number} [topN=state.config.maxArcs] Maximum rows to return.
+ * @property {number|null} [threshold] Optional threshold used by callers.
+ * @property {string|null} [state] Two-digit state FIPS code.
+ * @property {string|null} [county] Five-digit county GEOID.
+ * @property {string|null} [age] Age demographic key (e.g., `age_25_34`).
+ * @property {string|null} [income] Income demographic key (e.g., `inc_50_75k`).
+ * @property {string|null} [education] Education demographic key (e.g., `edu_ba`).
+ */
+
+/**
+ * @typedef {Object} FlowArc
+ * @property {string} id Unique identifier derived from flow attributes.
+ * @property {number} year Census year.
+ * @property {string} origin Origin county GEOID.
+ * @property {string} dest Destination county GEOID.
+ * @property {number} flow Migration flow count.
+ * @property {[number, number]} originPosition `[lon, lat]` tuple for origin.
+ * @property {[number, number]} destPosition `[lon, lat]` tuple for destination.
+ * @property {string|null} [age] Age demographic key.
+ * @property {string|null} [income] Income demographic key.
+ * @property {string|null} [education] Education demographic key.
+ */
+
+/**
+ * @typedef {Object} NetSeriesPoint
+ * @property {number} year Census year.
+ * @property {number} in Total inbound migrants.
+ * @property {number} out Total outbound migrants.
+ * @property {number} net Net migrants (`in - out`).
+ */
+
+/**
+ * @typedef {Object} InOutSeriesPoint
+ * @property {number} year Census year.
+ * @property {number} inbound Total inbound migrants.
+ * @property {number} outbound Total outbound migrants.
+ */
+
+/**
+ * Override the default data URLs used by the provider.
+ * @param {Partial<typeof DEFAULT_CONFIG>} [overrides]
+ */
 export function configure(overrides = {}) {
   state.config = { ...DEFAULT_CONFIG, ...overrides };
   reset();
 }
 
+/**
+ * Reset all cached data. Usually called after `configure`.
+ */
 export function reset() {
   state.initPromise = null;
   state.years = [];
@@ -44,6 +94,11 @@ export function reset() {
   state.memoizedSelectors.clear();
 }
 
+/**
+ * Ensure metadata (years, counties, dimensions) are loaded.
+ * Subsequent calls reuse the same promise.
+ * @returns {Promise<void>}
+ */
 export async function init() {
   if (state.initPromise) return state.initPromise;
 
@@ -71,6 +126,11 @@ export async function init() {
   return state.initPromise;
 }
 
+/**
+ * Lazily load the flow payload for a given year, invalidating memoized selectors.
+ * @param {number} year
+ * @returns {Promise<void>}
+ */
 export async function ensureYearLoaded(year) {
   await init();
   if (state.flowsByYear.has(year)) return;
@@ -90,26 +150,50 @@ export async function ensureYearLoaded(year) {
   }
 }
 
+/**
+ * @returns {number[]} Cloned array of known census years.
+ */
 export function getAvailableYears() {
   return state.years.slice();
 }
 
+/**
+ * @returns {Object|null} Dimension metadata from the cache.
+ */
 export function getDimensions() {
   return state.dimensions;
 }
 
+/**
+ * @returns {Array<Object>} Copy of county metadata records.
+ */
 export function getCountyMetadata() {
   return state.countyMetadata.slice();
 }
 
+/**
+ * Resolve a county GEOID to its human-friendly name, if available.
+ * @param {string} geoid
+ * @returns {string}
+ */
 export function getCountyName(geoid) {
   return state.countyById.get(geoid)?.name ?? geoid;
 }
 
+/**
+ * Resolve a county GEOID to its parent state name.
+ * @param {string} geoid
+ * @returns {string|null}
+ */
 export function getCountyStateName(geoid) {
   return state.countyById.get(geoid)?.stateName ?? null;
 }
 
+/**
+ * Return flow records filtered by demographic and geographic constraints.
+ * @param {FlowFilter} [filters]
+ * @returns {Promise<FlowArc[]>}
+ */
 export async function getFlows(filters = {}) {
   const resolved = await resolveFilters(filters);
   const cacheKey = JSON.stringify(resolved);
@@ -127,6 +211,12 @@ export async function getFlows(filters = {}) {
   return arcs;
 }
 
+/**
+ * Build a net flow series for a single county across available years.
+ * @param {string} geoid Five-digit county GEOID.
+ * @param {FlowFilter} [filters]
+ * @returns {Promise<NetSeriesPoint[]>}
+ */
 export async function getNetSeries(geoid, filters = {}) {
   if (!geoid) return [];
 
@@ -150,6 +240,12 @@ export async function getNetSeries(geoid, filters = {}) {
   return series;
 }
 
+/**
+ * Build inbound/outbound series for a single county across available years.
+ * @param {string} geoid Five-digit county GEOID.
+ * @param {FlowFilter} [filters]
+ * @returns {Promise<InOutSeriesPoint[]>}
+ */
 export async function getInOutSeries(geoid, filters = {}) {
   if (!geoid) return [];
 
@@ -172,6 +268,11 @@ export async function getInOutSeries(geoid, filters = {}) {
   return series;
 }
 
+/**
+ * Retrieve the raw cached payload for the requested year.
+ * @param {number} [year] Defaults to the latest available year.
+ * @returns {Promise<Object>}
+ */
 export async function getYearSummary(year) {
   await init();
   const target = year ?? state.years[state.years.length - 1];

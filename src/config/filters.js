@@ -8,7 +8,7 @@ const METRICS = [
 
 const DEFAULT_FILTERS = {
   year: null,
-  metric: "net",
+  metric: "in",
   state: null,
   county: null,
   minFlow: 0,
@@ -16,7 +16,9 @@ const DEFAULT_FILTERS = {
   age: "all",
   income: "all",
   education: "all",
-  viewMode: "choropleth",
+  viewMode: "flow",
+  valueType: "observed",
+  showHeatmap: true,
 };
 
 export async function buildFilterConfig() {

@@ -2,10 +2,9 @@
 import { create } from "zustand";
 
 import {
-  init as initDataProvider,
-  getAvailableYears,
+  init as initShapProvider,
   getCountyMetadata,
-} from "../data/dataProvider";
+} from "../data/dataProviderShap";
 import { getDefaultFilters } from "../config/filters";
 
 const buildStateOptions = (metadata) => {
@@ -46,19 +45,20 @@ export const useDashboardStore = create((set, get) => ({
   availableYears: [],
   states: [],
   countiesByState: {},
+  selectedArc: null,
 
   init: async () => {
     if (get().ready) return;
 
-    await initDataProvider();
-    const years = getAvailableYears();
-    const latestYear = years[years.length - 1];
+    await initShapProvider();
+    const years = []; // SHAP dataset has no years
+    const latestYear = null;
     const metadata = getCountyMetadata();
 
     set({
       ready: true,
       availableYears: years,
-      filters: getDefaultFilters(latestYear),
+      filters: { ...getDefaultFilters(latestYear), viewMode: "flow", metric: "in" },
       states: buildStateOptions(metadata),
       countiesByState: buildCountiesByState(metadata),
     });
@@ -74,6 +74,8 @@ export const useDashboardStore = create((set, get) => ({
 
       return { filters: updated };
     }),
+
+  setSelectedArc: (arc) => set({ selectedArc: arc }),
 
   resetFilters: () =>
     set((state) => ({

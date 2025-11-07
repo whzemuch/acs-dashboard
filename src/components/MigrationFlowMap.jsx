@@ -4,9 +4,10 @@ import { Map as ReactMap } from "react-map-gl";
 import { ArcLayer, GeoJsonLayer } from "@deck.gl/layers";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
 
-import { getFlows as getFlowsWorker } from "../data/flowService";
-import { getCountyMetadata, getYearSummary } from "../data/dataProvider";
+import { getFlows as getFlowsWorker } from "../data/flowServiceShap";
+import { getCountyMetadata, getSummary } from "../data/dataProviderShap";
 import { useDashboardStore } from "../store/dashboardStore";
+import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 const COUNTIES_GEOJSON = `${
@@ -49,6 +50,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
   const [arcs, setArcs] = useState([]);
   const [hoverInfo, setHoverInfo] = useState(null);
   const [summaryData, setSummaryData] = useState(null);
+  const setSelectedArc = useDashboardStore((s) => s.setSelectedArc);
 
   useEffect(() => {
     initStore();
@@ -94,18 +96,17 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     let cancelled = false;
     (async () => {
       try {
-        const summary = await getYearSummary(filters.year);
+        const summary = await getSummary();
         if (!cancelled) setSummaryData(summary);
       } catch (error) {
-        console.error("Failed to load yearly summary", error);
+        console.error("Failed to load summary", error);
         if (!cancelled) setSummaryData(null);
       }
     })();
-
     return () => {
       cancelled = true;
     };
-  }, [ready, filters.year]);
+  }, [ready]);
 
   const countyLookup = useMemo(() => {
     const map = new Map();
@@ -141,14 +142,24 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     if (!arcs.length) return null;
     const { metric } = filters;
 
-    const inboundTotals = summaryData?.inboundTotals ?? {};
-    const outboundTotals = summaryData?.outboundTotals ?? {};
+    const inboundTotalsByCountyObserved = summaryData?.inboundTotalsByCountyObserved ?? {};
+    const inboundTotalsByCountyPredicted = summaryData?.inboundTotalsByCountyPredicted ?? {};
+    const inboundTotalsByStateObserved = summaryData?.inboundTotalsByStateObserved ?? {};
+    const inboundTotalsByStatePredicted = summaryData?.inboundTotalsByStatePredicted ?? {};
+    const outboundTotalsByStateObserved = summaryData?.outboundTotalsByStateObserved ?? {};
+    const outboundTotalsByStatePredicted = summaryData?.outboundTotalsByStatePredicted ?? {};
 
-    const getNetColorForGeoid = (geoid) => {
-      const inbound = inboundTotals[geoid] ?? 0;
-      const outbound = outboundTotals[geoid] ?? 0;
-      const net = inbound - outbound;
-
+    const getNetColorForEndpoint = (endpoint, d) => {
+      // Net available at state level in this dataset; color by endpoint's state net
+      const geoid = endpoint === "origin" ? d.origin : d.dest;
+      const stateCode = geoid.slice(0, 2);
+      const inboundState = (filters.valueType === "predicted"
+        ? inboundTotalsByStatePredicted[stateCode]
+        : inboundTotalsByStateObserved[stateCode]) ?? 0;
+      const outboundState = (filters.valueType === "predicted"
+        ? outboundTotalsByStatePredicted[stateCode]
+        : outboundTotalsByStateObserved[stateCode]) ?? 0;
+      const net = inboundState - outboundState;
       if (net > 0.01) return NET_GAIN_COLOR;
       if (net < -0.01) return NET_LOSS_COLOR;
       return NET_NEUTRAL_COLOR;
@@ -156,10 +167,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
 
     const getEndpointColor = (endpoint) => {
       if (metric !== "net") return () => getArcColor(metric);
-      return (d) => {
-        const geoid = endpoint === "origin" ? d.origin : d.dest;
-        return getNetColorForGeoid(geoid);
-      };
+      return (d) => getNetColorForEndpoint(endpoint, d);
     };
 
     return new ArcLayer({
@@ -179,38 +187,26 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
 
         const originMeta = countyLookup.get(object.origin);
         const destMeta = countyLookup.get(object.dest);
-        const inboundTotals = summaryData?.inboundTotals ?? {};
-        const outboundTotals = summaryData?.outboundTotals ?? {};
-        const destIn = inboundTotals[object.dest] ?? 0;
-        const destOut = outboundTotals[object.dest] ?? 0;
-        const destNet = destIn - destOut;
-        const originIn = inboundTotals[object.origin] ?? 0;
-        const originOut = outboundTotals[object.origin] ?? 0;
-        const originNet = originIn - originOut;
+        const destState = object.dest.slice(0,2);
+        const originState = (/^\d+$/.test(object.origin) ? object.origin.slice(0,2) : null) || object.origin;
+        const destIn = (filters.valueType === "predicted" ? inboundTotalsByCountyPredicted[object.dest] : inboundTotalsByCountyObserved[object.dest]) ?? 0;
+        const originInState = (filters.valueType === "predicted" ? inboundTotalsByStatePredicted[originState] : inboundTotalsByStateObserved[originState]) ?? 0;
+        const originOutState = (filters.valueType === "predicted" ? outboundTotalsByStatePredicted[originState] : outboundTotalsByStateObserved[originState]) ?? 0;
+        const destInState = (filters.valueType === "predicted" ? inboundTotalsByStatePredicted[destState] : inboundTotalsByStateObserved[destState]) ?? 0;
+        const destOutState = (filters.valueType === "predicted" ? outboundTotalsByStatePredicted[destState] : outboundTotalsByStateObserved[destState]) ?? 0;
+        const destNetState = destInState - destOutState;
+        const originNetState = originInState - originOutState;
 
         const lines = [
-          `${originMeta?.name ?? object.origin}, ${
-            originMeta?.stateName ?? originMeta?.state ?? ""
-          } → ${destMeta?.name ?? object.dest}, ${
-            destMeta?.stateName ?? destMeta?.state ?? ""
-          }`,
-          `Slice Flow: ${object.flow.toFixed(1)}`,
-          `Destination In: ${destIn.toLocaleString(undefined, {
+          `${originMeta?.name ?? object.origin} → ${destMeta?.name ?? object.dest}`,
+          `Observed: ${object.observed.toLocaleString()}  Predicted: ${object.predicted.toLocaleString(undefined,{maximumFractionDigits:1})}`,
+          `County In (dest): ${destIn.toLocaleString(undefined, {
             maximumFractionDigits: 1,
           })}`,
-          `Destination Out: ${destOut.toLocaleString(undefined, {
+          `Dest State Net: ${destNetState.toLocaleString(undefined, {
             maximumFractionDigits: 1,
           })}`,
-          `Destination Net: ${destNet.toLocaleString(undefined, {
-            maximumFractionDigits: 1,
-          })}`,
-          `Origin In: ${originIn.toLocaleString(undefined, {
-            maximumFractionDigits: 1,
-          })}`,
-          `Origin Out: ${originOut.toLocaleString(undefined, {
-            maximumFractionDigits: 1,
-          })}`,
-          `Origin Net: ${originNet.toLocaleString(undefined, {
+          `Origin State Net: ${originNetState.toLocaleString(undefined, {
             maximumFractionDigits: 1,
           })}`,
         ];
@@ -223,6 +219,9 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
           lines.push(`Education: ${object.education}`);
 
         setHoverInfo({ x, y, text: lines.join("\n") });
+      },
+      onClick: ({ object }) => {
+        if (object) setSelectedArc(object);
       },
     });
   }, [
@@ -324,9 +323,23 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     });
   }, [statesGeo, normalizedState]);
 
+  const heatmapLayer = useMemo(() => {
+    if (!arcs.length || !filters.showHeatmap) return null;
+    const points = arcs.map((a) => ({ position: a.destPosition, weight: a.flow }));
+    return new HeatmapLayer({
+      id: "dest-heatmap",
+      data: points,
+      getPosition: (d) => d.position,
+      getWeight: (d) => d.weight,
+      radiusPixels: 40,
+      intensity: 1,
+      threshold: 0.05,
+    });
+  }, [arcs, filters.showHeatmap]);
+
   const layers = useMemo(
-    () => [stateLayer, countyLayer, arcLayer].filter(Boolean),
-    [stateLayer, countyLayer, arcLayer]
+    () => [stateLayer, countyLayer, heatmapLayer, arcLayer].filter(Boolean),
+    [stateLayer, countyLayer, heatmapLayer, arcLayer]
   );
 
   useEffect(() => {

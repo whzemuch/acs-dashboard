@@ -128,3 +128,24 @@ Rationale:
 5) Update `README.md` with data/partition details and usage
 6) Test locally and verify GH Pages performance/file sizes
 
+## Work Completed (this session)
+
+- Added new builder: `scripts/build-flow-cache-shap.js`
+  - Reads `public/data/flow/migration_flows_with_shap_NATIVE.csv`
+  - Emits `public/data/cache/flows/by_dest/*.json`, `by_origin/*.json`, `by_dest_shap/*.json`, plus `summary.json`, `index.json`, and `shap_schema.json`
+  - Handles 3‑digit state codes in CSV (e.g., `048`) → 2‑digit FIPS for destination files, preserves origin code for `by_origin`
+- Added NPM script: `npm run build-cache-shap`
+- Generated caches under `public/data/cache/` (verified sizes per partition under a few MB)
+- Added new provider: `src/data/dataProviderShap.js` with `init()`, `getFlows()` (metric in/out/net; observed/predicted via `valueType`), `getSummary()`
+- Added service wrapper: `src/data/flowServiceShap.js`
+
+Pending wiring:
+- Use `dataProviderShap` in `MigrationFlowMap` and add UI toggles (Value/Heatmap)
+- Implement SHAP panel and click behavior
+
+## Additional Work (follow-up)
+
+- Wired `MigrationFlowMap` to `dataProviderShap` and added `HeatmapLayer` (toggle via filters)
+- Added `Value` toggle (Observed/Predicted) and `showHeatmap` checkbox to FilterPanel
+- Enforced dataset constraints: when a county is selected, only `Metric: Inbound` is allowed
+- Implemented `ShapPanel` rendering SHAP contributions for a clicked arc; labels use `shap_schema.json`

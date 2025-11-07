@@ -2,7 +2,6 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { useDashboardStore } from "../store/dashboardStore";
-import { getDimensions } from "../data/dataProvider";
 
 const metricOptions = [
   { id: "net", label: "Net" },
@@ -15,6 +14,11 @@ const viewOptions = [
   { id: "choropleth", label: "Choropleth" },
 ];
 
+const valueOptions = [
+  { id: "observed", label: "Observed" },
+  { id: "predicted", label: "Predicted" },
+];
+
 export default function FilterPanel() {
   const init = useDashboardStore((s) => s.init);
   const ready = useDashboardStore((s) => s.ready);
@@ -25,30 +29,17 @@ export default function FilterPanel() {
   const states = useDashboardStore((s) => s.states);
   const countiesByState = useDashboardStore((s) => s.countiesByState);
 
-  const [dimensions, setDimensions] = useState(null);
+  useEffect(() => { init(); }, [init]);
 
+  // If a county is selected, only 'in' metric is meaningful for state→county dataset
+  const metricOptionsFinal = (filters.county ? metricOptions.filter((m) => m.id === "in") : metricOptions);
+
+  // Enforce 'in' when a county is active
   useEffect(() => {
-    init();
-  }, [init]);
-
-  useEffect(() => {
-    if (!ready) return;
-    const dims = getDimensions();
-    setDimensions(dims ?? null);
-  }, [ready]);
-
-  const ageOptions = useMemo(
-    () => buildOptions(dimensions?.age ?? []),
-    [dimensions?.age],
-  );
-  const incomeOptions = useMemo(
-    () => buildOptions(dimensions?.income ?? []),
-    [dimensions?.income],
-  );
-  const educationOptions = useMemo(
-    () => buildOptions(dimensions?.education ?? []),
-    [dimensions?.education],
-  );
+    if (filters.county && filters.metric !== "in") {
+      setFilter("metric", "in");
+    }
+  }, [filters.county]);
 
   if (!ready) {
     return (
@@ -79,29 +70,20 @@ export default function FilterPanel() {
         onSelect={(value) => setFilter("viewMode", value)}
       />
 
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="year-select">
-          Year
-        </label>
-        <select
-          id="year-select"
-          value={filters.year ?? years[years.length - 1]}
-          onChange={(e) => setFilter("year", Number(e.target.value))}
-          style={selectStyle}
-        >
-          {years.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Year selector removed for SHAP dataset (no year) */}
 
       <ToggleRow
         label="Metric"
-        options={metricOptions}
+        options={metricOptionsFinal}
         value={filters.metric ?? "net"}
         onSelect={(value) => setFilter("metric", value)}
+      />
+
+      <ToggleRow
+        label="Value"
+        options={valueOptions}
+        value={filters.valueType ?? "observed"}
+        onSelect={(value) => setFilter("valueType", value)}
       />
 
       <div style={sectionStyle}>
@@ -123,6 +105,18 @@ export default function FilterPanel() {
             </option>
           ))}
         </select>
+      </div>
+
+      <div style={sectionStyle}>
+        <label style={labelStyle} htmlFor="heatmap-toggle">
+          Show heatmap
+        </label>
+        <input
+          id="heatmap-toggle"
+          type="checkbox"
+          checked={Boolean(filters.showHeatmap)}
+          onChange={(e) => setFilter("showHeatmap", e.target.checked)}
+        />
       </div>
 
       <div style={sectionStyle}>
@@ -163,59 +157,7 @@ export default function FilterPanel() {
         />
       </div>
 
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="age-select">
-          Age
-        </label>
-        <select
-          id="age-select"
-          value={filters.age ?? "all"}
-          onChange={(e) => setFilter("age", e.target.value)}
-          style={selectStyle}
-        >
-          {ageOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="income-select">
-          Income
-        </label>
-        <select
-          id="income-select"
-          value={filters.income ?? "all"}
-          onChange={(e) => setFilter("income", e.target.value)}
-          style={selectStyle}
-        >
-          {incomeOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="education-select">
-          Education
-        </label>
-        <select
-          id="education-select"
-          value={filters.education ?? "all"}
-          onChange={(e) => setFilter("education", e.target.value)}
-          style={selectStyle}
-        >
-          {educationOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Age/Income/Education filters removed for SHAP dataset */}
     </div>
   );
 }

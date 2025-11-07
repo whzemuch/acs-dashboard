@@ -42,6 +42,22 @@ This keeps the browser fast by avoiding runtime CSV parsing.
 
 Built-in performance practices: simplified geometries, precomputed centroids, per-year flow files, memoized selectors, top-N slicing, optional worker aggregation.
 
+### New: SHAP Dataset (state→county) Pipeline
+
+If you are using the new state→county migration CSV with observed/predicted movers and SHAP contributions (`public/data/flow/migration_flows_with_shap_NATIVE.csv`), run:
+
+```
+npm run build-cache-shap
+```
+
+This emits partitioned caches under `public/data/cache/`:
+
+- `flows/by_dest/<SS>.json` and `flows/by_origin/<ID>.json` (base rows, no SHAP)
+- `flows/by_dest_shap/<SS>.json` (SHAP arrays per destination state)
+- `summary.json`, `index.json`, and `shap_schema.json`
+
+A new data provider (`src/data/dataProviderShap.js`) can read these partitions and return deck.gl‑ready arcs. UI wiring is pending in this repo; see `changes.md` for the integration plan.
+
 ## Usage
 
 ### 1. Clone & Install

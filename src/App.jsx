@@ -62,14 +62,24 @@ function App() {
       </nav> */}
 
       {/*  Routes */}
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Navigate to="/test-map" replace />} />
         <Route path="/test-map" element={<TestMap />} />
         <Route path="/puma" element={<PUMAMap />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/test-coeff" element={<TestCoeffPage />} />
         <Route path="/choropleth" element={<ChoroplethPage />} />
+      </Routes> */}
+
+      <Routes>
+        <Route index element={<Navigate to="test-map" replace />} />
+        <Route path="test-map" element={<TestMap />} />
+        <Route path="puma" element={<PUMAMap />} />
+        <Route path="test" element={<TestPage />} />
+        <Route path="test-coeff" element={<TestCoeffPage />} />
+        <Route path="choropleth" element={<ChoroplethPage />} />
       </Routes>
+
     </div>
   );
 }

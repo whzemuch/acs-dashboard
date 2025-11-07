@@ -70,6 +70,8 @@ export function ChoroplethLegendCard() {
 
 function FlowLegendContent() {
   const metric = useDashboardStore((s) => s.filters.metric ?? "net");
+  const valueType = useDashboardStore((s) => s.filters.valueType ?? "observed");
+  const showHeatmap = useDashboardStore((s) => Boolean(s.filters.showHeatmap));
   const isNetMode = metric === "net";
 
   return (
@@ -86,8 +88,14 @@ function FlowLegendContent() {
         </>
       )}
       <div style={{ fontSize: 12, color: "#4a5568" }}>
-        Arc thickness scales with √(flow); Min Flow slider hides small values.
+        Value: <strong>{valueType === "predicted" ? "Predicted" : "Observed"}</strong>. Arc thickness scales with √(value);
+        Min Flow slider hides small values.
       </div>
+      {showHeatmap && (
+        <div style={{ fontSize: 12, color: "#4a5568" }}>
+          Heatmap intensity reflects destination {valueType}.
+        </div>
+      )}
     </>
   );
 }
