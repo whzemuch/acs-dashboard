@@ -3,14 +3,21 @@ import { useEffect, useMemo, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import { Map as ReactMap } from "react-map-gl";
 import { GeoJsonLayer } from "@deck.gl/layers";
+import { scaleQuantile } from "d3-scale";
+import { interpolateYlOrRd } from "d3-scale-chromatic";
+import { color as d3color } from "d3-color";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
 
 import { useDashboardStore } from "../store/dashboardStore";
-import { getCountyMetadata, getYearSummary } from "../data/dataProvider";
+import { getCountyMetadata, getSummary } from "../data/dataProviderShap";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
-const COUNTIES_GEOJSON = `${import.meta.env.BASE_URL}data/geo/cb_2018_us_county_5m_boundaries.geojson`;
-const STATES_GEOJSON = `${import.meta.env.BASE_URL}data/geo/cb_2018_us_state_5m_boundaries.geojson`;
+const COUNTIES_GEOJSON = `${
+  import.meta.env.BASE_URL
+}data/geo/cb_2018_us_county_5m_boundaries.geojson`;
+const STATES_GEOJSON = `${
+  import.meta.env.BASE_URL
+}data/geo/cb_2018_us_state_5m_boundaries.geojson`;
 const INITIAL_VIEW_STATE = { longitude: -98, latitude: 39, zoom: 3.4 };
 
 export default function ChoroplethMap() {
@@ -44,36 +51,36 @@ export default function ChoroplethMap() {
 
   useEffect(() => {
     if (!ready) return;
-    let cancelled = false;
+    try {
+      const summary = getSummary();
+      setSummaryData(summary || null);
+    } catch (error) {
+      console.error("Failed to build choropleth data", error);
+      setSummaryData(null);
+    }
+  }, [ready, filters.viewMode]);
 
-    (async () => {
-      try {
-        const summary = await getYearSummary(filters.year);
-        if (!cancelled) {
-          setSummaryData(summary);
-        }
-      } catch (error) {
-        console.error("Failed to build choropleth data", error);
-        if (!cancelled) {
-          setSummaryData(null);
-        }
-      }
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [ready, filters.year, filters.viewMode]);
-
-  const colorData = useMemo(
-    () =>
-      buildChoropleth(
-        summaryData,
-        filters.metric ?? "net",
-        filters.state ?? null,
-      ),
-    [summaryData, filters.metric, filters.state],
-  );
+  const colorData = useMemo(() => {
+    const metric = filters.metric ?? "in";
+    const stateFilter = filters.state ?? null;
+    const valueType = filters.valueType ?? "observed";
+    const base = buildChoropleth(summaryData, metric, stateFilter, valueType);
+    // Build a quantile color scale for better contrast
+    const values = Object.values(base.map).filter(
+      (v) => Number.isFinite(v) && v > 0
+    );
+    let toColor = () => [240, 240, 240, 120];
+    if (values.length) {
+      const buckets = 7;
+      const palette = Array.from({ length: buckets }, (_, i) =>
+        d3color(interpolateYlOrRd((i + 1) / buckets))
+      );
+      const range = palette.map((c) => [c.r, c.g, c.b, 200]);
+      const q = scaleQuantile().domain(values).range(range);
+      toColor = (v) => q(v ?? 0);
+    }
+    return { ...base, toColor };
+  }, [summaryData, filters.metric, filters.state, filters.valueType]);
 
   const countyLookup = useMemo(() => {
     const map = new Map();
@@ -104,6 +111,7 @@ export default function ChoroplethMap() {
 
   const countyLayer = useMemo(() => {
     if (!countiesGeo) return null;
+    const selectedCounty = filters.county ?? null;
     return new GeoJsonLayer({
       id: `counties-${filters.year}-${filters.state ?? "all"}`,
       data: countiesGeo,
@@ -112,14 +120,23 @@ export default function ChoroplethMap() {
       getFillColor: (feature) => {
         const geoid = feature.properties.GEOID;
         const value = colorData.map[geoid] ?? 0;
-        const fill = getFillColor(value, colorData.max, filters.metric);
+        const fill = colorData.toColor(value);
         if (filters.state && feature.properties.STATEFP !== filters.state) {
           return [230, 230, 230, 40];
         }
         return fill;
       },
-      getLineColor: [100, 100, 100, 150],
-      lineWidthMinPixels: 0.5,
+      getLineColor: (feature) => {
+        const geoid = feature.properties.GEOID;
+        if (selectedCounty && geoid === selectedCounty) return [0, 0, 0, 230];
+        return [100, 100, 100, 150];
+      },
+      lineWidthUnits: "pixels",
+      getLineWidth: (feature) => {
+        const geoid = feature.properties.GEOID;
+        if (selectedCounty && geoid === selectedCounty) return 3.0;
+        return 1.0;
+      },
       pickable: true,
       autoHighlight: true,
       onHover: (info) => {
@@ -130,60 +147,88 @@ export default function ChoroplethMap() {
         const { GEOID, NAME, STATEFP } = info.object.properties;
         const stateMeta = countyLookup.get(GEOID);
         const stateName = stateMeta?.stateName ?? STATEFP;
-        const value = colorData.map[GEOID] ?? 0;
-        const inboundTotals = summaryData?.inboundTotals ?? {};
-        const outboundTotals = summaryData?.outboundTotals ?? {};
-        const inbound = inboundTotals[GEOID] ?? 0;
-        const outbound = outboundTotals[GEOID] ?? 0;
-        const net = inbound - outbound;
-        const lines = [
-          `${NAME}, ${stateName} (GEOID: ${GEOID})`,
-        ];
 
-        const metricLabel = labelForMetric(filters.metric);
+        // Get both observed and predicted values for county
+        const inboundObs =
+          summaryData?.inboundTotalsByCountyObserved?.[GEOID] ?? 0;
+        const inboundPred =
+          summaryData?.inboundTotalsByCountyPredicted?.[GEOID] ?? 0;
+
+        const lines = [`${NAME}, ${stateName} (GEOID: ${GEOID})`];
+
+        // Show both Observed and Predicted inbound values
         lines.push(
-          `${metricLabel}: ${value.toLocaleString(undefined, {
+          `Inbound (Obs): ${inboundObs.toLocaleString(undefined, {
             maximumFractionDigits: 1,
-          })}`,
+          })}`
         );
 
-        if (filters.metric !== "in") {
-          lines.push(
-            `Inbound: ${inbound.toLocaleString(undefined, {
-              maximumFractionDigits: 1,
-            })}`,
-          );
-        }
-
-        if (filters.metric !== "out") {
-          lines.push(
-            `Outbound: ${outbound.toLocaleString(undefined, {
-              maximumFractionDigits: 1,
-            })}`,
-          );
-        }
-
-        if (filters.metric !== "net") {
-          lines.push(
-            `Net: ${net.toLocaleString(undefined, {
-              maximumFractionDigits: 1,
-            })}`,
-          );
-        }
-        if (filters.age && filters.age !== "all") lines.push(`Age: ${filters.age}`);
+        lines.push(
+          `Inbound (Pred): ${inboundPred.toLocaleString(undefined, {
+            maximumFractionDigits: 1,
+          })}`
+        );
+        if (filters.age && filters.age !== "all")
+          lines.push(`Age: ${filters.age}`);
         if (filters.income && filters.income !== "all")
           lines.push(`Income: ${filters.income}`);
         if (filters.education && filters.education !== "all")
           lines.push(`Education: ${filters.education}`);
         setHoverInfo({ x: info.x, y: info.y, text: lines.join("\n") });
       },
+      updateTriggers: {
+        getLineColor: [filters.county, filters.state],
+        getLineWidth: [filters.county, filters.state],
+      },
+    });
+  }, [countiesGeo, colorData, filters, countyLookup, summaryData]);
+
+  const stateNetLayer = useMemo(() => {
+    if (!statesGeo || !summaryData || !filters.showStateNetOverlay) return null;
+    const valueType =
+      filters.valueType === "predicted" ? "predicted" : "observed";
+    const inbound =
+      valueType === "predicted"
+        ? summaryData.inboundTotalsByStatePredicted
+        : summaryData.inboundTotalsByStateObserved;
+    const outbound =
+      valueType === "predicted"
+        ? summaryData.outboundTotalsByStatePredicted
+        : summaryData.outboundTotalsByStateObserved;
+    const maxAbs =
+      Object.keys(inbound || {}).reduce((m, k) => {
+        const v = (inbound?.[k] || 0) - (outbound?.[k] || 0);
+        return Math.max(m, Math.abs(v));
+      }, 0) || 1;
+    const opacityFactor = Math.max(
+      0.1,
+      Math.min(1, filters.stateNetOpacity ?? 0.6)
+    );
+
+    return new GeoJsonLayer({
+      id: "state-net-fill",
+      data: statesGeo,
+      filled: true,
+      stroked: false,
+      getFillColor: (feature) => {
+        const id = feature.properties?.STATEFP;
+        const net = (inbound?.[id] || 0) - (outbound?.[id] || 0);
+        if (!net) return [0, 0, 0, 0];
+        const a = Math.min(
+          200,
+          Math.floor((Math.abs(net) / maxAbs) * 200 * opacityFactor)
+        );
+        // net>0 (in>out): orange, net<0: blue
+        return net > 0 ? [255, 165, 0, a] : [30, 90, 160, a];
+      },
+      pickable: false,
     });
   }, [
-    countiesGeo,
-    colorData,
-    filters,
-    countyLookup,
+    statesGeo,
     summaryData,
+    filters.showStateNetOverlay,
+    filters.valueType,
+    filters.stateNetOpacity,
   ]);
 
   const stateLayer = useMemo(() => {
@@ -199,8 +244,8 @@ export default function ChoroplethMap() {
   }, [statesGeo]);
 
   const layers = useMemo(
-    () => [stateLayer, countyLayer].filter(Boolean),
-    [stateLayer, countyLayer],
+    () => [stateNetLayer, stateLayer, countyLayer].filter(Boolean),
+    [stateNetLayer, stateLayer, countyLayer]
   );
 
   useEffect(() => {
@@ -231,18 +276,14 @@ export default function ChoroplethMap() {
       });
 
       const padding = filters.county ? 60 : 140;
-      let { longitude, latitude, zoom } = viewport.fitBounds(bounds, { padding });
+      let { longitude, latitude, zoom } = viewport.fitBounds(bounds, {
+        padding,
+      });
       zoom = Math.min(zoom, filters.county ? 8 : 6);
 
       return applyViewTransition(prev, { longitude, latitude, zoom });
     });
-  }, [
-    ready,
-    filters.county,
-    filters.state,
-    countyFeatureMap,
-    stateFeatureMap,
-  ]);
+  }, [ready, filters.county, filters.state, countyFeatureMap, stateFeatureMap]);
 
   return (
     <div
@@ -283,57 +324,87 @@ export default function ChoroplethMap() {
           {hoverInfo.text}
         </div>
       )}
+
+      {filters.showStateNetOverlay && (
+        <div
+          style={{
+            position: "absolute",
+            right: 12,
+            top: 12,
+            background: "rgba(255,255,255,0.95)",
+            border: "1px solid #e2e8f0",
+            borderRadius: 8,
+            padding: "8px 10px",
+            fontSize: 12,
+            boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+          }}
+        >
+          <div style={{ fontWeight: 600, marginBottom: 6 }}>
+            State Net Overlay
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <span
+              style={{
+                width: 16,
+                height: 8,
+                background: "rgba(255,165,0,0.6)",
+                borderRadius: 4,
+              }}
+            />
+            <span>
+              Net gain ({filters.valueType === "predicted" ? "Pred" : "Obs"})
+            </span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              marginTop: 4,
+            }}
+          >
+            <span
+              style={{
+                width: 16,
+                height: 8,
+                background: "rgba(30,90,160,0.6)",
+                borderRadius: 4,
+              }}
+            />
+            <span>
+              Net loss ({filters.valueType === "predicted" ? "Pred" : "Obs"})
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
-function buildChoropleth(summary, metric, stateFilter) {
+function buildChoropleth(summary, metric, stateFilter, valueType) {
   if (!summary) return { map: {}, max: 0 };
 
-  const inbound = summary.inboundTotals ?? {};
-  const outbound = summary.outboundTotals ?? {};
+  // County choropleth: only inbound is defined in this dataset
+  const inbound =
+    (valueType === "predicted"
+      ? summary.inboundTotalsByCountyPredicted
+      : summary.inboundTotalsByCountyObserved) || {};
 
   const colorMap = {};
   let max = 0;
 
-  const geoidSet = new Set([
-    ...Object.keys(inbound),
-    ...Object.keys(outbound),
-  ]);
-
-  geoidSet.forEach((geoid) => {
+  Object.keys(inbound).forEach((geoid) => {
     const stateFips = geoid.slice(0, 2);
     if (stateFilter && stateFips !== stateFilter) return;
-    const inValue = inbound[geoid] ?? 0;
-    const outValue = outbound[geoid] ?? 0;
-    let value = 0;
-    if (metric === "in") value = inValue;
-    else if (metric === "out") value = outValue;
-    else value = inValue - outValue;
-
+    const value = inbound[geoid] ?? 0;
     colorMap[geoid] = value;
-    const magnitude = metric === "net" ? Math.abs(value) : value;
-    if (magnitude > max) max = magnitude;
+    if (value > max) max = value;
   });
 
   return { map: colorMap, max };
 }
 
-function getFillColor(value, max, metric) {
-  if (!max) return [240, 240, 240, 120];
-
-  if (metric === "net") {
-    if (value === 0) return [240, 240, 240, 120];
-    const intensity = Math.min(1, Math.abs(value) / max);
-    if (value > 0) {
-      return [255, 180 - intensity * 120, 0, 200];
-    }
-    return [50, 120 + intensity * 60, 220, 200];
-  }
-
-  const intensity = Math.min(1, value / max);
-  return [255, 180 - intensity * 120, 0, 200];
-}
+// Net colors handled by overlay; base county choropleth now uses quantiles
 
 function labelForMetric(metric) {
   if (metric === "in") return "Inbound";

@@ -1,5 +1,6 @@
 // src/store/dashboardStore.js
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 import {
   init as initShapProvider,
@@ -18,7 +19,9 @@ const buildStateOptions = (metadata) => {
       });
     }
   });
-  return Array.from(map.values()).sort((a, b) => a.label.localeCompare(b.label));
+  return Array.from(map.values()).sort((a, b) =>
+    a.label.localeCompare(b.label)
+  );
 };
 
 const buildCountiesByState = (metadata) => {
@@ -39,46 +42,69 @@ const buildCountiesByState = (metadata) => {
   return result;
 };
 
-export const useDashboardStore = create((set, get) => ({
-  ready: false,
-  filters: {},
-  availableYears: [],
-  states: [],
-  countiesByState: {},
-  selectedArc: null,
+export const useDashboardStore = create(
+  persist(
+    (set, get) => ({
+      ready: false,
+      filters: {},
+      availableYears: [],
+      states: [],
+      countiesByState: {},
+      selectedArc: null,
 
-  init: async () => {
-    if (get().ready) return;
+      init: async () => {
+        if (get().ready) return;
 
-    await initShapProvider();
-    const years = []; // SHAP dataset has no years
-    const latestYear = null;
-    const metadata = getCountyMetadata();
+        await initShapProvider();
+        const years = []; // SHAP dataset has no years
+        const latestYear = null;
+        const metadata = getCountyMetadata();
 
-    set({
-      ready: true,
-      availableYears: years,
-      filters: { ...getDefaultFilters(latestYear), viewMode: "flow", metric: "in" },
-      states: buildStateOptions(metadata),
-      countiesByState: buildCountiesByState(metadata),
-    });
-  },
+        set({
+          ready: true,
+          availableYears: years,
+          filters: {
+            ...getDefaultFilters(latestYear),
+            viewMode: "choropleth",
+            metric: "in",
+          },
+          states: buildStateOptions(metadata),
+          countiesByState: buildCountiesByState(metadata),
+        });
+      },
 
-  setFilter: (id, value) =>
-    set((state) => {
-      const updated = { ...state.filters, [id]: value };
+      setFilter: (id, value) =>
+        set((state) => {
+          const updated = { ...state.filters, [id]: value };
 
-      if (id === "state") {
-        updated.county = null;
-      }
+          if (id === "state") {
+            updated.county = null;
+          }
 
-      return { filters: updated };
+          return { filters: updated };
+        }),
+
+      setSelectedArc: (arc) => set({ selectedArc: arc }),
+
+      resetFilters: () =>
+        set((state) => ({
+          filters: getDefaultFilters(
+            state.availableYears[state.availableYears.length - 1]
+          ),
+        })),
     }),
-
-  setSelectedArc: (arc) => set({ selectedArc: arc }),
-
-  resetFilters: () =>
-    set((state) => ({
-      filters: getDefaultFilters(state.availableYears[state.availableYears.length - 1]),
-    })),
-}));
+    {
+      name: "acs-dashboard-prefs",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({
+        // Persist only user prefs, not data caches/ready flags
+        filters: {
+          valueType: state.filters?.valueType,
+          showHeatmap: state.filters?.showHeatmap,
+          showStateNetOverlay: state.filters?.showStateNetOverlay,
+          stateNetOpacity: state.filters?.stateNetOpacity,
+        },
+      }),
+    }
+  )
+);

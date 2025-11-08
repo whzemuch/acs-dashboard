@@ -33,7 +33,11 @@ export default function CoeffChart({
     const svg = d3.select(ref.current);
     svg.selectAll("*").remove();
 
-    const margin = { top: 10, right: 20, bottom: 20, left: 80 };
+    // Dynamic left margin based on longest label to avoid trimming
+    const labels = Object.keys(stats).map(formatLabel);
+    const maxLabelLen = labels.reduce((m, s) => Math.max(m, s.length), 0);
+    const estLeft = Math.min(260, Math.max(80, maxLabelLen * 8));
+    const margin = { top: 10, right: 20, bottom: 20, left: estLeft };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
@@ -48,7 +52,7 @@ export default function CoeffChart({
         mode === "coefficients"
           ? Math.min(
               0,
-              d3.min(data, (d) => d.value),
+              d3.min(data, (d) => d.value)
             )
           : 0,
         d3.max(data, (d) => d.value),
@@ -70,7 +74,7 @@ export default function CoeffChart({
         d3
           .axisBottom(x)
           .ticks(4)
-          .tickFormat((d) => (mode === "distribution" ? d + "%" : d)),
+          .tickFormat((d) => (mode === "distribution" ? d + "%" : d))
       )
       .selectAll("text")
       .style("font-size", "10px");
@@ -78,7 +82,11 @@ export default function CoeffChart({
     g.append("g")
       .call(d3.axisLeft(y))
       .selectAll("text")
-      .style("font-size", "10px");
+      .style("font-size", "11px")
+      .style(
+        "font-family",
+        "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+      );
 
     // 5. Optional zero line (for coefficients)
     if (mode === "coefficients") {
@@ -102,11 +110,11 @@ export default function CoeffChart({
       .attr("fill", (d) =>
         mode === "coefficients"
           ? d.value > 0
-            ? "#2ca02c"
+            ? "#009E73" // Colorblind-friendly bluish green for positive
             : d.value < 0
-              ? "#d62728"
-              : "#999"
-          : "#1f77b4",
+            ? "#D55E00" // Colorblind-friendly vermillion/orange-red for negative
+            : "#999"
+          : "#1f77b4"
       );
 
     // 7. Value labels
@@ -120,7 +128,7 @@ export default function CoeffChart({
       .attr("text-anchor", (d) => (d.value >= 0 ? "start" : "end"))
       .style("font-size", "10px")
       .text((d) =>
-        mode === "distribution" ? `${d.value.toFixed(1)}%` : d.value.toFixed(2),
+        mode === "distribution" ? `${d.value.toFixed(1)}%` : d.value.toFixed(2)
       );
   }, [stats, width, height, mode]);
 

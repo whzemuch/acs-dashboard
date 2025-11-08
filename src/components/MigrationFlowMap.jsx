@@ -1,13 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import { Map as ReactMap } from "react-map-gl";
-import { ArcLayer, GeoJsonLayer } from "@deck.gl/layers";
+import { ArcLayer, GeoJsonLayer, PathLayer } from "@deck.gl/layers";
+import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
+import { scaleSqrt } from "d3-scale";
+import centroid from "@turf/centroid";
 
 import { getFlows as getFlowsWorker } from "../data/flowServiceShap";
 import { getCountyMetadata, getSummary } from "../data/dataProviderShap";
 import { useDashboardStore } from "../store/dashboardStore";
-import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 const COUNTIES_GEOJSON = `${
@@ -25,18 +27,32 @@ const INITIAL_VIEW_STATE = {
   bearing: -20,
 };
 
-const IN_COLOR = [130, 202, 250, 200];
-const OUT_COLOR = [255, 140, 0, 200];
+const ARC_BLACK = [0, 0, 0, 230];
+const IN_COLOR = [130, 202, 250, 220];
+const OUT_COLOR = [255, 140, 0, 220];
 const NET_COLOR = [30, 90, 160, 200];
 // Colorblind-friendly diverging palette (blue = gain, orange = loss)
-const NET_GAIN_COLOR = [115, 96, 210, 200];
-const NET_LOSS_COLOR = [166, 54, 98, 200];
+const NET_GAIN_COLOR = [41, 128, 185, 200]; // Blue - positive net flow (gain)
+const NET_LOSS_COLOR = [230, 126, 34, 200]; // Orange - negative net flow (loss)
 const NET_NEUTRAL_COLOR = [128, 128, 128, 200];
 const COUNTY_HIGHLIGHT_FILL = [0, 150, 136, 160];
 const COUNTY_HIGHLIGHT_LINE = [0, 120, 110, 220];
 const STATE_HIGHLIGHT_FILL = [168, 208, 255, 90];
 const STATE_COUNTY_FILL = [205, 225, 255, 110];
 const STATE_HIGHLIGHT_LINE = [30, 90, 160, 220];
+
+// Friendly labels for international/region origin codes
+const REGION_LABELS = {
+  ASI: "Asia",
+  EUR: "Europe",
+  CAM: "Central America",
+  AFR: "Africa",
+  SAM: "South America",
+  NAM: "North America (non‑US)",
+  CAR: "Caribbean",
+  OCE: "Oceania",
+  ISL: "Islands",
+};
 
 export default function MigrationFlowMap({ forceEnabled = false }) {
   const initStore = useDashboardStore((s) => s.init);
@@ -51,6 +67,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
   const [hoverInfo, setHoverInfo] = useState(null);
   const [summaryData, setSummaryData] = useState(null);
   const setSelectedArc = useDashboardStore((s) => s.setSelectedArc);
+  const selectedArc = useDashboardStore((s) => s.selectedArc);
 
   useEffect(() => {
     initStore();
@@ -115,6 +132,16 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     return map;
   }, [ready]);
 
+  const stateNameMap = useMemo(() => {
+    const map = new Map();
+    if (!ready) return map;
+    getCountyMetadata().forEach((entry) => {
+      const code = String(entry.state).padStart(2, "0");
+      if (!map.has(code)) map.set(code, entry.stateName ?? entry.state);
+    });
+    return map;
+  }, [ready]);
+
   const countyFeatureMap = useMemo(() => {
     if (!countiesGeo?.features) return new Map();
     const map = new Map();
@@ -130,45 +157,59 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     const map = new Map();
     statesGeo.features.forEach((feature) => {
       const id = feature.properties?.STATEFP;
-      if (id) map.set(id, feature);
+      if (id) {
+        // Calculate centroid using Turf.js (same as build script)
+        try {
+          const c = centroid(feature);
+          const coords = c?.geometry?.coordinates;
+          const stateCentroid =
+            Array.isArray(coords) && coords.length >= 2 ? coords : null;
+          map.set(id, { ...feature, centroid: stateCentroid });
+        } catch (err) {
+          console.warn(`Failed to calculate centroid for state ${id}:`, err);
+          map.set(id, { ...feature, centroid: null });
+        }
+      }
     });
     return map;
   }, [statesGeo]);
 
-  const normalizedCounty = filters.county ? normalizeGeoid(filters.county) : null;
+  const normalizedCounty = filters.county
+    ? normalizeGeoid(filters.county)
+    : null;
   const normalizedState = filters.state ? normalizeState(filters.state) : null;
 
   const arcLayer = useMemo(() => {
     if (!arcs.length) return null;
     const { metric } = filters;
 
-    const inboundTotalsByCountyObserved = summaryData?.inboundTotalsByCountyObserved ?? {};
-    const inboundTotalsByCountyPredicted = summaryData?.inboundTotalsByCountyPredicted ?? {};
-    const inboundTotalsByStateObserved = summaryData?.inboundTotalsByStateObserved ?? {};
-    const inboundTotalsByStatePredicted = summaryData?.inboundTotalsByStatePredicted ?? {};
-    const outboundTotalsByStateObserved = summaryData?.outboundTotalsByStateObserved ?? {};
-    const outboundTotalsByStatePredicted = summaryData?.outboundTotalsByStatePredicted ?? {};
+    const inboundTotalsByCountyObserved =
+      summaryData?.inboundTotalsByCountyObserved ?? {};
+    const inboundTotalsByCountyPredicted =
+      summaryData?.inboundTotalsByCountyPredicted ?? {};
+    const inboundTotalsByStateObserved =
+      summaryData?.inboundTotalsByStateObserved ?? {};
+    const inboundTotalsByStatePredicted =
+      summaryData?.inboundTotalsByStatePredicted ?? {};
+    const outboundTotalsByStateObserved =
+      summaryData?.outboundTotalsByStateObserved ?? {};
+    const outboundTotalsByStatePredicted =
+      summaryData?.outboundTotalsByStatePredicted ?? {};
 
-    const getNetColorForEndpoint = (endpoint, d) => {
-      // Net available at state level in this dataset; color by endpoint's state net
-      const geoid = endpoint === "origin" ? d.origin : d.dest;
-      const stateCode = geoid.slice(0, 2);
-      const inboundState = (filters.valueType === "predicted"
-        ? inboundTotalsByStatePredicted[stateCode]
-        : inboundTotalsByStateObserved[stateCode]) ?? 0;
-      const outboundState = (filters.valueType === "predicted"
-        ? outboundTotalsByStatePredicted[stateCode]
-        : outboundTotalsByStateObserved[stateCode]) ?? 0;
-      const net = inboundState - outboundState;
-      if (net > 0.01) return NET_GAIN_COLOR;
-      if (net < -0.01) return NET_LOSS_COLOR;
-      return NET_NEUTRAL_COLOR;
-    };
+    // Build a width scale to increase contrast between flows
+    const flows = arcs
+      .map((d) => d.flow)
+      .filter((v) => Number.isFinite(v) && v > 0);
+    const minF = flows.length ? Math.min(...flows) : 0;
+    const maxF = flows.length ? Math.max(...flows) : 1;
+    const widthScale = scaleSqrt()
+      .domain([minF || 1, maxF || 10])
+      .range([4, 18]);
 
-    const getEndpointColor = (endpoint) => {
-      if (metric !== "net") return () => getArcColor(metric);
-      return (d) => getNetColorForEndpoint(endpoint, d);
-    };
+    const dimFactor = selectedArc ? 0.2 : 1;
+
+    // Standard ArcLayer for inbound and outbound modes
+    const arcColor = metric === "in" ? IN_COLOR : OUT_COLOR;
 
     return new ArcLayer({
       id: "migration-arcs",
@@ -176,30 +217,59 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       pickable: true,
       getSourcePosition: (d) => d.originPosition,
       getTargetPosition: (d) => d.destPosition,
-      getWidth: (d) => Math.max(0.4, Math.sqrt(d.flow) * 0.15),
-      getSourceColor: getEndpointColor("origin"),
-      getTargetColor: getEndpointColor("dest"),
+      getWidth: (d) => widthScale(Math.max(0, d.flow)),
+      widthUnits: "pixels",
+      widthMinPixels: 3,
+      getSourceColor: () => arcColor,
+      getTargetColor: () => arcColor,
       onHover: ({ x, y, object }) => {
         if (!object) {
           setHoverInfo(null);
           return;
         }
 
-        const originMeta = countyLookup.get(object.origin);
+        const originLabel = getOriginLabel(object.origin, stateNameMap);
         const destMeta = countyLookup.get(object.dest);
-        const destState = object.dest.slice(0,2);
-        const originState = (/^\d+$/.test(object.origin) ? object.origin.slice(0,2) : null) || object.origin;
-        const destIn = (filters.valueType === "predicted" ? inboundTotalsByCountyPredicted[object.dest] : inboundTotalsByCountyObserved[object.dest]) ?? 0;
-        const originInState = (filters.valueType === "predicted" ? inboundTotalsByStatePredicted[originState] : inboundTotalsByStateObserved[originState]) ?? 0;
-        const originOutState = (filters.valueType === "predicted" ? outboundTotalsByStatePredicted[originState] : outboundTotalsByStateObserved[originState]) ?? 0;
-        const destInState = (filters.valueType === "predicted" ? inboundTotalsByStatePredicted[destState] : inboundTotalsByStateObserved[destState]) ?? 0;
-        const destOutState = (filters.valueType === "predicted" ? outboundTotalsByStatePredicted[destState] : outboundTotalsByStateObserved[destState]) ?? 0;
+        const destState = object.dest.slice(0, 2).padStart(3, "0");
+        const originState2Digit =
+          (/^\d+$/.test(object.origin) ? object.origin.slice(0, 2) : null) ||
+          object.origin;
+        const originState =
+          typeof originState2Digit === "string" &&
+          originState2Digit.length === 2
+            ? originState2Digit.padStart(3, "0")
+            : originState2Digit;
+        const destIn =
+          (filters.valueType === "predicted"
+            ? inboundTotalsByCountyPredicted[object.dest]
+            : inboundTotalsByCountyObserved[object.dest]) ?? 0;
+        const originInState =
+          (filters.valueType === "predicted"
+            ? inboundTotalsByStatePredicted[originState]
+            : inboundTotalsByStateObserved[originState]) ?? 0;
+        const originOutState =
+          (filters.valueType === "predicted"
+            ? outboundTotalsByStatePredicted[originState]
+            : outboundTotalsByStateObserved[originState]) ?? 0;
+        const destInState =
+          (filters.valueType === "predicted"
+            ? inboundTotalsByStatePredicted[destState]
+            : inboundTotalsByStateObserved[destState]) ?? 0;
+        const destOutState =
+          (filters.valueType === "predicted"
+            ? outboundTotalsByStatePredicted[destState]
+            : outboundTotalsByStateObserved[destState]) ?? 0;
         const destNetState = destInState - destOutState;
         const originNetState = originInState - originOutState;
 
         const lines = [
-          `${originMeta?.name ?? object.origin} → ${destMeta?.name ?? object.dest}`,
-          `Observed: ${object.observed.toLocaleString()}  Predicted: ${object.predicted.toLocaleString(undefined,{maximumFractionDigits:1})}`,
+          `${originLabel} → ${destMeta?.name ?? object.dest}${
+            destMeta?.stateName ? ", " + destMeta.stateName : ""
+          }`,
+          `Observed: ${object.observed.toLocaleString()}  Predicted: ${object.predicted.toLocaleString(
+            undefined,
+            { maximumFractionDigits: 1 }
+          )}`,
           `County In (dest): ${destIn.toLocaleString(undefined, {
             maximumFractionDigits: 1,
           })}`,
@@ -223,13 +293,13 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       onClick: ({ object }) => {
         if (object) setSelectedArc(object);
       },
+      updateTriggers: {
+        getWidth: [minF, maxF],
+        getSourceColor: [metric, selectedArc?.id],
+        getTargetColor: [metric, selectedArc?.id],
+      },
     });
-  }, [
-    arcs,
-    filters,
-    countyLookup,
-    summaryData,
-  ]);
+  }, [arcs, filters, countyLookup, stateNameMap, summaryData, selectedArc]);
 
   const countyLayer = useMemo(() => {
     if (!countiesGeo) return null;
@@ -266,7 +336,8 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       getLineWidth: (feature) => {
         const geoid = feature.properties.GEOID;
         if (selectedCounty && geoid === selectedCounty) return 2.4;
-        if (normalizedState && feature.properties.STATEFP === normalizedState) return 1.4;
+        if (normalizedState && feature.properties.STATEFP === normalizedState)
+          return 1.4;
         return 0.75;
       },
       pickable: true,
@@ -284,7 +355,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
           info.object.properties.GEOID,
           countyLookup,
           summaryData,
-          filters,
+          filters
         );
         setHoverInfo({ x: info.x, y: info.y, text });
       },
@@ -314,7 +385,9 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
           : [60, 60, 60, 200],
       lineWidthUnits: "pixels",
       getLineWidth: (feature) =>
-        normalizedState && feature.properties.STATEFP === normalizedState ? 2.5 : 1.2,
+        normalizedState && feature.properties.STATEFP === normalizedState
+          ? 2.5
+          : 1.2,
       updateTriggers: {
         getFillColor: [normalizedState],
         getLineColor: [normalizedState],
@@ -325,7 +398,10 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
 
   const heatmapLayer = useMemo(() => {
     if (!arcs.length || !filters.showHeatmap) return null;
-    const points = arcs.map((a) => ({ position: a.destPosition, weight: a.flow }));
+    const points = arcs.map((a) => ({
+      position: a.destPosition,
+      weight: a.flow,
+    }));
     return new HeatmapLayer({
       id: "dest-heatmap",
       data: points,
@@ -337,16 +413,47 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     });
   }, [arcs, filters.showHeatmap]);
 
-  const layers = useMemo(
-    () => [stateLayer, countyLayer, heatmapLayer, arcLayer].filter(Boolean),
-    [stateLayer, countyLayer, heatmapLayer, arcLayer]
-  );
+  // Highlight selected arc with bright yellow overlay - highly visible on all backgrounds
+  const selectedArcLayer = useMemo(() => {
+    if (!selectedArc) return null;
+
+    return new ArcLayer({
+      id: "selected-arc-highlight",
+      data: [selectedArc],
+      getSourcePosition: (d) => d.originPosition,
+      getTargetPosition: (d) => d.destPosition,
+      getWidth: 8, // Wider than normal arcs
+      widthUnits: "pixels",
+      widthMinPixels: 6,
+      getSourceColor: [255, 255, 0, 255], // Bright yellow - visible on light map
+      getTargetColor: [255, 255, 0, 255],
+      pickable: false, // Don't interfere with picking
+    });
+  }, [selectedArc]);
+
+  const layers = useMemo(() => {
+    const arcLayers = Array.isArray(arcLayer)
+      ? arcLayer
+      : arcLayer
+      ? [arcLayer]
+      : [];
+    const sel = Array.isArray(selectedArcLayer)
+      ? selectedArcLayer
+      : selectedArcLayer
+      ? [selectedArcLayer]
+      : [];
+    return [stateLayer, countyLayer, heatmapLayer, ...arcLayers, ...sel].filter(
+      Boolean
+    );
+  }, [stateLayer, countyLayer, heatmapLayer, arcLayer, selectedArcLayer]);
 
   useEffect(() => {
     if (!ready) return;
 
     let targetFeature = null;
-    const normalizedCounty = filters.county ? normalizeGeoid(filters.county) : null;
+    const normalizedCounty = filters.county
+      ? normalizeGeoid(filters.county)
+      : null;
     if (normalizedCounty && countyFeatureMap.has(normalizedCounty)) {
       targetFeature = countyFeatureMap.get(normalizedCounty);
     } else if (normalizedState && stateFeatureMap.has(normalizedState)) {
@@ -371,7 +478,9 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       });
 
       const padding = normalizedCounty ? 60 : 140;
-      let { longitude, latitude, zoom } = viewport.fitBounds(bounds, { padding });
+      let { longitude, latitude, zoom } = viewport.fitBounds(bounds, {
+        padding,
+      });
       zoom = Math.min(zoom, normalizedCounty ? 8 : 6);
 
       return applyViewTransition(prev, { longitude, latitude, zoom });
@@ -396,6 +505,15 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       <DeckGL
         viewState={viewState}
         controller
+        pickingRadius={12}
+        onClick={(info) => {
+          // If clicking on an arc, do nothing (let arc layer's onClick handle it)
+          if (info && info.layer && info.layer.id === "migration-arcs") {
+            return;
+          }
+          // Otherwise, clear the selection (clicked on map background or other layers)
+          setSelectedArc(null);
+        }}
         onViewStateChange={({ viewState: next }) => setViewState(next)}
         layers={layers}
       >
@@ -425,12 +543,6 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       )}
     </div>
   );
-}
-
-function getArcColor(metric) {
-  if (metric === "in") return IN_COLOR;
-  if (metric === "out") return OUT_COLOR;
-  return NET_COLOR;
 }
 
 function extractBounds(feature) {
@@ -514,8 +626,12 @@ function buildCountyHoverText(geoid, countyLookup, summary, filters) {
 
   const lines = [
     `${name}, ${stateName} (GEOID: ${geoid})`,
-    `Inbound: ${inbound.toLocaleString(undefined, { maximumFractionDigits: 1 })}`,
-    `Outbound: ${outbound.toLocaleString(undefined, { maximumFractionDigits: 1 })}`,
+    `Inbound: ${inbound.toLocaleString(undefined, {
+      maximumFractionDigits: 1,
+    })}`,
+    `Outbound: ${outbound.toLocaleString(undefined, {
+      maximumFractionDigits: 1,
+    })}`,
     `Net: ${net.toLocaleString(undefined, { maximumFractionDigits: 1 })}`,
   ];
 
@@ -526,4 +642,16 @@ function buildCountyHoverText(geoid, countyLookup, summary, filters) {
     lines.push(`Education: ${filters.education}`);
 
   return lines.join("\n");
+}
+
+function getOriginLabel(originCode, stateNameMap) {
+  if (!originCode) return "";
+  const s = String(originCode).trim();
+  // Numeric US state code (often 3-digit like '048'); map to last 2 digits
+  if (/^\d+$/.test(s)) {
+    const fips2 = s.slice(-2).padStart(2, "0");
+    return stateNameMap.get(fips2) || fips2;
+  }
+  // Region label
+  return REGION_LABELS[s] || s;
 }

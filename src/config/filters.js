@@ -1,7 +1,6 @@
 import { getDimensions } from "../data/dataProvider";
 
 const METRICS = [
-  { id: "net", label: "Net" },
   { id: "in", label: "Inbound" },
   { id: "out", label: "Outbound" },
 ];
@@ -16,9 +15,11 @@ const DEFAULT_FILTERS = {
   age: "all",
   income: "all",
   education: "all",
-  viewMode: "flow",
+  viewMode: "choropleth",
   valueType: "observed",
   showHeatmap: true,
+  showStateNetOverlay: false,
+  stateNetOpacity: 0.6,
 };
 
 export async function buildFilterConfig() {
@@ -95,10 +96,13 @@ export function getDefaultFilters(latestYear) {
 }
 
 function toOptions(items) {
-  return [{ id: "all", label: "All" }, ...items.map((item) => ({
-    id: item.id,
-    label: item.label,
-  }))];
+  return [
+    { id: "all", label: "All" },
+    ...items.map((item) => ({
+      id: item.id,
+      label: item.label,
+    })),
+  ];
 }
 
 async function getDimensionsAsync() {

@@ -69,27 +69,19 @@ export function ChoroplethLegendCard() {
 }
 
 function FlowLegendContent() {
-  const metric = useDashboardStore((s) => s.filters.metric ?? "net");
+  const metric = useDashboardStore((s) => s.filters.metric ?? "in");
   const valueType = useDashboardStore((s) => s.filters.valueType ?? "observed");
   const showHeatmap = useDashboardStore((s) => Boolean(s.filters.showHeatmap));
-  const isNetMode = metric === "net";
 
   return (
     <>
-      {isNetMode ? (
-        <>
-          <LegendRow color="rgba(115, 96, 210, 1)" label="Net gain" />
-          <LegendRow color="rgba(166, 54, 98, 1)" label="Net loss" />
-        </>
-      ) : (
-        <>
-          <LegendRow color="rgba(130, 202, 250, 1)" label="Inbound flow" />
-          <LegendRow color="rgba(255, 140, 0, 1)" label="Outbound flow" />
-        </>
-      )}
+      <LegendRow color="rgba(130, 202, 250, 1)" label="Inbound flow" />
+      <LegendRow color="rgba(255, 140, 0, 1)" label="Outbound flow" />
       <div style={{ fontSize: 12, color: "#4a5568" }}>
-        Value: <strong>{valueType === "predicted" ? "Predicted" : "Observed"}</strong>. Arc thickness scales with √(value);
-        Min Flow slider hides small values.
+        Value:{" "}
+        <strong>{valueType === "predicted" ? "Predicted" : "Observed"}</strong>.
+        Arc color reflects metric; thickness scales with √(value). Min Flow
+        hides small arcs.
       </div>
       {showHeatmap && (
         <div style={{ fontSize: 12, color: "#4a5568" }}>
@@ -101,18 +93,29 @@ function FlowLegendContent() {
 }
 
 function ChoroplethLegendContent() {
+  const showOverlay = useDashboardStore((s) =>
+    Boolean(s.filters.showStateNetOverlay)
+  );
+  const valueType = useDashboardStore((s) => s.filters.valueType ?? "observed");
   return (
     <>
-      <LegendRow
-        color="linear-gradient(90deg, rgba(255,165,0,0.8), rgba(255,115,0,0.8))"
-        label="Higher net in"
-      />
-      <LegendRow
-        color="linear-gradient(90deg, rgba(70,130,180,0.8), rgba(30,90,160,0.8))"
-        label="Higher net out"
-      />
+      {showOverlay && (
+        <>
+          <LegendRow
+            color="rgba(255,165,0,0.6)"
+            label={`State net gain (${valueType})`}
+          />
+          <LegendRow
+            color="rgba(30,90,160,0.6)"
+            label={`State net loss (${valueType})`}
+          />
+        </>
+      )}
       <div style={{ fontSize: 12, color: "#4a5568" }}>
-        Colors scale relative to the active metric and filters.
+        County choropleth displays inbound totals only (Observed/Predicted).
+        {showOverlay
+          ? " State net overlay is ON."
+          : ' Enable "State net overlay" to visualize state-level net.'}
       </div>
     </>
   );
@@ -131,11 +134,17 @@ function LegendRow({ color, label }) {
           borderRadius: 4,
           background: color,
           display: "inline-block",
-          backgroundImage: color.startsWith("linear-gradient") ? color : undefined,
-          backgroundColor: color.startsWith("linear-gradient") ? undefined : color,
+          backgroundImage: color.startsWith("linear-gradient")
+            ? color
+            : undefined,
+          backgroundColor: color.startsWith("linear-gradient")
+            ? undefined
+            : color,
         }}
       />
       <span>{label}</span>
     </div>
   );
 }
+
+// Stroke legend removed; we use color blocks consistent with map arcs

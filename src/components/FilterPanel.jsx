@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { useDashboardStore } from "../store/dashboardStore";
 
 const metricOptions = [
-  { id: "net", label: "Net" },
   { id: "in", label: "Inbound" },
   { id: "out", label: "Outbound" },
 ];
@@ -29,10 +28,14 @@ export default function FilterPanel() {
   const states = useDashboardStore((s) => s.states);
   const countiesByState = useDashboardStore((s) => s.countiesByState);
 
-  useEffect(() => { init(); }, [init]);
+  useEffect(() => {
+    init();
+  }, [init]);
 
   // If a county is selected, only 'in' metric is meaningful for state→county dataset
-  const metricOptionsFinal = (filters.county ? metricOptions.filter((m) => m.id === "in") : metricOptions);
+  const metricOptionsFinal = filters.county
+    ? metricOptions.filter((m) => m.id === "in")
+    : metricOptions;
 
   // Enforce 'in' when a county is active
   useEffect(() => {
@@ -72,12 +75,15 @@ export default function FilterPanel() {
 
       {/* Year selector removed for SHAP dataset (no year) */}
 
-      <ToggleRow
-        label="Metric"
-        options={metricOptionsFinal}
-        value={filters.metric ?? "net"}
-        onSelect={(value) => setFilter("metric", value)}
-      />
+      {/* Only show Metric selector in Flow view */}
+      {filters.viewMode === "flow" && (
+        <ToggleRow
+          label="Metric"
+          options={metricOptionsFinal}
+          value={filters.metric ?? "in"}
+          onSelect={(value) => setFilter("metric", value)}
+        />
+      )}
 
       <ToggleRow
         label="Value"
@@ -119,6 +125,44 @@ export default function FilterPanel() {
         />
       </div>
 
+      {filters.viewMode === "choropleth" && (
+        <>
+          <div style={sectionStyle}>
+            <label style={labelStyle} htmlFor="state-net-toggle">
+              State net overlay
+            </label>
+            <input
+              id="state-net-toggle"
+              type="checkbox"
+              checked={Boolean(filters.showStateNetOverlay)}
+              onChange={(e) =>
+                setFilter("showStateNetOverlay", e.target.checked)
+              }
+            />
+          </div>
+          {filters.showStateNetOverlay && (
+            <div style={sectionStyle}>
+              <label style={labelStyle} htmlFor="state-net-opacity">
+                State net overlay opacity (
+                {Math.round((filters.stateNetOpacity ?? 0.6) * 100)}%)
+              </label>
+              <input
+                id="state-net-opacity"
+                type="range"
+                min={0.1}
+                max={1}
+                step={0.05}
+                value={filters.stateNetOpacity ?? 0.6}
+                onChange={(e) =>
+                  setFilter("stateNetOpacity", Number(e.target.value))
+                }
+                style={{ width: "100%" }}
+              />
+            </div>
+          )}
+        </>
+      )}
+
       <div style={sectionStyle}>
         <label style={labelStyle} htmlFor="county-select">
           County
@@ -132,7 +176,9 @@ export default function FilterPanel() {
           style={selectStyle}
           disabled={!selectedState || countyOptions.length === 0}
         >
-          <option value="">{selectedState ? "All Counties" : "Select state first"}</option>
+          <option value="">
+            {selectedState ? "All Counties" : "Select state first"}
+          </option>
           {countyOptions.map((option) => (
             <option key={option.id} value={option.id}>
               {option.label}
@@ -141,21 +187,24 @@ export default function FilterPanel() {
         </select>
       </div>
 
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="min-flow">
-          Min Flow ({filters.minFlow})
-        </label>
-        <input
-          id="min-flow"
-          type="range"
-          min={0}
-          max={1000}
-          step={10}
-          value={filters.minFlow ?? 0}
-          onChange={(e) => setFilter("minFlow", Number(e.target.value))}
-          style={{ width: "100%" }}
-        />
-      </div>
+      {/* Only show Min Flow filter in Flow view */}
+      {filters.viewMode === "flow" && (
+        <div style={sectionStyle}>
+          <label style={labelStyle} htmlFor="min-flow">
+            Min Flow ({filters.minFlow})
+          </label>
+          <input
+            id="min-flow"
+            type="range"
+            min={0}
+            max={1000}
+            step={10}
+            value={filters.minFlow ?? 0}
+            onChange={(e) => setFilter("minFlow", Number(e.target.value))}
+            style={{ width: "100%" }}
+          />
+        </div>
+      )}
 
       {/* Age/Income/Education filters removed for SHAP dataset */}
     </div>
@@ -163,10 +212,13 @@ export default function FilterPanel() {
 }
 
 function buildOptions(items) {
-  return [{ id: "all", label: "All" }, ...items.map((item) => ({
-    id: item.id,
-    label: item.label,
-  }))];
+  return [
+    { id: "all", label: "All" },
+    ...items.map((item) => ({
+      id: item.id,
+      label: item.label,
+    })),
+  ];
 }
 
 const panelStyle = {

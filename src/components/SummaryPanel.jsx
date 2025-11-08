@@ -5,6 +5,7 @@ import { getSummary, getCountyMetadata } from "../data/dataProviderShap";
 export default function SummaryPanel() {
   const ready = useDashboardStore((s) => s.ready);
   const filters = useDashboardStore((s) => s.filters);
+  const states = useDashboardStore((s) => s.states);
   const [summary, setSummary] = useState(null);
 
   const countyLookup = useMemo(() => {
@@ -13,22 +14,36 @@ export default function SummaryPanel() {
     return map;
   }, [ready]);
 
+  const stateNameMap = useMemo(() => {
+    const map = new Map();
+    states.forEach((s) => map.set(s.id, s.label));
+    return map;
+  }, [states]);
+
   useEffect(() => {
     if (!ready) return;
     const s = getSummary();
     setSummary(s);
   }, [ready]);
 
-  const data = useMemo(() => buildSummary(summary, filters), [summary, filters]);
+  const data = useMemo(
+    () => buildSummary(summary, filters),
+    [summary, filters]
+  );
 
   const label = useMemo(() => {
     if (filters.county) {
       const meta = countyLookup.get(filters.county);
-      return meta ? `${meta.name}, ${meta.stateName ?? meta.state}` : filters.county;
+      return meta
+        ? `${meta.name}, ${meta.stateName ?? meta.state}`
+        : filters.county;
     }
-    if (filters.state) return `State ${filters.state}`;
+    if (filters.state) {
+      const stateName = stateNameMap.get(filters.state);
+      return stateName || filters.state;
+    }
     return "United States";
-  }, [filters.county, filters.state, countyLookup]);
+  }, [filters.county, filters.state, countyLookup, stateNameMap]);
 
   return (
     <div
@@ -58,8 +73,6 @@ export default function SummaryPanel() {
             <>
               <Stat label="Outbound (Obs)" value={data.outboundObs} />
               <Stat label="Outbound (Pred)" value={data.outboundPred} />
-              <Stat label="Net (Obs)" value={data.netObs} />
-              <Stat label="Net (Pred)" value={data.netPred} />
             </>
           )}
         </div>
@@ -82,7 +95,14 @@ function Stat({ label, value }) {
 
 function buildSummary(summary, filters) {
   if (!summary) return {};
-  const stateCode = filters.state || (filters.county ? filters.county.slice(0, 2) : null);
+
+  // Extract 2-digit state code for summary lookups
+  // filters.state is 3-digit ("006"), summary data uses 2-digit ("06")
+  const stateCode = filters.state
+    ? filters.state.slice(-2)
+    : filters.county
+    ? filters.county.slice(0, 2)
+    : null;
 
   // County scope: only inbound is defined for county (state→county dataset)
   if (filters.county) {
@@ -98,18 +118,23 @@ function buildSummary(summary, filters) {
 
   // State scope: inbound/outbound available
   if (stateCode) {
+    // Inbound totals use 2-digit state codes (destination)
     const inboundObs = summary.inboundTotalsByStateObserved?.[stateCode] ?? 0;
     const inboundPred = summary.inboundTotalsByStatePredicted?.[stateCode] ?? 0;
-    const outboundObs = summary.outboundTotalsByStateObserved?.[stateCode] ?? 0;
-    const outboundPred = summary.outboundTotalsByStatePredicted?.[stateCode] ?? 0;
+
+    // Outbound totals use 3-digit state codes (origin format)
+    const stateCode3Digit = stateCode.padStart(3, "0");
+    const outboundObs =
+      summary.outboundTotalsByStateObserved?.[stateCode3Digit] ?? 0;
+    const outboundPred =
+      summary.outboundTotalsByStatePredicted?.[stateCode3Digit] ?? 0;
+
     return {
       scope: "state",
       inboundObs,
       inboundPred,
       outboundObs,
       outboundPred,
-      netObs: inboundObs - outboundObs,
-      netPred: inboundPred - outboundPred,
     };
   }
 
@@ -125,8 +150,5 @@ function buildSummary(summary, filters) {
     inboundPred,
     outboundObs,
     outboundPred,
-    netObs: inboundObs - outboundObs,
-    netPred: inboundPred - outboundPred,
   };
 }
-

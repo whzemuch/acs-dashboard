@@ -42,7 +42,7 @@ export default function TestMap() {
           display: "flex",
           flexDirection: "column",
           gap: "20px",
-          maxWidth: "70vw",
+          maxWidth: "63vw",
         }}
       >
         <div
@@ -52,7 +52,7 @@ export default function TestMap() {
             alignItems: "center",
           }}
         >
-          <div style={{ flexShrink: 0, width: "70vw", height: "60vh" }}>
+          <div style={{ flexShrink: 0, width: "63vw", height: "60vh" }}>
             <h2
               style={{
                 margin: "0 0 12px",
