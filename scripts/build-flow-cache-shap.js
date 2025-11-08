@@ -129,6 +129,11 @@ async function main() {
   // Determine SHAP feature order
   const headers = Object.keys(records[0] ?? {});
   const shapKeys = headers.filter((h) => h.startsWith("shap_") && h !== "shap_base_value");
+  // Global + per-county feature aggregations
+  const featureGlobal = shapKeys.map(() => ({ sum: 0, sumAbs: 0, count: 0 }));
+  const featureCountySum = shapKeys.map(() => new Map()); // idx -> Map(geoid -> sum)
+  const featureCountySumAbs = shapKeys.map(() => new Map()); // idx -> Map(geoid -> sumAbs)
+  const featureCountyCount = shapKeys.map(() => new Map()); // idx -> Map(geoid -> count)
 
   // Partitions
   const partByDest = new Map(); // SS -> rows (base)
@@ -212,6 +217,22 @@ async function main() {
     // Adjacency (trimmed later)
     pushAdj(inAdjacency, destGeoid, baseRow);
     pushAdj(outAdjacencyState, originStateCode, baseRow);
+
+    // Aggregate SHAP: global and per-destination-county
+    for (let i = 0; i < shapValues.length; i++) {
+      const v = Number(shapValues[i]) || 0;
+      const g = featureGlobal[i];
+      g.sum += v;
+      g.sumAbs += Math.abs(v);
+      g.count += 1;
+
+      const sMap = featureCountySum[i];
+      const aMap = featureCountySumAbs[i];
+      const cMap = featureCountyCount[i];
+      sMap.set(destGeoid, (sMap.get(destGeoid) ?? 0) + v);
+      aMap.set(destGeoid, (aMap.get(destGeoid) ?? 0) + Math.abs(v));
+      cMap.set(destGeoid, (cMap.get(destGeoid) ?? 0) + 1);
+    }
   }
 
   // Sort & trim adjacency lists
@@ -277,6 +298,43 @@ async function main() {
 
   await writeJSON(path.join(outDir, "shap_schema.json"), shapKeys);
 
+  // Feature aggregates: global rank and per-feature per-county means
+  console.log("Writing feature aggregates…");
+  const featDir = path.join(outDir, "feature");
+  const byCountyDir = path.join(featDir, "by_county");
+  await fs.mkdir(byCountyDir, { recursive: true });
+
+  const featureRank = shapKeys.map((id, i) => {
+    const g = featureGlobal[i];
+    const mean = g.count ? g.sum / g.count : 0;
+    const meanAbs = g.count ? g.sumAbs / g.count : 0;
+    return { id, label: prettifyFeature(id), mean, meanAbs, count: g.count };
+  }).sort((a, b) => b.meanAbs - a.meanAbs);
+  await writeJSON(path.join(featDir, "global_rank.json"), featureRank);
+
+  for (let i = 0; i < shapKeys.length; i++) {
+    const id = shapKeys[i];
+    const sMap = featureCountySum[i];
+    const aMap = featureCountySumAbs[i];
+    const cMap = featureCountyCount[i];
+    const mean = {};
+    const mean_abs = {};
+    for (const [geoid, sum] of sMap.entries()) {
+      const c = cMap.get(geoid) || 0;
+      mean[geoid] = c ? sum / c : 0;
+    }
+    for (const [geoid, sAbs] of aMap.entries()) {
+      const c = cMap.get(geoid) || 0;
+      mean_abs[geoid] = c ? sAbs / c : 0;
+    }
+    await writeJSON(path.join(byCountyDir, `${id}.json`), {
+      id,
+      label: prettifyFeature(id),
+      mean,
+      mean_abs,
+    });
+  }
+
   console.log("✓ Cache ready");
 }
 
@@ -314,3 +372,11 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
+
+function prettifyFeature(key) {
+  const k = String(key).replace(/^shap_/, "");
+  return k
+    .split("_")
+    .map((s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s))
+    .join(" ");
+}

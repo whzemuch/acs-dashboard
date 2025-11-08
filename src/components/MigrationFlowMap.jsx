@@ -8,7 +8,7 @@ import { scaleSqrt } from "d3-scale";
 import centroid from "@turf/centroid";
 
 import { getFlows as getFlowsWorker } from "../data/flowServiceShap";
-import { getCountyMetadata, getSummary } from "../data/dataProviderShap";
+import { getCountyMetadata, getSummary, getShapForState, getShapSchema } from "../data/dataProviderShap";
 import { useDashboardStore } from "../store/dashboardStore";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -68,6 +68,8 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
   const [summaryData, setSummaryData] = useState(null);
   const setSelectedArc = useDashboardStore((s) => s.setSelectedArc);
   const selectedArc = useDashboardStore((s) => s.selectedArc);
+  const [featureShapMap, setFeatureShapMap] = useState(null);
+  const [featureThreshold, setFeatureThreshold] = useState(0);
 
   useEffect(() => {
     initStore();
@@ -87,6 +89,13 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       .catch((error) => console.error("Failed to load state geojson", error));
   }, []);
 
+  // Fetch flows only when relevant flow filters change (avoid refetch on feature slider changes)
+  const flowMetric = filters.metric;
+  const flowState = filters.state;
+  const flowCounty = filters.county;
+  const flowValueType = filters.valueType;
+  const flowMinFlow = filters.minFlow;
+  const flowTopN = filters.topN;
   useEffect(() => {
     if (!ready || !isFlowMode) {
       setArcs([]);
@@ -95,7 +104,14 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     let cancelled = false;
     (async () => {
       try {
-        const data = await getFlowsWorker(filters);
+        const data = await getFlowsWorker({
+          metric: flowMetric,
+          state: flowState,
+          county: flowCounty,
+          valueType: flowValueType,
+          minFlow: flowMinFlow,
+          topN: flowTopN,
+        });
         if (!cancelled) setArcs(data);
       } catch (error) {
         console.error("Failed to load flows", error);
@@ -106,7 +122,7 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     return () => {
       cancelled = true;
     };
-  }, [ready, filters, isFlowMode]);
+  }, [ready, isFlowMode, flowMetric, flowState, flowCounty, flowValueType, flowMinFlow, flowTopN]);
 
   useEffect(() => {
     if (!ready) return;
@@ -179,6 +195,62 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     : null;
   const normalizedState = filters.state ? normalizeState(filters.state) : null;
 
+  // Load SHAP for selected feature (state-scoped) and compute threshold over current arcs
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      if (!isFlowMode || !filters.state || !filters.featureId) {
+        if (!cancelled) {
+          setFeatureShapMap(null);
+        }
+        return;
+      }
+      try {
+        const schema = await getShapSchema();
+        const idx = Array.isArray(schema) ? schema.indexOf(filters.featureId) : -1;
+        if (idx < 0) {
+          if (!cancelled) {
+            setFeatureShapMap(null);
+          }
+          return;
+        }
+        const shapPayload = await getShapForState(filters.state);
+        const rows = shapPayload?.rows || [];
+        const map = new Map();
+        for (const r of rows) {
+          const v = Array.isArray(r.shapValues) ? Number(r.shapValues[idx]) || 0 : 0;
+          map.set(r.id, v);
+        }
+        // Compute percentile threshold over current arcs if requested
+        let threshold = 0;
+        const q = Math.max(0, Math.min(100, Number(filters.featureFlowQuantile ?? 0)));
+        if (q > 0 && arcs.length) {
+          const arr = arcs
+            .map((a) => Math.abs(map.get(a.id) || 0))
+            .filter((v) => v > 0)
+            .sort((a, b) => a - b);
+          if (arr.length > 0) {
+            const ix = Math.min(
+              arr.length - 1,
+              Math.max(0, Math.floor((q / 100) * (arr.length - 1)))
+            );
+            threshold = arr[ix] || 0;
+          }
+        }
+        if (!cancelled) {
+          setFeatureShapMap(map);
+          setFeatureThreshold(threshold);
+        }
+      } catch (e) {
+        if (!cancelled) {
+          setFeatureShapMap(null);
+          setFeatureThreshold(0);
+        }
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [isFlowMode, filters.state, filters.featureId, filters.featureFlowQuantile, arcs]);
+
   const arcLayer = useMemo(() => {
     if (!arcs.length) return null;
     const { metric } = filters;
@@ -210,10 +282,24 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
 
     // Standard ArcLayer for inbound and outbound modes
     const arcColor = metric === "in" ? IN_COLOR : OUT_COLOR;
+    let dataForLayer = arcs;
+    if (featureShapMap) {
+      // Apply percentile threshold only (simple UX)
+      if ((filters.featureFlowQuantile ?? 0) > 0 && featureThreshold > 0) {
+        dataForLayer = dataForLayer.filter(
+          (d) => Math.abs(featureShapMap.get(d.id) || 0) >= featureThreshold
+        );
+      }
+    }
+    // Always enforce Min Flow on the client as well for immediate response
+    if ((filters.minFlow ?? 0) > 0) {
+      const minFClient = Number(filters.minFlow) || 0;
+      dataForLayer = dataForLayer.filter((d) => (Number(d.flow) || 0) >= minFClient);
+    }
 
     return new ArcLayer({
       id: "migration-arcs",
-      data: arcs,
+      data: dataForLayer,
       pickable: true,
       getSourcePosition: (d) => d.originPosition,
       getTargetPosition: (d) => d.destPosition,
@@ -281,6 +367,13 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
           })}`,
         ];
 
+        // Append selected feature SHAP if available
+        if (featureShapMap && filters.featureId) {
+          const shapVal = featureShapMap.get(object.id) || 0;
+          const featLabel = prettifyFeature(filters.featureId);
+          lines.push(`${featLabel} SHAP: ${shapVal.toFixed(2)}`);
+        }
+
         if (object.age && object.age !== "all")
           lines.push(`Age: ${object.age}`);
         if (object.income && object.income !== "all")
@@ -299,7 +392,25 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
         getTargetColor: [metric, selectedArc?.id],
       },
     });
-  }, [arcs, filters, countyLookup, stateNameMap, summaryData, selectedArc]);
+  }, [
+    arcs,
+    filters,
+    countyLookup,
+    stateNameMap,
+    summaryData,
+    selectedArc,
+    featureShapMap,
+    featureThreshold,
+    filters.minFlow,
+  ]);
+
+function prettifyFeature(key) {
+  const k = String(key || "").replace(/^shap_/, "");
+  return k
+    .split("_")
+    .map((s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s))
+    .join(" ");
+}
 
   const countyLayer = useMemo(() => {
     if (!countiesGeo) return null;

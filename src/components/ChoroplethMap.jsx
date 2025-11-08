@@ -9,7 +9,7 @@ import { color as d3color } from "d3-color";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
 
 import { useDashboardStore } from "../store/dashboardStore";
-import { getCountyMetadata, getSummary } from "../data/dataProviderShap";
+import { getCountyMetadata, getSummary, getFeatureAggNational } from "../data/dataProviderShap";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 const COUNTIES_GEOJSON = `${
@@ -29,6 +29,7 @@ export default function ChoroplethMap() {
   const [statesGeo, setStatesGeo] = useState(null);
   const [hoverInfo, setHoverInfo] = useState(null);
   const [summaryData, setSummaryData] = useState(null);
+  const [featureAgg, setFeatureAgg] = useState(null);
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
 
   useEffect(() => {
@@ -61,26 +62,57 @@ export default function ChoroplethMap() {
   }, [ready, filters.viewMode]);
 
   const colorData = useMemo(() => {
+    // Feature Impact mode: color by feature aggregate (national)
+    if (filters.viewMode === "feature" && featureAgg && featureAgg.values) {
+      const vals = Object.values(featureAgg.values).map((v) => Number(v) || 0);
+      const buckets = 7;
+      const palette = Array.from({ length: buckets }, (_, i) => d3color(interpolateYlOrRd((i + 1) / buckets)));
+      const range = palette.map((c) => [c.r, c.g, c.b, 200]);
+      const domain = (filters.featureAgg ?? "mean_abs") === "mean"
+        ? vals.map((v) => Math.abs(v)).filter((v) => v > 0)
+        : vals.filter((v) => v > 0);
+      const q = domain.length ? scaleQuantile().domain(domain).range(range) : null;
+      const toColor = (v) => {
+        const z = (filters.featureAgg ?? "mean_abs") === "mean" ? Math.abs(v || 0) : (v || 0);
+        return q ? q(z) : [240, 240, 240, 120];
+      };
+      return { map: featureAgg.values, toColor, max: Math.max(...domain, 0) };
+    }
+    // Default: inbound choropleth from summary
     const metric = filters.metric ?? "in";
     const stateFilter = filters.state ?? null;
     const valueType = filters.valueType ?? "observed";
     const base = buildChoropleth(summaryData, metric, stateFilter, valueType);
-    // Build a quantile color scale for better contrast
-    const values = Object.values(base.map).filter(
-      (v) => Number.isFinite(v) && v > 0
-    );
+    const values = Object.values(base.map).filter((v) => Number.isFinite(v) && v > 0);
     let toColor = () => [240, 240, 240, 120];
     if (values.length) {
       const buckets = 7;
-      const palette = Array.from({ length: buckets }, (_, i) =>
-        d3color(interpolateYlOrRd((i + 1) / buckets))
-      );
+      const palette = Array.from({ length: buckets }, (_, i) => d3color(interpolateYlOrRd((i + 1) / buckets)));
       const range = palette.map((c) => [c.r, c.g, c.b, 200]);
       const q = scaleQuantile().domain(values).range(range);
       toColor = (v) => q(v ?? 0);
     }
     return { ...base, toColor };
-  }, [summaryData, filters.metric, filters.state, filters.valueType]);
+  }, [summaryData, filters.metric, filters.state, filters.valueType, filters.viewMode, featureAgg, filters.featureAgg]);
+
+  // Feature aggregates loader
+  useEffect(() => {
+    if (!ready) return;
+    if (filters.viewMode !== "feature" || !filters.featureId) {
+      setFeatureAgg(null);
+      return;
+    }
+    let cancelled = false;
+    (async () => {
+      try {
+        const data = await getFeatureAggNational(filters.featureId, filters.featureAgg ?? "mean_abs");
+        if (!cancelled) setFeatureAgg(data);
+      } catch (e) {
+        if (!cancelled) setFeatureAgg(null);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [ready, filters.viewMode, filters.featureId, filters.featureAgg]);
 
   const countyLookup = useMemo(() => {
     const map = new Map();

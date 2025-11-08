@@ -20,6 +20,11 @@ const DEFAULT_FILTERS = {
   showHeatmap: true,
   showStateNetOverlay: false,
   stateNetOpacity: 0.6,
+  featureId: null,
+  featureAgg: "mean_abs",
+  featureTopK: 12,
+  featureFlowSign: "any", // 'any' | 'pos' | 'neg' for Flow view filtering by feature sign
+  featureFlowQuantile: 0,
 };
 
 export async function buildFilterConfig() {

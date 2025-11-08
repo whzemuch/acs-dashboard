@@ -12,6 +12,8 @@ const DEFAULT_CONFIG = {
   byDestUrl: (code) => `${BASE}data/cache/flows/by_dest/${code}.json`,
   byOriginUrl: (code) => `${BASE}data/cache/flows/by_origin/${code}.json`,
   byDestShapUrl: (code) => `${BASE}data/cache/flows/by_dest_shap/${code}.json`,
+  featureRankUrl: `${BASE}data/cache/feature/global_rank.json`,
+  featureByCountyUrl: (featureId) => `${BASE}data/cache/feature/by_county/${featureId}.json`,
   maxArcs: 200,
 };
 
@@ -27,6 +29,8 @@ const state = {
   byOriginCache: new Map(), // code -> payload
   byDestShapCache: new Map(), // code -> payload
   memoized: new Map(),
+  featureRank: null,
+  featureByCounty: new Map(),
 };
 
 export function configure(overrides = {}) {
@@ -76,6 +80,30 @@ export function getSummary() {
 
 export function getShapSchema() {
   return state.shapSchema.slice();
+}
+
+export async function getFeatureGlobalRank() {
+  await init();
+  if (state.featureRank) return state.featureRank;
+  const url = state.config.featureRankUrl;
+  state.featureRank = await fetchJSON(url);
+  return state.featureRank;
+}
+
+export async function getFeatureAggNational(featureId, agg = "mean_abs") {
+  await init();
+  if (!featureId) return null;
+  if (!state.featureByCounty.has(featureId)) {
+    const url = typeof state.config.featureByCountyUrl === "function"
+      ? state.config.featureByCountyUrl(featureId)
+      : state.config.featureByCountyUrl;
+    const payload = await fetchJSON(url);
+    state.featureByCounty.set(featureId, payload);
+  }
+  const data = state.featureByCounty.get(featureId);
+  if (!data) return null;
+  const values = agg === "mean" ? data.mean : data.mean_abs;
+  return { id: data.id, label: data.label, values };
 }
 
 /**
