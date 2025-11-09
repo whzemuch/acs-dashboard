@@ -16,6 +16,18 @@ export default defineConfig({
   // Use "/" in dev, "/acs-dashboard/" in production
   base: process.env.NODE_ENV === "production" ? "/acs-dashboard/" : "/",
 
+  build: {
+    // Generate unique hash for assets on every build to prevent caching issues
+    rollupOptions: {
+      output: {
+        // Add timestamp or commit hash to file names for cache busting
+        entryFileNames: `assets/[name]-[hash]-${Date.now()}.js`,
+        chunkFileNames: `assets/[name]-[hash]-${Date.now()}.js`,
+        assetFileNames: `assets/[name]-[hash]-${Date.now()}.[ext]`,
+      },
+    },
+  },
+
   server: {
     port: 5173,
     open: true,
