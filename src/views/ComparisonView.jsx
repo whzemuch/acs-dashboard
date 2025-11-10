@@ -135,6 +135,34 @@ export default function ComparisonView() {
               </select>
             </div>
           )}
+
+          {/* Min Flow for Location A - only in flow mode */}
+          {comparisonViewType === "flow" && (
+            <div>
+              <label
+                style={{
+                  display: "block",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  marginBottom: 6,
+                  color: "#4b5563",
+                }}
+              >
+                Min Flow ({leftFilters.minFlow ?? 0})
+              </label>
+              <input
+                type="range"
+                min={0}
+                max={20000}
+                step={100}
+                value={leftFilters.minFlow ?? 0}
+                onChange={(e) =>
+                  setLeftFilter("minFlow", Number(e.target.value))
+                }
+                style={{ width: "100%" }}
+              />
+            </div>
+          )}
         </div>
 
         {/* Left Map */}
@@ -374,34 +402,20 @@ export default function ComparisonView() {
 
           {/* Min Flow - only show in flow mode */}
           {comparisonViewType === "flow" && (
-            <div>
-              <label
+            <div style={{ marginBottom: "12px" }}>
+              <div
                 style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
+                  padding: "12px",
+                  background: "#fef3c7",
+                  borderRadius: 6,
+                  marginBottom: 12,
+                  fontSize: 12,
+                  color: "#92400e",
                 }}
               >
-                Min Flow ({leftFilters.minFlow ?? 0})
-              </label>
-              <input
-                type="range"
-                min={0}
-                max={1000}
-                step={10}
-                value={leftFilters.minFlow ?? 0}
-                onChange={(e) => {
-                  const newMinFlow = Number(e.target.value);
-                  console.log(
-                    "[ComparisonView] Setting minFlow to:",
-                    newMinFlow
-                  );
-                  syncSharedFilters({ minFlow: newMinFlow });
-                }}
-                style={{ width: "100%" }}
-              />
+                💡 Tip: Use separate Min Flow sliders below for each location to
+                handle different migration scales
+              </div>
             </div>
           )}
 
@@ -506,12 +520,16 @@ export default function ComparisonView() {
               Select different states/counties to compare
             </li>
             <li style={{ marginBottom: 4 }}>
+              Each location has its own Min Flow slider to handle different
+              scales
+            </li>
+            <li style={{ marginBottom: 4 }}>
               Click arcs to see SHAP features side-by-side
             </li>
             <li style={{ marginBottom: 4 }}>
               Use feature filter to highlight specific influences
             </li>
-            <li>Shared settings apply to both locations</li>
+            <li>Metric and Value type are shared between locations</li>
           </ul>
         </div>
       </div>
@@ -605,6 +623,34 @@ export default function ComparisonView() {
                   </option>
                 ))}
               </select>
+            </div>
+          )}
+
+          {/* Min Flow for Location B - only in flow mode */}
+          {comparisonViewType === "flow" && (
+            <div>
+              <label
+                style={{
+                  display: "block",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  marginBottom: 6,
+                  color: "#4b5563",
+                }}
+              >
+                Min Flow ({rightFilters.minFlow ?? 0})
+              </label>
+              <input
+                type="range"
+                min={0}
+                max={20000}
+                step={100}
+                value={rightFilters.minFlow ?? 0}
+                onChange={(e) =>
+                  setRightFilter("minFlow", Number(e.target.value))
+                }
+                style={{ width: "100%" }}
+              />
             </div>
           )}
         </div>

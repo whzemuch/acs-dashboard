@@ -67,15 +67,14 @@ export default function MigrationFlowMap({
   const ready = useDashboardStore((s) => s.ready);
 
   // Use different filters based on side (for comparison view)
-  const mainFilters = useDashboardStore((s) => s.filters);
-  const leftFilters = useDashboardStore((s) => s.leftFilters);
-  const rightFilters = useDashboardStore((s) => s.rightFilters);
-  const filters =
+  // Subscribe directly to the filter object to ensure reactivity
+  const filters = useDashboardStore((s) =>
     side === "left"
-      ? leftFilters
+      ? s.leftFilters
       : side === "right"
-      ? rightFilters
-      : mainFilters;
+      ? s.rightFilters
+      : s.filters
+  );
 
   const viewMode = filters.viewMode ?? "choropleth";
   // If side is provided (comparison mode), always show flows

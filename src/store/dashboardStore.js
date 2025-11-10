@@ -119,13 +119,10 @@ export const useDashboardStore = create(
           return { rightFilters: updated };
         }),
 
-      // Sync shared filters (metric, valueType, viewMode) to both sides
-      syncSharedFilters: (updates) =>
+      // Sync shared filters (metric, valueType, viewMode, minFlow) to both sides
+      syncSharedFilters: (updates) => {
+        console.log("[dashboardStore] syncSharedFilters called with:", updates);
         set((state) => {
-          console.log(
-            "[dashboardStore] syncSharedFilters called with:",
-            updates
-          );
           const newLeft = { ...state.leftFilters, ...updates };
           const newRight = { ...state.rightFilters, ...updates };
           console.log(
@@ -140,7 +137,8 @@ export const useDashboardStore = create(
             leftFilters: newLeft,
             rightFilters: newRight,
           };
-        }),
+        });
+      },
 
       setSelectedArc: (arc) => set({ selectedArc: arc }),
       setLeftSelectedArc: (arc) => set({ leftSelectedArc: arc }),
