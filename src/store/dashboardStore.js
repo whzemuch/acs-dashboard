@@ -52,6 +52,13 @@ export const useDashboardStore = create(
       countiesByState: {},
       selectedArc: null,
 
+      // Comparison mode state
+      comparisonMode: false,
+      leftFilters: {},
+      rightFilters: {},
+      leftSelectedArc: null,
+      rightSelectedArc: null,
+
       init: async () => {
         if (get().ready) return;
 
@@ -60,14 +67,18 @@ export const useDashboardStore = create(
         const latestYear = null;
         const metadata = getCountyMetadata();
 
+        const defaultFilters = {
+          ...getDefaultFilters(latestYear),
+          viewMode: "choropleth",
+          metric: "in",
+        };
+
         set({
           ready: true,
           availableYears: years,
-          filters: {
-            ...getDefaultFilters(latestYear),
-            viewMode: "choropleth",
-            metric: "in",
-          },
+          filters: defaultFilters,
+          leftFilters: { ...defaultFilters },
+          rightFilters: { ...defaultFilters },
           states: buildStateOptions(metadata),
           countiesByState: buildCountiesByState(metadata),
         });
@@ -84,14 +95,71 @@ export const useDashboardStore = create(
           return { filters: updated };
         }),
 
+      setComparisonMode: (enabled) => set({ comparisonMode: enabled }),
+
+      setLeftFilter: (id, value) =>
+        set((state) => {
+          const updated = { ...state.leftFilters, [id]: value };
+
+          if (id === "state") {
+            updated.county = null;
+          }
+
+          return { leftFilters: updated };
+        }),
+
+      setRightFilter: (id, value) =>
+        set((state) => {
+          const updated = { ...state.rightFilters, [id]: value };
+
+          if (id === "state") {
+            updated.county = null;
+          }
+
+          return { rightFilters: updated };
+        }),
+
+      // Sync shared filters (metric, valueType, viewMode) to both sides
+      syncSharedFilters: (updates) =>
+        set((state) => {
+          console.log(
+            "[dashboardStore] syncSharedFilters called with:",
+            updates
+          );
+          const newLeft = { ...state.leftFilters, ...updates };
+          const newRight = { ...state.rightFilters, ...updates };
+          console.log(
+            "[dashboardStore] New leftFilters.minFlow:",
+            newLeft.minFlow
+          );
+          console.log(
+            "[dashboardStore] New rightFilters.minFlow:",
+            newRight.minFlow
+          );
+          return {
+            leftFilters: newLeft,
+            rightFilters: newRight,
+          };
+        }),
+
       setSelectedArc: (arc) => set({ selectedArc: arc }),
+      setLeftSelectedArc: (arc) => set({ leftSelectedArc: arc }),
+      setRightSelectedArc: (arc) => set({ rightSelectedArc: arc }),
 
       resetFilters: () =>
-        set((state) => ({
-          filters: getDefaultFilters(
+        set((state) => {
+          const defaultFilters = getDefaultFilters(
             state.availableYears[state.availableYears.length - 1]
-          ),
-        })),
+          );
+          return {
+            filters: defaultFilters,
+            leftFilters: { ...defaultFilters },
+            rightFilters: { ...defaultFilters },
+            selectedArc: null,
+            leftSelectedArc: null,
+            rightSelectedArc: null,
+          };
+        }),
     }),
     {
       name: "acs-dashboard-prefs",

@@ -38,6 +38,7 @@ export async function buildFilterConfig() {
       options: [
         { id: "flow", label: "Flow" },
         { id: "choropleth", label: "Choropleth" },
+        { id: "comparison", label: "Comparative Analysis" },
       ],
     },
     {

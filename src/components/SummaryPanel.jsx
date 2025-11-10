@@ -2,9 +2,20 @@ import { useEffect, useMemo, useState } from "react";
 import { useDashboardStore } from "../store/dashboardStore";
 import { getSummary, getCountyMetadata } from "../data/dataProviderShap";
 
-export default function SummaryPanel() {
+export default function SummaryPanel({ side = null }) {
   const ready = useDashboardStore((s) => s.ready);
-  const filters = useDashboardStore((s) => s.filters);
+
+  // Use different filters based on side (for comparison view)
+  const mainFilters = useDashboardStore((s) => s.filters);
+  const leftFilters = useDashboardStore((s) => s.leftFilters);
+  const rightFilters = useDashboardStore((s) => s.rightFilters);
+  const filters =
+    side === "left"
+      ? leftFilters
+      : side === "right"
+      ? rightFilters
+      : mainFilters;
+
   const states = useDashboardStore((s) => s.states);
   const [summary, setSummary] = useState(null);
 

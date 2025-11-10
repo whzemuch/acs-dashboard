@@ -3,16 +3,38 @@ import { useDashboardStore } from "../store/dashboardStore";
 import { getShapForState, getShapSchema } from "../data/dataProviderShap";
 import CoeffChart from "./CoeffChart";
 
-export default function ShapPanel() {
-  const arc = useDashboardStore((s) => s.selectedArc);
-  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "flow");
+export default function ShapPanel({ side = null }) {
+  // Use different selectedArc and filters based on side (for comparison view)
+  const mainSelectedArc = useDashboardStore((s) => s.selectedArc);
+  const leftSelectedArc = useDashboardStore((s) => s.leftSelectedArc);
+  const rightSelectedArc = useDashboardStore((s) => s.rightSelectedArc);
+  const arc =
+    side === "left"
+      ? leftSelectedArc
+      : side === "right"
+      ? rightSelectedArc
+      : mainSelectedArc;
+
+  const mainFilters = useDashboardStore((s) => s.filters);
+  const leftFilters = useDashboardStore((s) => s.leftFilters);
+  const rightFilters = useDashboardStore((s) => s.rightFilters);
+  const filters =
+    side === "left"
+      ? leftFilters
+      : side === "right"
+      ? rightFilters
+      : mainFilters;
+
+  const viewMode = filters.viewMode ?? "flow";
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [entry, setEntry] = useState(null);
   const [topK, setTopK] = useState(10);
   const [absSort, setAbsSort] = useState(true);
   const [chartWidth, setChartWidth] = useState(480);
-  const containerId = "shap-panel-chart-container";
+  const containerId = side
+    ? `shap-panel-chart-container-${side}`
+    : "shap-panel-chart-container";
 
   const stateCode = useMemo(
     () => (arc?.dest ? arc.dest.slice(0, 2) : null),
@@ -70,10 +92,36 @@ export default function ShapPanel() {
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+  }, [containerId]);
 
   // Hide SHAP panel in Choropleth view or when no arc selected
-  if (viewMode === "choropleth" || !arc) return null;
+  // In comparison mode (when side is provided), always show SHAP panels (they handle empty state)
+  const isComparisonMode = side !== null;
+
+  if (!isComparisonMode && (viewMode === "choropleth" || !arc)) return null;
+
+  // In comparison mode, show empty state if no arc selected
+  if (isComparisonMode && !arc) {
+    return (
+      <div
+        style={{
+          background: "white",
+          border: "1px solid #e2e8f0",
+          borderRadius: 10,
+          padding: "16px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+          width: "100%",
+        }}
+      >
+        <h3 style={{ margin: 0, fontSize: 18 }}>SHAP Contributions</h3>
+        <div style={{ fontSize: 13, color: "#6b7280" }}>
+          Click an arc to see feature contributions
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

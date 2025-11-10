@@ -9,7 +9,11 @@ import { color as d3color } from "d3-color";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
 
 import { useDashboardStore } from "../store/dashboardStore";
-import { getCountyMetadata, getSummary, getFeatureAggNational } from "../data/dataProviderShap";
+import {
+  getCountyMetadata,
+  getSummary,
+  getFeatureAggNational,
+} from "../data/dataProviderShap";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
 const COUNTIES_GEOJSON = `${
@@ -20,10 +24,20 @@ const STATES_GEOJSON = `${
 }data/geo/cb_2018_us_state_5m_boundaries.geojson`;
 const INITIAL_VIEW_STATE = { longitude: -98, latitude: 39, zoom: 3.4 };
 
-export default function ChoroplethMap() {
+export default function ChoroplethMap({ side = null }) {
   const initStore = useDashboardStore((s) => s.init);
   const ready = useDashboardStore((s) => s.ready);
-  const filters = useDashboardStore((s) => s.filters);
+
+  // Use different filters based on side (for comparison view)
+  const mainFilters = useDashboardStore((s) => s.filters);
+  const leftFilters = useDashboardStore((s) => s.leftFilters);
+  const rightFilters = useDashboardStore((s) => s.rightFilters);
+  const filters =
+    side === "left"
+      ? leftFilters
+      : side === "right"
+      ? rightFilters
+      : mainFilters;
 
   const [countiesGeo, setCountiesGeo] = useState(null);
   const [statesGeo, setStatesGeo] = useState(null);
@@ -66,14 +80,22 @@ export default function ChoroplethMap() {
     if (filters.viewMode === "feature" && featureAgg && featureAgg.values) {
       const vals = Object.values(featureAgg.values).map((v) => Number(v) || 0);
       const buckets = 7;
-      const palette = Array.from({ length: buckets }, (_, i) => d3color(interpolateYlOrRd((i + 1) / buckets)));
+      const palette = Array.from({ length: buckets }, (_, i) =>
+        d3color(interpolateYlOrRd((i + 1) / buckets))
+      );
       const range = palette.map((c) => [c.r, c.g, c.b, 200]);
-      const domain = (filters.featureAgg ?? "mean_abs") === "mean"
-        ? vals.map((v) => Math.abs(v)).filter((v) => v > 0)
-        : vals.filter((v) => v > 0);
-      const q = domain.length ? scaleQuantile().domain(domain).range(range) : null;
+      const domain =
+        (filters.featureAgg ?? "mean_abs") === "mean"
+          ? vals.map((v) => Math.abs(v)).filter((v) => v > 0)
+          : vals.filter((v) => v > 0);
+      const q = domain.length
+        ? scaleQuantile().domain(domain).range(range)
+        : null;
       const toColor = (v) => {
-        const z = (filters.featureAgg ?? "mean_abs") === "mean" ? Math.abs(v || 0) : (v || 0);
+        const z =
+          (filters.featureAgg ?? "mean_abs") === "mean"
+            ? Math.abs(v || 0)
+            : v || 0;
         return q ? q(z) : [240, 240, 240, 120];
       };
       return { map: featureAgg.values, toColor, max: Math.max(...domain, 0) };
@@ -81,19 +103,34 @@ export default function ChoroplethMap() {
     // Default: inbound choropleth from summary
     const metric = filters.metric ?? "in";
     const stateFilter = filters.state ?? null;
-    const valueType = filters.valueType ?? "observed";
+    // In comparison mode (when side is provided), always use observed values for coloring
+    // Tooltip will show both observed and predicted for comparison
+    const valueType =
+      side !== null ? "observed" : filters.valueType ?? "observed";
     const base = buildChoropleth(summaryData, metric, stateFilter, valueType);
-    const values = Object.values(base.map).filter((v) => Number.isFinite(v) && v > 0);
+    const values = Object.values(base.map).filter(
+      (v) => Number.isFinite(v) && v > 0
+    );
     let toColor = () => [240, 240, 240, 120];
     if (values.length) {
       const buckets = 7;
-      const palette = Array.from({ length: buckets }, (_, i) => d3color(interpolateYlOrRd((i + 1) / buckets)));
+      const palette = Array.from({ length: buckets }, (_, i) =>
+        d3color(interpolateYlOrRd((i + 1) / buckets))
+      );
       const range = palette.map((c) => [c.r, c.g, c.b, 200]);
       const q = scaleQuantile().domain(values).range(range);
       toColor = (v) => q(v ?? 0);
     }
     return { ...base, toColor };
-  }, [summaryData, filters.metric, filters.state, filters.valueType, filters.viewMode, featureAgg, filters.featureAgg]);
+  }, [
+    summaryData,
+    filters.metric,
+    filters.state,
+    filters.valueType,
+    filters.viewMode,
+    featureAgg,
+    filters.featureAgg,
+  ]);
 
   // Feature aggregates loader
   useEffect(() => {
@@ -105,13 +142,18 @@ export default function ChoroplethMap() {
     let cancelled = false;
     (async () => {
       try {
-        const data = await getFeatureAggNational(filters.featureId, filters.featureAgg ?? "mean_abs");
+        const data = await getFeatureAggNational(
+          filters.featureId,
+          filters.featureAgg ?? "mean_abs"
+        );
         if (!cancelled) setFeatureAgg(data);
       } catch (e) {
         if (!cancelled) setFeatureAgg(null);
       }
     })();
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+    };
   }, [ready, filters.viewMode, filters.featureId, filters.featureAgg]);
 
   const countyLookup = useMemo(() => {
@@ -283,6 +325,9 @@ export default function ChoroplethMap() {
   useEffect(() => {
     if (!ready) return;
 
+    // In comparison mode (when side is provided), don't auto-zoom - keep US-wide view
+    if (side !== null) return;
+
     let targetFeature = null;
     if (filters.county && countyFeatureMap.has(filters.county)) {
       targetFeature = countyFeatureMap.get(filters.county);
@@ -315,7 +360,14 @@ export default function ChoroplethMap() {
 
       return applyViewTransition(prev, { longitude, latitude, zoom });
     });
-  }, [ready, filters.county, filters.state, countyFeatureMap, stateFeatureMap]);
+  }, [
+    ready,
+    filters.county,
+    filters.state,
+    countyFeatureMap,
+    stateFeatureMap,
+    side,
+  ]);
 
   return (
     <div

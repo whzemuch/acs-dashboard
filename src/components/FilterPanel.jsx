@@ -11,6 +11,7 @@ const metricOptions = [
 const viewOptions = [
   { id: "flow", label: "Flow" },
   { id: "choropleth", label: "Choropleth" },
+  { id: "comparison", label: "Compare" },
 ];
 
 const featureAggOptions = [
@@ -115,7 +116,9 @@ export default function FilterPanel() {
       {filters.viewMode === "flow" && filters.state && (
         <>
           <div style={sectionStyle}>
-            <label style={labelStyle} htmlFor="flow-feature-select">Feature (state filter)</label>
+            <label style={labelStyle} htmlFor="flow-feature-select">
+              Feature (state filter)
+            </label>
             <select
               id="flow-feature-select"
               value={filters.featureId ?? ""}
@@ -124,10 +127,15 @@ export default function FilterPanel() {
             >
               <option value="">All features</option>
               {(showAllFeatures
-                ? (featureRank || [])
-                : (featureRank || []).slice(0, Math.max(1, filters.featureTopK ?? 12))
+                ? featureRank || []
+                : (featureRank || []).slice(
+                    0,
+                    Math.max(1, filters.featureTopK ?? 12)
+                  )
               ).map((f) => (
-                <option key={f.id} value={f.id}>{f.label}</option>
+                <option key={f.id} value={f.id}>
+                  {f.label}
+                </option>
               ))}
             </select>
             <label style={{ fontSize: 12, color: "#4b5563", marginTop: 6 }}>
@@ -143,7 +151,8 @@ export default function FilterPanel() {
           {filters.featureId && (
             <div style={sectionStyle}>
               <label style={labelStyle} htmlFor="flow-feature-quantile">
-                Min impact strength (percentile) ({Math.round(filters.featureFlowQuantile ?? 0)}%)
+                Min impact strength (percentile) (
+                {Math.round(filters.featureFlowQuantile ?? 0)}%)
               </label>
               <input
                 id="flow-feature-quantile"
@@ -152,7 +161,9 @@ export default function FilterPanel() {
                 max={100}
                 step={5}
                 value={filters.featureFlowQuantile ?? 0}
-                onChange={(e) => setFilter("featureFlowQuantile", Number(e.target.value))}
+                onChange={(e) =>
+                  setFilter("featureFlowQuantile", Number(e.target.value))
+                }
                 style={{ width: "100%" }}
               />
             </div>
@@ -163,7 +174,9 @@ export default function FilterPanel() {
       {filters.viewMode === "feature" && (
         <>
           <div style={sectionStyle}>
-            <label style={labelStyle} htmlFor="feature-select">Feature</label>
+            <label style={labelStyle} htmlFor="feature-select">
+              Feature
+            </label>
             <select
               id="feature-select"
               value={filters.featureId ?? ""}
@@ -171,11 +184,17 @@ export default function FilterPanel() {
               style={selectStyle}
             >
               <option value="">Select a feature…</option>
-              {(featureRank || []).slice(0, Math.max(1, filters.featureTopK ?? 12)).map((f) => (
-                <option key={f.id} value={f.id}>{f.label}</option>
-              ))}
+              {(featureRank || [])
+                .slice(0, Math.max(1, filters.featureTopK ?? 12))
+                .map((f) => (
+                  <option key={f.id} value={f.id}>
+                    {f.label}
+                  </option>
+                ))}
             </select>
-            <small style={{ color: "#6b7280" }}>Top {filters.featureTopK ?? 12} by mean |SHAP|</small>
+            <small style={{ color: "#6b7280" }}>
+              Top {filters.featureTopK ?? 12} by mean |SHAP|
+            </small>
           </div>
           <ToggleRow
             label="Aggregation"
@@ -207,17 +226,19 @@ export default function FilterPanel() {
         </select>
       </div>
 
-      {filters.viewMode !== "feature" && (<div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="heatmap-toggle">
-          Show heatmap
-        </label>
-        <input
-          id="heatmap-toggle"
-          type="checkbox"
-          checked={Boolean(filters.showHeatmap)}
-          onChange={(e) => setFilter("showHeatmap", e.target.checked)}
-        />
-      </div>)}
+      {filters.viewMode !== "feature" && (
+        <div style={sectionStyle}>
+          <label style={labelStyle} htmlFor="heatmap-toggle">
+            Show heatmap
+          </label>
+          <input
+            id="heatmap-toggle"
+            type="checkbox"
+            checked={Boolean(filters.showHeatmap)}
+            onChange={(e) => setFilter("showHeatmap", e.target.checked)}
+          />
+        </div>
+      )}
 
       {filters.viewMode === "choropleth" && (
         <>

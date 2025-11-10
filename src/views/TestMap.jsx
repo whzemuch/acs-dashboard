@@ -6,10 +6,17 @@ import ChoroplethMap from "../components/ChoroplethMap.jsx";
 import MigrationFlowMap from "../components/MigrationFlowMap.jsx";
 import SummaryPanel from "../components/SummaryPanel.jsx";
 import ShapPanel from "../components/ShapPanel.jsx";
+import ComparisonView from "./ComparisonView.jsx";
 import { useDashboardStore } from "../store/dashboardStore";
 
 export default function TestMap() {
   const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "choropleth");
+
+  // If in comparison mode, show the comparison view
+  if (viewMode === "comparison") {
+    return <ComparisonView />;
+  }
+
   const isFlowView = viewMode === "flow";
   const mapTitle = isFlowView ? "Flow View" : "Choropleth View";
   const mapComponent = isFlowView ? <MigrationFlowMap /> : <ChoroplethMap />;

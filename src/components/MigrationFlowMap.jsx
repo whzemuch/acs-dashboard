@@ -4,11 +4,16 @@ import { Map as ReactMap } from "react-map-gl";
 import { ArcLayer, GeoJsonLayer, PathLayer } from "@deck.gl/layers";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
-import { scaleSqrt } from "d3-scale";
+import { scaleLog } from "d3-scale";
 import centroid from "@turf/centroid";
 
 import { getFlows as getFlowsWorker } from "../data/flowServiceShap";
-import { getCountyMetadata, getSummary, getShapForState, getShapSchema } from "../data/dataProviderShap";
+import {
+  getCountyMetadata,
+  getSummary,
+  getShapForState,
+  getShapSchema,
+} from "../data/dataProviderShap";
 import { useDashboardStore } from "../store/dashboardStore";
 
 const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -54,20 +59,59 @@ const REGION_LABELS = {
   ISL: "Islands",
 };
 
-export default function MigrationFlowMap({ forceEnabled = false }) {
+export default function MigrationFlowMap({
+  forceEnabled = false,
+  side = null,
+}) {
   const initStore = useDashboardStore((s) => s.init);
   const ready = useDashboardStore((s) => s.ready);
-  const filters = useDashboardStore((s) => s.filters);
+
+  // Use different filters based on side (for comparison view)
+  const mainFilters = useDashboardStore((s) => s.filters);
+  const leftFilters = useDashboardStore((s) => s.leftFilters);
+  const rightFilters = useDashboardStore((s) => s.rightFilters);
+  const filters =
+    side === "left"
+      ? leftFilters
+      : side === "right"
+      ? rightFilters
+      : mainFilters;
+
   const viewMode = filters.viewMode ?? "choropleth";
-  const isFlowMode = forceEnabled || viewMode === "flow";
+  // If side is provided (comparison mode), always show flows
+  const isFlowMode =
+    side !== null ||
+    forceEnabled ||
+    viewMode === "flow" ||
+    viewMode === "comparison";
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [countiesGeo, setCountiesGeo] = useState(null);
   const [statesGeo, setStatesGeo] = useState(null);
   const [arcs, setArcs] = useState([]);
   const [hoverInfo, setHoverInfo] = useState(null);
   const [summaryData, setSummaryData] = useState(null);
-  const setSelectedArc = useDashboardStore((s) => s.setSelectedArc);
-  const selectedArc = useDashboardStore((s) => s.selectedArc);
+
+  // Use different selectedArc based on side
+  const setMainSelectedArc = useDashboardStore((s) => s.setSelectedArc);
+  const setLeftSelectedArc = useDashboardStore((s) => s.setLeftSelectedArc);
+  const setRightSelectedArc = useDashboardStore((s) => s.setRightSelectedArc);
+  const setSelectedArc =
+    side === "left"
+      ? setLeftSelectedArc
+      : side === "right"
+      ? setRightSelectedArc
+      : setMainSelectedArc;
+
+  const mainSelectedArc = useDashboardStore((s) => s.selectedArc);
+  const leftSelectedArc = useDashboardStore((s) => s.leftSelectedArc);
+  const rightSelectedArc = useDashboardStore((s) => s.rightSelectedArc);
+  const selectedArc =
+    side === "left"
+      ? leftSelectedArc
+      : side === "right"
+      ? rightSelectedArc
+      : mainSelectedArc;
+
   const [featureShapMap, setFeatureShapMap] = useState(null);
   const [featureThreshold, setFeatureThreshold] = useState(0);
 
@@ -96,11 +140,24 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
   const flowValueType = filters.valueType;
   const flowMinFlow = filters.minFlow;
   const flowTopN = filters.topN;
+
+  // Debug logging
+  useEffect(() => {
+    console.log(
+      `[MigrationFlowMap ${side || "main"}] minFlow changed:`,
+      flowMinFlow
+    );
+  }, [flowMinFlow, side]);
+
   useEffect(() => {
     if (!ready || !isFlowMode) {
       setArcs([]);
       return;
     }
+    console.log(
+      `[MigrationFlowMap ${side || "main"}] Fetching flows with minFlow:`,
+      flowMinFlow
+    );
     let cancelled = false;
     (async () => {
       try {
@@ -112,7 +169,12 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
           minFlow: flowMinFlow,
           topN: flowTopN,
         });
-        if (!cancelled) setArcs(data);
+        if (!cancelled) {
+          console.log(
+            `[MigrationFlowMap ${side || "main"}] Received ${data.length} flows`
+          );
+          setArcs(data);
+        }
       } catch (error) {
         console.error("Failed to load flows", error);
         if (!cancelled) setArcs([]);
@@ -122,7 +184,17 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     return () => {
       cancelled = true;
     };
-  }, [ready, isFlowMode, flowMetric, flowState, flowCounty, flowValueType, flowMinFlow, flowTopN]);
+  }, [
+    ready,
+    side,
+    isFlowMode,
+    flowMetric,
+    flowState,
+    flowCounty,
+    flowValueType,
+    flowMinFlow,
+    flowTopN,
+  ]);
 
   useEffect(() => {
     if (!ready) return;
@@ -207,7 +279,9 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       }
       try {
         const schema = await getShapSchema();
-        const idx = Array.isArray(schema) ? schema.indexOf(filters.featureId) : -1;
+        const idx = Array.isArray(schema)
+          ? schema.indexOf(filters.featureId)
+          : -1;
         if (idx < 0) {
           if (!cancelled) {
             setFeatureShapMap(null);
@@ -218,12 +292,17 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
         const rows = shapPayload?.rows || [];
         const map = new Map();
         for (const r of rows) {
-          const v = Array.isArray(r.shapValues) ? Number(r.shapValues[idx]) || 0 : 0;
+          const v = Array.isArray(r.shapValues)
+            ? Number(r.shapValues[idx]) || 0
+            : 0;
           map.set(r.id, v);
         }
         // Compute percentile threshold over current arcs if requested
         let threshold = 0;
-        const q = Math.max(0, Math.min(100, Number(filters.featureFlowQuantile ?? 0)));
+        const q = Math.max(
+          0,
+          Math.min(100, Number(filters.featureFlowQuantile ?? 0))
+        );
         if (q > 0 && arcs.length) {
           const arr = arcs
             .map((a) => Math.abs(map.get(a.id) || 0))
@@ -248,8 +327,16 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
         }
       }
     })();
-    return () => { cancelled = true; };
-  }, [isFlowMode, filters.state, filters.featureId, filters.featureFlowQuantile, arcs]);
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    isFlowMode,
+    filters.state,
+    filters.featureId,
+    filters.featureFlowQuantile,
+    arcs,
+  ]);
 
   const arcLayer = useMemo(() => {
     if (!arcs.length) return null;
@@ -274,9 +361,13 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       .filter((v) => Number.isFinite(v) && v > 0);
     const minF = flows.length ? Math.min(...flows) : 0;
     const maxF = flows.length ? Math.max(...flows) : 1;
-    const widthScale = scaleSqrt()
-      .domain([minF || 1, maxF || 10])
-      .range([4, 18]);
+
+    // Use logarithmic scale for better arc width distribution
+    // Add 1 to avoid log(0), and ensure domain is at least [1, 10]
+    const widthScale = scaleLog()
+      .domain([Math.max(1, minF || 1), Math.max(10, maxF || 10)])
+      .range([2, 12])
+      .clamp(true);
 
     const dimFactor = selectedArc ? 0.2 : 1;
 
@@ -294,7 +385,17 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     // Always enforce Min Flow on the client as well for immediate response
     if ((filters.minFlow ?? 0) > 0) {
       const minFClient = Number(filters.minFlow) || 0;
-      dataForLayer = dataForLayer.filter((d) => (Number(d.flow) || 0) >= minFClient);
+      const beforeFilter = dataForLayer.length;
+      dataForLayer = dataForLayer.filter(
+        (d) => (Number(d.flow) || 0) >= minFClient
+      );
+      console.log(
+        `[MigrationFlowMap ${
+          side || "main"
+        }] Client-side minFlow filter: ${minFClient}, arcs: ${beforeFilter} → ${
+          dataForLayer.length
+        }`
+      );
     }
 
     return new ArcLayer({
@@ -303,9 +404,9 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
       pickable: true,
       getSourcePosition: (d) => d.originPosition,
       getTargetPosition: (d) => d.destPosition,
-      getWidth: (d) => widthScale(Math.max(0, d.flow)),
+      getWidth: (d) => widthScale(Math.max(1, d.flow)), // Use max(1, flow) for log scale
       widthUnits: "pixels",
-      widthMinPixels: 3,
+      widthMinPixels: 2,
       getSourceColor: () => arcColor,
       getTargetColor: () => arcColor,
       onHover: ({ x, y, object }) => {
@@ -404,13 +505,13 @@ export default function MigrationFlowMap({ forceEnabled = false }) {
     filters.minFlow,
   ]);
 
-function prettifyFeature(key) {
-  const k = String(key || "").replace(/^shap_/, "");
-  return k
-    .split("_")
-    .map((s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s))
-    .join(" ");
-}
+  function prettifyFeature(key) {
+    const k = String(key || "").replace(/^shap_/, "");
+    return k
+      .split("_")
+      .map((s) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s))
+      .join(" ");
+  }
 
   const countyLayer = useMemo(() => {
     if (!countiesGeo) return null;
