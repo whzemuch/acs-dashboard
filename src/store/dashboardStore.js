@@ -51,6 +51,7 @@ export const useDashboardStore = create(
       states: [],
       countiesByState: {},
       selectedArc: null,
+      selectedOriginState: null, // For highlighting flows from a specific origin state
 
       // Comparison mode state
       comparisonMode: false,
@@ -141,6 +142,8 @@ export const useDashboardStore = create(
       },
 
       setSelectedArc: (arc) => set({ selectedArc: arc }),
+      setSelectedOriginState: (stateCode) =>
+        set({ selectedOriginState: stateCode }),
       setLeftSelectedArc: (arc) => set({ leftSelectedArc: arc }),
       setRightSelectedArc: (arc) => set({ rightSelectedArc: arc }),
 

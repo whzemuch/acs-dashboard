@@ -5,6 +5,7 @@ import MigrationFlowMap from "../components/MigrationFlowMap";
 import ChoroplethMap from "../components/ChoroplethMap";
 import SummaryPanel from "../components/SummaryPanel";
 import ShapPanel from "../components/ShapPanel";
+import TopDestinationsPanel from "../components/TopDestinationsPanel";
 
 export default function ComparisonView() {
   const ready = useDashboardStore((s) => s.ready);
@@ -136,9 +137,76 @@ export default function ComparisonView() {
             </div>
           )}
 
-          {/* Min Flow for Location A - only in flow mode */}
+          {/* Metric Toggle and Min Flow in same row - only in flow mode */}
           {comparisonViewType === "flow" && (
-            <div>
+            <div style={{ marginBottom: "12px" }}>
+              {/* Metric Toggle */}
+              <label
+                style={{
+                  display: "block",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  marginBottom: 6,
+                  color: "#4b5563",
+                }}
+              >
+                Metric
+              </label>
+              <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+                {[
+                  { id: "in", label: "Inbound" },
+                  { id: "out", label: "Outbound" },
+                ].map((metric) => (
+                  <button
+                    key={metric.id}
+                    onClick={() => setLeftFilter("metric", metric.id)}
+                    style={{
+                      flex: 1,
+                      padding: "6px 8px",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      cursor: "pointer",
+                      border: "1px solid",
+                      borderColor:
+                        leftFilters.metric === metric.id
+                          ? "#1d4ed8"
+                          : "#cbd2d9",
+                      background:
+                        leftFilters.metric === metric.id ? "#2563eb" : "white",
+                      color:
+                        leftFilters.metric === metric.id ? "white" : "#1f2933",
+                    }}
+                  >
+                    {metric.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Show Top Destinations Checkbox and Min Flow Slider */}
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: "#4b5563",
+                  fontFamily: "Monaco, monospace",
+                  cursor: "pointer",
+                  marginBottom: 8,
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={leftFilters.enableTopN ?? true}
+                  onChange={(e) =>
+                    setLeftFilter("enableTopN", e.target.checked)
+                  }
+                  style={{ marginRight: 8 }}
+                />
+                Top 10{" "}
+                {leftFilters.metric === "in" ? "Origins" : "Destinations"}
+              </label>
+
               <label
                 style={{
                   display: "block",
@@ -181,6 +249,11 @@ export default function ComparisonView() {
             <ChoroplethMap side="left" />
           )}
         </div>
+
+        {/* Left Top Destinations Panel - only in flow mode when Top 10 is enabled */}
+        {comparisonViewType === "flow" && leftFilters.enableTopN && (
+          <TopDestinationsPanel side="left" />
+        )}
 
         {/* Left Summary */}
         <SummaryPanel side="left" />
@@ -301,52 +374,6 @@ export default function ComparisonView() {
               ))}
             </div>
           </div>
-
-          {/* Metric - only show in flow mode */}
-          {comparisonViewType === "flow" && (
-            <div style={{ marginBottom: "12px" }}>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
-                }}
-              >
-                Metric
-              </label>
-              <div style={{ display: "flex", gap: 6 }}>
-                {[
-                  { id: "in", label: "Inbound" },
-                  { id: "out", label: "Outbound" },
-                ].map((metric) => (
-                  <button
-                    key={metric.id}
-                    onClick={() => syncSharedFilters({ metric: metric.id })}
-                    style={{
-                      flex: 1,
-                      padding: "6px 8px",
-                      borderRadius: 6,
-                      fontSize: 13,
-                      cursor: "pointer",
-                      border: "1px solid",
-                      borderColor:
-                        leftFilters.metric === metric.id
-                          ? "#1d4ed8"
-                          : "#cbd2d9",
-                      background:
-                        leftFilters.metric === metric.id ? "#2563eb" : "white",
-                      color:
-                        leftFilters.metric === metric.id ? "white" : "#1f2933",
-                    }}
-                  >
-                    {metric.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Value Type - only show in flow mode (choropleth always uses observed) */}
           {comparisonViewType === "flow" && (
@@ -520,8 +547,14 @@ export default function ComparisonView() {
               Select different states/counties to compare
             </li>
             <li style={{ marginBottom: 4 }}>
+              Each location has its own Metric (Inbound/Outbound) toggle
+            </li>
+            <li style={{ marginBottom: 4 }}>
               Each location has its own Min Flow slider to handle different
               scales
+            </li>
+            <li style={{ marginBottom: 4 }}>
+              Check "Top 10" to show origin/destination bar charts
             </li>
             <li style={{ marginBottom: 4 }}>
               Click arcs to see SHAP features side-by-side
@@ -529,7 +562,7 @@ export default function ComparisonView() {
             <li style={{ marginBottom: 4 }}>
               Use feature filter to highlight specific influences
             </li>
-            <li>Metric and Value type are shared between locations</li>
+            <li>Value type (Observed/Predicted) is shared between locations</li>
           </ul>
         </div>
       </div>
@@ -626,9 +659,76 @@ export default function ComparisonView() {
             </div>
           )}
 
-          {/* Min Flow for Location B - only in flow mode */}
+          {/* Metric Toggle and Min Flow in same row - only in flow mode */}
           {comparisonViewType === "flow" && (
-            <div>
+            <div style={{ marginBottom: "12px" }}>
+              {/* Metric Toggle */}
+              <label
+                style={{
+                  display: "block",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  marginBottom: 6,
+                  color: "#4b5563",
+                }}
+              >
+                Metric
+              </label>
+              <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+                {[
+                  { id: "in", label: "Inbound" },
+                  { id: "out", label: "Outbound" },
+                ].map((metric) => (
+                  <button
+                    key={metric.id}
+                    onClick={() => setRightFilter("metric", metric.id)}
+                    style={{
+                      flex: 1,
+                      padding: "6px 8px",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      cursor: "pointer",
+                      border: "1px solid",
+                      borderColor:
+                        rightFilters.metric === metric.id
+                          ? "#1d4ed8"
+                          : "#cbd2d9",
+                      background:
+                        rightFilters.metric === metric.id ? "#2563eb" : "white",
+                      color:
+                        rightFilters.metric === metric.id ? "white" : "#1f2933",
+                    }}
+                  >
+                    {metric.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Show Top Destinations Checkbox and Min Flow Slider */}
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: 12,
+                  fontWeight: 600,
+                  color: "#4b5563",
+                  fontFamily: "Monaco, monospace",
+                  cursor: "pointer",
+                  marginBottom: 8,
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={rightFilters.enableTopN ?? true}
+                  onChange={(e) =>
+                    setRightFilter("enableTopN", e.target.checked)
+                  }
+                  style={{ marginRight: 8 }}
+                />
+                Top 10{" "}
+                {rightFilters.metric === "in" ? "Origins" : "Destinations"}
+              </label>
+
               <label
                 style={{
                   display: "block",
@@ -671,6 +771,11 @@ export default function ComparisonView() {
             <ChoroplethMap side="right" />
           )}
         </div>
+
+        {/* Right Top Destinations Panel - only in flow mode when Top 10 is enabled */}
+        {comparisonViewType === "flow" && rightFilters.enableTopN && (
+          <TopDestinationsPanel side="right" />
+        )}
 
         {/* Right Summary */}
         <SummaryPanel side="right" />

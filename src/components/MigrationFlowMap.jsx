@@ -138,7 +138,7 @@ export default function MigrationFlowMap({
   const flowCounty = filters.county;
   const flowValueType = filters.valueType;
   const flowMinFlow = filters.minFlow;
-  const flowTopN = filters.topN;
+  const flowTopN = filters.enableTopN ? filters.topN : 999999; // Use large number when topN is disabled
 
   // Debug logging
   useEffect(() => {
@@ -160,19 +160,64 @@ export default function MigrationFlowMap({
     let cancelled = false;
     (async () => {
       try {
+        // Fetch more flows if we need to filter out instate (for both inbound and outbound)
+        const shouldFilterOutstate = flowState && filters.enableTopN;
+        const fetchCount = shouldFilterOutstate
+          ? Math.max(flowTopN * 3, 100)
+          : flowTopN;
+
         const data = await getFlowsWorker({
           metric: flowMetric,
           state: flowState,
           county: flowCounty,
           valueType: flowValueType,
           minFlow: flowMinFlow,
-          topN: flowTopN,
+          topN: fetchCount,
         });
+
         if (!cancelled) {
           console.log(
             `[MigrationFlowMap ${side || "main"}] Received ${data.length} flows`
           );
-          setArcs(data);
+
+          // Filter out instate flows when enableTopN is true
+          let filteredData = data;
+          if (shouldFilterOutstate) {
+            const selectedStateCode = flowState;
+            const metricLabel = flowMetric === "in" ? "inbound" : "outbound";
+            const isInbound = flowMetric === "in";
+
+            filteredData = data
+              .filter((f) => {
+                // For inbound: filter by origin (exclude origins from same state)
+                // For outbound: filter by dest (exclude destinations in same state)
+                // Note: origin is 3-digit code (e.g., "001"), dest is 5-digit FIPS (e.g., "01073")
+                let checkState;
+                if (isInbound) {
+                  // Origin is 3-digit: convert to 2-digit by removing leading zero
+                  const originCode = f.origin;
+                  checkState =
+                    originCode.length === 3
+                      ? originCode.substring(1, 3)
+                      : originCode.substring(0, 2);
+                } else {
+                  // Dest is 5-digit FIPS: first 2 digits are state code
+                  checkState = f.dest.substring(0, 2);
+                }
+                return checkState !== selectedStateCode;
+              })
+              .slice(0, flowTopN); // Take top N after filtering
+
+            console.log(
+              `[MigrationFlowMap ${side || "main"}] Filtered to ${
+                filteredData.length
+              } outstate ${metricLabel} flows (excluded instate ${
+                isInbound ? "origins" : "destinations"
+              })`
+            );
+          }
+
+          setArcs(filteredData);
         }
       } catch (error) {
         console.error("Failed to load flows", error);
@@ -373,6 +418,7 @@ export default function MigrationFlowMap({
     // Standard ArcLayer for inbound and outbound modes
     const arcColor = metric === "in" ? IN_COLOR : OUT_COLOR;
     let dataForLayer = arcs;
+
     if (featureShapMap) {
       // Apply percentile threshold only (simple UX)
       if ((filters.featureFlowQuantile ?? 0) > 0 && featureThreshold > 0) {

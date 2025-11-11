@@ -11,7 +11,8 @@ const DEFAULT_FILTERS = {
   state: null,
   county: null,
   minFlow: 0,
-  topN: 200,
+  topN: 10,
+  enableTopN: true, // When true, limit flows to topN; when false, show all flows
   age: "all",
   income: "all",
   education: "all",

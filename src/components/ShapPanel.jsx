@@ -85,8 +85,8 @@ export default function ShapPanel({ side = null }) {
       const el = document.getElementById(containerId);
       if (!el) return;
       const total = el.clientWidth || 720;
-      // Reserve ~260px for the info/controls column + padding
-      const w = Math.max(360, total - 280);
+      // Use most of the available width with some padding
+      const w = Math.max(360, total - 40);
       setChartWidth(w);
     }
     measure();
@@ -115,8 +115,18 @@ export default function ShapPanel({ side = null }) {
           width: "100%",
         }}
       >
-        <h3 style={{ margin: 0, fontSize: 18 }}>SHAP Contributions</h3>
-        <div style={{ fontSize: 13, color: "#6b7280" }}>
+        <h3
+          style={{ margin: 0, fontSize: 18, fontFamily: "Monaco, monospace" }}
+        >
+          SHAP Contributions
+        </h3>
+        <div
+          style={{
+            fontSize: 13,
+            color: "#6b7280",
+            fontFamily: "Monaco, monospace",
+          }}
+        >
           Click an arc to see feature contributions
         </div>
       </div>
@@ -136,11 +146,27 @@ export default function ShapPanel({ side = null }) {
         width: "100%",
       }}
     >
-      <h3 style={{ margin: 0, fontSize: 18 }}>SHAP Contributions</h3>
+      <h3 style={{ margin: 0, fontSize: 18, fontFamily: "Monaco, monospace" }}>
+        SHAP Contributions
+      </h3>
       {loading ? (
-        <div style={{ fontSize: 13, color: "#6b7280" }}>Loading SHAP…</div>
+        <div
+          style={{
+            fontSize: 13,
+            color: "#6b7280",
+            fontFamily: "Monaco, monospace",
+          }}
+        >
+          Loading SHAP…
+        </div>
       ) : error ? (
-        <div style={{ color: "#b91c1c", fontSize: 13 }}>
+        <div
+          style={{
+            color: "#b91c1c",
+            fontSize: 13,
+            fontFamily: "Monaco, monospace",
+          }}
+        >
           Failed to load SHAP. {error}
         </div>
       ) : entry ? (
@@ -148,32 +174,34 @@ export default function ShapPanel({ side = null }) {
           id={containerId}
           style={{
             display: "flex",
+            flexDirection: "column",
             gap: 16,
-            alignItems: "flex-start",
             width: "100%",
           }}
         >
-          <div style={{ minWidth: 220 }}>
-            <div style={{ fontWeight: 600, marginBottom: 6 }}>{arc.id}</div>
-            <div style={{ fontSize: 12, color: "#4b5563" }}>
-              Observed: {arc.observed?.toLocaleString?.()}
-            </div>
-            <div style={{ fontSize: 12, color: "#4b5563" }}>
-              Predicted:{" "}
-              {arc.predicted?.toLocaleString?.(undefined, {
-                maximumFractionDigits: 1,
-              })}
-            </div>
-            <div style={{ fontSize: 12, color: "#4b5563" }}>
-              Base: {Number(entry.shapBase).toFixed(2)}
+          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+            <div style={{ minWidth: 220, fontFamily: "Monaco, monospace" }}>
+              <div style={{ fontWeight: 600, marginBottom: 6 }}>{arc.id}</div>
+              <div style={{ fontSize: 12, color: "#4b5563" }}>
+                Observed: {arc.observed?.toLocaleString?.()}
+              </div>
+              <div style={{ fontSize: 12, color: "#4b5563" }}>
+                Predicted:{" "}
+                {arc.predicted?.toLocaleString?.(undefined, {
+                  maximumFractionDigits: 1,
+                })}
+              </div>
+              <div style={{ fontSize: 12, color: "#4b5563" }}>
+                Base: {Number(entry.shapBase).toFixed(2)}
+              </div>
             </div>
 
             <div
               style={{
-                marginTop: 12,
                 display: "flex",
                 flexDirection: "column",
                 gap: 8,
+                fontFamily: "Monaco, monospace",
               }}
             >
               <label style={{ fontSize: 12, color: "#4b5563" }}>
@@ -185,7 +213,11 @@ export default function ShapPanel({ side = null }) {
                   step={1}
                   value={topK}
                   onChange={(e) => setTopK(e.target.value)}
-                  style={{ marginLeft: 8, width: 72 }}
+                  style={{
+                    marginLeft: 8,
+                    width: 72,
+                    fontFamily: "Monaco, monospace",
+                  }}
                 />
               </label>
               <label style={{ fontSize: 12, color: "#4b5563" }}>
@@ -200,12 +232,13 @@ export default function ShapPanel({ side = null }) {
               <button
                 type="button"
                 onClick={() => copyShapCsv(entry, schema, setCopiedToast)}
-                style={{ fontSize: 12 }}
+                style={{ fontSize: 12, fontFamily: "Monaco, monospace" }}
               >
                 Copy SHAP as CSV
               </button>
             </div>
           </div>
+
           <CoeffChart
             stats={topStats || arrayShapToObject(entry.shapValues, schema)}
             width={chartWidth}
@@ -214,7 +247,13 @@ export default function ShapPanel({ side = null }) {
           />
         </div>
       ) : (
-        <div style={{ fontSize: 13, color: "#6b7280" }}>
+        <div
+          style={{
+            fontSize: 13,
+            color: "#6b7280",
+            fontFamily: "Monaco, monospace",
+          }}
+        >
           No SHAP entry found for this arc.
         </div>
       )}
@@ -281,6 +320,7 @@ function CopyToast() {
         padding: "8px 12px",
         borderRadius: 6,
         fontSize: 12,
+        fontFamily: "Monaco, monospace",
       }}
     >
       Copied to clipboard
