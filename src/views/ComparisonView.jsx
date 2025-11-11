@@ -213,6 +213,18 @@ export default function ComparisonView() {
                   color: "#4b5563",
                 }}
               >
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontFamily: "Monaco, monospace",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Flow
+                </span>
+
+                <span style={{ color: "#cbd2d9" }}>|</span>
+
                 <label
                   style={{
                     display: "flex",
@@ -825,6 +837,18 @@ export default function ComparisonView() {
                   color: "#4b5563",
                 }}
               >
+                <span
+                  style={{
+                    fontWeight: 600,
+                    fontFamily: "Monaco, monospace",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Flow
+                </span>
+
+                <span style={{ color: "#cbd2d9" }}>|</span>
+
                 <label
                   style={{
                     display: "flex",
