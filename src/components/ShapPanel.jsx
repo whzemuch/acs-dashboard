@@ -115,17 +115,15 @@ export default function ShapPanel({ side = null }) {
           width: "100%",
         }}
       >
-        <h3
-          style={{ margin: 0, fontSize: 18, fontFamily: "Monaco, monospace" }}
-        >
+        <h3 style={{ margin: 0, fontSize: 18 }} className="font-mono">
           SHAP Contributions
         </h3>
         <div
           style={{
             fontSize: 13,
             color: "#6b7280",
-            fontFamily: "Monaco, monospace",
           }}
+          className="font-mono"
         >
           Click an arc above or a bar on the left to explore the feature
           contributions
@@ -147,7 +145,7 @@ export default function ShapPanel({ side = null }) {
         width: "100%",
       }}
     >
-      <h3 style={{ margin: 0, fontSize: 18, fontFamily: "Monaco, monospace" }}>
+      <h3 style={{ margin: 0, fontSize: 18 }} className="font-mono">
         SHAP Contributions
       </h3>
       {loading ? (
@@ -155,8 +153,8 @@ export default function ShapPanel({ side = null }) {
           style={{
             fontSize: 13,
             color: "#6b7280",
-            fontFamily: "Monaco, monospace",
           }}
+          className="font-mono"
         >
           Loading SHAP…
         </div>
@@ -165,8 +163,8 @@ export default function ShapPanel({ side = null }) {
           style={{
             color: "#b91c1c",
             fontSize: 13,
-            fontFamily: "Monaco, monospace",
           }}
+          className="font-mono"
         >
           Failed to load SHAP. {error}
         </div>
@@ -181,7 +179,7 @@ export default function ShapPanel({ side = null }) {
           }}
         >
           <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <div style={{ minWidth: 220, fontFamily: "Monaco, monospace" }}>
+            <div style={{ minWidth: 220 }} className="font-mono">
               <div style={{ fontWeight: 600, marginBottom: 6 }}>{arc.id}</div>
               <div style={{ fontSize: 12, color: "#4b5563" }}>
                 Observed: {arc.observed?.toLocaleString?.()}
@@ -202,8 +200,8 @@ export default function ShapPanel({ side = null }) {
                 display: "flex",
                 flexDirection: "column",
                 gap: 8,
-                fontFamily: "Monaco, monospace",
               }}
+              className="font-mono"
             >
               <label style={{ fontSize: 12, color: "#4b5563" }}>
                 Top K SHAP (1–100)
@@ -217,7 +215,6 @@ export default function ShapPanel({ side = null }) {
                   style={{
                     marginLeft: 8,
                     width: 72,
-                    fontFamily: "Monaco, monospace",
                   }}
                 />
               </label>
@@ -233,7 +230,7 @@ export default function ShapPanel({ side = null }) {
               <button
                 type="button"
                 onClick={() => copyShapCsv(entry, schema, setCopiedToast)}
-                style={{ fontSize: 12, fontFamily: "Monaco, monospace" }}
+                style={{ fontSize: 12 }}
               >
                 Copy SHAP as CSV
               </button>
@@ -252,8 +249,8 @@ export default function ShapPanel({ side = null }) {
           style={{
             fontSize: 13,
             color: "#6b7280",
-            fontFamily: "Monaco, monospace",
           }}
+          className="font-mono"
         >
           No SHAP entry found for this arc.
         </div>
@@ -321,8 +318,8 @@ function CopyToast() {
         padding: "8px 12px",
         borderRadius: 6,
         fontSize: 12,
-        fontFamily: "Monaco, monospace",
       }}
+      className="font-mono"
     >
       Copied to clipboard
     </div>

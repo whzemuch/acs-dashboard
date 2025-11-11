@@ -370,9 +370,9 @@ export default function TopDestinationsPanel({ side = null }) {
             margin: "0 0 12px 0",
             fontSize: 14,
             fontWeight: 600,
-            fontFamily: "Monaco, monospace",
             color: "#1f2937",
           }}
+          className="font-mono"
         >
           Top 10{" "}
           {filters.metric === "in"
@@ -384,8 +384,8 @@ export default function TopDestinationsPanel({ side = null }) {
             margin: 0,
             fontSize: 13,
             color: "#6b7280",
-            fontFamily: "Monaco, monospace",
           }}
+          className="font-mono"
         >
           Select a state to view top{" "}
           {filters.metric === "in" ? "origin counties" : "destination counties"}
@@ -408,9 +408,9 @@ export default function TopDestinationsPanel({ side = null }) {
           margin: "0 0 12px 0",
           fontSize: 14,
           fontWeight: 600,
-          fontFamily: "Monaco, monospace",
           color: "#1f2937",
         }}
+        className="font-mono"
       >
         Top {topFlows.length}{" "}
         {filters.metric === "in"

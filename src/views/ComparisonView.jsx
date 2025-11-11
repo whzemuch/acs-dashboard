@@ -216,9 +216,9 @@ export default function ComparisonView() {
                 <span
                   style={{
                     fontWeight: 600,
-                    fontFamily: "Monaco, monospace",
                     whiteSpace: "nowrap",
                   }}
+                  className="font-mono"
                 >
                   Flow
                 </span>
@@ -230,10 +230,10 @@ export default function ComparisonView() {
                     display: "flex",
                     alignItems: "center",
                     fontWeight: 600,
-                    fontFamily: "Monaco, monospace",
                     cursor: "pointer",
                     whiteSpace: "nowrap",
                   }}
+                  className="font-mono"
                 >
                   <input
                     type="checkbox"
@@ -303,12 +303,21 @@ export default function ComparisonView() {
 
         {/* Left Top Destinations Panel and SHAP in horizontal layout - only in flow mode when Top 10 is enabled */}
         {comparisonViewType === "flow" && leftFilters.enableTopN && (
-          <div style={{ display: "flex", gap: "8px", height: "400px" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+              height: "400px",
+              alignItems: "stretch",
+            }}
+          >
             <div
               style={{
                 flexShrink: 0,
                 height: "100%",
                 overflowY: "auto",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <TopDestinationsPanel side="left" />
@@ -321,6 +330,8 @@ export default function ComparisonView() {
                 overflowY: "scroll",
                 scrollbarWidth: "thin", // Firefox
                 WebkitOverflowScrolling: "touch", // iOS smooth scrolling
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <ShapPanel side="left" />
@@ -840,9 +851,9 @@ export default function ComparisonView() {
                 <span
                   style={{
                     fontWeight: 600,
-                    fontFamily: "Monaco, monospace",
                     whiteSpace: "nowrap",
                   }}
+                  className="font-mono"
                 >
                   Flow
                 </span>
@@ -854,10 +865,10 @@ export default function ComparisonView() {
                     display: "flex",
                     alignItems: "center",
                     fontWeight: 600,
-                    fontFamily: "Monaco, monospace",
                     cursor: "pointer",
                     whiteSpace: "nowrap",
                   }}
+                  className="font-mono"
                 >
                   <input
                     type="checkbox"
@@ -927,12 +938,21 @@ export default function ComparisonView() {
 
         {/* Right Top Destinations Panel and SHAP in horizontal layout - only in flow mode when Top 10 is enabled */}
         {comparisonViewType === "flow" && rightFilters.enableTopN && (
-          <div style={{ display: "flex", gap: "8px", height: "400px" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+              height: "400px",
+              alignItems: "stretch",
+            }}
+          >
             <div
               style={{
                 flexShrink: 0,
                 height: "100%",
                 overflowY: "auto",
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <TopDestinationsPanel side="right" />
@@ -945,6 +965,8 @@ export default function ComparisonView() {
                 overflowY: "scroll",
                 scrollbarWidth: "thin", // Firefox
                 WebkitOverflowScrolling: "touch", // iOS smooth scrolling
+                display: "flex",
+                flexDirection: "column",
               }}
             >
               <ShapPanel side="right" />

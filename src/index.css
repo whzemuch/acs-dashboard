@@ -1,5 +1,10 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* Font family variables */
+  --font-primary: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono: "Fira Code", "Courier New", Monaco, monospace;
+
+  font-family: var(--font-primary);
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,6 +16,21 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apply primary font to all elements */
+* {
+  font-family: var(--font-primary) !important;
+}
+
+/* Override for monospace elements */
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* Font utility classes */
+.font-primary {
+  font-family: var(--font-primary) !important;
 }
 
 a {

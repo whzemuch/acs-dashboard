@@ -46,14 +46,14 @@ export default function SummaryPanel({ side = null }) {
     if (filters.county) {
       const meta = countyLookup.get(filters.county);
       return meta
-        ? `${meta.name}, ${meta.stateName ?? meta.state}`
-        : filters.county;
+        ? `for county ${meta.name}, ${meta.stateName ?? meta.state}`
+        : `for county ${filters.county}`;
     }
     if (filters.state) {
       const stateName = stateNameMap.get(filters.state);
-      return stateName || filters.state;
+      return `for state ${stateName || filters.state}`;
     }
-    return "United States";
+    return "for United States";
   }, [filters.county, filters.state, countyLookup, stateNameMap]);
 
   return (
@@ -62,22 +62,41 @@ export default function SummaryPanel({ side = null }) {
         background: "white",
         border: "1px solid #e2e8f0",
         borderRadius: 10,
-        padding: 16,
+        padding: "12px 16px",
         display: "flex",
-        flexDirection: "column",
-        gap: 10,
+        alignItems: "center",
+        gap: 100,
         width: "100%",
       }}
     >
-      <div style={{ textAlign: "center" }}>
-        <h3 style={{ margin: 0, fontSize: 18 }}>Summary</h3>
-        <div style={{ fontSize: 13, color: "#4b5563" }}>{label}</div>
+      <div
+        style={{ display: "flex", alignItems: "center", gap: 4, minWidth: 0 }}
+      >
+        <h3 style={{ margin: 0, fontSize: 16, whiteSpace: "nowrap" }}>
+          Summary
+        </h3>
+        <div
+          style={{
+            fontSize: 13,
+            color: "#4b5563",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {label}
+        </div>
       </div>
 
       {!summary ? (
         <div style={{ fontSize: 13, color: "#6b7280" }}>Loading…</div>
       ) : (
-        <div style={{ display: "flex", gap: 24, justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 16,
+          }}
+        >
           <Stat label="Inbound (Obs)" value={data.inboundObs} />
           <Stat label="Inbound (Pred)" value={data.inboundPred} />
           {data.scope !== "county" && (

@@ -67,9 +67,9 @@ export default function TestMap() {
                 fontSize: 13,
                 fontWeight: 600,
                 color: "#4b5563",
-                fontFamily: "Monaco, monospace",
                 cursor: "pointer",
               }}
+              className="font-mono"
             >
               <input
                 type="checkbox"
@@ -153,121 +153,125 @@ export default function TestMap() {
         {/* SHAP Panel (shown when arc is clicked) */}
         {isFlowView && <ShapPanel />}
 
-        {/* User Guide */}
-        <div
-          style={{
-            background: "white",
-            borderRadius: 10,
-            padding: "16px 20px",
-            border: "1px solid #e2e8f0",
-            fontSize: 13,
-            lineHeight: 1.7,
-            color: "#374151",
-            fontFamily: "Arial, 'Courier New', monospace",
-          }}
-        >
+        {/* User Guide - only show in choropleth view */}
+        {!isFlowView && (
           <div
+            id="user-guide-panel"
             style={{
-              fontWeight: 600,
-              fontSize: 15,
-              marginBottom: 12,
-              color: "#1f2937",
+              background: "white",
+              borderRadius: 10,
+              padding: "16px 20px",
+              border: "1px solid #e2e8f0",
+              fontSize: 13,
+              lineHeight: 1.7,
+              color: "#374151",
+              flexShrink: 0,
             }}
           >
-            📖 Dashboard Guide
-          </div>
-
-          <div style={{ marginBottom: 14 }}>
-            <strong>Purpose:</strong> This dashboard helps you explore and
-            analyze U.S. state-to-county migration patterns using American
-            Community Survey (ACS) data. Compare actual observed migration flows
-            with machine learning model predictions, and understand which
-            demographic and economic features drive migration decisions.
-          </div>
-
-          <div style={{ marginBottom: 8, fontWeight: 600 }}>
-            Three Interactive Views:
-          </div>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "auto 1fr",
-              gap: "10px 14px",
-              marginBottom: 14,
-            }}
-          >
-            <div style={{ fontWeight: 600 }}>🗺️ Choropleth:</div>
-            <div>
-              Color-coded county map showing inbound migration intensity. Darker
-              red indicates higher migration inflows. Great for quickly
-              identifying regional hotspots and migration destinations across
-              the entire U.S.
+            <div
+              style={{
+                fontWeight: 600,
+                fontSize: 15,
+                marginBottom: 12,
+                color: "#1f2937",
+              }}
+            >
+              📖 Dashboard Guide
             </div>
 
-            <div style={{ fontWeight: 600 }}>🔀 Flow:</div>
-            <div>
-              Interactive arc map displaying origin→destination migration flows.
-              Click on arcs to see detailed SHAP feature explanations showing
-              which demographic factors (age, income, education, housing costs)
-              influenced that specific migration pattern. Toggle "Top 10" to see
-              bar charts of top origins/destinations.
+            <div style={{ marginBottom: 14 }}>
+              <strong>Purpose:</strong> This dashboard helps you explore and
+              analyze U.S. state-to-county migration patterns using American
+              Community Survey (ACS) data. Compare actual observed migration
+              flows with machine learning model predictions, and understand
+              which demographic and economic features drive migration decisions.
             </div>
 
-            <div style={{ fontWeight: 600 }}>⚖️ Comparison:</div>
-            <div>
-              Side-by-side comparison of two locations with fully independent
-              controls. Perfect for comparing urban vs. rural, coastal vs.
-              inland, or any two counties to understand what drives different
-              migration outcomes.
+            <div style={{ marginBottom: 8, fontWeight: 600 }}>
+              Three Interactive Views:
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "auto 1fr",
+                gap: "10px 14px",
+                marginBottom: 14,
+              }}
+            >
+              <div style={{ fontWeight: 600 }}>🗺️ Choropleth:</div>
+              <div>
+                Color-coded county map showing inbound migration intensity.
+                Darker red indicates higher migration inflows. Great for quickly
+                identifying regional hotspots and migration destinations across
+                the entire U.S.
+              </div>
+
+              <div style={{ fontWeight: 600 }}>🔀 Flow:</div>
+              <div>
+                Interactive arc map displaying origin→destination migration
+                flows. Click on arcs to see detailed SHAP feature explanations
+                showing which demographic factors (age, income, education,
+                housing costs) influenced that specific migration pattern.
+                Toggle "Top 10" to see bar charts of top origins/destinations.
+              </div>
+
+              <div style={{ fontWeight: 600 }}>⚖️ Comparison:</div>
+              <div>
+                Side-by-side comparison of two locations with fully independent
+                controls. Perfect for comparing urban vs. rural, coastal vs.
+                inland, or any two counties to understand what drives different
+                migration outcomes.
+              </div>
+            </div>
+
+            <div style={{ marginBottom: 8, fontWeight: 600 }}>
+              Getting Started:
+            </div>
+            <ul style={{ margin: "0 0 14px 20px", paddingLeft: 0 }}>
+              <li style={{ marginBottom: 4 }}>
+                Select a state from the dropdown to focus on a specific region
+              </li>
+              <li style={{ marginBottom: 4 }}>
+                Choose a county to see detailed migration statistics
+              </li>
+              <li style={{ marginBottom: 4 }}>
+                Switch between Choropleth, Flow, and Comparison views using
+                buttons
+              </li>
+              <li style={{ marginBottom: 4 }}>
+                In Flow view: Enable "Top 10" to see origin/destination bar
+                charts
+              </li>
+              <li style={{ marginBottom: 4 }}>
+                Click on migration arcs to reveal SHAP feature importance
+              </li>
+              <li>Hover over counties or arcs for quick summary tooltips</li>
+            </ul>
+
+            <div
+              style={{
+                fontSize: 12,
+                color: "#6b7280",
+                borderTop: "1px solid #e5e7eb",
+                paddingTop: 10,
+                marginTop: 4,
+              }}
+            >
+              <strong>Understanding the Data:</strong>
+              <br />
+              <strong>Observed</strong> = Actual ACS survey migration data
+              (2023, 5-year estimates)
+              <br />
+              <strong>Predicted</strong> = Machine learning model predictions
+              based on demographic features
+              <br />
+              <strong>SHAP values</strong> = Feature importance scores
+              explaining which demographic/economic factors influenced specific
+              migration flows
             </div>
           </div>
-
-          <div style={{ marginBottom: 8, fontWeight: 600 }}>
-            Getting Started:
-          </div>
-          <ul style={{ margin: "0 0 14px 20px", paddingLeft: 0 }}>
-            <li style={{ marginBottom: 4 }}>
-              Select a state from the dropdown to focus on a specific region
-            </li>
-            <li style={{ marginBottom: 4 }}>
-              Choose a county to see detailed migration statistics
-            </li>
-            <li style={{ marginBottom: 4 }}>
-              Switch between Choropleth, Flow, and Comparison views using
-              buttons
-            </li>
-            <li style={{ marginBottom: 4 }}>
-              In Flow view: Enable "Top 10" to see origin/destination bar charts
-            </li>
-            <li style={{ marginBottom: 4 }}>
-              Click on migration arcs to reveal SHAP feature importance
-            </li>
-            <li>Hover over counties or arcs for quick summary tooltips</li>
-          </ul>
-
-          <div
-            style={{
-              fontSize: 12,
-              color: "#6b7280",
-              borderTop: "1px solid #e5e7eb",
-              paddingTop: 10,
-              marginTop: 4,
-            }}
-          >
-            <strong>Understanding the Data:</strong>
-            <br />
-            <strong>Observed</strong> = Actual ACS survey migration data (2023,
-            5-year estimates)
-            <br />
-            <strong>Predicted</strong> = Machine learning model predictions
-            based on demographic features
-            <br />
-            <strong>SHAP values</strong> = Feature importance scores explaining
-            which demographic/economic factors influenced specific migration
-            flows
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
