@@ -127,7 +127,8 @@ export default function ShapPanel({ side = null }) {
             fontFamily: "Monaco, monospace",
           }}
         >
-          Click an arc to see feature contributions
+          Click an arc above or a bar on the left to explore the feature
+          contributions
         </div>
       </div>
     );

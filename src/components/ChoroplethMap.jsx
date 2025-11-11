@@ -24,7 +24,10 @@ const STATES_GEOJSON = `${
 }data/geo/cb_2018_us_state_5m_boundaries.geojson`;
 const INITIAL_VIEW_STATE = { longitude: -98, latitude: 39, zoom: 3.4 };
 
-export default function ChoroplethMap({ side = null }) {
+export default function ChoroplethMap({
+  side = null,
+  valueTypeOverride = null,
+}) {
   const initStore = useDashboardStore((s) => s.init);
   const ready = useDashboardStore((s) => s.ready);
 
@@ -38,6 +41,14 @@ export default function ChoroplethMap({ side = null }) {
       : side === "right"
       ? rightFilters
       : mainFilters;
+
+  // Use valueTypeOverride if provided, otherwise use observed for choropleth view
+  // (comparison view and other contexts may use filter value)
+  const effectiveValueType =
+    valueTypeOverride ??
+    (filters.viewMode === "choropleth" && side === null
+      ? "observed"
+      : filters.valueType ?? "observed");
 
   const [countiesGeo, setCountiesGeo] = useState(null);
   const [statesGeo, setStatesGeo] = useState(null);
@@ -105,8 +116,7 @@ export default function ChoroplethMap({ side = null }) {
     const stateFilter = filters.state ?? null;
     // In comparison mode (when side is provided), always use observed values for coloring
     // Tooltip will show both observed and predicted for comparison
-    const valueType =
-      side !== null ? "observed" : filters.valueType ?? "observed";
+    const valueType = side !== null ? "observed" : effectiveValueType;
     const base = buildChoropleth(summaryData, metric, stateFilter, valueType);
     const values = Object.values(base.map).filter(
       (v) => Number.isFinite(v) && v > 0
@@ -126,10 +136,11 @@ export default function ChoroplethMap({ side = null }) {
     summaryData,
     filters.metric,
     filters.state,
-    filters.valueType,
+    effectiveValueType,
     filters.viewMode,
     featureAgg,
     filters.featureAgg,
+    side,
   ]);
 
   // Feature aggregates loader
@@ -260,7 +271,7 @@ export default function ChoroplethMap({ side = null }) {
   const stateNetLayer = useMemo(() => {
     if (!statesGeo || !summaryData || !filters.showStateNetOverlay) return null;
     const valueType =
-      filters.valueType === "predicted" ? "predicted" : "observed";
+      effectiveValueType === "predicted" ? "predicted" : "observed";
     const inbound =
       valueType === "predicted"
         ? summaryData.inboundTotalsByStatePredicted
@@ -301,7 +312,7 @@ export default function ChoroplethMap({ side = null }) {
     statesGeo,
     summaryData,
     filters.showStateNetOverlay,
-    filters.valueType,
+    effectiveValueType,
     filters.stateNetOpacity,
   ]);
 
@@ -409,62 +420,61 @@ export default function ChoroplethMap({ side = null }) {
         </div>
       )}
 
+      {/* Net Overlay Legend */}
       {filters.showStateNetOverlay && (
         <div
           style={{
             position: "absolute",
-            right: 12,
-            top: 12,
+            top: 10,
+            right: 10,
             background: "rgba(255,255,255,0.95)",
-            border: "1px solid #e2e8f0",
+            padding: "12px 16px",
             borderRadius: 8,
-            padding: "8px 10px",
-            fontSize: 12,
-            boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+            fontSize: 13,
+            fontFamily: "system-ui, sans-serif",
+            zIndex: 1,
           }}
         >
-          <div style={{ fontWeight: 600, marginBottom: 6 }}>
-            State Net Overlay
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span
-              style={{
-                width: 16,
-                height: 8,
-                background: "rgba(255,165,0,0.6)",
-                borderRadius: 4,
-              }}
-            />
-            <span>
-              Net gain ({filters.valueType === "predicted" ? "Pred" : "Obs"})
-            </span>
+          <div style={{ fontWeight: 600, marginBottom: 8 }}>
+            State Net Migration
           </div>
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: 8,
-              marginTop: 4,
+              marginBottom: 6,
             }}
           >
-            <span
+            <div
               style={{
-                width: 16,
-                height: 8,
-                background: "rgba(30,90,160,0.6)",
-                borderRadius: 4,
+                width: 20,
+                height: 20,
+                background: "#2563eb",
+                border: "2px solid #1e40af",
+                borderRadius: 3,
               }}
             />
-            <span>
-              Net loss ({filters.valueType === "predicted" ? "Pred" : "Obs"})
-            </span>
+            <span>Net Gain</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div
+              style={{
+                width: 20,
+                height: 20,
+                background: "#dc2626",
+                border: "2px solid #991b1b",
+                borderRadius: 3,
+              }}
+            />
+            <span>Net Loss</span>
           </div>
         </div>
       )}
     </div>
   );
 }
-
 function buildChoropleth(summary, metric, stateFilter, valueType) {
   if (!summary) return { map: {}, max: 0 };
 

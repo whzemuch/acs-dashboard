@@ -152,9 +152,10 @@ export default function TopDestinationsPanel({ side = null }) {
 
     const isInbound = filters.metric === "in";
     // Inbound (state names) needs less space, outbound (county names) needs more
+    // Reduced by 10% for better layout
     const leftMargin = isInbound ? 120 : 160;
     const margin = { top: 10, right: 80, bottom: 20, left: leftMargin };
-    const width = isInbound ? 340 : 400;
+    const width = isInbound ? 306 : 360; // Reduced from 340 to 306 (10%) and 400 to 360 (10%)
     const height = Math.max(300, topFlows.length * 30);
     const chartWidth = width - margin.left - margin.right;
     const chartHeight = height - margin.top - margin.bottom;
@@ -345,13 +346,7 @@ export default function TopDestinationsPanel({ side = null }) {
         return rank + truncated;
       });
 
-    // X-axis
-    g.append("g")
-      .attr("transform", `translate(0,${chartHeight})`)
-      .call(d3.axisBottom(x).ticks(5).tickFormat(d3.format(".2s")))
-      .attr("font-size", 12)
-      .attr("font-family", "Monaco, monospace")
-      .attr("color", "#6b7280");
+    // X-axis removed since values are displayed on the right of bars
   }, [
     topFlows,
     filters.valueType,

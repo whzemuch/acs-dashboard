@@ -93,29 +93,40 @@ function FlowLegendContent() {
 }
 
 function ChoroplethLegendContent() {
-  const showOverlay = useDashboardStore((s) =>
-    Boolean(s.filters.showStateNetOverlay)
-  );
-  const valueType = useDashboardStore((s) => s.filters.valueType ?? "observed");
+  const viewMode = useDashboardStore((s) => s.filters.viewMode ?? "choropleth");
+
   return (
     <>
-      {showOverlay && (
-        <>
-          <LegendRow
-            color="rgba(255,165,0,0.6)"
-            label={`State net gain (${valueType})`}
-          />
-          <LegendRow
-            color="rgba(30,90,160,0.6)"
-            label={`State net loss (${valueType})`}
-          />
-        </>
-      )}
-      <div style={{ fontSize: 12, color: "#4a5568" }}>
-        County choropleth displays inbound totals only (Observed/Predicted).
-        {showOverlay
-          ? " State net overlay is ON."
-          : ' Enable "State net overlay" to visualize state-level net.'}
+      <div style={{ marginTop: 4, marginBottom: 4 }}>
+        <div style={{ fontSize: 12, color: "#4a5568", marginBottom: 6 }}>
+          Inbound Migration (Observed)
+        </div>
+        <div
+          style={{
+            width: "100%",
+            height: 20,
+            borderRadius: 4,
+            background:
+              "linear-gradient(to right, #fee5d9, #fcae91, #fb6a4a, #de2d26, #a50f15)",
+            border: "1px solid #e2e8f0",
+          }}
+        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            fontSize: 11,
+            color: "#6b7280",
+            marginTop: 4,
+          }}
+        >
+          <span>Low</span>
+          <span>High</span>
+        </div>
+      </div>
+      <div style={{ fontSize: 12, color: "#4a5568", marginTop: 8 }}>
+        County colors show observed inbound migration totals. Darker red
+        indicates higher inbound flow.
       </div>
     </>
   );

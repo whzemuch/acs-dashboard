@@ -21,6 +21,22 @@ export default function ComparisonView() {
   // Local state for comparison view type (flow or choropleth)
   const [comparisonViewType, setComparisonViewType] = useState("flow");
 
+  // Local state for showing both observed and predicted in choropleth view
+  const [showBothChoropleth, setShowBothChoropleth] = useState(false);
+
+  // Auto-switch to inbound when county is selected
+  useEffect(() => {
+    if (leftFilters.county && leftFilters.metric === "out") {
+      setLeftFilter("metric", "in");
+    }
+  }, [leftFilters.county, leftFilters.metric, setLeftFilter]);
+
+  useEffect(() => {
+    if (rightFilters.county && rightFilters.metric === "out") {
+      setRightFilter("metric", "in");
+    }
+  }, [rightFilters.county, rightFilters.metric, setRightFilter]);
+
   // Feature rank list for dropdown
   const [featureRank, setFeatureRank] = useState([]);
   useEffect(() => {
@@ -67,42 +83,9 @@ export default function ComparisonView() {
             📍 Location A
           </h3>
 
-          {/* State Selector */}
-          <div style={{ marginBottom: "12px" }}>
-            <label
-              style={{
-                display: "block",
-                fontSize: 13,
-                fontWeight: 600,
-                marginBottom: 6,
-                color: "#4b5563",
-              }}
-            >
-              State
-            </label>
-            <select
-              value={leftFilters.state ?? ""}
-              onChange={(e) => setLeftFilter("state", e.target.value || null)}
-              style={{
-                width: "100%",
-                padding: "8px",
-                borderRadius: 6,
-                border: "1px solid #cbd2d9",
-                fontSize: 13,
-              }}
-            >
-              <option value="">All States</option>
-              {states.map((state) => (
-                <option key={state.id} value={state.id}>
-                  {state.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* County Selector */}
-          {leftFilters.state && (
-            <div style={{ marginBottom: "12px" }}>
+          {/* State and County in same row */}
+          <div style={{ display: "flex", gap: "12px", marginBottom: "12px" }}>
+            <div style={{ flex: 1 }}>
               <label
                 style={{
                   display: "block",
@@ -112,13 +95,11 @@ export default function ComparisonView() {
                   color: "#4b5563",
                 }}
               >
-                County
+                State
               </label>
               <select
-                value={leftFilters.county ?? ""}
-                onChange={(e) =>
-                  setLeftFilter("county", e.target.value || null)
-                }
+                value={leftFilters.state ?? ""}
+                onChange={(e) => setLeftFilter("state", e.target.value || null)}
                 style={{
                   width: "100%",
                   padding: "8px",
@@ -127,108 +108,163 @@ export default function ComparisonView() {
                   fontSize: 13,
                 }}
               >
-                <option value="">All Counties</option>
-                {leftCounties.map((county) => (
-                  <option key={county.id} value={county.id}>
-                    {county.label}
+                <option value="">All States</option>
+                {states.map((state) => (
+                  <option key={state.id} value={state.id}>
+                    {state.label}
                   </option>
                 ))}
               </select>
             </div>
-          )}
 
-          {/* Metric Toggle and Min Flow in same row - only in flow mode */}
+            {/* County Selector */}
+            {leftFilters.state && (
+              <div style={{ flex: 1 }}>
+                <label
+                  style={{
+                    display: "block",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    marginBottom: 6,
+                    color: "#4b5563",
+                  }}
+                >
+                  County
+                </label>
+                <select
+                  value={leftFilters.county ?? ""}
+                  onChange={(e) =>
+                    setLeftFilter("county", e.target.value || null)
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "8px",
+                    borderRadius: 6,
+                    border: "1px solid #cbd2d9",
+                    fontSize: 13,
+                  }}
+                >
+                  <option value="">All Counties</option>
+                  {leftCounties.map((county) => (
+                    <option key={county.id} value={county.id}>
+                      {county.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* Flow controls in compact layout - only in flow mode */}
           {comparisonViewType === "flow" && (
-            <div style={{ marginBottom: "12px" }}>
+            <div>
               {/* Metric Toggle */}
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
-                }}
-              >
-                Metric
-              </label>
-              <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+              <div style={{ display: "flex", gap: 6, marginBottom: 10 }}>
                 {[
                   { id: "in", label: "Inbound" },
                   { id: "out", label: "Outbound" },
-                ].map((metric) => (
-                  <button
-                    key={metric.id}
-                    onClick={() => setLeftFilter("metric", metric.id)}
-                    style={{
-                      flex: 1,
-                      padding: "6px 8px",
-                      borderRadius: 6,
-                      fontSize: 12,
-                      cursor: "pointer",
-                      border: "1px solid",
-                      borderColor:
-                        leftFilters.metric === metric.id
-                          ? "#1d4ed8"
-                          : "#cbd2d9",
-                      background:
-                        leftFilters.metric === metric.id ? "#2563eb" : "white",
-                      color:
-                        leftFilters.metric === metric.id ? "white" : "#1f2933",
-                    }}
-                  >
-                    {metric.label}
-                  </button>
-                ))}
+                ].map((metric) => {
+                  // Outbound only available when state is selected without county
+                  const isDisabled = metric.id === "out" && leftFilters.county;
+                  return (
+                    <button
+                      key={metric.id}
+                      onClick={() =>
+                        !isDisabled && setLeftFilter("metric", metric.id)
+                      }
+                      disabled={isDisabled}
+                      style={{
+                        flex: 1,
+                        padding: "6px 8px",
+                        borderRadius: 6,
+                        fontSize: 12,
+                        cursor: isDisabled ? "not-allowed" : "pointer",
+                        border: "1px solid",
+                        borderColor:
+                          leftFilters.metric === metric.id
+                            ? "#1d4ed8"
+                            : "#cbd2d9",
+                        background: isDisabled
+                          ? "#f3f4f6"
+                          : leftFilters.metric === metric.id
+                          ? "#2563eb"
+                          : "white",
+                        color: isDisabled
+                          ? "#9ca3af"
+                          : leftFilters.metric === metric.id
+                          ? "white"
+                          : "#1f2933",
+                        opacity: isDisabled ? 0.6 : 1,
+                      }}
+                    >
+                      {metric.label}
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Show Top Destinations Checkbox and Min Flow Slider */}
-              <label
+              {/* Top 10 checkbox and Min Flow slider in compact row */}
+              <div
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  gap: "12px",
                   fontSize: 12,
-                  fontWeight: 600,
                   color: "#4b5563",
-                  fontFamily: "Monaco, monospace",
-                  cursor: "pointer",
-                  marginBottom: 8,
                 }}
               >
-                <input
-                  type="checkbox"
-                  checked={leftFilters.enableTopN ?? true}
-                  onChange={(e) =>
-                    setLeftFilter("enableTopN", e.target.checked)
-                  }
-                  style={{ marginRight: 8 }}
-                />
-                Top 10{" "}
-                {leftFilters.metric === "in" ? "Origins" : "Destinations"}
-              </label>
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: 600,
+                    fontFamily: "Monaco, monospace",
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={leftFilters.enableTopN ?? true}
+                    onChange={(e) =>
+                      setLeftFilter("enableTopN", e.target.checked)
+                    }
+                    style={{ marginRight: 6 }}
+                  />
+                  Top 10
+                </label>
 
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
-                }}
-              >
-                Min Flow ({leftFilters.minFlow ?? 0})
-              </label>
-              <input
-                type="range"
-                min={0}
-                max={20000}
-                step={100}
-                value={leftFilters.minFlow ?? 0}
-                onChange={(e) =>
-                  setLeftFilter("minFlow", Number(e.target.value))
-                }
-                style={{ width: "100%" }}
-              />
+                <span style={{ color: "#cbd2d9" }}>|</span>
+
+                <div
+                  style={{
+                    flex: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <label
+                    style={{
+                      fontWeight: 600,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Min: {leftFilters.minFlow ?? 0}
+                  </label>
+                  <input
+                    type="range"
+                    min={0}
+                    max={20000}
+                    step={100}
+                    value={leftFilters.minFlow ?? 0}
+                    onChange={(e) =>
+                      setLeftFilter("minFlow", Number(e.target.value))
+                    }
+                    style={{ flex: 1 }}
+                  />
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -250,22 +286,49 @@ export default function ComparisonView() {
           )}
         </div>
 
-        {/* Left Top Destinations Panel - only in flow mode when Top 10 is enabled */}
+        {/* Left Summary - show below choropleth map */}
+        {comparisonViewType === "choropleth" && <SummaryPanel side="left" />}
+
+        {/* Left Top Destinations Panel and SHAP in horizontal layout - only in flow mode when Top 10 is enabled */}
         {comparisonViewType === "flow" && leftFilters.enableTopN && (
-          <TopDestinationsPanel side="left" />
+          <div style={{ display: "flex", gap: "8px", height: "400px" }}>
+            <div
+              style={{
+                flexShrink: 0,
+                height: "100%",
+                overflowY: "auto",
+              }}
+            >
+              <TopDestinationsPanel side="left" />
+            </div>
+            <div
+              style={{
+                flex: 1,
+                height: "100%",
+                minHeight: 0,
+                overflowY: "scroll",
+                scrollbarWidth: "thin", // Firefox
+                WebkitOverflowScrolling: "touch", // iOS smooth scrolling
+              }}
+            >
+              <ShapPanel side="left" />
+            </div>
+          </div>
         )}
 
-        {/* Left Summary */}
-        <SummaryPanel side="left" />
+        {/* Left Summary - show in flow mode */}
+        {comparisonViewType === "flow" && <SummaryPanel side="left" />}
 
-        {/* Left SHAP */}
-        <ShapPanel side="left" />
+        {/* Left SHAP - show when Top 10 is disabled */}
+        {comparisonViewType === "flow" && !leftFilters.enableTopN && (
+          <ShapPanel side="left" />
+        )}
       </div>
 
       {/* Shared Controls Column */}
       <div
         style={{
-          width: 240,
+          width: 216,
           flexShrink: 0,
           display: "flex",
           flexDirection: "column",
@@ -303,11 +366,11 @@ export default function ComparisonView() {
             >
               Main View
             </label>
-            <div style={{ display: "flex", gap: 6 }}>
+            {/* First line: Choropleth and Flow */}
+            <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
               {[
                 { id: "choropleth", label: "Choropleth" },
                 { id: "flow", label: "Flow" },
-                { id: "comparison", label: "Comparison" },
               ].map((mode) => (
                 <button
                   key={mode.id}
@@ -319,15 +382,33 @@ export default function ComparisonView() {
                     fontSize: 12,
                     cursor: "pointer",
                     border: "1px solid",
-                    borderColor:
-                      mode.id === "comparison" ? "#1d4ed8" : "#cbd2d9",
-                    background: mode.id === "comparison" ? "#2563eb" : "white",
-                    color: mode.id === "comparison" ? "white" : "#1f2933",
+                    borderColor: "#cbd2d9",
+                    background: "white",
+                    color: "#1f2933",
                   }}
                 >
                   {mode.label}
                 </button>
               ))}
+            </div>
+            {/* Second line: Comparison */}
+            <div style={{ display: "flex", gap: 6 }}>
+              <button
+                onClick={() => setFilter("viewMode", "comparison")}
+                style={{
+                  flex: 1,
+                  padding: "6px 8px",
+                  borderRadius: 6,
+                  fontSize: 12,
+                  cursor: "pointer",
+                  border: "1px solid",
+                  borderColor: "#1d4ed8",
+                  background: "#2563eb",
+                  color: "white",
+                }}
+              >
+                Comparison
+              </button>
             </div>
           </div>
 
@@ -424,6 +505,29 @@ export default function ComparisonView() {
                   </button>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Show both observed and predicted in choropleth view */}
+          {comparisonViewType === "choropleth" && (
+            <div style={{ marginBottom: "12px" }}>
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontSize: 13,
+                  color: "#4b5563",
+                  cursor: "pointer",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  checked={showBothChoropleth}
+                  onChange={(e) => setShowBothChoropleth(e.target.checked)}
+                  style={{ marginRight: 6 }}
+                />
+                Compare Observed vs Predicted
+              </label>
             </div>
           )}
 
@@ -589,42 +693,9 @@ export default function ComparisonView() {
             📍 Location B
           </h3>
 
-          {/* State Selector */}
-          <div style={{ marginBottom: "12px" }}>
-            <label
-              style={{
-                display: "block",
-                fontSize: 13,
-                fontWeight: 600,
-                marginBottom: 6,
-                color: "#4b5563",
-              }}
-            >
-              State
-            </label>
-            <select
-              value={rightFilters.state ?? ""}
-              onChange={(e) => setRightFilter("state", e.target.value || null)}
-              style={{
-                width: "100%",
-                padding: "8px",
-                borderRadius: 6,
-                border: "1px solid #cbd2d9",
-                fontSize: 13,
-              }}
-            >
-              <option value="">All States</option>
-              {states.map((state) => (
-                <option key={state.id} value={state.id}>
-                  {state.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* County Selector */}
-          {rightFilters.state && (
-            <div style={{ marginBottom: "12px" }}>
+          {/* State and County in same row */}
+          <div style={{ display: "flex", gap: "12px", marginBottom: "12px" }}>
+            <div style={{ flex: 1 }}>
               <label
                 style={{
                   display: "block",
@@ -634,12 +705,12 @@ export default function ComparisonView() {
                   color: "#4b5563",
                 }}
               >
-                County
+                State
               </label>
               <select
-                value={rightFilters.county ?? ""}
+                value={rightFilters.state ?? ""}
                 onChange={(e) =>
-                  setRightFilter("county", e.target.value || null)
+                  setRightFilter("state", e.target.value || null)
                 }
                 style={{
                   width: "100%",
@@ -649,108 +720,163 @@ export default function ComparisonView() {
                   fontSize: 13,
                 }}
               >
-                <option value="">All Counties</option>
-                {rightCounties.map((county) => (
-                  <option key={county.id} value={county.id}>
-                    {county.label}
+                <option value="">All States</option>
+                {states.map((state) => (
+                  <option key={state.id} value={state.id}>
+                    {state.label}
                   </option>
                 ))}
               </select>
             </div>
-          )}
 
-          {/* Metric Toggle and Min Flow in same row - only in flow mode */}
+            {/* County Selector */}
+            {rightFilters.state && (
+              <div style={{ flex: 1 }}>
+                <label
+                  style={{
+                    display: "block",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    marginBottom: 6,
+                    color: "#4b5563",
+                  }}
+                >
+                  County
+                </label>
+                <select
+                  value={rightFilters.county ?? ""}
+                  onChange={(e) =>
+                    setRightFilter("county", e.target.value || null)
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "8px",
+                    borderRadius: 6,
+                    border: "1px solid #cbd2d9",
+                    fontSize: 13,
+                  }}
+                >
+                  <option value="">All Counties</option>
+                  {rightCounties.map((county) => (
+                    <option key={county.id} value={county.id}>
+                      {county.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
+          </div>
+
+          {/* Flow controls in compact layout - only in flow mode */}
           {comparisonViewType === "flow" && (
-            <div style={{ marginBottom: "12px" }}>
+            <div>
               {/* Metric Toggle */}
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
-                }}
-              >
-                Metric
-              </label>
-              <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+              <div style={{ display: "flex", gap: 6, marginBottom: 10 }}>
                 {[
                   { id: "in", label: "Inbound" },
                   { id: "out", label: "Outbound" },
-                ].map((metric) => (
-                  <button
-                    key={metric.id}
-                    onClick={() => setRightFilter("metric", metric.id)}
-                    style={{
-                      flex: 1,
-                      padding: "6px 8px",
-                      borderRadius: 6,
-                      fontSize: 12,
-                      cursor: "pointer",
-                      border: "1px solid",
-                      borderColor:
-                        rightFilters.metric === metric.id
-                          ? "#1d4ed8"
-                          : "#cbd2d9",
-                      background:
-                        rightFilters.metric === metric.id ? "#2563eb" : "white",
-                      color:
-                        rightFilters.metric === metric.id ? "white" : "#1f2933",
-                    }}
-                  >
-                    {metric.label}
-                  </button>
-                ))}
+                ].map((metric) => {
+                  // Outbound only available when state is selected without county
+                  const isDisabled = metric.id === "out" && rightFilters.county;
+                  return (
+                    <button
+                      key={metric.id}
+                      onClick={() =>
+                        !isDisabled && setRightFilter("metric", metric.id)
+                      }
+                      disabled={isDisabled}
+                      style={{
+                        flex: 1,
+                        padding: "6px 8px",
+                        borderRadius: 6,
+                        fontSize: 12,
+                        cursor: isDisabled ? "not-allowed" : "pointer",
+                        border: "1px solid",
+                        borderColor:
+                          rightFilters.metric === metric.id
+                            ? "#1d4ed8"
+                            : "#cbd2d9",
+                        background: isDisabled
+                          ? "#f3f4f6"
+                          : rightFilters.metric === metric.id
+                          ? "#2563eb"
+                          : "white",
+                        color: isDisabled
+                          ? "#9ca3af"
+                          : rightFilters.metric === metric.id
+                          ? "white"
+                          : "#1f2933",
+                        opacity: isDisabled ? 0.6 : 1,
+                      }}
+                    >
+                      {metric.label}
+                    </button>
+                  );
+                })}
               </div>
 
-              {/* Show Top Destinations Checkbox and Min Flow Slider */}
-              <label
+              {/* Top 10 checkbox and Min Flow slider in compact row */}
+              <div
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  gap: "12px",
                   fontSize: 12,
-                  fontWeight: 600,
                   color: "#4b5563",
-                  fontFamily: "Monaco, monospace",
-                  cursor: "pointer",
-                  marginBottom: 8,
                 }}
               >
-                <input
-                  type="checkbox"
-                  checked={rightFilters.enableTopN ?? true}
-                  onChange={(e) =>
-                    setRightFilter("enableTopN", e.target.checked)
-                  }
-                  style={{ marginRight: 8 }}
-                />
-                Top 10{" "}
-                {rightFilters.metric === "in" ? "Origins" : "Destinations"}
-              </label>
+                <label
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontWeight: 600,
+                    fontFamily: "Monaco, monospace",
+                    cursor: "pointer",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={rightFilters.enableTopN ?? true}
+                    onChange={(e) =>
+                      setRightFilter("enableTopN", e.target.checked)
+                    }
+                    style={{ marginRight: 6 }}
+                  />
+                  Top 10
+                </label>
 
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
-                }}
-              >
-                Min Flow ({rightFilters.minFlow ?? 0})
-              </label>
-              <input
-                type="range"
-                min={0}
-                max={20000}
-                step={100}
-                value={rightFilters.minFlow ?? 0}
-                onChange={(e) =>
-                  setRightFilter("minFlow", Number(e.target.value))
-                }
-                style={{ width: "100%" }}
-              />
+                <span style={{ color: "#cbd2d9" }}>|</span>
+
+                <div
+                  style={{
+                    flex: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                  }}
+                >
+                  <label
+                    style={{
+                      fontWeight: 600,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    Min: {rightFilters.minFlow ?? 0}
+                  </label>
+                  <input
+                    type="range"
+                    min={0}
+                    max={20000}
+                    step={100}
+                    value={rightFilters.minFlow ?? 0}
+                    onChange={(e) =>
+                      setRightFilter("minFlow", Number(e.target.value))
+                    }
+                    style={{ flex: 1 }}
+                  />
+                </div>
+              </div>
             </div>
           )}
         </div>
@@ -772,16 +898,43 @@ export default function ComparisonView() {
           )}
         </div>
 
-        {/* Right Top Destinations Panel - only in flow mode when Top 10 is enabled */}
+        {/* Right Summary - show below choropleth map */}
+        {comparisonViewType === "choropleth" && <SummaryPanel side="right" />}
+
+        {/* Right Top Destinations Panel and SHAP in horizontal layout - only in flow mode when Top 10 is enabled */}
         {comparisonViewType === "flow" && rightFilters.enableTopN && (
-          <TopDestinationsPanel side="right" />
+          <div style={{ display: "flex", gap: "8px", height: "400px" }}>
+            <div
+              style={{
+                flexShrink: 0,
+                height: "100%",
+                overflowY: "auto",
+              }}
+            >
+              <TopDestinationsPanel side="right" />
+            </div>
+            <div
+              style={{
+                flex: 1,
+                height: "100%",
+                minHeight: 0,
+                overflowY: "scroll",
+                scrollbarWidth: "thin", // Firefox
+                WebkitOverflowScrolling: "touch", // iOS smooth scrolling
+              }}
+            >
+              <ShapPanel side="right" />
+            </div>
+          </div>
         )}
 
-        {/* Right Summary */}
-        <SummaryPanel side="right" />
+        {/* Right Summary - show in flow mode */}
+        {comparisonViewType === "flow" && <SummaryPanel side="right" />}
 
-        {/* Right SHAP */}
-        <ShapPanel side="right" />
+        {/* Right SHAP - show when Top 10 is disabled */}
+        {comparisonViewType === "flow" && !rightFilters.enableTopN && (
+          <ShapPanel side="right" />
+        )}
       </div>
     </div>
   );

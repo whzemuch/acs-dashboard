@@ -105,12 +105,15 @@ export default function FilterPanel() {
         />
       )}
 
-      <ToggleRow
-        label="Value"
-        options={valueOptions}
-        value={filters.valueType ?? "observed"}
-        onSelect={(value) => setFilter("valueType", value)}
-      />
+      {/* Value toggle - only show in Flow view, choropleth always uses observed */}
+      {filters.viewMode === "flow" && (
+        <ToggleRow
+          label="Value"
+          options={valueOptions}
+          value={filters.valueType ?? "observed"}
+          onSelect={(value) => setFilter("valueType", value)}
+        />
+      )}
 
       {/* Feature impact on Flow (state-scoped) */}
       {filters.viewMode === "flow" && filters.state && (
