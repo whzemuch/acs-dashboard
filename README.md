@@ -1,179 +1,142 @@
-# ACS Dashboard
+# ACS Migration Dashboard
 
-## Main Features
+> An interactive visualization platform for exploring U.S. county-to-county migration patterns using American Community Survey data with machine learning predictions (xgboost) and SHAP explainability.
 
-- **Interactive migration flows** – deck.gl ArcLayer + Mapbox basemap visualize top county-to-county connections (Net, Inbound, Outbound) with sign-aware coloring and rich tooltips.
-- **Dynamic trend analytics** – D3 trend panel charts inbound/outbound/net history for the active county, state, or national view and can expose component series on demand.
-- **Rich filtering** – React + Zustand UI exposes year slider, metric toggle, geographic drill-down, demographic slices, and flow-threshold controls that stay in sync across map and charts.
-- **Responsive UX** – Hover/click reveals demographic breakdowns, legends adapt to the active metric, and the layout fits desktop dashboards.
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://whzemuch.github.io/acs-dashboard/)
+[![React](https://img.shields.io/badge/React-19.1-blue)](https://reactjs.org/)
+[![DeckGL](https://img.shields.io/badge/deck.gl-9.0-orange)](https://deck.gl/)
+[![Vite](https://img.shields.io/badge/Vite-6.0-purple)](https://vitejs.dev/)
 
-Live Demo: **[https://whzemuch.github.io/acs-dashboard/](https://whzemuch.github.io/acs-dashboard/)**
+**[🚀 Live Demo](https://whzemuch.github.io/acs-dashboard/)** | **[📖 User Guide](user_guide.md)**
 
-## Data Flow Overview
+---
 
-### Input Datasets
+## Overview
 
-- `public/data/geo/cb_2018_us_county_5m_boundaries.geojson` – simplified county polygons (WGS84)
-- `public/data/geo/county_centroids.csv` – precomputed lon/lat per county
-- `public/data/flow/flow_extended.csv` – long-form flows (`year`, `origin`, `dest`, `flow`, optional `age`, `income`, `education`)
-- Optional: SHAP/explainability CSVs or additional dimensions
+The ACS Migration Dashboard is a comprehensive data visualization tool designed for researchers, policymakers, urban planners, and data scientists to explore and understand U.S. migration patterns at the county level. Built on American Community Survey (ACS) data, it combines:
 
-### Preprocessing Pipeline
+- **Real migration data** from ACS 5-year estimates (2023)
+- **Machine learning predictions (xgboost)** trained on demographic and socioeconomic features
+- **SHAP explainability** to understand what drives migration decisions
+- **Interactive visualizations** with three complementary views (Choropleth, Flow, Comparison)
 
-Run `node scripts/build-flow-cache.js` to emit cache files in `public/data/cache/`:
+### Key Capabilities
 
-- `years.json` – available years
-- `county-metadata.json` – geoid → {name, state, centroid}
-- `dimensions.json` – age / income / education buckets
-- `flows/{year}.json` – slice rows (sorted by flow) plus inbound/outbound totals and adjacency lists
+- Visualize state-to-county migration flows with interactive arc diagrams
+- Explore net migration gains/losses through color-coded choropleth maps
+- Compare migration patterns between two locations side-by-side
+- Understand feature importance with SHAP contribution analysis
+- Toggle between observed and predicted data to validate model accuracy
+- Filter by demographic factors, migration thresholds, and geographic regions
 
-This keeps the browser fast by avoiding runtime CSV parsing.
+---
 
-### Client Architecture
+## Prerequisites
 
-1. **Initialization** – `src/store/dashboardStore.js` calls `dataProvider.init()` to load metadata, dimensions, and defaults into Zustand.
-2. **Flow retrieval** – `dataProvider.getFlows(filters)` ensures the year cache is loaded, filters slice rows by demographics/state/county, trims to top-N, and returns deck.gl-ready objects. A web worker (`src/workers/flowWorker.js`) handles heavy calls off the main thread.
-3. **Map rendering** – `MigrationFlowMap` listens to filter changes, fetches flows + yearly summaries, and renders:
-   - County/State GeoJson layers
-   - ArcLayer with metric-aware colors (net gain/loss, inbound/outbound)
-   - Hover tooltips showing slice flow, totals, demographics
-4. **Charts & Panels** – Trend panel aggregates `getYearSummary` output to plot net/in/out history. Filter controls update the store, keeping map and chart in sync.
-5. **Interaction loop** – user action → store updates → memoized selectors recompute → components re-render. Memoization + worker fallback keep the UI responsive.
+- **Node.js** 18+ and npm
+- **Mapbox account** (free tier) for base map tiles - [Sign up here](https://account.mapbox.com/auth/signup/)
 
-Built-in performance practices: simplified geometries, precomputed centroids, per-year flow files, memoized selectors, top-N slicing, optional worker aggregation.
+---
 
-### New: SHAP Dataset (state→county) Pipeline
+## Quick Start
 
-If you are using the new state→county migration CSV with observed/predicted movers and SHAP contributions (`public/data/flow/migration_flows_with_shap_NATIVE.csv`), run:
+### Installation
 
-```
-npm run build-cache-shap
-```
+1. **Clone the repository**
 
-This emits partitioned caches under `public/data/cache/`:
+   ```bash
+   git clone https://github.com/whzemuch/acs-dashboard.git
+   cd acs-dashboard
+   ```
 
-- `flows/by_dest/<SS>.json` and `flows/by_origin/<ID>.json` (base rows, no SHAP)
-- `flows/by_dest_shap/<SS>.json` (SHAP arrays per destination state)
-- `summary.json`, `index.json`, and `shap_schema.json`
+2. **Install dependencies**
 
-A new data provider (`src/data/dataProviderShap.js`) can read these partitions and return deck.gl‑ready arcs. UI wiring is pending in this repo; see `changes.md` for the integration plan.
+   ```bash
+   npm install
+   ```
 
-## Usage
+3. **Configure Mapbox token**
 
-### 1. Clone & Install
+   Create a `.env.local` file in the root directory:
 
-```bash
-git clone https://github.com/whzemuch/acs-dashboard.git
-cd acs-dashboard
-npm install
-```
+   ```env
+   VITE_MAPBOX_TOKEN=your_mapbox_access_token_here
+   ```
 
-### 2. Configure
+   Get your token from [Mapbox Account](https://account.mapbox.com/access-tokens/)
 
-- Create `.env.local` with `VITE_MAPBOX_TOKEN=...`
-- (Optional) regenerate caches: `npm run build-cache` (requires source CSV/GeoJSON files under `public/data/`)
+4. **Start development server**
 
-### 3. Develop
+   ```bash
+   npm run dev
+   ```
 
-```bash
-npm run dev
-```
+   Open http://localhost:5173 in your browser
 
-Open http://localhost:5173 to work with hot reload.
-
-### 4. Build & Preview Production
+### Building for Production
 
 ```bash
 npm run build
-npx vite preview --base=/acs-dashboard/
+npm run preview
 ```
 
-Visit the printed URL (e.g., http://localhost:4173/acs-dashboard/). For GitHub Pages, run `npm run deploy` or rely on the deploy workflow.
+The optimized production build will be in the `dist/` directory.
 
-### 5. Deploy
+---
 
-- Manual: `npm run deploy` pushes `dist/` to the `gh-pages` branch
-- GitHub Actions (if configured): merging into `main` triggers the Pages workflow; ensure `VITE_MAPBOX_TOKEN` is set as a repo secret
+## Features
 
-## Data Specs & Demo Payloads
+### 🗺️ Interactive Migration Flows
 
-### Flow CSV Columns
+- **Deck.gl ArcLayer** renders migration flows as curved arcs between counties
+- **Sign-aware coloring**: Blue for inbound, orange for outbound migrations
+- **Rich tooltips**: Hover to see origin, destination, flow counts, and demographics
+- **Dynamic filtering**: Adjust minimum flow threshold to focus on significant migrations
 
-```text
-year, origin_geoid, dest_geoid, flow, [age], [income], [education], [origin_lon], [origin_lat], [dest_lon], [dest_lat]
-```
+### 📊 Three Complementary Views
 
-Missing coordinates fall back to the centroid lookup.
+1. **Choropleth View** - Color-coded county maps showing net migration intensity
+2. **Flow View** - Arc-based visualization of top migration corridors
+3. **Comparison View** - Side-by-side analysis with independent controls
 
-#### Example Cache Row (`public/data/cache/flows/2020.json`)
+### 🧠 SHAP Explainability
 
-```json
-{
-  "year": 2020,
-  "maxFlow": 158.7412,
-  "rows": [
-    {
-      "year": 2020,
-      "origin": "16027",
-      "dest": "36123",
-      "flow": 158.7412,
-      "originLon": -116.84537011524488,
-      "originLat": 43.689253071998614,
-      "destLon": -77.10332314814815,
-      "destLat": 42.609325000000005,
-      "age": "age_35_54",
-      "income": "inc_lt_25k",
-      "education": "edu_ba"
-    }
-  ],
-  "inboundTotals": {
-    "36123": 1946.0,
-    "16027": 1271.0
-  },
-  "outboundTotals": {
-    "16027": 3506.0,
-    "36123": 1671.0
-  }
-}
-```
+- Understand **why** people migrate between specific locations
+- See which features (age, income, housing costs, education, etc.) drive each flow
+- Sort by absolute value or contribution direction
+- Export SHAP data as CSV for further analysis
 
-### County Metadata (`county-metadata.json`)
+### 🎯 Advanced Filtering
 
-```json
-{
-  "geoid": "06037",
-  "state": "06",
-  "stateName": "California",
-  "name": "Los Angeles County",
-  "lon": -118.2437,
-  "lat": 34.0522
-}
-```
+- **Geographic**: Drill down from national → state → county level
+- **Direction**: Toggle between inbound/outbound migrations
+- **Data type**: Switch between observed ACS data and ML predictions
+- **Top destinations**: Auto-highlight the 10 largest flows
+- **Feature filter**: Isolate flows influenced by specific factors (e.g., poverty, education)
 
-### Demo Geo Shapes (`public/data/geo/county_shapes.json`)
+### ⚡ Performance Optimizations
 
-```json
-{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": { "GEOID": "06037", "name": "Los Angeles County" },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [-118.5, 34.0],
-            [-118.1, 34.0],
-            [-118.1, 34.2],
-            [-118.5, 34.2],
-            [-118.5, 34.0]
-          ]
-        ]
-      }
-    }
-  ]
-}
-```
+- Precomputed data caches eliminate runtime CSV parsing
+- Web Workers handle heavy computations off the main thread
+- Memoized selectors prevent unnecessary re-renders
+- Simplified geometries (5m resolution) for smooth map interactions
+- Lazy loading and code splitting for faster initial load
 
-Extend these stubs with full ACS exports or additional explainability files—the DataProvider automatically picks up new dimensions added to `dimensions.json` and per-year flow caches.
+---
+
+## Deployment
+
+### GitHub Pages (Recommended)
+
+1. **Manual deployment**:
+
+   ```bash
+   npm run deploy
+   ```
+
+   This builds the app and pushes `dist/` to the `gh-pages` branch.
+
+2. **GitHub Actions** (automated):
+   - Triggered on push to `main` branch
+   - Requires `VITE_MAPBOX_TOKEN` as a repository secret
+   - See `.github/workflows/deploy.yml` for configuration
