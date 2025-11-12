@@ -124,19 +124,14 @@ The optimized production build will be in the `dist/` directory.
 
 ---
 
-## Deployment
+## Deployment: GitHub Pages
 
-### GitHub Pages (Recommended)
+```bash
+npm run deploy
+```
 
-1. **Manual deployment**:
+This builds the app and pushes `dist/` to the `gh-pages` branch.
 
-   ```bash
-   npm run deploy
-   ```
+---
 
-   This builds the app and pushes `dist/` to the `gh-pages` branch.
-
-2. **GitHub Actions** (automated):
-   - Triggered on push to `main` branch
-   - Requires `VITE_MAPBOX_TOKEN` as a repository secret
-   - See `.github/workflows/deploy.yml` for configuration
+**Contributed by**: CSE6242 2025Spring Team095
