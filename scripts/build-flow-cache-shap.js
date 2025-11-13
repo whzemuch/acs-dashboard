@@ -10,6 +10,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "csv-parse/sync";
 import centroid from "@turf/centroid";
+import centerOfMass from "@turf/center-of-mass";
+import pointOnFeature from "@turf/point-on-feature";
+import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -79,8 +82,19 @@ function buildStateMetadata(stateGeo) {
     let lon = null;
     let lat = null;
     try {
-      const c = centroid(f);
-      const coords = c?.geometry?.coordinates;
+      // Prefer center-of-mass; if unavailable/outside, fall back to point-on-feature
+      let pt = null;
+      try {
+        pt = centerOfMass(f);
+      } catch {}
+      let coords = pt?.geometry?.coordinates;
+      // Validate that center-of-mass lies inside; otherwise pick an interior point
+      if (!Array.isArray(coords) || coords.length < 2 || !booleanPointInPolygon(pt, f)) {
+        try {
+          pt = pointOnFeature(f);
+          coords = pt?.geometry?.coordinates;
+        } catch {}
+      }
       if (Array.isArray(coords) && coords.length >= 2) [lon, lat] = coords;
     } catch {}
     byFips.set(code, { code, name, lon, lat });

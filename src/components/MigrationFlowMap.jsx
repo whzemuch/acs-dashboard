@@ -5,7 +5,9 @@ import { ArcLayer, GeoJsonLayer, PathLayer } from "@deck.gl/layers";
 import { HeatmapLayer } from "@deck.gl/aggregation-layers";
 import { FlyToInterpolator, WebMercatorViewport } from "@deck.gl/core";
 import { scaleLog } from "d3-scale";
-import centroid from "@turf/centroid";
+import centerOfMass from "@turf/center-of-mass";
+import pointOnFeature from "@turf/point-on-feature";
+import booleanPointInPolygon from "@turf/boolean-point-in-polygon";
 
 import { getFlows as getFlowsWorker } from "../data/flowServiceShap";
 import {
@@ -290,12 +292,20 @@ export default function MigrationFlowMap({
     statesGeo.features.forEach((feature) => {
       const id = feature.properties?.STATEFP;
       if (id) {
-        // Calculate centroid using Turf.js (same as build script)
+        // Use center-of-mass with fallback to point-on-feature for an interior label point
         try {
-          const c = centroid(feature);
-          const coords = c?.geometry?.coordinates;
-          const stateCentroid =
-            Array.isArray(coords) && coords.length >= 2 ? coords : null;
+          let pt = null;
+          try {
+            pt = centerOfMass(feature);
+          } catch {}
+          let coords = pt?.geometry?.coordinates;
+          if (!Array.isArray(coords) || coords.length < 2 || !booleanPointInPolygon(pt, feature)) {
+            try {
+              pt = pointOnFeature(feature);
+              coords = pt?.geometry?.coordinates;
+            } catch {}
+          }
+          const stateCentroid = Array.isArray(coords) && coords.length >= 2 ? coords : null;
           map.set(id, { ...feature, centroid: stateCentroid });
         } catch (err) {
           console.warn(`Failed to calculate centroid for state ${id}:`, err);
