@@ -28,4 +28,6 @@ public/data/nhgis0001_shapefile_tl2020_us_county_2020/*
 public/data/cb_2018_us_county_5m/
 
 # Local env overrides
+.env
+.env.production
 .env.local
