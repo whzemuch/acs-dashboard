@@ -79,60 +79,66 @@ export default function TopDestinationsPanel({ side = null }) {
           );
         }
 
-        // Process flows - same logic for both inbound and outbound
-        let filteredFlows = flows;
-        if (filters.state) {
-          const selectedStateCode = filters.state;
-          const isInbound = filters.metric === "in";
+        // Process flows
+        let resultItems = [];
+        const hasState = Boolean(filters.state);
+        const isInbound = filters.metric === "in";
 
-          console.log(`Filtering ${isInbound ? "inbound" : "outbound"} flows`);
-          console.log("Total flows before filtering:", flows.length);
+        // Helper to compute numeric value per flow respecting valueType
+        const getFlowValue = (f) =>
+          (filters.valueType === "predicted" ? f.predicted : f.flow) || 0;
+
+        if (hasState) {
+          const selectedStateCode = filters.state;
 
           // Filter out instate flows
           const outstateFlows = flows.filter((f) => {
             if (isInbound) {
-              // For inbound: filter by origin (3-digit state code)
-              const originStateCode =
-                f.origin.length === 3
-                  ? f.origin.substring(1, 3)
-                  : f.origin.substring(0, 2);
-              return originStateCode !== selectedStateCode;
+              const originCode = String(f.origin);
+              const originStateCode = /^\d+$/.test(originCode)
+                ? originCode.length === 3
+                  ? originCode.substring(1, 3)
+                  : originCode.substring(0, 2)
+                : null;
+              return originStateCode !== selectedStateCode; // keep regions too
             } else {
-              // For outbound: filter by dest (5-digit FIPS)
               const destState = f.dest.substring(0, 2);
               return destState !== selectedStateCode;
             }
           });
 
-          console.log("Outstate flows after filtering:", outstateFlows.length);
-
-          // Sort and take top 10 individual flows
-          filteredFlows = outstateFlows
-            .sort((a, b) => {
-              const aVal =
-                filters.valueType === "predicted" ? a.predicted : a.flow;
-              const bVal =
-                filters.valueType === "predicted" ? b.predicted : b.flow;
-              return bVal - aVal;
-            })
-            .slice(0, 10);
-
-          console.log(
-            `Final top 10 ${
-              isInbound ? "inbound origins" : "outbound destinations"
-            }:`,
-            filteredFlows.map((f) => (isInbound ? f.origin : f.dest))
-          );
+          if (isInbound) {
+            // Group inbound by origin (state/region) and sum values across destination counties
+            const byOrigin = new Map(); // key -> { key, value, sampleFlow }
+            for (const f of outstateFlows) {
+              const key = String(f.origin);
+              const v = getFlowValue(f);
+              if (!byOrigin.has(key)) byOrigin.set(key, { key, value: 0, sampleFlow: f });
+              const rec = byOrigin.get(key);
+              rec.value += v;
+              if (getFlowValue(rec.sampleFlow) < v) rec.sampleFlow = f; // keep a representative
+            }
+            resultItems = [...byOrigin.values()]
+              .sort((a, b) => b.value - a.value)
+              .slice(0, 10)
+              .map((d) => ({ flow: d.sampleFlow, value: d.value }));
+          } else {
+            // Outbound: keep top destination counties (individual flows)
+            resultItems = outstateFlows
+              .map((f) => ({ flow: f, value: getFlowValue(f) }))
+              .sort((a, b) => b.value - a.value)
+              .slice(0, 10);
+          }
         } else {
-          filteredFlows = flows.slice(0, 10);
+          // No state selected: just show top flows overall in current metric
+          resultItems = flows
+            .map((f) => ({ flow: f, value: getFlowValue(f) }))
+            .sort((a, b) => b.value - a.value)
+            .slice(0, 10);
         }
 
-        console.log(
-          "Setting topFlows state with",
-          filteredFlows.length,
-          "flows"
-        );
-        setTopFlows(filteredFlows);
+        console.log("Setting topFlows state with", resultItems.length, "items");
+        setTopFlows(resultItems);
       } catch (error) {
         console.error("Failed to load top flows", error);
         setTopFlows([]);
@@ -166,9 +172,9 @@ export default function TopDestinationsPanel({ side = null }) {
       .append("g")
       .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    const data = topFlows.map((flow) => {
-      const flowValue =
-        filters.valueType === "predicted" ? flow.predicted : flow.flow;
+    const data = topFlows.map((item) => {
+      const flow = item.flow;
+      const flowValue = item.value;
 
       // For both inbound and outbound: show county name with state
       let label;
@@ -374,10 +380,7 @@ export default function TopDestinationsPanel({ side = null }) {
           }}
           className="font-mono"
         >
-          Top 10{" "}
-          {filters.metric === "in"
-            ? "Origin Counties (Inbound)"
-            : "Destination Counties (Outbound)"}
+          Top 10 {filters.metric === "in" ? "Origins (Inbound)" : "Destinations (Outbound)"}
         </h3>
         <p
           style={{
@@ -387,8 +390,7 @@ export default function TopDestinationsPanel({ side = null }) {
           }}
           className="font-mono"
         >
-          Select a state to view top{" "}
-          {filters.metric === "in" ? "origin counties" : "destination counties"}
+          Select a state to view top {filters.metric === "in" ? "origins (states/regions)" : "destination counties"}
         </p>
       </div>
     );
@@ -412,10 +414,7 @@ export default function TopDestinationsPanel({ side = null }) {
         }}
         className="font-mono"
       >
-        Top {topFlows.length}{" "}
-        {filters.metric === "in"
-          ? "Origin Counties (Inbound)"
-          : "Destination Counties (Outbound)"}
+        Top {topFlows.length} {filters.metric === "in" ? "Origins (Inbound)" : "Destinations (Outbound)"}
       </h3>
       <svg ref={svgRef} style={{ display: "block", margin: "0 auto" }} />
     </div>
