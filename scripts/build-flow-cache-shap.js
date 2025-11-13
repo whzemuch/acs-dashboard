@@ -20,6 +20,7 @@ const dataDir = path.join(publicDir, "data");
 const csvPath = path.join(dataDir, "flow", "migration_flows_with_shap_NATIVE.csv");
 const countyGeojsonPath = path.join(dataDir, "geo", "cb_2018_us_county_5m_boundaries.geojson");
 const stateGeojsonPath = path.join(dataDir, "geo", "cb_2018_us_state_5m_boundaries.geojson");
+const stateCentroidsPath = path.join(dataDir, "geo", "state-centroids.json");
 const countyMetaPath = path.join(dataDir, "cache", "county-metadata.json");
 
 // Outputs
@@ -70,19 +71,29 @@ async function writeJSON(p, data) {
   await fs.writeFile(p, JSON.stringify(data, null, 2));
 }
 
-function buildStateMetadata(stateGeo) {
+function buildStateMetadata(stateGeo, customCentroids = null) {
   const byFips = new Map();
   (stateGeo.features ?? []).forEach((f) => {
     const p = f.properties ?? {};
     const code = fips2(p.STATEFP ?? p.statefp ?? p.STATE ?? p.state);
     const name = p.NAME ?? p.name ?? code;
+
+    // Use custom centroids if provided, otherwise calculate from geometry
     let lon = null;
     let lat = null;
-    try {
-      const c = centroid(f);
-      const coords = c?.geometry?.coordinates;
-      if (Array.isArray(coords) && coords.length >= 2) [lon, lat] = coords;
-    } catch {}
+
+    if (customCentroids && customCentroids[code]) {
+      lon = customCentroids[code].lon;
+      lat = customCentroids[code].lat;
+      console.log(`Using custom centroid for ${name} (${code}): [${lon}, ${lat}]`);
+    } else {
+      try {
+        const c = centroid(f);
+        const coords = c?.geometry?.coordinates;
+        if (Array.isArray(coords) && coords.length >= 2) [lon, lat] = coords;
+      } catch {}
+    }
+
     byFips.set(code, { code, name, lon, lat });
   });
   return byFips;
@@ -115,16 +126,17 @@ function getOriginPosition(originCode, stateMeta) {
 
 async function main() {
   console.log("Reading inputs…");
-  const [csvBuf, countyGeo, stateGeo, countyMetaJson] = await Promise.all([
+  const [csvBuf, countyGeo, stateGeo, countyMetaJson, customCentroids] = await Promise.all([
     fs.readFile(csvPath),
     readJSON(countyGeojsonPath),
     readJSON(stateGeojsonPath),
     readJSON(countyMetaPath).catch(() => []),
+    readJSON(stateCentroidsPath).catch(() => null),
   ]);
 
   const records = parse(csvBuf, { columns: true, trim: true });
   const countyByGeoid = buildCountyMetadataFromCache(countyMetaJson.length ? countyMetaJson : countyGeo);
-  const stateByFips = buildStateMetadata(stateGeo);
+  const stateByFips = buildStateMetadata(stateGeo, customCentroids);
 
   // Determine SHAP feature order
   const headers = Object.keys(records[0] ?? {});
