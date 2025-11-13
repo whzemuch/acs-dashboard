@@ -8,12 +8,6 @@ const metricOptions = [
   { id: "out", label: "Outbound" },
 ];
 
-const viewOptions = [
-  { id: "flow", label: "Flow" },
-  { id: "choropleth", label: "Choropleth" },
-  { id: "comparison", label: "Compare" },
-];
-
 const featureAggOptions = [
   { id: "mean_abs", label: "Mean |SHAP| (importance)" },
   { id: "mean", label: "Signed mean (direction)" },
@@ -86,12 +80,38 @@ export default function FilterPanel() {
         </button>
       </div>
 
-      <ToggleRow
-        label="Map View"
-        options={viewOptions}
-        value={filters.viewMode ?? "choropleth"}
-        onSelect={(value) => setFilter("viewMode", value)}
-      />
+      <div style={mapViewCardStyle}>
+        <span style={{ ...labelStyle, marginBottom: 6 }}>Map View</span>
+        <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
+          {["choropleth", "flow"].map((mode) => (
+            <button
+              key={mode}
+              type="button"
+              onClick={() => setFilter("viewMode", mode)}
+              style={
+                (filters.viewMode ?? "choropleth") === mode
+                  ? toggleButtonActive
+                  : toggleButton
+              }
+            >
+              {mode === "choropleth" ? "Choropleth" : "Flow"}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 6 }}>
+          <button
+            type="button"
+            onClick={() => setFilter("viewMode", "comparison")}
+            style={
+              (filters.viewMode ?? "choropleth") === "comparison"
+                ? toggleButtonActive
+                : toggleButton
+            }
+          >
+            Comparison
+          </button>
+        </div>
+      </div>
 
       {/* Year selector removed for SHAP dataset (no year) */}
 
@@ -113,6 +133,69 @@ export default function FilterPanel() {
           value={filters.valueType ?? "observed"}
           onSelect={(value) => setFilter("valueType", value)}
         />
+      )}
+
+      <div style={sectionStyle}>
+        <label style={labelStyle} htmlFor="state-select">
+          State
+        </label>
+        <select
+          id="state-select"
+          value={filters.state ?? ""}
+          onChange={(e) =>
+            setFilter("state", e.target.value ? e.target.value : null)
+          }
+          style={selectStyle}
+        >
+          <option value="">All States</option>
+          {states.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div style={sectionStyle}>
+        <label style={labelStyle} htmlFor="county-select">
+          County
+        </label>
+        <select
+          id="county-select"
+          value={filters.county ?? ""}
+          onChange={(e) =>
+            setFilter("county", e.target.value ? e.target.value : null)
+          }
+          style={selectStyle}
+          disabled={!selectedState || countyOptions.length === 0}
+        >
+          <option value="">
+            {selectedState ? "All Counties" : "Select state first"}
+          </option>
+          {countyOptions.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {filters.viewMode === "flow" && (
+        <div style={sectionStyle}>
+          <label style={labelStyle} htmlFor="min-flow">
+            Min Flow ({filters.minFlow})
+          </label>
+          <input
+            id="min-flow"
+            type="range"
+            min={0}
+            max={100000}
+            step={500}
+            value={filters.minFlow ?? 0}
+            onChange={(e) => setFilter("minFlow", Number(e.target.value))}
+            style={{ width: "100%" }}
+          />
+        </div>
       )}
 
       {/* Feature impact on Flow (state-scoped) */}
@@ -174,6 +257,58 @@ export default function FilterPanel() {
         </>
       )}
 
+      {filters.viewMode === "flow" && (
+        <div style={sectionStyle}>
+          <label style={checkboxLabelStyle}>
+            <input
+              type="checkbox"
+              checked={Boolean(filters.enableTopN ?? true)}
+              onChange={(e) => {
+                setFilter("enableTopN", e.target.checked);
+                if (e.target.checked) {
+                  setFilter("topN", 10);
+                }
+              }}
+              style={{ marginRight: 8 }}
+            />
+            Show Top 10 Flows
+          </label>
+          <label style={checkboxLabelStyle}>
+            <input
+              type="checkbox"
+              checked={Boolean(filters.showHeatmap)}
+              onChange={(e) => setFilter("showHeatmap", e.target.checked)}
+              style={{ marginRight: 8 }}
+            />
+            Show heatmap
+          </label>
+        </div>
+      )}
+
+      {filters.viewMode === "flow" && (
+        <div style={infoCardStyle}>
+          <div style={infoCardTitle}>Glossary</div>
+          <ul style={glossaryListStyle}>
+            <li>
+              <strong>Inbound:</strong> Flows coming into the selected region.
+            </li>
+            <li>
+              <strong>Outbound:</strong> Flows leaving the selected region.
+            </li>
+            <li>
+              <strong>Observed:</strong> ACS 2023 5-year migration counts.
+            </li>
+            <li>
+              <strong>Predicted:</strong> Model estimates from demographic
+              inputs.
+            </li>
+            <li>
+              <strong>SHAP:</strong> Feature importance explaining each flow.
+            </li>
+          </ul>
+        </div>
+      )}
+
       {filters.viewMode === "feature" && (
         <>
           <div style={sectionStyle}>
@@ -208,55 +343,20 @@ export default function FilterPanel() {
         </>
       )}
 
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="state-select">
-          State
-        </label>
-        <select
-          id="state-select"
-          value={filters.state ?? ""}
-          onChange={(e) =>
-            setFilter("state", e.target.value ? e.target.value : null)
-          }
-          style={selectStyle}
-        >
-          <option value="">All States</option>
-          {states.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {filters.viewMode !== "feature" && (
-        <div style={sectionStyle}>
-          <label style={labelStyle} htmlFor="heatmap-toggle">
-            Show heatmap
-          </label>
-          <input
-            id="heatmap-toggle"
-            type="checkbox"
-            checked={Boolean(filters.showHeatmap)}
-            onChange={(e) => setFilter("showHeatmap", e.target.checked)}
-          />
-        </div>
-      )}
-
       {filters.viewMode === "choropleth" && (
         <>
           <div style={sectionStyle}>
-            <label style={labelStyle} htmlFor="state-net-toggle">
+            <label style={checkboxLabelStyle}>
+              <input
+                type="checkbox"
+                checked={Boolean(filters.showStateNetOverlay)}
+                onChange={(e) =>
+                  setFilter("showStateNetOverlay", e.target.checked)
+                }
+                style={{ marginRight: 8 }}
+              />
               State net overlay
             </label>
-            <input
-              id="state-net-toggle"
-              type="checkbox"
-              checked={Boolean(filters.showStateNetOverlay)}
-              onChange={(e) =>
-                setFilter("showStateNetOverlay", e.target.checked)
-              }
-            />
           </div>
           {filters.showStateNetOverlay && (
             <div style={sectionStyle}>
@@ -278,50 +378,18 @@ export default function FilterPanel() {
               />
             </div>
           )}
+          <div style={infoCardStyle}>
+            <div style={infoCardTitle}>Getting Started</div>
+            <ul style={gettingStartedListStyle}>
+              <li>Select a state from the dropdown to focus on a region.</li>
+              <li>Choose a county to see detailed migration statistics.</li>
+              <li>Switch between Choropleth, Flow, and Comparison views using the buttons above.</li>
+              <li>In Flow view, enable "Top 10" to see origin/destination bar charts.</li>
+              <li>Click on migration arcs to reveal SHAP feature importance.</li>
+              <li>Hover over counties or arcs for quick summary tooltips.</li>
+            </ul>
+          </div>
         </>
-      )}
-
-      <div style={sectionStyle}>
-        <label style={labelStyle} htmlFor="county-select">
-          County
-        </label>
-        <select
-          id="county-select"
-          value={filters.county ?? ""}
-          onChange={(e) =>
-            setFilter("county", e.target.value ? e.target.value : null)
-          }
-          style={selectStyle}
-          disabled={!selectedState || countyOptions.length === 0}
-        >
-          <option value="">
-            {selectedState ? "All Counties" : "Select state first"}
-          </option>
-          {countyOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Only show Min Flow filter in Flow view */}
-      {filters.viewMode === "flow" && (
-        <div style={sectionStyle}>
-          <label style={labelStyle} htmlFor="min-flow">
-            Min Flow ({filters.minFlow})
-          </label>
-          <input
-            id="min-flow"
-            type="range"
-            min={0}
-            max={100000}
-            step={500}
-            value={filters.minFlow ?? 0}
-            onChange={(e) => setFilter("minFlow", Number(e.target.value))}
-            style={{ width: "100%" }}
-          />
-        </div>
       )}
 
       {/* Age/Income/Education filters removed for SHAP dataset */}
@@ -396,6 +464,58 @@ const toggleButtonActive = {
   background: "#2563eb",
   color: "white",
   borderColor: "#1d4ed8",
+};
+
+const checkboxLabelStyle = {
+  display: "flex",
+  alignItems: "center",
+  fontSize: "13px",
+  fontWeight: 600,
+  color: "#4b5563",
+  cursor: "pointer",
+};
+
+const mapViewCardStyle = {
+  background: "white",
+  borderRadius: 10,
+  border: "1px solid #e2e8f0",
+  padding: "14px",
+  display: "flex",
+  flexDirection: "column",
+  gap: 6,
+};
+
+const infoCardStyle = {
+  background: "white",
+  borderRadius: 10,
+  border: "1px solid #e2e8f0",
+  padding: "14px",
+  fontSize: 12,
+  color: "#4b5563",
+  lineHeight: 1.6,
+};
+
+const infoCardTitle = {
+  fontWeight: 600,
+  fontSize: 13,
+  color: "#111827",
+  marginBottom: 6,
+};
+
+const glossaryListStyle = {
+  margin: 0,
+  paddingLeft: 18,
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+};
+
+const gettingStartedListStyle = {
+  margin: 0,
+  paddingLeft: 18,
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
 };
 
 const headerStyle = {

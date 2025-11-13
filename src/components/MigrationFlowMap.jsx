@@ -25,6 +25,9 @@ const COUNTIES_GEOJSON = `${
 const STATES_GEOJSON = `${
   import.meta.env.BASE_URL
 }data/geo/cb_2018_us_state_5m_boundaries.geojson`;
+const STATE_CENTROIDS_URL = `${
+  import.meta.env.BASE_URL
+}data/geo/state-centroids.json`;
 
 const INITIAL_VIEW_STATE = {
   longitude: -98,
@@ -88,6 +91,7 @@ export default function MigrationFlowMap({
   const [viewState, setViewState] = useState(INITIAL_VIEW_STATE);
   const [countiesGeo, setCountiesGeo] = useState(null);
   const [statesGeo, setStatesGeo] = useState(null);
+  const [stateCentroidOverrides, setStateCentroidOverrides] = useState(null);
   const [arcs, setArcs] = useState([]);
   const [hoverInfo, setHoverInfo] = useState(null);
   const [summaryData, setSummaryData] = useState(null);
@@ -134,6 +138,13 @@ export default function MigrationFlowMap({
       .catch((error) => console.error("Failed to load state geojson", error));
   }, []);
 
+  useEffect(() => {
+    fetch(STATE_CENTROIDS_URL)
+      .then((res) => (res.ok ? res.json() : {}))
+      .then((json) => setStateCentroidOverrides(json || {}))
+      .catch(() => setStateCentroidOverrides({}));
+  }, []);
+
   // Fetch flows only when relevant flow filters change (avoid refetch on feature slider changes)
   const flowMetric = filters.metric;
   const flowState = filters.state;
@@ -141,6 +152,10 @@ export default function MigrationFlowMap({
   const flowValueType = filters.valueType;
   const flowMinFlow = filters.minFlow;
   const flowTopN = filters.enableTopN ? filters.topN : 999999; // Use large number when topN is disabled
+
+  useEffect(() => {
+    if (!flowState) setHoverInfo(null);
+  }, [flowState]);
 
   // Debug logging
   useEffect(() => {
@@ -289,11 +304,19 @@ export default function MigrationFlowMap({
   const stateFeatureMap = useMemo(() => {
     if (!statesGeo?.features) return new Map();
     const map = new Map();
+    const overrides = stateCentroidOverrides || {};
     statesGeo.features.forEach((feature) => {
       const id = feature.properties?.STATEFP;
       if (id) {
         // Use center-of-mass with fallback to point-on-feature for an interior label point
         try {
+          // Prefer explicit override if present
+          const ov = overrides && overrides[id];
+          if (Array.isArray(ov) && ov.length >= 2) {
+            map.set(id, { ...feature, centroid: ov });
+            return;
+          }
+
           let pt = null;
           try {
             pt = centerOfMass(feature);
@@ -314,7 +337,7 @@ export default function MigrationFlowMap({
       }
     });
     return map;
-  }, [statesGeo]);
+  }, [statesGeo, stateCentroidOverrides]);
 
   const normalizedCounty = filters.county
     ? normalizeGeoid(filters.county)

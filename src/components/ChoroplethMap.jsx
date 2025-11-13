@@ -446,29 +446,29 @@ export default function ChoroplethMap({
               marginBottom: 6,
             }}
           >
-            <div
-              style={{
-                width: 20,
-                height: 20,
-                background: "#2563eb",
-                border: "2px solid #1e40af",
-                borderRadius: 3,
-              }}
-            />
-            <span>Net Gain</span>
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <div
-              style={{
-                width: 20,
-                height: 20,
-                background: "#dc2626",
-                border: "2px solid #991b1b",
-                borderRadius: 3,
-              }}
-            />
-            <span>Net Loss</span>
-          </div>
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  background: "#f59e0b",
+                  border: "2px solid #b45309",
+                  borderRadius: 3,
+                }}
+              />
+              <span>Net Gain</span>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  background: "#1e3a8a",
+                  border: "2px solid #0f172a",
+                  borderRadius: 3,
+                }}
+              />
+              <span>Net Loss</span>
+            </div>
         </div>
       )}
     </div>

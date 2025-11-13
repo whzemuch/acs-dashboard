@@ -57,14 +57,14 @@ function App() {
         <Link to="/test-coeff" style={{ marginRight: 12 }}>
           Coeff Test
         </Link>
-        <Link to="/test-map">Mapbox Test</Link>
+        <Link to="/flow-explorer">Flow Explorer</Link>
         <Link to="/choropleth">Choropleth Map</Link>
       </nav> */}
 
       {/*  Routes */}
       {/* <Routes>
         <Route path="/" element={<Navigate to="/test-map" replace />} />
-        <Route path="/test-map" element={<TestMap />} />
+        <Route path="/flow-explorer" element={<TestMap />} />
         <Route path="/puma" element={<PUMAMap />} />
         <Route path="/test" element={<TestPage />} />
         <Route path="/test-coeff" element={<TestCoeffPage />} />
@@ -72,8 +72,8 @@ function App() {
       </Routes> */}
 
       <Routes>
-        <Route index element={<Navigate to="test-map" replace />} />
-        <Route path="test-map" element={<TestMap />} />
+        <Route index element={<Navigate to="flow-explorer" replace />} />
+        <Route path="flow-explorer" element={<TestMap />} />
         <Route path="puma" element={<PUMAMap />} />
         <Route path="test" element={<TestPage />} />
         <Route path="test-coeff" element={<TestCoeffPage />} />

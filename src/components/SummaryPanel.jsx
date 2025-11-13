@@ -67,6 +67,7 @@ export default function SummaryPanel({ side = null }) {
         alignItems: "center",
         gap: 100,
         width: "100%",
+        boxSizing: "border-box",
       }}
     >
       <div
