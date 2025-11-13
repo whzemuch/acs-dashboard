@@ -173,8 +173,7 @@ Switch between views using the buttons at the top of the interface.
 
 - **Inbound**: Migration flows coming into the selected location
 - **Outbound**: Migration flows leaving the selected location
-- **Net Migration**: Inbound minus Outbound (shown in choropleth color intensity)
-- **PUMA**: Public Use Microdata Area - geographic areas used for detailed Census data
+
 - **SHAP**: A method for explaining individual predictions by computing feature importance
 - **Observed**: Actual migration counts from ACS survey data
 - **Predicted**: Migration estimates from the machine learning model

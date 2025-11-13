@@ -7,7 +7,7 @@
 [![DeckGL](https://img.shields.io/badge/deck.gl-9.0-orange)](https://deck.gl/)
 [![Vite](https://img.shields.io/badge/Vite-6.0-purple)](https://vitejs.dev/)
 
-**[🚀 Live Demo](https://whzemuch.github.io/acs-dashboard/)** | **[📖 User Guide](user_guide.md)**
+**[Live Demo](https://whzemuch.github.io/acs-dashboard/)** | **[ User Guide](user_guide.md)**
 
 ---
 
@@ -86,27 +86,27 @@ The optimized production build will be in the `dist/` directory.
 
 ## Features
 
-### 🗺️ Interactive Migration Flows
+### Interactive Migration Flows
 
 - **Deck.gl ArcLayer** renders migration flows as curved arcs between counties
 - **Sign-aware coloring**: Blue for inbound, orange for outbound migrations
 - **Rich tooltips**: Hover to see origin, destination, flow counts, and demographics
 - **Dynamic filtering**: Adjust minimum flow threshold to focus on significant migrations
 
-### 📊 Three Complementary Views
+### Three Complementary Views
 
 1. **Choropleth View** - Color-coded county maps showing net migration intensity
 2. **Flow View** - Arc-based visualization of top migration corridors
 3. **Comparison View** - Side-by-side analysis with independent controls
 
-### 🧠 SHAP Explainability
+### SHAP Explainability
 
 - Understand **why** people migrate between specific locations
 - See which features (age, income, housing costs, education, etc.) drive each flow
 - Sort by absolute value or contribution direction
 - Export SHAP data as CSV for further analysis
 
-### 🎯 Advanced Filtering
+### Advanced Filtering
 
 - **Geographic**: Drill down from national → state → county level
 - **Direction**: Toggle between inbound/outbound migrations
@@ -114,7 +114,7 @@ The optimized production build will be in the `dist/` directory.
 - **Top destinations**: Auto-highlight the 10 largest flows
 - **Feature filter**: Isolate flows influenced by specific factors (e.g., poverty, education)
 
-### ⚡ Performance Optimizations
+### Performance Optimizations
 
 - Precomputed data caches eliminate runtime CSV parsing
 - Web Workers handle heavy computations off the main thread

@@ -18,6 +18,17 @@
     <title>ACS Migration Dashboard</title>
     <!-- Build timestamp for cache verification -->
     <meta name="build-time" content="2025-11-09-23:00:00" />
+    <script>
+      (function () {
+        // If redirected from 404.html with ?p=, restore the original path
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          var newUrl = '/acs-dashboard' + decodeURIComponent(p);
+          history.replaceState(null, '', newUrl);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
