@@ -18,8 +18,19 @@
     <title>ACS Migration Dashboard</title>
     <!-- Build timestamp for cache verification -->
     <meta name="build-time" content="2025-11-09-23:00:00" />
-    <script type="module" crossorigin src="/acs-dashboard/assets/index-CYBRV-UE-1762959981141.js"></script>
-    <link rel="stylesheet" crossorigin href="/acs-dashboard/assets/index-CBlLz73w-1762959981141.css">
+    <script>
+      (function () {
+        // If redirected from 404.html with ?p=, restore the original path
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          var newUrl = '/acs-dashboard' + decodeURIComponent(p);
+          history.replaceState(null, '', newUrl);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/acs-dashboard/assets/index-r3rGD0yn-1763017502889.js"></script>
+    <link rel="stylesheet" crossorigin href="/acs-dashboard/assets/index-CBlLz73w-1763017502889.css">
   </head>
   <body>
     <div id="root"></div>
