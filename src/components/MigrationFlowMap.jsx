@@ -40,6 +40,8 @@ const INITIAL_VIEW_STATE = {
 const ARC_BLACK = [0, 0, 0, 230];
 const IN_COLOR = [130, 202, 250, 220];
 const OUT_COLOR = [255, 140, 0, 220];
+const IN_TOP_FLOW_COLOR = [16, 76, 162, 255];
+const OUT_TOP_FLOW_COLOR = [180, 80, 0, 255];
 const NET_COLOR = [30, 90, 160, 200];
 // Colorblind-friendly diverging palette (blue = gain, orange = loss)
 const NET_GAIN_COLOR = [41, 128, 185, 200]; // Blue - positive net flow (gain)
@@ -446,10 +448,10 @@ export default function MigrationFlowMap({
       .range([2, 12])
       .clamp(true);
 
-    const dimFactor = selectedArc ? 0.2 : 1;
-
     // Standard ArcLayer for inbound and outbound modes
-    const arcColor = metric === "in" ? IN_COLOR : OUT_COLOR;
+    const arcBaseColor = metric === "in" ? IN_COLOR : OUT_COLOR;
+    const arcTopColor =
+      metric === "in" ? IN_TOP_FLOW_COLOR : OUT_TOP_FLOW_COLOR;
     let dataForLayer = arcs;
 
     if (featureShapMap) {
@@ -476,6 +478,34 @@ export default function MigrationFlowMap({
       );
     }
 
+    const sortedByFlow = [...dataForLayer].sort(
+      (a, b) => (Number(b.flow) || 0) - (Number(a.flow) || 0)
+    );
+    const rankLookup = new Map();
+    sortedByFlow.forEach((arc, idx) => rankLookup.set(arc, idx + 1));
+    const gradientCount =
+      sortedByFlow.length === 0
+        ? 0
+        : filters.enableTopN
+        ? Math.max(
+            1,
+            Math.min(
+              Number(filters.topN) || sortedByFlow.length,
+              sortedByFlow.length
+            )
+          )
+        : sortedByFlow.length;
+    const gradientDenominator =
+      gradientCount <= 1 ? 1 : Math.max(1, gradientCount - 1);
+    const getArcColor = (arc) => {
+      if (!gradientCount) return arcBaseColor;
+      const rank = rankLookup.get(arc);
+      if (!rank || rank > gradientCount) return arcBaseColor;
+      const ratio =
+        gradientCount <= 1 ? 0 : (rank - 1) / gradientDenominator;
+      return interpolateRgba(arcTopColor, arcBaseColor, ratio);
+    };
+
     return new ArcLayer({
       id: "migration-arcs",
       data: dataForLayer,
@@ -485,8 +515,8 @@ export default function MigrationFlowMap({
       getWidth: (d) => widthScale(Math.max(1, d.flow)), // Use max(1, flow) for log scale
       widthUnits: "pixels",
       widthMinPixels: 2,
-      getSourceColor: () => arcColor,
-      getTargetColor: () => arcColor,
+      getSourceColor: (d) => getArcColor(d),
+      getTargetColor: (d) => getArcColor(d),
       onHover: ({ x, y, object }) => {
         if (!object) {
           setHoverInfo(null);
@@ -567,8 +597,18 @@ export default function MigrationFlowMap({
       },
       updateTriggers: {
         getWidth: [minF, maxF],
-        getSourceColor: [metric, selectedArc?.id],
-        getTargetColor: [metric, selectedArc?.id],
+        getSourceColor: [
+          metric,
+          filters.enableTopN,
+          filters.topN,
+          dataForLayer.length,
+        ],
+        getTargetColor: [
+          metric,
+          filters.enableTopN,
+          filters.topN,
+          dataForLayer.length,
+        ],
       },
     });
   }, [
@@ -833,6 +873,16 @@ export default function MigrationFlowMap({
       )}
     </div>
   );
+}
+
+function interpolateRgba(start, end, t) {
+  const clamped = Math.max(0, Math.min(1, Number.isFinite(t) ? t : 0));
+  const length = Math.min(start.length, end.length);
+  const color = new Array(length);
+  for (let i = 0; i < length; i += 1) {
+    color[i] = Math.round(start[i] + (end[i] - start[i]) * clamped);
+  }
+  return color;
 }
 
 function extractBounds(feature) {

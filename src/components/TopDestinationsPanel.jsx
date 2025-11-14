@@ -265,16 +265,15 @@ export default function TopDestinationsPanel({ side = null }) {
       .nice()
       .range([0, chartWidth]);
 
-    // Color scale: match the flow arc colors
-    // Inbound: light blue [130, 202, 250] -> darker blue
-    // Outbound: orange [255, 140, 0] -> darker orange
+    // Color ramp: top rank starts with a saturated dark hue and fades toward lighter tones
+    const colorDomainMax = Math.max(1, data.length - 1);
     const colorScale = d3
       .scaleLinear()
-      .domain([0, data.length - 1])
+      .domain([0, colorDomainMax])
       .range(
         isInbound
-          ? ["rgb(130, 202, 250)", "rgb(65, 135, 200)"] // Light blue to darker blue
-          : ["rgb(255, 140, 0)", "rgb(200, 90, 0)"] // Orange to darker orange
+          ? ["rgb(16, 76, 162)", "rgb(130, 202, 250)"] // Dark blue → light blue
+          : ["rgb(180, 80, 0)", "rgb(255, 170, 90)"] // Dark orange → light orange
       );
 
     // Horizontal bars
