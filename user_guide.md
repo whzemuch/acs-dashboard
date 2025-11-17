@@ -132,16 +132,18 @@ Switch between views using the buttons at the top of the interface.
 
 **How to explore**:
 
-1. Go to **Choropleth View** or **Flow View**
-2. Select a state or county of interest
-3. Toggle between **Observed** and **Predicted** using the Value toggle
-4. Compare the numbers in the **Summary panel**:
+1. Go to **Comparison View**.
+2. On both Location A and Location B, select the **same state/county** of interest.
+3. Set one side’s Value toggle to **Observed** and the other to **Predicted** (each location now controls its own value type).
+4. Pick the Comparison Type:
+   - **Flow** to contrast arcs, Top 10 panels, and SHAP details
+   - **Choropleth** to compare county shading directly
+5. Compare the **Summary panels** on each side:
    - Inbound (Obs) vs. Inbound (Pred)
    - Outbound (Obs) vs. Outbound (Pred)
-5. In **Flow View**, click on different migration arcs and check SHAP contributions
-6. Look for arcs where Observed and Predicted values diverge significantly
+6. In Flow mode, click matching arcs on both sides and inspect SHAP contributions to see which features drive prediction gaps.
 
-**Insight**: Assess where the ML model performs well (predictions close to observed) and where it struggles, helping identify unusual migration patterns or areas needing model improvement.
+**Insight**: Quickly spot where the ML model mirrors ACS observations and where it deviates, highlighting unusual migration patterns or areas needing model refinement.
 
 ---
 

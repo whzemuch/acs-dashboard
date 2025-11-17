@@ -1,6 +1,6 @@
 # ACS Migration Dashboard
 
-> An interactive visualization platform for exploring U.S. county-to-county migration patterns using American Community Survey data with machine learning predictions (xgboost) and SHAP explainability.
+> An interactive visualization platform for exploring U.S. state-to-county migration patterns using American Community Survey data with machine learning predictions (xgboost) and SHAP explainability.
 
 [![Live Demo](https://img.shields.io/badge/demo-live-success)](https://whzemuch.github.io/acs-dashboard/)
 [![React](https://img.shields.io/badge/React-19.1-blue)](https://reactjs.org/)
@@ -116,11 +116,11 @@ The optimized production build will be in the `dist/` directory.
 
 ### Performance Optimizations
 
-- Precomputed data caches eliminate runtime CSV parsing
-- Web Workers handle heavy computations off the main thread
-- Memoized selectors prevent unnecessary re-renders
-- Simplified geometries (5m resolution) for smooth map interactions
-- Lazy loading and code splitting for faster initial load
+- Precomputed data caches eliminate runtime CSV parsing and let multiple panels reuse the same aggregates instantly.
+- Deck.GL rendering is tuned with dynamic fetch sizes, log-based arc widths, and client-side min-flow filtering so even dense flow views stay responsive.
+- Web Workers handle heavy computations off the main thread, keeping the UI smooth.
+- Memoized selectors prevent unnecessary re-renders.
+- Simplified geometries (5m resolution) for smooth map interactions plus lazy loading/code splitting for faster initial load.
 
 ---
 
