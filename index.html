@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Prevent caching for frequent updates -->
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23085f91'/%3E%3Cpath fill='%23ffffff' d='M18 46h8V22l10 24h6l10-24v24h8V18h-12l-9 22-9-22H18z'/%3E%3C/svg%3E"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ACS Migration Dashboard</title>
+    <!-- Build timestamp for cache verification -->
+    <meta name="build-time" content="2025-11-09-23:00:00" />
+    <script>
+      (function () {
+        // If redirected from 404.html with ?p=, restore the original path
+        var params = new URLSearchParams(window.location.search);
+        var p = params.get('p');
+        if (p) {
+          var newUrl = '/acs-dashboard' + decodeURIComponent(p);
+          history.replaceState(null, '', newUrl);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/acs-dashboard/assets/index-CSlFGDX6-1763399029670.js"></script>
+    <link rel="stylesheet" crossorigin href="/acs-dashboard/assets/index-CBlLz73w-1763399029670.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

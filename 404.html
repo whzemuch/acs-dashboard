@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <script>
+      (function () {
+        // GitHub Pages SPA fallback:
+        // Redirect any unknown path to the app root while preserving the path
+        var l = window.location;
+        var base = '/acs-dashboard';
+        var path = l.pathname.startsWith(base)
+          ? l.pathname.slice(base.length)
+          : l.pathname;
+        var dest = l.protocol + '//' + l.host + base + '/?p=' +
+          encodeURIComponent(path + l.search + l.hash);
+        l.replace(dest);
+      })();
+    </script>
+  </head>
+  <body></body>
+  </html>
+

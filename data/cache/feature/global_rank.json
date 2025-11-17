@@ -1,0 +1,275 @@
+[
+  {
+    "id": "shap_geographic_categorical",
+    "label": "Geographic Categorical",
+    "mean": -230.83464625352224,
+    "meanAbs": 395.0675034467034,
+    "count": 64989
+  },
+  {
+    "id": "shap_age",
+    "label": "Age",
+    "mean": -21.178494268699424,
+    "meanAbs": 52.39531727376363,
+    "count": 64989
+  },
+  {
+    "id": "shap_ancestry",
+    "label": "Ancestry",
+    "mean": 20.9600913566737,
+    "meanAbs": 29.74315311527481,
+    "count": 64989
+  },
+  {
+    "id": "shap_language",
+    "label": "Language",
+    "mean": -12.769134084672043,
+    "meanAbs": 25.21858935943538,
+    "count": 64989
+  },
+  {
+    "id": "shap_other",
+    "label": "Other",
+    "mean": -9.135335672935344,
+    "meanAbs": 22.62904432796916,
+    "count": 64989
+  },
+  {
+    "id": "shap_school_enrollment",
+    "label": "School Enrollment",
+    "mean": -8.748001443039211,
+    "meanAbs": 17.26024197165168,
+    "count": 64989
+  },
+  {
+    "id": "shap_race",
+    "label": "Race",
+    "mean": -7.256189137653484,
+    "meanAbs": 14.456795412618716,
+    "count": 64989
+  },
+  {
+    "id": "shap_children",
+    "label": "Children",
+    "mean": -2.681812973582094,
+    "meanAbs": 9.835549581564857,
+    "count": 64989
+  },
+  {
+    "id": "shap_poverty",
+    "label": "Poverty",
+    "mean": -0.2683556200770255,
+    "meanAbs": 9.46685782752071,
+    "count": 64989
+  },
+  {
+    "id": "shap_citizenship",
+    "label": "Citizenship",
+    "mean": -2.9312645106794393,
+    "meanAbs": 8.50885144274662,
+    "count": 64989
+  },
+  {
+    "id": "shap_commute_time",
+    "label": "Commute Time",
+    "mean": -3.997096681100595,
+    "meanAbs": 8.233330071404259,
+    "count": 64989
+  },
+  {
+    "id": "shap_household_race",
+    "label": "Household Race",
+    "mean": -2.3824864571015727,
+    "meanAbs": 7.022683186230821,
+    "count": 64989
+  },
+  {
+    "id": "shap_housing_costs_owners",
+    "label": "Housing Costs Owners",
+    "mean": -0.30325276723028655,
+    "meanAbs": 6.324011860269826,
+    "count": 64989
+  },
+  {
+    "id": "shap_tenure_by_household",
+    "label": "Tenure By Household",
+    "mean": -3.2098814455747817,
+    "meanAbs": 5.976873258020979,
+    "count": 64989
+  },
+  {
+    "id": "shap_industry",
+    "label": "Industry",
+    "mean": -0.9873877283429894,
+    "meanAbs": 4.947279088510955,
+    "count": 64989
+  },
+  {
+    "id": "shap_commute_mode",
+    "label": "Commute Mode",
+    "mean": -3.227363980302648,
+    "meanAbs": 4.85383938015201,
+    "count": 64989
+  },
+  {
+    "id": "shap_vehicles_available",
+    "label": "Vehicles Available",
+    "mean": -2.041915921548281,
+    "meanAbs": 4.586237836252421,
+    "count": 64989
+  },
+  {
+    "id": "shap_marital_status",
+    "label": "Marital Status",
+    "mean": -2.4745646989904593,
+    "meanAbs": 3.668828164811499,
+    "count": 64989
+  },
+  {
+    "id": "shap_education_attainment",
+    "label": "Education Attainment",
+    "mean": 2.0208389255322925,
+    "meanAbs": 3.401670971311622,
+    "count": 64989
+  },
+  {
+    "id": "shap_housing_age",
+    "label": "Housing Age",
+    "mean": -0.7100071083701353,
+    "meanAbs": 3.2795010402236358,
+    "count": 64989
+  },
+  {
+    "id": "shap_occupation",
+    "label": "Occupation",
+    "mean": -1.0173344625479708,
+    "meanAbs": 3.115704796671899,
+    "count": 64989
+  },
+  {
+    "id": "shap_public_assistance",
+    "label": "Public Assistance",
+    "mean": 1.266488139510109,
+    "meanAbs": 2.8425059163482995,
+    "count": 64989
+  },
+  {
+    "id": "shap_rooms",
+    "label": "Rooms",
+    "mean": -1.2928131237954907,
+    "meanAbs": 2.5828654798639974,
+    "count": 64989
+  },
+  {
+    "id": "shap_fertility",
+    "label": "Fertility",
+    "mean": -0.6746482099837267,
+    "meanAbs": 2.1740433241375285,
+    "count": 64989
+  },
+  {
+    "id": "shap_tenure_by_age",
+    "label": "Tenure By Age",
+    "mean": -1.1105769989803718,
+    "meanAbs": 2.111666471696292,
+    "count": 64989
+  },
+  {
+    "id": "shap_income_distribution",
+    "label": "Income Distribution",
+    "mean": -0.7729266425165117,
+    "meanAbs": 1.823152525326724,
+    "count": 64989
+  },
+  {
+    "id": "shap_earnings",
+    "label": "Earnings",
+    "mean": 0.11324697696221316,
+    "meanAbs": 1.7024163831505763,
+    "count": 64989
+  },
+  {
+    "id": "shap_vacancy",
+    "label": "Vacancy",
+    "mean": -0.6825016996208901,
+    "meanAbs": 1.6263726968869863,
+    "count": 64989
+  },
+  {
+    "id": "shap_hispanic",
+    "label": "Hispanic",
+    "mean": -0.7198485315270625,
+    "meanAbs": 1.3526877749718438,
+    "count": 64989
+  },
+  {
+    "id": "shap_income_sources",
+    "label": "Income Sources",
+    "mean": -0.24472064007573924,
+    "meanAbs": 0.9852298430105414,
+    "count": 64989
+  },
+  {
+    "id": "shap_housing_mobility",
+    "label": "Housing Mobility",
+    "mean": -0.21476097810628586,
+    "meanAbs": 0.7002789327843272,
+    "count": 64989
+  },
+  {
+    "id": "shap_per_capita_income",
+    "label": "Per Capita Income",
+    "mean": -0.02887920551614859,
+    "meanAbs": 0.5077699923365533,
+    "count": 64989
+  },
+  {
+    "id": "shap_tenure",
+    "label": "Tenure",
+    "mean": -0.020842655949992475,
+    "meanAbs": 0.26632540491561035,
+    "count": 64989
+  },
+  {
+    "id": "shap_rent_burden",
+    "label": "Rent Burden",
+    "mean": -0.060740784694657435,
+    "meanAbs": 0.22575750254955643,
+    "count": 64989
+  },
+  {
+    "id": "shap_income_inequality",
+    "label": "Income Inequality",
+    "mean": 0.062105287184445905,
+    "meanAbs": 0.18914846700664656,
+    "count": 64989
+  },
+  {
+    "id": "shap_employment_status",
+    "label": "Employment Status",
+    "mean": -0.10332298487763966,
+    "meanAbs": 0.1547167838991723,
+    "count": 64989
+  },
+  {
+    "id": "shap_household_size",
+    "label": "Household Size",
+    "mean": -0.05014128003183136,
+    "meanAbs": 0.07628340353578741,
+    "count": 64989
+  },
+  {
+    "id": "shap_other_housing",
+    "label": "Other Housing",
+    "mean": 0,
+    "meanAbs": 0,
+    "count": 64989
+  },
+  {
+    "id": "shap_total_housing_units",
+    "label": "Total Housing Units",
+    "mean": 0,
+    "meanAbs": 0,
+    "count": 64989
+  }
+]

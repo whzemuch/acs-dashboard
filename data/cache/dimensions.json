@@ -1,0 +1,64 @@
+{
+  "age": [
+    {
+      "id": "age_18_24",
+      "label": "18–24"
+    },
+    {
+      "id": "age_25_34",
+      "label": "25–34"
+    },
+    {
+      "id": "age_35_44",
+      "label": "35–44"
+    },
+    {
+      "id": "age_45_54",
+      "label": "45–54"
+    },
+    {
+      "id": "age_55_64",
+      "label": "55–64"
+    },
+    {
+      "id": "age_65_plus",
+      "label": "65+"
+    }
+  ],
+  "income": [
+    {
+      "id": "inc_lt_25k",
+      "label": "<$25k"
+    },
+    {
+      "id": "inc_25_50k",
+      "label": "$25k–$50k"
+    },
+    {
+      "id": "inc_50_100k",
+      "label": "$50k–$100k"
+    },
+    {
+      "id": "inc_100_plus",
+      "label": "$100k+"
+    }
+  ],
+  "education": [
+    {
+      "id": "edu_hs",
+      "label": "High school or GED"
+    },
+    {
+      "id": "edu_some_college",
+      "label": "Some college"
+    },
+    {
+      "id": "edu_ba",
+      "label": "Bachelor’s"
+    },
+    {
+      "id": "edu_grad",
+      "label": "Graduate degree"
+    }
+  ]
+}
