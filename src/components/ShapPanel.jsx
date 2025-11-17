@@ -143,6 +143,7 @@ export default function ShapPanel({ side = null }) {
         flexDirection: "column",
         gap: 8,
         width: "100%",
+        position: "relative",
       }}
     >
       <h3 style={{ margin: 0, fontSize: 18 }} className="font-mono">
@@ -169,81 +170,87 @@ export default function ShapPanel({ side = null }) {
           Failed to load SHAP. {error}
         </div>
       ) : entry ? (
-        <div
-          id={containerId}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-            width: "100%",
-          }}
-        >
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <div style={{ minWidth: 220 }} className="font-mono">
-              <div style={{ fontWeight: 600, marginBottom: 6 }}>{arc.id}</div>
-              <div style={{ fontSize: 12, color: "#4b5563" }}>
-                Observed: {arc.observed?.toLocaleString?.()}
-              </div>
-              <div style={{ fontSize: 12, color: "#4b5563" }}>
-                Predicted:{" "}
-                {arc.predicted?.toLocaleString?.(undefined, {
-                  maximumFractionDigits: 1,
-                })}
-              </div>
-              <div style={{ fontSize: 12, color: "#4b5563" }}>
-                Base: {Number(entry.shapBase).toFixed(2)}
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 8,
-              }}
-              className="font-mono"
-            >
-              <label style={{ fontSize: 12, color: "#4b5563" }}>
-                Top K SHAP (1–100)
-                <input
-                  type="number"
-                  min={1}
-                  max={100}
-                  step={1}
-                  value={topK}
-                  onChange={(e) => setTopK(e.target.value)}
-                  style={{
-                    marginLeft: 8,
-                    width: 72,
-                  }}
-                />
-              </label>
-              <label style={{ fontSize: 12, color: "#4b5563" }}>
-                <input
-                  type="checkbox"
-                  checked={absSort}
-                  onChange={(e) => setAbsSort(e.target.checked)}
-                  style={{ marginRight: 6 }}
-                />
-                Sort by absolute value
-              </label>
-              <button
-                type="button"
-                onClick={() => copyShapCsv(entry, schema, setCopiedToast)}
-                style={{ fontSize: 12 }}
-              >
-                Copy SHAP as CSV
-              </button>
-            </div>
+        <>
+          <div className="shap-panel-scroll-hint font-mono">
+            <span aria-hidden="true">⇅ Scroll to see more rows</span>
+            <span aria-hidden="true">⇆ Drag sideways for longer labels</span>
           </div>
+          <div
+            id={containerId}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+              width: "100%",
+            }}
+          >
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <div style={{ minWidth: 220 }} className="font-mono">
+                <div style={{ fontWeight: 600, marginBottom: 6 }}>{arc.id}</div>
+                <div style={{ fontSize: 12, color: "#4b5563" }}>
+                  Observed: {arc.observed?.toLocaleString?.()}
+                </div>
+                <div style={{ fontSize: 12, color: "#4b5563" }}>
+                  Predicted:{" "}
+                  {arc.predicted?.toLocaleString?.(undefined, {
+                    maximumFractionDigits: 1,
+                  })}
+                </div>
+                <div style={{ fontSize: 12, color: "#4b5563" }}>
+                  Base: {Number(entry.shapBase).toFixed(2)}
+                </div>
+              </div>
 
-          <CoeffChart
-            stats={topStats || arrayShapToObject(entry.shapValues, schema)}
-            width={chartWidth}
-            height={300}
-            mode="coefficients"
-          />
-        </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 8,
+                }}
+                className="font-mono"
+              >
+                <label style={{ fontSize: 12, color: "#4b5563" }}>
+                  Top K SHAP (1–100)
+                  <input
+                    type="number"
+                    min={1}
+                    max={100}
+                    step={1}
+                    value={topK}
+                    onChange={(e) => setTopK(e.target.value)}
+                    style={{
+                      marginLeft: 8,
+                      width: 72,
+                    }}
+                  />
+                </label>
+                <label style={{ fontSize: 12, color: "#4b5563" }}>
+                  <input
+                    type="checkbox"
+                    checked={absSort}
+                    onChange={(e) => setAbsSort(e.target.checked)}
+                    style={{ marginRight: 6 }}
+                  />
+                  Sort by absolute value
+                </label>
+                <button
+                  type="button"
+                  onClick={() => copyShapCsv(entry, schema, setCopiedToast)}
+                  style={{ fontSize: 12 }}
+                >
+                  Copy SHAP as CSV
+                </button>
+              </div>
+            </div>
+
+            <CoeffChart
+              stats={topStats || arrayShapToObject(entry.shapValues, schema)}
+              width={chartWidth}
+              height={300}
+              mode="coefficients"
+            />
+          </div>
+        </>
       ) : (
         <div
           style={{
