@@ -72,6 +72,7 @@ export const useDashboardStore = create(
           ...getDefaultFilters(latestYear),
           viewMode: "choropleth",
           metric: "in",
+          valueType: "observed",
         };
 
         set({

@@ -114,9 +114,8 @@ export default function ChoroplethMap({
     // Default: inbound choropleth from summary
     const metric = filters.metric ?? "in";
     const stateFilter = filters.state ?? null;
-    // In comparison mode (when side is provided), always use observed values for coloring
-    // Tooltip will show both observed and predicted for comparison
-    const valueType = side !== null ? "observed" : effectiveValueType;
+    // Use the effectiveValueType for all views including comparison mode
+    const valueType = effectiveValueType;
     const base = buildChoropleth(summaryData, metric, stateFilter, valueType);
     const values = Object.values(base.map).filter(
       (v) => Number.isFinite(v) && v > 0
@@ -446,29 +445,29 @@ export default function ChoroplethMap({
               marginBottom: 6,
             }}
           >
-              <div
-                style={{
-                  width: 20,
-                  height: 20,
-                  background: "#f59e0b",
-                  border: "2px solid #b45309",
-                  borderRadius: 3,
-                }}
-              />
-              <span>Net Gain</span>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <div
-                style={{
-                  width: 20,
-                  height: 20,
-                  background: "#1e3a8a",
-                  border: "2px solid #0f172a",
-                  borderRadius: 3,
-                }}
-              />
-              <span>Net Loss</span>
-            </div>
+            <div
+              style={{
+                width: 20,
+                height: 20,
+                background: "#f59e0b",
+                border: "2px solid #b45309",
+                borderRadius: 3,
+              }}
+            />
+            <span>Net Gain</span>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <div
+              style={{
+                width: 20,
+                height: 20,
+                background: "#1e3a8a",
+                border: "2px solid #0f172a",
+                borderRadius: 3,
+              }}
+            />
+            <span>Net Loss</span>
+          </div>
         </div>
       )}
     </div>

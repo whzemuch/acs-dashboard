@@ -21,9 +21,6 @@ export default function ComparisonView() {
   // Local state for comparison view type (flow or choropleth)
   const [comparisonViewType, setComparisonViewType] = useState("flow");
 
-  // Local state for showing both observed and predicted in choropleth view
-  const [showBothChoropleth, setShowBothChoropleth] = useState(false);
-
   // Auto-switch to inbound when county is selected
   useEffect(() => {
     if (leftFilters.county && leftFilters.metric === "out") {
@@ -155,6 +152,43 @@ export default function ComparisonView() {
             )}
           </div>
 
+          {/* Value Type Toggle - for choropleth mode */}
+          {comparisonViewType === "choropleth" && (
+            <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+              {[
+                { id: "observed", label: "Observed" },
+                { id: "predicted", label: "Predicted" },
+              ].map((valueType) => (
+                <button
+                  key={valueType.id}
+                  onClick={() => setLeftFilter("valueType", valueType.id)}
+                  style={{
+                    flex: 1,
+                    padding: "6px 8px",
+                    borderRadius: 6,
+                    fontSize: 12,
+                    cursor: "pointer",
+                    border: "1px solid",
+                    borderColor:
+                      (leftFilters.valueType ?? "observed") === valueType.id
+                        ? "#1d4ed8"
+                        : "#cbd2d9",
+                    background:
+                      (leftFilters.valueType ?? "observed") === valueType.id
+                        ? "#2563eb"
+                        : "white",
+                    color:
+                      (leftFilters.valueType ?? "observed") === valueType.id
+                        ? "white"
+                        : "#1f2933",
+                  }}
+                >
+                  {valueType.label}
+                </button>
+              ))}
+            </div>
+          )}
+
           {/* Flow controls in compact layout - only in flow mode */}
           {comparisonViewType === "flow" && (
             <div>
@@ -277,6 +311,41 @@ export default function ComparisonView() {
                   />
                 </div>
               </div>
+
+              {/* Value Type Toggle - independent for Location A */}
+              <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
+                {[
+                  { id: "observed", label: "Observed" },
+                  { id: "predicted", label: "Predicted" },
+                ].map((valueType) => (
+                  <button
+                    key={valueType.id}
+                    onClick={() => setLeftFilter("valueType", valueType.id)}
+                    style={{
+                      flex: 1,
+                      padding: "6px 8px",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      cursor: "pointer",
+                      border: "1px solid",
+                      borderColor:
+                        (leftFilters.valueType ?? "observed") === valueType.id
+                          ? "#1d4ed8"
+                          : "#cbd2d9",
+                      background:
+                        (leftFilters.valueType ?? "observed") === valueType.id
+                          ? "#2563eb"
+                          : "white",
+                      color:
+                        (leftFilters.valueType ?? "observed") === valueType.id
+                          ? "white"
+                          : "#1f2933",
+                    }}
+                  >
+                    {valueType.label}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>
@@ -366,8 +435,8 @@ export default function ComparisonView() {
             border: "1px solid #e2e8f0",
           }}
         >
-          <h3 style={{ margin: "0 0 12px 0", fontSize: 16, color: "#1f2937" }}>
-            ⚙️ Shared Settings
+          <h3 style={{ margin: "0 0 12px 0", fontSize: 16, color: "#1f2937", textAlign: "center" }}>
+            View Controls
           </h3>
 
           {/* Main View Mode Selector - to exit comparison view */}
@@ -478,81 +547,6 @@ export default function ComparisonView() {
               ))}
             </div>
           </div>
-
-          {/* Value Type - only show in flow mode (choropleth always uses observed) */}
-          {comparisonViewType === "flow" && (
-            <div style={{ marginBottom: "12px" }}>
-              <label
-                style={{
-                  display: "block",
-                  fontSize: 13,
-                  fontWeight: 600,
-                  marginBottom: 6,
-                  color: "#4b5563",
-                }}
-              >
-                Value
-              </label>
-              <div style={{ display: "flex", gap: 6 }}>
-                {[
-                  { id: "observed", label: "Observed" },
-                  { id: "predicted", label: "Predicted" },
-                ].map((valueType) => (
-                  <button
-                    key={valueType.id}
-                    onClick={() =>
-                      syncSharedFilters({ valueType: valueType.id })
-                    }
-                    style={{
-                      flex: 1,
-                      padding: "6px 8px",
-                      borderRadius: 6,
-                      fontSize: 13,
-                      cursor: "pointer",
-                      border: "1px solid",
-                      borderColor:
-                        leftFilters.valueType === valueType.id
-                          ? "#1d4ed8"
-                          : "#cbd2d9",
-                      background:
-                        leftFilters.valueType === valueType.id
-                          ? "#2563eb"
-                          : "white",
-                      color:
-                        leftFilters.valueType === valueType.id
-                          ? "white"
-                          : "#1f2933",
-                    }}
-                  >
-                    {valueType.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Show both observed and predicted in choropleth view */}
-          {comparisonViewType === "choropleth" && (
-            <div style={{ marginBottom: "12px" }}>
-              <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  fontSize: 13,
-                  color: "#4b5563",
-                  cursor: "pointer",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={showBothChoropleth}
-                  onChange={(e) => setShowBothChoropleth(e.target.checked)}
-                  style={{ marginRight: 6 }}
-                />
-                Compare Observed vs Predicted
-              </label>
-            </div>
-          )}
 
           {/* Min Flow - only show in flow mode */}
           {comparisonViewType === "flow" && (
@@ -677,6 +671,9 @@ export default function ComparisonView() {
               Each location has its own Metric (Inbound/Outbound) toggle
             </li>
             <li style={{ marginBottom: 4 }}>
+              Each location has its own Value (Observed/Predicted) toggle
+            </li>
+            <li style={{ marginBottom: 4 }}>
               Each location has its own Min Flow slider to handle different
               scales
             </li>
@@ -686,10 +683,7 @@ export default function ComparisonView() {
             <li style={{ marginBottom: 4 }}>
               Click arcs to see SHAP features side-by-side
             </li>
-            <li style={{ marginBottom: 4 }}>
-              Use feature filter to highlight specific influences
-            </li>
-            <li>Value type (Observed/Predicted) is shared between locations</li>
+            <li>Use feature filter to highlight specific influences</li>
           </ul>
         </div>
       </div>
@@ -789,6 +783,43 @@ export default function ComparisonView() {
               </div>
             )}
           </div>
+
+          {/* Value Type Toggle - for choropleth mode */}
+          {comparisonViewType === "choropleth" && (
+            <div style={{ display: "flex", gap: 6, marginBottom: 12 }}>
+              {[
+                { id: "observed", label: "Observed" },
+                { id: "predicted", label: "Predicted" },
+              ].map((valueType) => (
+                <button
+                  key={valueType.id}
+                  onClick={() => setRightFilter("valueType", valueType.id)}
+                  style={{
+                    flex: 1,
+                    padding: "6px 8px",
+                    borderRadius: 6,
+                    fontSize: 12,
+                    cursor: "pointer",
+                    border: "1px solid",
+                    borderColor:
+                      (rightFilters.valueType ?? "observed") === valueType.id
+                        ? "#1d4ed8"
+                        : "#cbd2d9",
+                    background:
+                      (rightFilters.valueType ?? "observed") === valueType.id
+                        ? "#2563eb"
+                        : "white",
+                    color:
+                      (rightFilters.valueType ?? "observed") === valueType.id
+                        ? "white"
+                        : "#1f2933",
+                  }}
+                >
+                  {valueType.label}
+                </button>
+              ))}
+            </div>
+          )}
 
           {/* Flow controls in compact layout - only in flow mode */}
           {comparisonViewType === "flow" && (
@@ -911,6 +942,41 @@ export default function ComparisonView() {
                     style={{ flex: 1 }}
                   />
                 </div>
+              </div>
+
+              {/* Value Type Toggle - independent for Location B */}
+              <div style={{ display: "flex", gap: 6, marginTop: 10 }}>
+                {[
+                  { id: "observed", label: "Observed" },
+                  { id: "predicted", label: "Predicted" },
+                ].map((valueType) => (
+                  <button
+                    key={valueType.id}
+                    onClick={() => setRightFilter("valueType", valueType.id)}
+                    style={{
+                      flex: 1,
+                      padding: "6px 8px",
+                      borderRadius: 6,
+                      fontSize: 12,
+                      cursor: "pointer",
+                      border: "1px solid",
+                      borderColor:
+                        (rightFilters.valueType ?? "observed") === valueType.id
+                          ? "#1d4ed8"
+                          : "#cbd2d9",
+                      background:
+                        (rightFilters.valueType ?? "observed") === valueType.id
+                          ? "#2563eb"
+                          : "white",
+                      color:
+                        (rightFilters.valueType ?? "observed") === valueType.id
+                          ? "white"
+                          : "#1f2933",
+                    }}
+                  >
+                    {valueType.label}
+                  </button>
+                ))}
               </div>
             </div>
           )}
