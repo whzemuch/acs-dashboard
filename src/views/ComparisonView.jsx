@@ -435,7 +435,14 @@ export default function ComparisonView() {
             border: "1px solid #e2e8f0",
           }}
         >
-          <h3 style={{ margin: "0 0 12px 0", fontSize: 16, color: "#1f2937", textAlign: "center" }}>
+          <h3
+            style={{
+              margin: "0 0 12px 0",
+              fontSize: 16,
+              color: "#1f2937",
+              textAlign: "center",
+            }}
+          >
             View Controls
           </h3>
 

@@ -13,11 +13,6 @@ const featureAggOptions = [
   { id: "mean", label: "Signed mean (direction)" },
 ];
 
-const valueOptions = [
-  { id: "observed", label: "Observed" },
-  { id: "predicted", label: "Predicted" },
-];
-
 export default function FilterPanel() {
   const init = useDashboardStore((s) => s.init);
   const ready = useDashboardStore((s) => s.ready);
@@ -122,16 +117,6 @@ export default function FilterPanel() {
           options={metricOptionsFinal}
           value={filters.metric ?? "in"}
           onSelect={(value) => setFilter("metric", value)}
-        />
-      )}
-
-      {/* Value toggle - only show in Flow view, choropleth always uses observed */}
-      {filters.viewMode === "flow" && (
-        <ToggleRow
-          label="Value"
-          options={valueOptions}
-          value={filters.valueType ?? "observed"}
-          onSelect={(value) => setFilter("valueType", value)}
         />
       )}
 
@@ -383,9 +368,17 @@ export default function FilterPanel() {
             <ul style={gettingStartedListStyle}>
               <li>Select a state from the dropdown to focus on a region.</li>
               <li>Choose a county to see detailed migration statistics.</li>
-              <li>Switch between Choropleth, Flow, and Comparison views using the buttons above.</li>
-              <li>In Flow view, enable "Top 10" to see origin/destination bar charts.</li>
-              <li>Click on migration arcs to reveal SHAP feature importance.</li>
+              <li>
+                Switch between Choropleth, Flow, and Comparison views using the
+                buttons above.
+              </li>
+              <li>
+                In Flow view, enable "Top 10" to see origin/destination bar
+                charts.
+              </li>
+              <li>
+                Click on migration arcs to reveal SHAP feature importance.
+              </li>
               <li>Hover over counties or arcs for quick summary tooltips.</li>
             </ul>
           </div>
